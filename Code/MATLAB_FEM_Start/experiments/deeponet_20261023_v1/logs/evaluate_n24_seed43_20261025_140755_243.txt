@@ -1,0 +1,6 @@
+    <strong>TrainingCases</strong>    <strong>Seed</strong>    <strong>FieldMedianRelL2</strong>    <strong>FieldP95RelL2</strong>    <strong>FieldWorstRelL2</strong>    <strong>TipMAE_m</strong>     <strong>MaxGridMAE_m</strong>    <strong>ClampMax_m</strong>    <strong>OnlineSeconds</strong>    <strong>TrainingSeconds</strong>    <strong>PreparationSeconds</strong>    <strong>Parameters</strong>    <strong>BestEpoch</strong>
+    <strong>_____________</strong>    <strong>____</strong>    <strong>________________</strong>    <strong>_____________</strong>    <strong>_______________</strong>    <strong>_________</strong>    <strong>____________</strong>    <strong>__________</strong>    <strong>_____________</strong>    <strong>_______________</strong>    <strong>__________________</strong>    <strong>__________</strong>    <strong>_________</strong>
+
+         24           43          0.5213            0.77206           0.77206        6.209e-05     6.1604e-05         0           0.0048631          12.999              0.31315            17344          110   
+
+

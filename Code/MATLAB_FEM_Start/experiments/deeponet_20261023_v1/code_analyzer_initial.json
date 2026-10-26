@@ -1,0 +1,272 @@
+﻿[
+  {
+    "file": "src\\deeponet_forward.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "src\\deeponet_gradients.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "src\\predict_deeponet.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "src\\fit_deeponet.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "run_deeponet_study.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "run_deeponet_logged.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "evaluate_deeponet_baselines.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[{\"description\":\"Value assigned to variable might be unused.\",\"end_column\":30,\"fixable\":false,\"line\":67,\"severity\":\"warning\",\"start_column\":27}]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": [
+          {
+            "description": "Value assigned to variable might be unused.",
+            "end_column": 30,
+            "fixable": false,
+            "line": 67,
+            "severity": "warning",
+            "start_column": 27
+          }
+        ]
+      }
+    }
+  },
+  {
+    "file": "export_deeponet_diagnostics.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "benchmark_deeponet_engine.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "tests\\deeponetTest.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":13,\"fixable\":true,\"line\":69,\"severity\":\"warning\",\"start_column\":13},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":23,\"fixable\":true,\"line\":69,\"severity\":\"warning\",\"start_column\":23},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":27,\"fixable\":true,\"line\":69,\"severity\":\"warning\",\"start_column\":27},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":39,\"fixable\":true,\"line\":69,\"severity\":\"warning\",\"start_column\":39},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":43,\"fixable\":true,\"line\":69,\"severity\":\"warning\",\"start_column\":43},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":13,\"fixable\":true,\"line\":70,\"severity\":\"warning\",\"start_column\":13},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":17,\"fixable\":true,\"line\":70,\"severity\":\"warning\",\"start_column\":17},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":29,\"fixable\":true,\"line\":70,\"severity\":\"warning\",\"start_column\":29},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":34,\"fixable\":true,\"line\":70,\"severity\":\"warning\",\"start_column\":34},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":32,\"fixable\":true,\"line\":71,\"severity\":\"warning\",\"start_column\":32},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":34,\"fixable\":true,\"line\":71,\"severity\":\"warning\",\"start_column\":34},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":43,\"fixable\":true,\"line\":72,\"severity\":\"warning\",\"start_column\":43},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":47,\"fixable\":true,\"line\":72,\"severity\":\"warning\",\"start_column\":47},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":46,\"fixable\":true,\"line\":73,\"severity\":\"warning\",\"start_column\":46},{\"description\":\"There is a property named 'D'. Did you mean to reference it?\",\"end_column\":50,\"fixable\":true,\"line\":73,\"severity\":\"warning\",\"start_column\":50}]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": [
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 13,
+            "fixable": true,
+            "line": 69,
+            "severity": "warning",
+            "start_column": 13
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 23,
+            "fixable": true,
+            "line": 69,
+            "severity": "warning",
+            "start_column": 23
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 27,
+            "fixable": true,
+            "line": 69,
+            "severity": "warning",
+            "start_column": 27
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 39,
+            "fixable": true,
+            "line": 69,
+            "severity": "warning",
+            "start_column": 39
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 43,
+            "fixable": true,
+            "line": 69,
+            "severity": "warning",
+            "start_column": 43
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 13,
+            "fixable": true,
+            "line": 70,
+            "severity": "warning",
+            "start_column": 13
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 17,
+            "fixable": true,
+            "line": 70,
+            "severity": "warning",
+            "start_column": 17
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 29,
+            "fixable": true,
+            "line": 70,
+            "severity": "warning",
+            "start_column": 29
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 34,
+            "fixable": true,
+            "line": 70,
+            "severity": "warning",
+            "start_column": 34
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 32,
+            "fixable": true,
+            "line": 71,
+            "severity": "warning",
+            "start_column": 32
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 34,
+            "fixable": true,
+            "line": 71,
+            "severity": "warning",
+            "start_column": 34
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 43,
+            "fixable": true,
+            "line": 72,
+            "severity": "warning",
+            "start_column": 43
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 47,
+            "fixable": true,
+            "line": 72,
+            "severity": "warning",
+            "start_column": 47
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 46,
+            "fixable": true,
+            "line": 73,
+            "severity": "warning",
+            "start_column": 46
+          },
+          {
+            "description": "There is a property named 'D'. Did you mean to reference it?",
+            "end_column": 50,
+            "fixable": true,
+            "line": 73,
+            "severity": "warning",
+            "start_column": 50
+          }
+        ]
+      }
+    }
+  }
+]

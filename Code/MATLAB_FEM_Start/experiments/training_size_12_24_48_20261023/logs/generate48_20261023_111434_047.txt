@@ -1,0 +1,67 @@
+Started: 2026-10-23 11:13:53
+Ended: 2026-10-23 11:14:34
+Elapsed seconds: 40.5237
+Succeeded: true
+
+Reuse 1/60
+Reuse 2/60
+Reuse 3/60
+Reuse 4/60
+Reuse 5/60
+Reuse 6/60
+Reuse 7/60
+Reuse 8/60
+Reuse 9/60
+Reuse 10/60
+Reuse 11/60
+Reuse 12/60
+Reuse 13/60
+Reuse 14/60
+Reuse 15/60
+Reuse 16/60
+Reuse 17/60
+Reuse 18/60
+Reuse 19/60
+Reuse 20/60
+Reuse 21/60
+Reuse 22/60
+Reuse 23/60
+Reuse 24/60
+FEM 25/60 (train)
+FEM 26/60 (train)
+FEM 27/60 (train)
+FEM 28/60 (train)
+FEM 29/60 (train)
+FEM 30/60 (train)
+FEM 31/60 (train)
+FEM 32/60 (train)
+FEM 33/60 (train)
+FEM 34/60 (train)
+FEM 35/60 (train)
+FEM 36/60 (train)
+FEM 37/60 (train)
+FEM 38/60 (train)
+FEM 39/60 (train)
+FEM 40/60 (train)
+FEM 41/60 (train)
+FEM 42/60 (train)
+FEM 43/60 (train)
+FEM 44/60 (train)
+FEM 45/60 (train)
+FEM 46/60 (train)
+FEM 47/60 (train)
+FEM 48/60 (train)
+Reuse 49/60
+Reuse 50/60
+Reuse 51/60
+Reuse 52/60
+Reuse 53/60
+Reuse 54/60
+Reuse 55/60
+Reuse 56/60
+Reuse 57/60
+Reuse 58/60
+Reuse 59/60
+Reuse 60/60
+Data ready in C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\n48
+

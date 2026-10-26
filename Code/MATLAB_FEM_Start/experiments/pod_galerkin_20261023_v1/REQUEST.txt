@@ -1,0 +1,165 @@
+Erweitere unser MATLAB-Projekt für FEM-Ersatzmodelle um eine
+klassische projektionsbasierte Modellreduktion als Vergleich zu
+den vorhandenen KI-Modellen.
+
+Arbeite direkt im vorhandenen Projekt. Prüfe zuerst die aktuelle
+Implementierung, Datenformate, Konfiguration und bereits erzeugten
+Ergebnisse. Nutze MATLAB MCP, um Änderungen tatsächlich auszuführen
+und zu testen. Erhalte vorhandene Daten und Ergebnisse; speichere
+neue Versuche in eindeutig benannten Ausgabeordnern.
+
+Ziel
+Vergleiche einen klassischen POD-Galerkin-ROM mit unseren bisherigen
+Modellen für ALLE im Projekt untersuchten Trainingsdatensatzgrößen.
+Verwende dieselben physikalischen Fälle, Trainings-IDs sowie
+Validierungs- und Testfälle wie bei den vorhandenen Lernkurven.
+
+1. Klassischen POD-Galerkin-ROM implementieren
+
+Für das lineare statische Problem K(mu)*u(mu)=f(mu):
+
+- Erzeuge eine reduzierte Basis V ausschließlich aus den jeweiligen
+  Trainingslösungen.
+- Projiziere das mechanische Gleichungssystem:
+      Kr(mu) = V' * K(mu) * V
+      fr(mu) = V' * f(mu)
+- Löse online:
+      a(mu) = Kr(mu) \ fr(mu)
+      uROM(mu) = V * a(mu)
+
+Die Koeffizienten werden durch das reduzierte mechanische
+Gleichungssystem bestimmt. Verwende hierfür keinen trainierten
+Regressor.
+
+Berücksichtige die Einspannung durch eine konsistente Behandlung
+der freien Freiheitsgrade. Nutze vorzugsweise eine unzentrierte
+Snapshot-Basis. Falls eine zentrierte Basis oder ein Lifting
+verwendet wird, leite die erforderliche rechte Seite korrekt her.
+
+2. Gemeinsamen FEM-Raum sicherstellen
+
+Unsere bisherigen Surrogatfelder liegen möglicherweise auf einem
+interpolierten Referenzgitter. Eine solche POD-Basis darf nicht
+direkt mit den ursprünglichen FEM-Matrizen multipliziert werden.
+
+Implementiere eine konsistente gemeinsame FEM-Diskretisierung oder
+Referenzabbildung für die parametrischen Quader. Beispielsweise
+kann ein festes Referenznetz auf die jeweiligen Balkenabmessungen
+abgebildet werden, wobei Konnektivität, Knotenzuordnung und
+Freiheitsgradreihenfolge erhalten bleiben.
+
+Prüfe:
+- korrekte Transformation der Geometrie,
+- konsistente Zuordnung der freien Freiheitsgrade,
+- Übereinstimmung von Snapshot-Basis und Matrixraum,
+- korrekte Lastintegration und Materialzuordnung,
+- konsistente Handhabung bereits reduzierter Matrizen aus
+  assembleFEMatrices, ohne Randbedingungen doppelt zu eliminieren.
+
+Vergleiche alle Modelle auf denselben physikalischen Testfällen
+und denselben Auswertepunkten. Falls für den ROM zusätzliche
+FEM-Snapshots benötigt werden, dokumentiere die Kosten und prüfe
+die Genauigkeit dieser Diskretisierung gegenüber der bestehenden
+FEM-Referenz. Bezeichne unterschiedliche Netze nicht als identisch.
+
+3. Alle Trainingsdatensatzgrößen durchrechnen
+
+- Ermittle die vorhandenen Trainingsgrößen aus Konfiguration,
+  Lernkurven und gespeicherten Experimenten.
+- Verwende für jede Größe N genau dieselben Trainingsfälle wie
+  die entsprechenden KI-Modelle.
+- Falls neue Lernkurven nötig sind, verwende verschachtelte
+  Trainingsmengen mit festen Seeds und dauerhaft gespeicherten IDs.
+- Baue für jedes N eine eigene POD-Basis ausschließlich aus
+  diesen N Trainingsfällen auf.
+- Halte Validierungs- und Testfälle über alle N unverändert.
+- Übernimm vorhandene Wiederholungen beziehungsweise Seeds.
+- Wähle den POD-Rang anhand des Validierungssatzes und dokumentiere
+  die untersuchten Ränge sowie den gewählten Rang.
+- Lade die Testdaten erst für die abschließende Bewertung.
+- Verhindere Datenleckage über Basisbildung, Skalierung,
+  Hyperparameterwahl oder mehrfach verwendete physikalische Fälle.
+
+4. Faire Fehlerauswertung
+
+Bewerte ROM und KI-Modelle mit denselben Definitionen:
+- relativer gewichteter L2-Fehler des Verschiebungsfeldes,
+- Median, 95-Prozent-Quantil und schlechtester Testfall,
+- Fehler der Spitzenverschiebung,
+- Fehler des maximalen Verschiebungsmaßes auf demselben Gitter.
+
+Berechne zusätzlich:
+- den bestmöglichen POD-Projektionsfehler auf den Ausgabepunkten,
+  mit derselben Norm wie der berichtete Feldfehler,
+- ein geeignetes Gleichgewichtsresiduum auf freien Freiheitsgraden,
+- gegebenenfalls den relativen Energiefehler.
+
+Beachte: Der Galerkin-ROM minimiert bei einem symmetrisch positiv
+definiten System den Energiefehler im Ansatzraum. Er muss deshalb
+nicht den kleinsten L2-Fehler innerhalb dieses Raums erreichen.
+
+5. Laufzeiten vollständig messen
+
+Trenne:
+- FEM-Snapshot-Erzeugung,
+- Offline-Basisbildung und Rangwahl,
+- Online-Geometrieaufbereitung und Matrixassemblierung,
+- Projektion auf den reduzierten Raum,
+- Lösung des reduzierten Systems,
+- Feldrekonstruktion und Auswertung,
+- gesamte Online-Zeit pro Fall.
+
+Ein ROM, der online weiterhin die vollständige Steifigkeitsmatrix
+assembliert, muss diese Kosten im Vergleich enthalten. Berichte
+zusätzlich die isolierte reduzierte Lösezeit, aber verwende sie
+nicht allein als Ende-zu-Ende-Speed-up.
+
+Implementiere zunächst eine korrekte vollständige Assemblierung
+mit anschließender Projektion. Falls eine nachweislich gültige
+affine Zerlegung oder vorab projizierte Komponenten möglich sind,
+kannst du diese als separat ausgewiesene Optimierung ergänzen.
+Erfinde keine affine Abhängigkeit, die für die Geometrievariation
+nicht hergeleitet wurde.
+
+6. Ergebnisse und Diagramme ergänzen
+
+Ergänze die bestehenden Ergebnistabellen um POD_Galerkin und
+erstelle für alle Trainingsgrößen:
+- Feldfehler gegen Anzahl der Trainingsfälle,
+- gesamte Online-Zeit gegen Anzahl der Trainingsfälle,
+- Offline-Kosten gegen Anzahl der Trainingsfälle,
+- gewählten POD-Rang gegen Anzahl der Trainingsfälle,
+- Vergleich von Projektionsfehler und tatsächlichem ROM-Fehler.
+
+Feldmodelle und rein skalare Modelle dürfen nur hinsichtlich
+gemeinsam vorhergesagter Größen direkt verglichen werden.
+
+Speichere Konfigurationen, Seeds, Fall-IDs, MATLAB-Version,
+Netzbeschreibung und Messwerte reproduzierbar ab.
+
+7. Prüfen und vollständig ausführen
+
+Beginne mit einem kleinen Funktionstest:
+- Randbedingungen und Freiheitsgradzuordnung,
+- Symmetrie und positive Definitheit der reduzierten Steifigkeit,
+- korrekte Kraft- und E-Skalierung,
+- Vergleich mit der Voll-FEM,
+- Übereinstimmung bei einer Basis, die die Referenzlösung enthält.
+
+Führe danach die ROM-Experimente für sämtliche vorhandenen
+Trainingsgrößen aus. Berechne fehlende Vergleichsergebnisse der
+bestehenden Modelle nach, soweit dies für dieselben Datensplits
+notwendig ist. Wiederverwende kompatible Ergebnisse.
+
+Schließe mit einem Bericht:
+- Was wurde implementiert?
+- Welche Trainingsgrößen und Ränge wurden untersucht?
+- Welche Prüfungen liefen tatsächlich erfolgreich?
+- Wie unterscheiden sich Genauigkeit und gesamte Laufzeit?
+- Wann ist klassische Modellreduktion günstiger als unsere
+  KI-Ersatzmodelle?
+- Welche Einschränkungen bleiben?
+
+Führe die Arbeit bis zu den ausgewerteten Ergebnissen durch.
+Falls etwas blockiert, benenne die konkrete Ursache und berichte
+nur tatsächlich ausgeführte Berechnungen.

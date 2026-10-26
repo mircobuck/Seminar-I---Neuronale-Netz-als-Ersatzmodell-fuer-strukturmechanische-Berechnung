@@ -1,0 +1,15 @@
+Started: 2026-10-23 16:32:58
+Finished: 2026-10-23 16:33:19
+
+    <strong>TrainingCases</strong>         <strong>Model</strong>          <strong>FieldMedianRelL2</strong>    <strong>FieldWorstRelL2</strong>     <strong>TipMAE_m</strong>     <strong>OnlineSeconds</strong>
+    <strong>_____________</strong>    <strong>________________</strong>    <strong>________________</strong>    <strong>_______________</strong>    <strong>__________</strong>    <strong>_____________</strong>
+
+         12          "POD_Galerkin"         0.00057133          0.0011205       7.9307e-08        0.92856  
+         12          "Scalar_GPR"                  NaN                NaN       0.00011028     0.00056455  
+         12          "Beam_plus_GPR"               NaN                NaN       5.0678e-07     0.00025975  
+         12          "POD_GP"                  0.60652              25.34       0.00011178      0.0006479  
+         12          "POD_RBF"                 0.23258               7.93        4.111e-05       2.36e-05  
+         12          "POD_MLP"                 0.21458             9.1835       4.3497e-05       0.011482  
+         12          "FullFEM_common"        0.0006013          0.0011171       7.9157e-08         1.1887  
+
+

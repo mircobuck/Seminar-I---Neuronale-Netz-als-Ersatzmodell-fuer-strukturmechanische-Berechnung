@@ -1,0 +1,142 @@
+﻿[
+  {
+    "file": "src\\deeponet_forward.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "src\\deeponet_gradients.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "src\\predict_deeponet.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "src\\fit_deeponet.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "run_deeponet_study.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "run_deeponet_logged.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "evaluate_deeponet_baselines.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "export_deeponet_diagnostics.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "benchmark_deeponet_engine.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  },
+  {
+    "file": "tests\\deeponetTest.m",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"code_issues\":[]}"
+        }
+      ],
+      "structuredContent": {
+        "code_issues": []
+      }
+    }
+  }
+]

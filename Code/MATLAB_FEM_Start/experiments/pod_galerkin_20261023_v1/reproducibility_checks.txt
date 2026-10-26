@@ -1,0 +1,3 @@
+Passed: 42 model/size summaries, 252 paired case metrics, 396 distinct common-space snapshots.
+Passed: re-evaluated KI field errors reproduce all existing learning-curve medians within 1e-12.
+Passed: each weighted output projection floor is no larger than the actual Galerkin output error (MATLAB assertions).

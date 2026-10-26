@@ -1,0 +1,8 @@
+Name,Passed,Failed,Incomplete,Seconds
+deeponetTest/tensorAndComponents,1,0,0,0.4718235
+deeponetTest/exactClamp,1,0,0,0.0582165
+deeponetTest/batchEquality,1,0,0,0.0903493
+deeponetTest/queryPermutation,1,0,0,0.059343
+deeponetTest/finiteGradients,1,0,0,0.2039212
+deeponetTest/tinyOverfit,1,0,0,0.0189974
+deeponetTest/checkpointRestoration,1,0,0,0.6311638

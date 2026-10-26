@@ -1,0 +1,7 @@
+Stage,Started,Ended,Seconds,Succeeded,LogFile
+generate24,2026-10-23 11:12:42,2026-10-23 11:12:59,17.1464659,1,C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\logs\generate24_20261023_111259_782.txt
+train24,2026-10-23 11:13:07,2026-10-23 11:13:23,15.5156631,1,C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\logs\train24_20261023_111323_188.txt
+evaluate24,2026-10-23 11:13:46,2026-10-23 11:13:47,1.0225129,1,C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\logs\evaluate24_20261023_111347_982.txt
+generate48,2026-10-23 11:13:53,2026-10-23 11:14:34,40.5236541,1,C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\logs\generate48_20261023_111434_047.txt
+train48,2026-10-23 11:14:47,2026-10-23 11:15:03,15.0519748,1,C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\logs\train48_20261023_111503_022.txt
+evaluate48,2026-10-23 11:15:26,2026-10-23 11:15:27,0.6808963,1,C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\logs\evaluate48_20261023_111527_279.txt

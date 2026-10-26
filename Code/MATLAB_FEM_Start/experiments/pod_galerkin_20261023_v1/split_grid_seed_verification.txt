@@ -1,0 +1,1 @@
+Passed: all six ROM train/validation ID lists match frozen KI metadata; model seeds match; every evaluation grid and quadrature vector is identical; 396 distinct physical parameter rows across all splits.

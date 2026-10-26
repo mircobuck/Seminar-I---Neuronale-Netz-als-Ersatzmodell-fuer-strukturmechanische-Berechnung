@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[ngerman]{babel}
+\usepackage{fontspec,amsmath,amssymb,booktabs,longtable,geometry,graphicx,hyperref}
+\geometry{margin=24mm}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\title{FEM-Ersatzmodelle für statische Verschiebungen und Eigenfrequenzen\\
+\large Wissenschaftlicher Bericht über die historische Lernkurve und den Modal-Integrationslauf}
+\author{Projekt MATLAB\_FEM\_Start}
+\date{25. Oktober 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Ein parametrischer, links eingespannter Quader wurde mit dreidimensionaler linearer Elastizität untersucht. Historisch wurden statische Verschiebungsfelder und skalare Zielgrößen mit acht Verfahren approximiert und bis zu 384 Trainingsfällen verglichen. In einer späteren Architekturmigration wurden drei Modal-Netzstudien, 24 Modal-FEM-Fälle und ein Gaußprozessmodell für die ersten sechs Eigenfrequenzen ausgeführt. Der neue Modaltest umfasst sechs Parameterfälle; sein mittlerer relativer Frequenzfehler beträgt 3,366\,\%. Bei 384 statischen Trainingsfällen betragen die historischen Median-Feldfehler etwa 0,384\,\% für POD-GPR, 5,459\,\% für POD-RBF, 3,314\,\% für POD-MLP, 8,835\,\% für DeepONet über fünf Seeds und 0,057\,\% für den POD-Galerkin-ROM. Diese Zahlen haben unterschiedliche Trainings- und Onlinekosten und beruhen auf nur sechs wiederverwendeten Testfällen. Der Bericht erläutert Datenerzeugung, Mathematik, Implementierung und Aussagegrenzen.
+\end{abstract}
+\tableofcontents
+\newpage
+\section{Forschungsfrage und Zweck der Ersatzmodelle}
+Die FEM liefert für jede neue Geometrie- und Materialkombination eine physikalische Referenz, benötigt dafür aber Netzaufbau und Lösung eines großen Gleichungssystems. Ersatzmodelle approximieren die Abbildung von wenigen Parametern auf Zielgrößen und können eine bereits gelöste Parameterfamilie schneller abfragen. Untersucht wurden drei verschiedene Kompromisse: reine Datenregression für Skalare oder ganze Felder, eine einfache physikalische Näherung und ein physikalisch reduziertes FEM-Modell. Die neuen Modalfälle prüfen zunächst, ob sich die sechs kleinsten Frequenzen aus den Parametern lernen lassen. Ein Surrogat für Eigenformen wurde nicht trainiert.
+
+Die Vergleiche gelten nur für dieselbe Quaderfamilie und die geprüften Parameterbereiche. Weder neue Topologien noch extrapolierte Materialwerte oder Spannungsfehler wurden untersucht.
+
+\section{Physikalisches Referenzproblem und Testfälle}
+\subsection{Statischer Versuch}
+Die Eingabe ist $\boldsymbol{x}=(L,b,h,E,\nu,F_z)$ mit $L\in[0{,}6,1{,}2]$\,m, $b\in[0{,}06,0{,}10]$\,m, $h\in[0{,}08,0{,}14]$\,m, $E\in[70,210]$\,GPa, $\nu\in[0{,}25,0{,}35]$ und $F_z\in[-1000,-100]$\,N. Der Quader liegt bei $x\in[-L/2,L/2]$, $y\in[-b/2,b/2]$, $z\in[0,h]$. Links gilt $\boldsymbol u=\boldsymbol0$; rechts wirkt die gleichmäßige Traktion $(0,0,F_z/(bh))^\mathsf T$. Sonst sind die Flächen frei.
+
+In der linearen Elastizität gelten
+\begin{equation}
+ \nabla\!\cdot\boldsymbol\sigma=\boldsymbol0,\qquad
+ \boldsymbol\varepsilon=\tfrac12(\nabla\boldsymbol u+\nabla\boldsymbol u^\mathsf T),\qquad
+ \boldsymbol\sigma=\lambda\,\mathrm{tr}(\boldsymbol\varepsilon)\boldsymbol I+2\mu\boldsymbol\varepsilon,
+\end{equation}
+wobei $\lambda=E\nu/[(1+\nu)(1-2\nu)]$ und $\mu=E/[2(1+\nu)]$. \texttt{solve\_case.m} erzeugt quadratische Tetraeder mit $H_{\max}=\min(b,h)/3$, löst das statische Problem und interpoliert die Verschiebung auf ein normiertes $21\times5\times5$-Gitter. Dessen 525 Orte liefern einen Vektor aus $u_x$, $u_y$ und $u_z$ mit 1575 Einträgen. Die Einspannungspunkte werden im Ausgabefeld explizit auf null gesetzt. Zusätzliche skalare Ziele sind das signierte $u_z$ am Mittelpunkt der freien Stirnfläche und das Maximum von $|\boldsymbol u|$ \emph{auf diesem Gitter}. Das letztere ist kein gesichertes Kontinuumsmaximum und kein nodales Maximum.
+
+Die ursprüngliche verschachtelte Lernkurve verwendet $N=12,24,48,96,192,384$ Trainingsfälle. Bei $N=384$ sind dies die IDs 1--12 und 25--396. Die IDs 13--18 dienen durchgehend der Validierung, 19--24 dem Test. Parameterkombinationen wurden aus den gespeicherten Designs übernommen; die größeren Stufen fügen Trainingsfälle hinzu. Sechs Testfälle bleiben sechs unabhängige Fälle, auch wenn je Fall 525 Gitterorte und drei Komponenten ausgewertet werden. Diese Testfälle wurden in den historischen Untersuchungen bereits inspiziert.
+
+\subsection{Modaler Versuch}
+Die modale Eingabe lautet $(L,b,h,E,\nu,\rho)$. Die Last $F_z$ ist kein Eingang. Für die eigentliche Studie ist $\rho=7850$\,kg/m$^3$ eine konstante Demonstrationsannahme. Das ungelastete und ungedämpfte Eigenwertproblem lautet
+\begin{equation}
+ K(\boldsymbol x)\boldsymbol\phi_j=\omega_j^2M(\boldsymbol x)\boldsymbol\phi_j,
+ \qquad f_j=\frac{\omega_j}{2\pi}.
+\end{equation}
+Die sechs kleinsten aufsteigend sortierten Frequenzen in Hz sind das Lernziel. Zwei weitere berechnete Moden dienen als Puffer bei der Netzzuordnung. Die FEM speichert außerdem native nodale Eigenformen und deren Übertragung auf dasselbe normierte Gitter. Für jeden Fall besitzt der native Raum eigene Knoten und Freiheitsgrade; native Matrizen dürfen daher nicht allein wegen gleicher Dimension mit einem anderen Netz oder dem Gitterraum kombiniert werden.
+
+Der kleine Integrationsdatensatz umfasst 12 Trainingsfälle (IDs 1--12), sechs Validierungsfälle (13--18) und sechs Testfälle (19--24). Die 24 Modalreferenzen wurden neu berechnet und einzeln gespeichert. Die sechs Moden eines Falls sind korrelierte Zielgrößen \emph{einer} Parameterkombination. Es wurde keine Modal-Lernkurve bis $N=384$ ausgeführt.
+
+\subsection{Netz- und Physikprüfungen}
+Drei repräsentative Trainingsfälle (1, 6 und 12) wurden auf den Netzstufen $H_{\max}=\min(b,h)/d$ mit $d=2,3,4$ gelöst. Die Moden werden nach Übertragung auf das gemeinsame Gitter mittels gewichteter Eigenformähnlichkeit zugeordnet. Eine relative Frequenzlücke unter 1\,\% markiert heuristisch einen möglichen Cluster; in diesem Fall sind Rang und Unterraum statt einzelner Vorzeichen zu betrachten. Die Puffergrenze wird überprüft. Das vorläufige Kriterium verlangt für jede der sechs Zielfrequenzen höchstens 2\,\% Änderung zwischen $d=3$ und $d=4$.
+
+Der getrennte Dichtetest wiederholt einen Fall bei $\rho=15700$\,kg/m$^3$ auf demselben Netz. Bei unverändertem $K$ und proportionalem $M$ erwartet man $f(2\rho)/f(\rho)=1/\sqrt2$. Diese zweite Dichte gehört nicht zu den Trainingsdaten.
+
+\section{Mathematischer Hintergrund der Ersatzmodelle}
+\subsection{Skalare GPR-Modelle und Balkentheorie}
+Ein Gaußprozess (GPR) behandelt die gesuchte Parameterfunktion als Zufallsfunktion mit Mittelwert und Kovarianzkern. Für standardisierte Trainingsdaten $(X,\boldsymbol y)$ hat die prädiktive Mittelwertfunktion schematisch die Form
+\begin{equation}
+ \widehat y(\boldsymbol x_*)=k(\boldsymbol x_*,X)
+ [K(X,X)+\sigma^2 I]^{-1}\boldsymbol y.
+\end{equation}
+Die ARD-Längenskalen erlauben je Eingabe unterschiedliche Empfindlichkeit. \texttt{Scalar\_GPR} verwendet getrennte Regressoren für Spitze und Gittermaximum. \texttt{Beam\_theory} berechnet rein physikalisch $u_{\mathrm{tip}}^{\mathrm{Balken}}=F_z L^3/(3EI)$ mit $I=bh^3/12$. \texttt{Beam\_plus\_GPR} lernt den skalaren Rest $u_{\mathrm{tip}}^{\mathrm{FEM}}-u_{\mathrm{tip}}^{\mathrm{Balken}}$ und addiert ihn bei der Vorhersage zur Balkenformel. Dieses Modell erzeugt kein Korrekturfeld.
+
+\subsection{POD mit Regression}
+Aus Trainingsfeldern $S=[\boldsymbol s_1,\ldots,\boldsymbol s_N]$ wird ausschließlich auf Training das Mittel $\bar{\boldsymbol s}$ und eine gewichtete Singulärwertzerlegung gebildet:
+\begin{equation}
+ W^{1/2}(S-\bar{\boldsymbol s}\boldsymbol1^\mathsf T)=U\Sigma V^\mathsf T,\qquad
+ \widehat{\boldsymbol s}(\boldsymbol x)
+ =\bar{\boldsymbol s}+\Phi_r\,\widehat{\boldsymbol a}(\boldsymbol x).
+\end{equation}
+Die POD reduziert 1575 Feldausgaben auf $r$ Koeffizienten. \texttt{POD\_GP} lernt diese mit GPR; \texttt{POD\_RBF} nutzt eine kubische Radialbasis mit linearem Polynom und Regularisierung; \texttt{POD\_MLP} verwendet ein zweischichtiges \texttt{tanh}-Netz. Rang und Hyperparameter werden an der Validierung gewählt. Die POD-Basis selbst kennt keine Testfelder. Ein kleiner Projektionsfehler bei deutlich größerem Vorhersagefehler weist darauf hin, dass eher die Koeffizientenregression als der gewählte Ausgaberaum begrenzt.
+
+\subsection{POD-Galerkin-ROM und DeepONet}
+Beim \texttt{POD\_Galerkin} entsteht die Basis aus nativen FEM-Snapshots in einem gemeinsamen mechanischen Raum. Anders als bei den POD-Regressoren folgt der reduzierte Zustand aus einem projizierten Gleichungssystem:
+\begin{equation}
+  (\Phi^\mathsf T K\Phi)\boldsymbol a=\Phi^\mathsf T\boldsymbol f,\qquad
+  \widehat{\boldsymbol u}=\Phi\boldsymbol a.
+\end{equation}
+Eine frische Assemblierung von $K$ und $\boldsymbol f$ gehört zu jeder Onlinevorhersage. Das Modell ist deshalb ein physikalischer ROM mit anderer Kostenstruktur als reine Regressoren.
+
+Die parametrische \texttt{DeepONet}-Adaption lernt zugleich Parametermerkmale (Branch) und Ortsmerkmale (Trunk). Für Komponente $c$ gilt schematisch
+\begin{equation}
+ \widehat u_c(\boldsymbol x,\boldsymbol\xi)
+ =s_u\,\xi_x\sum_{k=1}^{p}b_{ck}(\boldsymbol x)t_k(\boldsymbol\xi).
+\end{equation}
+Der Faktor $\xi_x$ erzwingt die linke Einspannung exakt im Ausgabefeld. Branch und Trunk bestehen jeweils aus zwei voll verbundenen \texttt{tanh}-Schichten. Die Ausgabeskala, Parameternormierung und Gewichte werden aus Training bestimmt; die Validierung steuert Architektur- und Trainingsauswahl. Für jede historische Trainingsgröße wurden fünf Seeds 42--46 untersucht.
+
+\subsection{Neues Frequenz-GPR}
+Für jede der sechs Frequenzen wird ein separater GPR auf $\log f_j$ trainiert. Die Exponentialfunktion liefert positive rohe Vorhersagen. Je Trainingsgröße werden ARD-Matérn-5/2 und ARD-Squared-Exponential unabhängig auf \emph{derselben Trainingsmenge} angepasst. Mittelwerte und Standardabweichungen der Eingaben stammen nur aus Training. Die mittlere relative Abweichung über Validierungsfälle und sechs Frequenzen wählt den Kernel. Danach bleibt der gewählte Fit unverändert und wird auf Testfälle angewendet. Rohe und aufsteigend sortierte Vorhersagen werden gespeichert; die Sortierung verwendet keine Referenzfrequenzen und bedeutet keine Zuordnung physikalischer Modenfamilien. Seed 42 bezeichnet diesen einzelnen Integrationslauf, keine Wiederholungsstudie.
+
+\section{Metriken und Vergleichbarkeit}
+Für statische Felder gilt
+\begin{equation}
+ e_{\mathrm{Feld}}=
+ \frac{\left[\sum_i w_i(s_i-\widehat s_i)^2\right]^{1/2}}
+ {\max\left(\left[\sum_i w_i s_i^2\right]^{1/2},10^{-14}\,\mathrm m\right)}.
+\end{equation}
+Die hier verwendeten Tensorprodukt-Trapezgewichte summieren sich je Komponente auf eins, über drei Komponenten auf drei. Der Zähler hat die Einheit Meter. Der Schwellenwert betrifft diese konkrete Verschiebungsnorm; für anders normierte Felder wäre er neu festzulegen. Relative Komponentenfehler verwenden jeweils nur die betreffende Referenzkomponente und können bei kleinen Komponenten groß werden. Skalare werden zusätzlich mit absoluten Fehlern in Mikrometern berichtet.
+
+Für Frequenzen wird $e_{ij}=|\widehat f_{ij}-f_{ij}|/f_{ij}$ bei $f_{ij}>10^{-8}$\,Hz verwendet. Der Mittelwert über sechs Fälle und sechs Frequenzen ist ein deskriptiver Mittelwert aus 36 Zielwerten, keine Stichprobe von 36 unabhängigen Parameterfällen. Eigenform-MAC, Massennormen und physikalische Residuen sind keine Metriken des Frequenz-GPR, weil es keine Eigenformen ausgibt.
+
+\section{Ergebnisse}
+\subsection{Historische statische Lernkurve}
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$N$ & POD-GPR & POD-RBF & POD-MLP & DeepONet\\
+\midrule
+12 & 60,652 & 23,258 & 21,458 & 45,756\\
+24 & 23,247 & 26,307 & 9,851 & 52,130\\
+48 & 4,656 & 18,409 & 13,374 & 43,260\\
+96 & 3,497 & 5,406 & 13,799 & 31,177\\
+192 & 1,144 & 3,636 & 8,109 & 10,429\\
+384 & 0,384 & 5,459 & 3,314 & 8,835\\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Einheit: Prozent Median des relativen Feldfehlers auf denselben sechs Testfällen. DeepONet: Median über fünf Seed-Mediane; andere Regressoren: vorhandener einzelner Modellstand. Historische Ergebnisse, in dieser Migration nicht nachtrainiert.}
+
+Bei $N=384$ erreichte der historische POD-Galerkin-ROM etwa 0,057\,\% Medianfeldfehler. Er löst online weiterhin ein reduziertes mechanisches System und verwendet ein anderes gemeinsames FEM-Netz. POD-GPR lag bei 0,384\,\%, POD-RBF bei 5,459\,\%, POD-MLP bei 3,314\,\% und DeepONet bei 8,835\,\% im Seed-Median. Die DeepONet-Seed-Mediane spannten 7,626--10,568\,\% auf. Eine pauschale Rangfolge ohne Kosten- und Raumdefinition wäre irreführend: Der ROM enthält vollständige Onlineassemblierung; skalare Verfahren liefern kein Feld. Historisch gemessene Median-Onlinezeiten bei $N=384$ betrugen ungefähr 914,7\,ms für ROM, 3,05\,ms für POD-GPR, 0,182\,ms für POD-RBF, 7,12\,ms für POD-MLP und 4,69\,ms für DeepONet. Diese Zeiten stammen aus früheren Messungen bei wechselnder Last.
+
+Die kleine $u_y$-Referenzkomponente verdient eine getrennte Diagnose. Bei DeepONet war der historische Median des komponentenweisen relativen Fehlers über fünf Seeds und sechs Fälle 1466,17\,\%, während der Median des absoluten gewichteten RMS-Fehlers etwa 0,858\,$\mu$m betrug. Der gemeinsame Feldfehler allein beschreibt die Genauigkeit aller Komponenten daher unvollständig.
+
+\subsection{Statischer Adapterlauf}
+Die acht vorhandenen Modelltypen wurden in die neue Schnittstelle eingebunden. Für sieben Modelle wurden sechs Fälle direkt und über Adapter vorhergesagt; der POD-Galerkin-ROM wurde auf einem Fall so geprüft. Die größte numerische Differenz war jeweils null. Der Lauf belegt die Weiterleitung der geprüften Aufrufe, noch keinen vollständigen Nachweis gleicher historischer Kennzahlen. Ein zusätzlich trainierter kleiner Scalar-GPR diente nur als Schnittstellenprobe. Die aus eingefrorenen $N=384$-Modellen neu berechneten Median-Feldfehler waren 0,38\,\% (POD-GPR), 5,46\,\% (POD-RBF), 3,31\,\% (POD-MLP) und 10,57\,\% (DeepONet Seed 42). Der historische Scalar-GPR erreichte auf den sechs Fällen etwa 0,729\,$\mu$m mittleren absoluten Spitzenfehler; Beam-plus-GPR etwa 0,00767\,$\mu$m. Verschiedene Ausgaben dürfen nicht direkt als gleiche Aufgabe bewertet werden.
+
+\subsection{Modaler Integrationslauf}
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Netzfall & Maximaler relativer Frequenzwechsel /3 zu /4 & Kriterium 2\,\%\\
+\midrule
+1 & 0,1198\,\% & bestanden\\
+6 & 0,1785\,\% & bestanden\\
+12 & 0,1061\,\% & bestanden\\
+\bottomrule
+\end{tabular}
+\end{center}
+Der Dichtetest bei verdoppeltem $\rho$ ergab eine maximale relative Abweichung von $1/\sqrt2$ von $1{,}74\cdot10^{-9}$. Die Netzprüfung umfasst drei Fälle und lässt keine allgemeine Aussage über alle 396 historischen Parameterzeilen zu.
+
+Auf der Validierung erzielte ARD-Matérn-5/2 8,163\,\% und ARD-Squared-Exponential 3,856\,\% mittleren relativen Frequenzfehler. Der zweite Kandidat wurde eingefroren. Sein mittlerer Testfehler lag bei 3,366\,\%, sowohl vor als auch nach Sortierung; in keinem der sechs Testfälle verletzten rohe Frequenzen die aufsteigende Ordnung.
+\begin{center}
+\begin{tabular}{rrrrrr}
+\toprule
+$f_1$ & $f_2$ & $f_3$ & $f_4$ & $f_5$ & $f_6$\\
+\midrule
+1,810\,\% & 3,050\,\% & 1,668\,\% & 5,595\,\% & 3,687\,\% & 4,386\,\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{Je Spalte: Mittelwert über sechs Testparameterfälle. Die sechste Mode ist ein eigenständiges Ziel, aber keine zusätzliche unabhängige Stichprobe.}
+
+\section{Verifikation, Grenzen und Einordnung}
+Vier Unit-Tests bestanden: inkompatible Raumidentitäten werden abgelehnt, Sortierungsmetriken berechnet, Trainings-/Validierungsüberschneidungen erkannt und synthetische Vorzeichen- und Clusterrotationen behandelt. Gespeicherte Modellvorhersagen wurden nach erneutem Laden reproduziert; ein erneuter Datenlauf erkannte vorhandene Fälle. Bei der Modenübertragung meldete MATLAB Warnungen zu Punkten, die die Eckknoten-Triangulation nicht referenziert; die quadratischen Formfunktionen verwenden anschließend die Mittelknoten. Die Warnung und die vereinfachte Clusterheuristik bleiben technische Prüfpunkte.
+
+Die statischen Modelle vergleichen Felder und Skalare, während das neue Modal-GPR ausschließlich Frequenzen vorhersagt. Der direkte Fehlervergleich zwischen diesen Aufgaben ist physikalisch nicht sinnvoll. Innerhalb der statischen Feldaufgabe zeigte POD-GPR bei $N=384$ den kleinsten Fehler unter den reinen Regressoren; der ROM war in dieser Stichprobe noch genauer, aber online viel teurer. Innerhalb der modalen Integrationsaufgabe lieferte das gewählte GPR einen mittleren Frequenzfehler von 3,366\,\%. Für Eigenformen, Residuen, Massenorthogonalität und modale Familienzuordnung existiert hier kein gelerntes Modell und somit kein entsprechender Surrogatfehler.
+
+Die kleine Testmenge, ihre historische Wiederverwendung, nur ein Seed für das neue Frequenz-GPR und konstante Studiendichte begrenzen die Verallgemeinerung. Die größere Modalstudie ist als Entwurf mit höchstens 384 Trainings- und je 64 neu zu erzeugenden unabhängigen Validierungs- und Testfällen beschrieben. Diese Fälle wurden weder gezogen noch berechnet. Historische Daten und trainierte Modelle wurden nicht überschrieben; ein vollständiger nachträglicher Hash-Abgleich aller historischen Dateien fehlt.
+
+\section{Fazit}
+Der Versuch zeigt, dass unterschiedliche Ersatzmodelle für unterschiedliche Ausgaben sinnvoll sind: Balkentheorie und skalare GPR liefern einfache Spitzenvorhersagen, POD-Regressoren komprimieren volle statische Felder, der POD-Galerkin-ROM erhält die reduzierte Mechanik, und DeepONet lernt eine parameter- und ortsabhängige Felddarstellung. Die beobachteten Ergebnisse favorisieren im vorhandenen statischen Feldvergleich bei $N=384$ POD-GPR gegenüber den anderen reinen Regressoren; der mechanische ROM erreicht einen kleineren Fehler bei deutlich höherem Onlineaufwand. Die Modal-Migration liefert eine funktionierende FEM- und Frequenz-GPR-Kette samt kleiner Netzprüfung. Ihre 3,366\,\% Testfehler sind ein Integrationsbefund und keine belastbare Lernkurve. Vor einer wissenschaftlich robusteren Modalbewertung sind unabhängige neue Validierungs- und Testparameter, eine endgültige Datensatzdefinition und breitere Netz- sowie Clusterprüfungen erforderlich.
+
+\section*{Reproduzierbarkeit und Quellen}
+\small\sloppy
+\begin{itemize}
+\item Primärdaten des neuen Laufs: \texttt{modal\_train/val/test\_*.mat}, \texttt{convergence\_*.mat}, \texttt{comparison\_*.mat}, \texttt{density\_check.mat}, \texttt{frequency\_model.mat}, \texttt{frequency\_evaluation.mat}, \texttt{static\_integration.mat} im Ordner dieses Berichts.
+\item Quellfunktionen: \texttt{src/solve\_case.m}, \texttt{src/train\_models.m}, \texttt{src/rom\_predict.m}, \texttt{src/fit\_deeponet.m}, \texttt{+femstudy/+fem/modal.m}, \texttt{+femstudy/+models/fitFrequency.m}, \texttt{run\_migration\_phase1.m}.
+\item Historischer Bericht und Tabellen: \texttt{experiments/deeponet\_20261023\_v1/REPORT.md}; Architektur- und Modellbestand: \texttt{ARCHITEKTUR\_PHASE1.md}. Alle genannten Prozentwerte wurden aus diesen gespeicherten Berichten oder dem neuen Lauf übernommen und als solche gekennzeichnet.
+\end{itemize}
+\end{document}

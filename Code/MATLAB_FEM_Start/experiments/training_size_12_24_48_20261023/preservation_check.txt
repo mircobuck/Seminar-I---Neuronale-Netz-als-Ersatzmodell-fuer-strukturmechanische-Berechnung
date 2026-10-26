@@ -1,0 +1,4 @@
+﻿original_files.json : all 35 files unchanged.
+files_before_n96.json : all 148 files unchanged.
+Current executable sources match source_snapshot_n96.
+n96 contains all n48 training data exactly; val/test identical (MATLAB assertions passed).

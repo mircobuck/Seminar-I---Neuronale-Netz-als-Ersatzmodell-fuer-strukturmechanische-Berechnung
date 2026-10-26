@@ -1,0 +1,403 @@
+Started: 2026-10-23 16:00:18
+Ended: 2026-10-23 16:05:25
+Elapsed seconds: 306.5561
+Succeeded: true
+
+Reuse 1/396
+Reuse 2/396
+Reuse 3/396
+Reuse 4/396
+Reuse 5/396
+Reuse 6/396
+Reuse 7/396
+Reuse 8/396
+Reuse 9/396
+Reuse 10/396
+Reuse 11/396
+Reuse 12/396
+Reuse 13/396
+Reuse 14/396
+Reuse 15/396
+Reuse 16/396
+Reuse 17/396
+Reuse 18/396
+Reuse 19/396
+Reuse 20/396
+Reuse 21/396
+Reuse 22/396
+Reuse 23/396
+Reuse 24/396
+Reuse 25/396
+Reuse 26/396
+Reuse 27/396
+Reuse 28/396
+Reuse 29/396
+Reuse 30/396
+Reuse 31/396
+Reuse 32/396
+Reuse 33/396
+Reuse 34/396
+Reuse 35/396
+Reuse 36/396
+Reuse 37/396
+Reuse 38/396
+Reuse 39/396
+Reuse 40/396
+Reuse 41/396
+Reuse 42/396
+Reuse 43/396
+Reuse 44/396
+Reuse 45/396
+Reuse 46/396
+Reuse 47/396
+Reuse 48/396
+Reuse 49/396
+Reuse 50/396
+Reuse 51/396
+Reuse 52/396
+Reuse 53/396
+Reuse 54/396
+Reuse 55/396
+Reuse 56/396
+Reuse 57/396
+Reuse 58/396
+Reuse 59/396
+Reuse 60/396
+Reuse 61/396
+Reuse 62/396
+Reuse 63/396
+Reuse 64/396
+Reuse 65/396
+Reuse 66/396
+Reuse 67/396
+Reuse 68/396
+Reuse 69/396
+Reuse 70/396
+Reuse 71/396
+Reuse 72/396
+Reuse 73/396
+Reuse 74/396
+Reuse 75/396
+Reuse 76/396
+Reuse 77/396
+Reuse 78/396
+Reuse 79/396
+Reuse 80/396
+Reuse 81/396
+Reuse 82/396
+Reuse 83/396
+Reuse 84/396
+Reuse 85/396
+Reuse 86/396
+Reuse 87/396
+Reuse 88/396
+Reuse 89/396
+Reuse 90/396
+Reuse 91/396
+Reuse 92/396
+Reuse 93/396
+Reuse 94/396
+Reuse 95/396
+Reuse 96/396
+Reuse 97/396
+Reuse 98/396
+Reuse 99/396
+Reuse 100/396
+Reuse 101/396
+Reuse 102/396
+Reuse 103/396
+Reuse 104/396
+Reuse 105/396
+Reuse 106/396
+Reuse 107/396
+Reuse 108/396
+Reuse 109/396
+Reuse 110/396
+Reuse 111/396
+Reuse 112/396
+Reuse 113/396
+Reuse 114/396
+Reuse 115/396
+Reuse 116/396
+Reuse 117/396
+Reuse 118/396
+Reuse 119/396
+Reuse 120/396
+Reuse 121/396
+Reuse 122/396
+Reuse 123/396
+Reuse 124/396
+Reuse 125/396
+Reuse 126/396
+Reuse 127/396
+Reuse 128/396
+Reuse 129/396
+Reuse 130/396
+Reuse 131/396
+Reuse 132/396
+Reuse 133/396
+Reuse 134/396
+Reuse 135/396
+Reuse 136/396
+Reuse 137/396
+Reuse 138/396
+Reuse 139/396
+Reuse 140/396
+Reuse 141/396
+Reuse 142/396
+Reuse 143/396
+Reuse 144/396
+Reuse 145/396
+Reuse 146/396
+Reuse 147/396
+Reuse 148/396
+Reuse 149/396
+Reuse 150/396
+Reuse 151/396
+Reuse 152/396
+Reuse 153/396
+Reuse 154/396
+Reuse 155/396
+Reuse 156/396
+Reuse 157/396
+Reuse 158/396
+Reuse 159/396
+Reuse 160/396
+Reuse 161/396
+Reuse 162/396
+Reuse 163/396
+Reuse 164/396
+Reuse 165/396
+Reuse 166/396
+Reuse 167/396
+Reuse 168/396
+Reuse 169/396
+Reuse 170/396
+Reuse 171/396
+Reuse 172/396
+Reuse 173/396
+Reuse 174/396
+Reuse 175/396
+Reuse 176/396
+Reuse 177/396
+Reuse 178/396
+Reuse 179/396
+Reuse 180/396
+Reuse 181/396
+Reuse 182/396
+Reuse 183/396
+Reuse 184/396
+Reuse 185/396
+Reuse 186/396
+Reuse 187/396
+Reuse 188/396
+Reuse 189/396
+Reuse 190/396
+Reuse 191/396
+Reuse 192/396
+FEM 193/396 (train)
+FEM 194/396 (train)
+FEM 195/396 (train)
+FEM 196/396 (train)
+FEM 197/396 (train)
+FEM 198/396 (train)
+FEM 199/396 (train)
+FEM 200/396 (train)
+FEM 201/396 (train)
+FEM 202/396 (train)
+FEM 203/396 (train)
+FEM 204/396 (train)
+FEM 205/396 (train)
+FEM 206/396 (train)
+FEM 207/396 (train)
+FEM 208/396 (train)
+FEM 209/396 (train)
+FEM 210/396 (train)
+FEM 211/396 (train)
+FEM 212/396 (train)
+FEM 213/396 (train)
+FEM 214/396 (train)
+FEM 215/396 (train)
+FEM 216/396 (train)
+FEM 217/396 (train)
+FEM 218/396 (train)
+FEM 219/396 (train)
+FEM 220/396 (train)
+FEM 221/396 (train)
+FEM 222/396 (train)
+FEM 223/396 (train)
+FEM 224/396 (train)
+FEM 225/396 (train)
+FEM 226/396 (train)
+FEM 227/396 (train)
+FEM 228/396 (train)
+FEM 229/396 (train)
+FEM 230/396 (train)
+FEM 231/396 (train)
+FEM 232/396 (train)
+FEM 233/396 (train)
+FEM 234/396 (train)
+FEM 235/396 (train)
+FEM 236/396 (train)
+FEM 237/396 (train)
+FEM 238/396 (train)
+FEM 239/396 (train)
+FEM 240/396 (train)
+FEM 241/396 (train)
+FEM 242/396 (train)
+FEM 243/396 (train)
+FEM 244/396 (train)
+FEM 245/396 (train)
+FEM 246/396 (train)
+FEM 247/396 (train)
+FEM 248/396 (train)
+FEM 249/396 (train)
+FEM 250/396 (train)
+FEM 251/396 (train)
+FEM 252/396 (train)
+FEM 253/396 (train)
+FEM 254/396 (train)
+FEM 255/396 (train)
+FEM 256/396 (train)
+FEM 257/396 (train)
+FEM 258/396 (train)
+FEM 259/396 (train)
+FEM 260/396 (train)
+FEM 261/396 (train)
+FEM 262/396 (train)
+FEM 263/396 (train)
+FEM 264/396 (train)
+FEM 265/396 (train)
+FEM 266/396 (train)
+FEM 267/396 (train)
+FEM 268/396 (train)
+FEM 269/396 (train)
+FEM 270/396 (train)
+FEM 271/396 (train)
+FEM 272/396 (train)
+FEM 273/396 (train)
+FEM 274/396 (train)
+FEM 275/396 (train)
+FEM 276/396 (train)
+FEM 277/396 (train)
+FEM 278/396 (train)
+FEM 279/396 (train)
+FEM 280/396 (train)
+FEM 281/396 (train)
+FEM 282/396 (train)
+FEM 283/396 (train)
+FEM 284/396 (train)
+FEM 285/396 (train)
+FEM 286/396 (train)
+FEM 287/396 (train)
+FEM 288/396 (train)
+FEM 289/396 (train)
+FEM 290/396 (train)
+FEM 291/396 (train)
+FEM 292/396 (train)
+FEM 293/396 (train)
+FEM 294/396 (train)
+FEM 295/396 (train)
+FEM 296/396 (train)
+FEM 297/396 (train)
+FEM 298/396 (train)
+FEM 299/396 (train)
+FEM 300/396 (train)
+FEM 301/396 (train)
+FEM 302/396 (train)
+FEM 303/396 (train)
+FEM 304/396 (train)
+FEM 305/396 (train)
+FEM 306/396 (train)
+FEM 307/396 (train)
+FEM 308/396 (train)
+FEM 309/396 (train)
+FEM 310/396 (train)
+FEM 311/396 (train)
+FEM 312/396 (train)
+FEM 313/396 (train)
+FEM 314/396 (train)
+FEM 315/396 (train)
+FEM 316/396 (train)
+FEM 317/396 (train)
+FEM 318/396 (train)
+FEM 319/396 (train)
+FEM 320/396 (train)
+FEM 321/396 (train)
+FEM 322/396 (train)
+FEM 323/396 (train)
+FEM 324/396 (train)
+FEM 325/396 (train)
+FEM 326/396 (train)
+FEM 327/396 (train)
+FEM 328/396 (train)
+FEM 329/396 (train)
+FEM 330/396 (train)
+FEM 331/396 (train)
+FEM 332/396 (train)
+FEM 333/396 (train)
+FEM 334/396 (train)
+FEM 335/396 (train)
+FEM 336/396 (train)
+FEM 337/396 (train)
+FEM 338/396 (train)
+FEM 339/396 (train)
+FEM 340/396 (train)
+FEM 341/396 (train)
+FEM 342/396 (train)
+FEM 343/396 (train)
+FEM 344/396 (train)
+FEM 345/396 (train)
+FEM 346/396 (train)
+FEM 347/396 (train)
+FEM 348/396 (train)
+FEM 349/396 (train)
+FEM 350/396 (train)
+FEM 351/396 (train)
+FEM 352/396 (train)
+FEM 353/396 (train)
+FEM 354/396 (train)
+FEM 355/396 (train)
+FEM 356/396 (train)
+FEM 357/396 (train)
+FEM 358/396 (train)
+FEM 359/396 (train)
+FEM 360/396 (train)
+FEM 361/396 (train)
+FEM 362/396 (train)
+FEM 363/396 (train)
+FEM 364/396 (train)
+FEM 365/396 (train)
+FEM 366/396 (train)
+FEM 367/396 (train)
+FEM 368/396 (train)
+FEM 369/396 (train)
+FEM 370/396 (train)
+FEM 371/396 (train)
+FEM 372/396 (train)
+FEM 373/396 (train)
+FEM 374/396 (train)
+FEM 375/396 (train)
+FEM 376/396 (train)
+FEM 377/396 (train)
+FEM 378/396 (train)
+FEM 379/396 (train)
+FEM 380/396 (train)
+FEM 381/396 (train)
+FEM 382/396 (train)
+FEM 383/396 (train)
+FEM 384/396 (train)
+Reuse 385/396
+Reuse 386/396
+Reuse 387/396
+Reuse 388/396
+Reuse 389/396
+Reuse 390/396
+Reuse 391/396
+Reuse 392/396
+Reuse 393/396
+Reuse 394/396
+Reuse 395/396
+Reuse 396/396
+Data ready in C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\n384
+

@@ -1,0 +1,1 @@
+Verified: all 24 n24 training cases, input parameters, FEM fields and scalar targets are identical in the first 24 n48 training cases.

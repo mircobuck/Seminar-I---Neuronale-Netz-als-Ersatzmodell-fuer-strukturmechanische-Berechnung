@@ -1,0 +1,11 @@
+# Vorabprotokoll: unabhängige statische Bestätigung v1
+
+Vor Datenerzeugung festgelegt: 64 sechsdimensionale Latin-Hypercube-Fälle, MATLAB rng(20261026,'twister'), lhsdesign mit Criterion 'none'. IDs 100001–100064. Bereiche gemäß config.m. Die beiden eingefrorenen Dateien fit_1_8.mat und fit_2_8.mat haben SHA-256 95e838bf30c923f3c1fb84b22a30c47ab5d649bc42c0eb27e92c3aafea71b0f4 beziehungsweise 2cd825019503b0e6bf7a227fe466fcda30a75cd8d00276b25ede68cdd7adb4ae. Trainings-IDs 1–12,25–30, Entwicklungs-IDs 31–36, Ränge 2 und 4. Keine neue Anpassung.
+
+Historische verfügbare CSV-Parameterdesigns werden anhand der sechs bekannten Spaltennamen eingelesen. Exakte Dublette bedeutet maximale normierte Parameterdifferenz <=1e-10; bei gleicher Geometrie und Poissonzahl (L,b,h,nu jeweils normiert <=1e-10) gilt ein Fall wegen linearer F/E-Skalierung als äquivalent, ungeachtet E und F. Auch innerhalb des neuen Designs wird geprüft. Bei Kollision wird das Design abgebrochen, nicht aufgrund von Fehlerwerten geändert.
+
+Referenz: solve_case, config smoke, quadratische Tetraeder, Hmax=min(b,h)/3, konstante Endflächenlast, feste linke Fläche, Gitter 21x5x5. Atomare Einzeldateien, Fehler und letzte MATLAB-Warnung speichern; kein stiller Ausschluss oder Ersatz. Fehlgeschlagene Fälle erhalten Status failed und werden nicht automatisch überschrieben.
+
+Vorhersagen werden vor Auswertung getrennt gespeichert: Balkenfeld und die zwei vorhandenen normalisierten Modelle; Eingaben nur Parameter und Referenzkoordinaten. Rohanalyse und an Einspannung nullgesetzte Felder getrennt. Pro Fall gewichtete Feldnorm relativ; Komponentennormen und Spitzenrelativfehler sind unter 1e-14 m Referenznorm ungültig. Aggregation Mittel, Median, empirisches 95%-Quantil, Maximum und gültiges N. Paarvergleich Hybrid minus Balken und Hybrid minus direkt in Prozentpunkten; Gleichheit <=1e-10 Prozentpunkte. Keine Testwerte zur Modifikation.
+
+Onlinezeiten: jeweils ein Warm-up, fünf Wiederholungen, Einzelabfrage und Batch; Physik, Regression, Rekonstruktion, Nachbearbeitung und Gesamtzeiten. FEM-Gesamtlauf pro Fall einschließlich Netz, Lösung und Interpolation, auf vorhandener solve_case-Schnittstelle; getrennte Zeiten sind ohne zusätzliche Instrumentierung nicht verfügbar und müssen als solche gekennzeichnet werden. Keine behauptete Wiederholungsstudie.

@@ -1,0 +1,721 @@
+﻿Modell,Ausgabe,Trainingsfälle,Testart,Prüfstatus
+Scalar_GPR,Verschiebungsfeld,12,Parameterinterpolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,12,Einspannung,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,12,Neue Topologie,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,12,Extrapolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,12,Netztransfer,keine entsprechende Ausgabe
+Scalar_GPR,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Spitzen-uz,12,Einspannung,nicht untersucht
+Scalar_GPR,Spitzen-uz,12,Neue Topologie,nicht untersucht
+Scalar_GPR,Spitzen-uz,12,Extrapolation,nicht untersucht
+Scalar_GPR,Spitzen-uz,12,Netztransfer,nicht untersucht
+Scalar_GPR,Gittermaximum,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Gittermaximum,12,Einspannung,nicht untersucht
+Scalar_GPR,Gittermaximum,12,Neue Topologie,nicht untersucht
+Scalar_GPR,Gittermaximum,12,Extrapolation,nicht untersucht
+Scalar_GPR,Gittermaximum,12,Netztransfer,nicht untersucht
+Scalar_GPR,Verschiebungsfeld,24,Parameterinterpolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,24,Einspannung,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,24,Neue Topologie,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,24,Extrapolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,24,Netztransfer,keine entsprechende Ausgabe
+Scalar_GPR,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Spitzen-uz,24,Einspannung,nicht untersucht
+Scalar_GPR,Spitzen-uz,24,Neue Topologie,nicht untersucht
+Scalar_GPR,Spitzen-uz,24,Extrapolation,nicht untersucht
+Scalar_GPR,Spitzen-uz,24,Netztransfer,nicht untersucht
+Scalar_GPR,Gittermaximum,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Gittermaximum,24,Einspannung,nicht untersucht
+Scalar_GPR,Gittermaximum,24,Neue Topologie,nicht untersucht
+Scalar_GPR,Gittermaximum,24,Extrapolation,nicht untersucht
+Scalar_GPR,Gittermaximum,24,Netztransfer,nicht untersucht
+Scalar_GPR,Verschiebungsfeld,48,Parameterinterpolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,48,Einspannung,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,48,Neue Topologie,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,48,Extrapolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,48,Netztransfer,keine entsprechende Ausgabe
+Scalar_GPR,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Spitzen-uz,48,Einspannung,nicht untersucht
+Scalar_GPR,Spitzen-uz,48,Neue Topologie,nicht untersucht
+Scalar_GPR,Spitzen-uz,48,Extrapolation,nicht untersucht
+Scalar_GPR,Spitzen-uz,48,Netztransfer,nicht untersucht
+Scalar_GPR,Gittermaximum,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Gittermaximum,48,Einspannung,nicht untersucht
+Scalar_GPR,Gittermaximum,48,Neue Topologie,nicht untersucht
+Scalar_GPR,Gittermaximum,48,Extrapolation,nicht untersucht
+Scalar_GPR,Gittermaximum,48,Netztransfer,nicht untersucht
+Scalar_GPR,Verschiebungsfeld,96,Parameterinterpolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,96,Einspannung,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,96,Neue Topologie,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,96,Extrapolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,96,Netztransfer,keine entsprechende Ausgabe
+Scalar_GPR,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Spitzen-uz,96,Einspannung,nicht untersucht
+Scalar_GPR,Spitzen-uz,96,Neue Topologie,nicht untersucht
+Scalar_GPR,Spitzen-uz,96,Extrapolation,nicht untersucht
+Scalar_GPR,Spitzen-uz,96,Netztransfer,nicht untersucht
+Scalar_GPR,Gittermaximum,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Gittermaximum,96,Einspannung,nicht untersucht
+Scalar_GPR,Gittermaximum,96,Neue Topologie,nicht untersucht
+Scalar_GPR,Gittermaximum,96,Extrapolation,nicht untersucht
+Scalar_GPR,Gittermaximum,96,Netztransfer,nicht untersucht
+Scalar_GPR,Verschiebungsfeld,192,Parameterinterpolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,192,Einspannung,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,192,Neue Topologie,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,192,Extrapolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,192,Netztransfer,keine entsprechende Ausgabe
+Scalar_GPR,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Spitzen-uz,192,Einspannung,nicht untersucht
+Scalar_GPR,Spitzen-uz,192,Neue Topologie,nicht untersucht
+Scalar_GPR,Spitzen-uz,192,Extrapolation,nicht untersucht
+Scalar_GPR,Spitzen-uz,192,Netztransfer,nicht untersucht
+Scalar_GPR,Gittermaximum,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Gittermaximum,192,Einspannung,nicht untersucht
+Scalar_GPR,Gittermaximum,192,Neue Topologie,nicht untersucht
+Scalar_GPR,Gittermaximum,192,Extrapolation,nicht untersucht
+Scalar_GPR,Gittermaximum,192,Netztransfer,nicht untersucht
+Scalar_GPR,Verschiebungsfeld,384,Parameterinterpolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,384,Einspannung,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,384,Neue Topologie,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,384,Extrapolation,keine entsprechende Ausgabe
+Scalar_GPR,Verschiebungsfeld,384,Netztransfer,keine entsprechende Ausgabe
+Scalar_GPR,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Spitzen-uz,384,Einspannung,nicht untersucht
+Scalar_GPR,Spitzen-uz,384,Neue Topologie,nicht untersucht
+Scalar_GPR,Spitzen-uz,384,Extrapolation,nicht untersucht
+Scalar_GPR,Spitzen-uz,384,Netztransfer,nicht untersucht
+Scalar_GPR,Gittermaximum,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Scalar_GPR,Gittermaximum,384,Einspannung,nicht untersucht
+Scalar_GPR,Gittermaximum,384,Neue Topologie,nicht untersucht
+Scalar_GPR,Gittermaximum,384,Extrapolation,nicht untersucht
+Scalar_GPR,Gittermaximum,384,Netztransfer,nicht untersucht
+POD_GP,Verschiebungsfeld,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Verschiebungsfeld,12,Einspannung,geprüft am Auswertegitter
+POD_GP,Verschiebungsfeld,12,Neue Topologie,nicht untersucht
+POD_GP,Verschiebungsfeld,12,Extrapolation,nicht untersucht
+POD_GP,Verschiebungsfeld,12,Netztransfer,nicht untersucht
+POD_GP,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Spitzen-uz,12,Einspannung,nicht untersucht
+POD_GP,Spitzen-uz,12,Neue Topologie,nicht untersucht
+POD_GP,Spitzen-uz,12,Extrapolation,nicht untersucht
+POD_GP,Spitzen-uz,12,Netztransfer,nicht untersucht
+POD_GP,Gittermaximum,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Gittermaximum,12,Einspannung,nicht untersucht
+POD_GP,Gittermaximum,12,Neue Topologie,nicht untersucht
+POD_GP,Gittermaximum,12,Extrapolation,nicht untersucht
+POD_GP,Gittermaximum,12,Netztransfer,nicht untersucht
+POD_GP,Verschiebungsfeld,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Verschiebungsfeld,24,Einspannung,geprüft am Auswertegitter
+POD_GP,Verschiebungsfeld,24,Neue Topologie,nicht untersucht
+POD_GP,Verschiebungsfeld,24,Extrapolation,nicht untersucht
+POD_GP,Verschiebungsfeld,24,Netztransfer,nicht untersucht
+POD_GP,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Spitzen-uz,24,Einspannung,nicht untersucht
+POD_GP,Spitzen-uz,24,Neue Topologie,nicht untersucht
+POD_GP,Spitzen-uz,24,Extrapolation,nicht untersucht
+POD_GP,Spitzen-uz,24,Netztransfer,nicht untersucht
+POD_GP,Gittermaximum,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Gittermaximum,24,Einspannung,nicht untersucht
+POD_GP,Gittermaximum,24,Neue Topologie,nicht untersucht
+POD_GP,Gittermaximum,24,Extrapolation,nicht untersucht
+POD_GP,Gittermaximum,24,Netztransfer,nicht untersucht
+POD_GP,Verschiebungsfeld,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Verschiebungsfeld,48,Einspannung,geprüft am Auswertegitter
+POD_GP,Verschiebungsfeld,48,Neue Topologie,nicht untersucht
+POD_GP,Verschiebungsfeld,48,Extrapolation,nicht untersucht
+POD_GP,Verschiebungsfeld,48,Netztransfer,nicht untersucht
+POD_GP,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Spitzen-uz,48,Einspannung,nicht untersucht
+POD_GP,Spitzen-uz,48,Neue Topologie,nicht untersucht
+POD_GP,Spitzen-uz,48,Extrapolation,nicht untersucht
+POD_GP,Spitzen-uz,48,Netztransfer,nicht untersucht
+POD_GP,Gittermaximum,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Gittermaximum,48,Einspannung,nicht untersucht
+POD_GP,Gittermaximum,48,Neue Topologie,nicht untersucht
+POD_GP,Gittermaximum,48,Extrapolation,nicht untersucht
+POD_GP,Gittermaximum,48,Netztransfer,nicht untersucht
+POD_GP,Verschiebungsfeld,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Verschiebungsfeld,96,Einspannung,geprüft am Auswertegitter
+POD_GP,Verschiebungsfeld,96,Neue Topologie,nicht untersucht
+POD_GP,Verschiebungsfeld,96,Extrapolation,nicht untersucht
+POD_GP,Verschiebungsfeld,96,Netztransfer,nicht untersucht
+POD_GP,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Spitzen-uz,96,Einspannung,nicht untersucht
+POD_GP,Spitzen-uz,96,Neue Topologie,nicht untersucht
+POD_GP,Spitzen-uz,96,Extrapolation,nicht untersucht
+POD_GP,Spitzen-uz,96,Netztransfer,nicht untersucht
+POD_GP,Gittermaximum,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Gittermaximum,96,Einspannung,nicht untersucht
+POD_GP,Gittermaximum,96,Neue Topologie,nicht untersucht
+POD_GP,Gittermaximum,96,Extrapolation,nicht untersucht
+POD_GP,Gittermaximum,96,Netztransfer,nicht untersucht
+POD_GP,Verschiebungsfeld,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Verschiebungsfeld,192,Einspannung,geprüft am Auswertegitter
+POD_GP,Verschiebungsfeld,192,Neue Topologie,nicht untersucht
+POD_GP,Verschiebungsfeld,192,Extrapolation,nicht untersucht
+POD_GP,Verschiebungsfeld,192,Netztransfer,nicht untersucht
+POD_GP,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Spitzen-uz,192,Einspannung,nicht untersucht
+POD_GP,Spitzen-uz,192,Neue Topologie,nicht untersucht
+POD_GP,Spitzen-uz,192,Extrapolation,nicht untersucht
+POD_GP,Spitzen-uz,192,Netztransfer,nicht untersucht
+POD_GP,Gittermaximum,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Gittermaximum,192,Einspannung,nicht untersucht
+POD_GP,Gittermaximum,192,Neue Topologie,nicht untersucht
+POD_GP,Gittermaximum,192,Extrapolation,nicht untersucht
+POD_GP,Gittermaximum,192,Netztransfer,nicht untersucht
+POD_GP,Verschiebungsfeld,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Verschiebungsfeld,384,Einspannung,geprüft am Auswertegitter
+POD_GP,Verschiebungsfeld,384,Neue Topologie,nicht untersucht
+POD_GP,Verschiebungsfeld,384,Extrapolation,nicht untersucht
+POD_GP,Verschiebungsfeld,384,Netztransfer,nicht untersucht
+POD_GP,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Spitzen-uz,384,Einspannung,nicht untersucht
+POD_GP,Spitzen-uz,384,Neue Topologie,nicht untersucht
+POD_GP,Spitzen-uz,384,Extrapolation,nicht untersucht
+POD_GP,Spitzen-uz,384,Netztransfer,nicht untersucht
+POD_GP,Gittermaximum,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_GP,Gittermaximum,384,Einspannung,nicht untersucht
+POD_GP,Gittermaximum,384,Neue Topologie,nicht untersucht
+POD_GP,Gittermaximum,384,Extrapolation,nicht untersucht
+POD_GP,Gittermaximum,384,Netztransfer,nicht untersucht
+POD_RBF,Verschiebungsfeld,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Verschiebungsfeld,12,Einspannung,geprüft am Auswertegitter
+POD_RBF,Verschiebungsfeld,12,Neue Topologie,nicht untersucht
+POD_RBF,Verschiebungsfeld,12,Extrapolation,nicht untersucht
+POD_RBF,Verschiebungsfeld,12,Netztransfer,nicht untersucht
+POD_RBF,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Spitzen-uz,12,Einspannung,nicht untersucht
+POD_RBF,Spitzen-uz,12,Neue Topologie,nicht untersucht
+POD_RBF,Spitzen-uz,12,Extrapolation,nicht untersucht
+POD_RBF,Spitzen-uz,12,Netztransfer,nicht untersucht
+POD_RBF,Gittermaximum,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Gittermaximum,12,Einspannung,nicht untersucht
+POD_RBF,Gittermaximum,12,Neue Topologie,nicht untersucht
+POD_RBF,Gittermaximum,12,Extrapolation,nicht untersucht
+POD_RBF,Gittermaximum,12,Netztransfer,nicht untersucht
+POD_RBF,Verschiebungsfeld,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Verschiebungsfeld,24,Einspannung,geprüft am Auswertegitter
+POD_RBF,Verschiebungsfeld,24,Neue Topologie,nicht untersucht
+POD_RBF,Verschiebungsfeld,24,Extrapolation,nicht untersucht
+POD_RBF,Verschiebungsfeld,24,Netztransfer,nicht untersucht
+POD_RBF,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Spitzen-uz,24,Einspannung,nicht untersucht
+POD_RBF,Spitzen-uz,24,Neue Topologie,nicht untersucht
+POD_RBF,Spitzen-uz,24,Extrapolation,nicht untersucht
+POD_RBF,Spitzen-uz,24,Netztransfer,nicht untersucht
+POD_RBF,Gittermaximum,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Gittermaximum,24,Einspannung,nicht untersucht
+POD_RBF,Gittermaximum,24,Neue Topologie,nicht untersucht
+POD_RBF,Gittermaximum,24,Extrapolation,nicht untersucht
+POD_RBF,Gittermaximum,24,Netztransfer,nicht untersucht
+POD_RBF,Verschiebungsfeld,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Verschiebungsfeld,48,Einspannung,geprüft am Auswertegitter
+POD_RBF,Verschiebungsfeld,48,Neue Topologie,nicht untersucht
+POD_RBF,Verschiebungsfeld,48,Extrapolation,nicht untersucht
+POD_RBF,Verschiebungsfeld,48,Netztransfer,nicht untersucht
+POD_RBF,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Spitzen-uz,48,Einspannung,nicht untersucht
+POD_RBF,Spitzen-uz,48,Neue Topologie,nicht untersucht
+POD_RBF,Spitzen-uz,48,Extrapolation,nicht untersucht
+POD_RBF,Spitzen-uz,48,Netztransfer,nicht untersucht
+POD_RBF,Gittermaximum,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Gittermaximum,48,Einspannung,nicht untersucht
+POD_RBF,Gittermaximum,48,Neue Topologie,nicht untersucht
+POD_RBF,Gittermaximum,48,Extrapolation,nicht untersucht
+POD_RBF,Gittermaximum,48,Netztransfer,nicht untersucht
+POD_RBF,Verschiebungsfeld,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Verschiebungsfeld,96,Einspannung,geprüft am Auswertegitter
+POD_RBF,Verschiebungsfeld,96,Neue Topologie,nicht untersucht
+POD_RBF,Verschiebungsfeld,96,Extrapolation,nicht untersucht
+POD_RBF,Verschiebungsfeld,96,Netztransfer,nicht untersucht
+POD_RBF,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Spitzen-uz,96,Einspannung,nicht untersucht
+POD_RBF,Spitzen-uz,96,Neue Topologie,nicht untersucht
+POD_RBF,Spitzen-uz,96,Extrapolation,nicht untersucht
+POD_RBF,Spitzen-uz,96,Netztransfer,nicht untersucht
+POD_RBF,Gittermaximum,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Gittermaximum,96,Einspannung,nicht untersucht
+POD_RBF,Gittermaximum,96,Neue Topologie,nicht untersucht
+POD_RBF,Gittermaximum,96,Extrapolation,nicht untersucht
+POD_RBF,Gittermaximum,96,Netztransfer,nicht untersucht
+POD_RBF,Verschiebungsfeld,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Verschiebungsfeld,192,Einspannung,geprüft am Auswertegitter
+POD_RBF,Verschiebungsfeld,192,Neue Topologie,nicht untersucht
+POD_RBF,Verschiebungsfeld,192,Extrapolation,nicht untersucht
+POD_RBF,Verschiebungsfeld,192,Netztransfer,nicht untersucht
+POD_RBF,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Spitzen-uz,192,Einspannung,nicht untersucht
+POD_RBF,Spitzen-uz,192,Neue Topologie,nicht untersucht
+POD_RBF,Spitzen-uz,192,Extrapolation,nicht untersucht
+POD_RBF,Spitzen-uz,192,Netztransfer,nicht untersucht
+POD_RBF,Gittermaximum,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Gittermaximum,192,Einspannung,nicht untersucht
+POD_RBF,Gittermaximum,192,Neue Topologie,nicht untersucht
+POD_RBF,Gittermaximum,192,Extrapolation,nicht untersucht
+POD_RBF,Gittermaximum,192,Netztransfer,nicht untersucht
+POD_RBF,Verschiebungsfeld,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Verschiebungsfeld,384,Einspannung,geprüft am Auswertegitter
+POD_RBF,Verschiebungsfeld,384,Neue Topologie,nicht untersucht
+POD_RBF,Verschiebungsfeld,384,Extrapolation,nicht untersucht
+POD_RBF,Verschiebungsfeld,384,Netztransfer,nicht untersucht
+POD_RBF,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Spitzen-uz,384,Einspannung,nicht untersucht
+POD_RBF,Spitzen-uz,384,Neue Topologie,nicht untersucht
+POD_RBF,Spitzen-uz,384,Extrapolation,nicht untersucht
+POD_RBF,Spitzen-uz,384,Netztransfer,nicht untersucht
+POD_RBF,Gittermaximum,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_RBF,Gittermaximum,384,Einspannung,nicht untersucht
+POD_RBF,Gittermaximum,384,Neue Topologie,nicht untersucht
+POD_RBF,Gittermaximum,384,Extrapolation,nicht untersucht
+POD_RBF,Gittermaximum,384,Netztransfer,nicht untersucht
+POD_MLP,Verschiebungsfeld,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Verschiebungsfeld,12,Einspannung,geprüft am Auswertegitter
+POD_MLP,Verschiebungsfeld,12,Neue Topologie,nicht untersucht
+POD_MLP,Verschiebungsfeld,12,Extrapolation,nicht untersucht
+POD_MLP,Verschiebungsfeld,12,Netztransfer,nicht untersucht
+POD_MLP,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Spitzen-uz,12,Einspannung,nicht untersucht
+POD_MLP,Spitzen-uz,12,Neue Topologie,nicht untersucht
+POD_MLP,Spitzen-uz,12,Extrapolation,nicht untersucht
+POD_MLP,Spitzen-uz,12,Netztransfer,nicht untersucht
+POD_MLP,Gittermaximum,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Gittermaximum,12,Einspannung,nicht untersucht
+POD_MLP,Gittermaximum,12,Neue Topologie,nicht untersucht
+POD_MLP,Gittermaximum,12,Extrapolation,nicht untersucht
+POD_MLP,Gittermaximum,12,Netztransfer,nicht untersucht
+POD_MLP,Verschiebungsfeld,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Verschiebungsfeld,24,Einspannung,geprüft am Auswertegitter
+POD_MLP,Verschiebungsfeld,24,Neue Topologie,nicht untersucht
+POD_MLP,Verschiebungsfeld,24,Extrapolation,nicht untersucht
+POD_MLP,Verschiebungsfeld,24,Netztransfer,nicht untersucht
+POD_MLP,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Spitzen-uz,24,Einspannung,nicht untersucht
+POD_MLP,Spitzen-uz,24,Neue Topologie,nicht untersucht
+POD_MLP,Spitzen-uz,24,Extrapolation,nicht untersucht
+POD_MLP,Spitzen-uz,24,Netztransfer,nicht untersucht
+POD_MLP,Gittermaximum,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Gittermaximum,24,Einspannung,nicht untersucht
+POD_MLP,Gittermaximum,24,Neue Topologie,nicht untersucht
+POD_MLP,Gittermaximum,24,Extrapolation,nicht untersucht
+POD_MLP,Gittermaximum,24,Netztransfer,nicht untersucht
+POD_MLP,Verschiebungsfeld,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Verschiebungsfeld,48,Einspannung,geprüft am Auswertegitter
+POD_MLP,Verschiebungsfeld,48,Neue Topologie,nicht untersucht
+POD_MLP,Verschiebungsfeld,48,Extrapolation,nicht untersucht
+POD_MLP,Verschiebungsfeld,48,Netztransfer,nicht untersucht
+POD_MLP,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Spitzen-uz,48,Einspannung,nicht untersucht
+POD_MLP,Spitzen-uz,48,Neue Topologie,nicht untersucht
+POD_MLP,Spitzen-uz,48,Extrapolation,nicht untersucht
+POD_MLP,Spitzen-uz,48,Netztransfer,nicht untersucht
+POD_MLP,Gittermaximum,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Gittermaximum,48,Einspannung,nicht untersucht
+POD_MLP,Gittermaximum,48,Neue Topologie,nicht untersucht
+POD_MLP,Gittermaximum,48,Extrapolation,nicht untersucht
+POD_MLP,Gittermaximum,48,Netztransfer,nicht untersucht
+POD_MLP,Verschiebungsfeld,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Verschiebungsfeld,96,Einspannung,geprüft am Auswertegitter
+POD_MLP,Verschiebungsfeld,96,Neue Topologie,nicht untersucht
+POD_MLP,Verschiebungsfeld,96,Extrapolation,nicht untersucht
+POD_MLP,Verschiebungsfeld,96,Netztransfer,nicht untersucht
+POD_MLP,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Spitzen-uz,96,Einspannung,nicht untersucht
+POD_MLP,Spitzen-uz,96,Neue Topologie,nicht untersucht
+POD_MLP,Spitzen-uz,96,Extrapolation,nicht untersucht
+POD_MLP,Spitzen-uz,96,Netztransfer,nicht untersucht
+POD_MLP,Gittermaximum,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Gittermaximum,96,Einspannung,nicht untersucht
+POD_MLP,Gittermaximum,96,Neue Topologie,nicht untersucht
+POD_MLP,Gittermaximum,96,Extrapolation,nicht untersucht
+POD_MLP,Gittermaximum,96,Netztransfer,nicht untersucht
+POD_MLP,Verschiebungsfeld,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Verschiebungsfeld,192,Einspannung,geprüft am Auswertegitter
+POD_MLP,Verschiebungsfeld,192,Neue Topologie,nicht untersucht
+POD_MLP,Verschiebungsfeld,192,Extrapolation,nicht untersucht
+POD_MLP,Verschiebungsfeld,192,Netztransfer,nicht untersucht
+POD_MLP,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Spitzen-uz,192,Einspannung,nicht untersucht
+POD_MLP,Spitzen-uz,192,Neue Topologie,nicht untersucht
+POD_MLP,Spitzen-uz,192,Extrapolation,nicht untersucht
+POD_MLP,Spitzen-uz,192,Netztransfer,nicht untersucht
+POD_MLP,Gittermaximum,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Gittermaximum,192,Einspannung,nicht untersucht
+POD_MLP,Gittermaximum,192,Neue Topologie,nicht untersucht
+POD_MLP,Gittermaximum,192,Extrapolation,nicht untersucht
+POD_MLP,Gittermaximum,192,Netztransfer,nicht untersucht
+POD_MLP,Verschiebungsfeld,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Verschiebungsfeld,384,Einspannung,geprüft am Auswertegitter
+POD_MLP,Verschiebungsfeld,384,Neue Topologie,nicht untersucht
+POD_MLP,Verschiebungsfeld,384,Extrapolation,nicht untersucht
+POD_MLP,Verschiebungsfeld,384,Netztransfer,nicht untersucht
+POD_MLP,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Spitzen-uz,384,Einspannung,nicht untersucht
+POD_MLP,Spitzen-uz,384,Neue Topologie,nicht untersucht
+POD_MLP,Spitzen-uz,384,Extrapolation,nicht untersucht
+POD_MLP,Spitzen-uz,384,Netztransfer,nicht untersucht
+POD_MLP,Gittermaximum,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_MLP,Gittermaximum,384,Einspannung,nicht untersucht
+POD_MLP,Gittermaximum,384,Neue Topologie,nicht untersucht
+POD_MLP,Gittermaximum,384,Extrapolation,nicht untersucht
+POD_MLP,Gittermaximum,384,Netztransfer,nicht untersucht
+Beam_plus_GPR,Verschiebungsfeld,12,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,12,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,12,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,12,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,12,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_plus_GPR,Spitzen-uz,12,Einspannung,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,12,Neue Topologie,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,12,Extrapolation,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,12,Netztransfer,nicht untersucht
+Beam_plus_GPR,Gittermaximum,12,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,12,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,12,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,12,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,12,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,24,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,24,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,24,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,24,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,24,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_plus_GPR,Spitzen-uz,24,Einspannung,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,24,Neue Topologie,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,24,Extrapolation,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,24,Netztransfer,nicht untersucht
+Beam_plus_GPR,Gittermaximum,24,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,24,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,24,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,24,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,24,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,48,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,48,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,48,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,48,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,48,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_plus_GPR,Spitzen-uz,48,Einspannung,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,48,Neue Topologie,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,48,Extrapolation,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,48,Netztransfer,nicht untersucht
+Beam_plus_GPR,Gittermaximum,48,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,48,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,48,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,48,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,48,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,96,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,96,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,96,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,96,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,96,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_plus_GPR,Spitzen-uz,96,Einspannung,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,96,Neue Topologie,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,96,Extrapolation,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,96,Netztransfer,nicht untersucht
+Beam_plus_GPR,Gittermaximum,96,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,96,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,96,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,96,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,96,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,192,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,192,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,192,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,192,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,192,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_plus_GPR,Spitzen-uz,192,Einspannung,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,192,Neue Topologie,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,192,Extrapolation,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,192,Netztransfer,nicht untersucht
+Beam_plus_GPR,Gittermaximum,192,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,192,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,192,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,192,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,192,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,384,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,384,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,384,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,384,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Verschiebungsfeld,384,Netztransfer,keine entsprechende Ausgabe
+Beam_plus_GPR,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_plus_GPR,Spitzen-uz,384,Einspannung,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,384,Neue Topologie,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,384,Extrapolation,nicht untersucht
+Beam_plus_GPR,Spitzen-uz,384,Netztransfer,nicht untersucht
+Beam_plus_GPR,Gittermaximum,384,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,384,Einspannung,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,384,Neue Topologie,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,384,Extrapolation,keine entsprechende Ausgabe
+Beam_plus_GPR,Gittermaximum,384,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,12,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,12,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,12,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,12,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,12,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_theory,Spitzen-uz,12,Einspannung,nicht untersucht
+Beam_theory,Spitzen-uz,12,Neue Topologie,nicht untersucht
+Beam_theory,Spitzen-uz,12,Extrapolation,nicht untersucht
+Beam_theory,Spitzen-uz,12,Netztransfer,nicht untersucht
+Beam_theory,Gittermaximum,12,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,12,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,12,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,12,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,12,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,24,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,24,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,24,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,24,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,24,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_theory,Spitzen-uz,24,Einspannung,nicht untersucht
+Beam_theory,Spitzen-uz,24,Neue Topologie,nicht untersucht
+Beam_theory,Spitzen-uz,24,Extrapolation,nicht untersucht
+Beam_theory,Spitzen-uz,24,Netztransfer,nicht untersucht
+Beam_theory,Gittermaximum,24,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,24,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,24,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,24,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,24,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,48,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,48,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,48,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,48,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,48,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_theory,Spitzen-uz,48,Einspannung,nicht untersucht
+Beam_theory,Spitzen-uz,48,Neue Topologie,nicht untersucht
+Beam_theory,Spitzen-uz,48,Extrapolation,nicht untersucht
+Beam_theory,Spitzen-uz,48,Netztransfer,nicht untersucht
+Beam_theory,Gittermaximum,48,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,48,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,48,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,48,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,48,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,96,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,96,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,96,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,96,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,96,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_theory,Spitzen-uz,96,Einspannung,nicht untersucht
+Beam_theory,Spitzen-uz,96,Neue Topologie,nicht untersucht
+Beam_theory,Spitzen-uz,96,Extrapolation,nicht untersucht
+Beam_theory,Spitzen-uz,96,Netztransfer,nicht untersucht
+Beam_theory,Gittermaximum,96,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,96,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,96,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,96,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,96,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,192,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,192,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,192,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,192,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,192,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_theory,Spitzen-uz,192,Einspannung,nicht untersucht
+Beam_theory,Spitzen-uz,192,Neue Topologie,nicht untersucht
+Beam_theory,Spitzen-uz,192,Extrapolation,nicht untersucht
+Beam_theory,Spitzen-uz,192,Netztransfer,nicht untersucht
+Beam_theory,Gittermaximum,192,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,192,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,192,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,192,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,192,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,384,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,384,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,384,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,384,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Verschiebungsfeld,384,Netztransfer,keine entsprechende Ausgabe
+Beam_theory,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+Beam_theory,Spitzen-uz,384,Einspannung,nicht untersucht
+Beam_theory,Spitzen-uz,384,Neue Topologie,nicht untersucht
+Beam_theory,Spitzen-uz,384,Extrapolation,nicht untersucht
+Beam_theory,Spitzen-uz,384,Netztransfer,nicht untersucht
+Beam_theory,Gittermaximum,384,Parameterinterpolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,384,Einspannung,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,384,Neue Topologie,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,384,Extrapolation,keine entsprechende Ausgabe
+Beam_theory,Gittermaximum,384,Netztransfer,keine entsprechende Ausgabe
+POD_Galerkin,Verschiebungsfeld,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Verschiebungsfeld,12,Einspannung,geprüft am Auswertegitter
+POD_Galerkin,Verschiebungsfeld,12,Neue Topologie,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,12,Extrapolation,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,12,Netztransfer,nicht untersucht
+POD_Galerkin,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Spitzen-uz,12,Einspannung,nicht untersucht
+POD_Galerkin,Spitzen-uz,12,Neue Topologie,nicht untersucht
+POD_Galerkin,Spitzen-uz,12,Extrapolation,nicht untersucht
+POD_Galerkin,Spitzen-uz,12,Netztransfer,nicht untersucht
+POD_Galerkin,Gittermaximum,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Gittermaximum,12,Einspannung,nicht untersucht
+POD_Galerkin,Gittermaximum,12,Neue Topologie,nicht untersucht
+POD_Galerkin,Gittermaximum,12,Extrapolation,nicht untersucht
+POD_Galerkin,Gittermaximum,12,Netztransfer,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Verschiebungsfeld,24,Einspannung,geprüft am Auswertegitter
+POD_Galerkin,Verschiebungsfeld,24,Neue Topologie,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,24,Extrapolation,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,24,Netztransfer,nicht untersucht
+POD_Galerkin,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Spitzen-uz,24,Einspannung,nicht untersucht
+POD_Galerkin,Spitzen-uz,24,Neue Topologie,nicht untersucht
+POD_Galerkin,Spitzen-uz,24,Extrapolation,nicht untersucht
+POD_Galerkin,Spitzen-uz,24,Netztransfer,nicht untersucht
+POD_Galerkin,Gittermaximum,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Gittermaximum,24,Einspannung,nicht untersucht
+POD_Galerkin,Gittermaximum,24,Neue Topologie,nicht untersucht
+POD_Galerkin,Gittermaximum,24,Extrapolation,nicht untersucht
+POD_Galerkin,Gittermaximum,24,Netztransfer,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Verschiebungsfeld,48,Einspannung,geprüft am Auswertegitter
+POD_Galerkin,Verschiebungsfeld,48,Neue Topologie,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,48,Extrapolation,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,48,Netztransfer,nicht untersucht
+POD_Galerkin,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Spitzen-uz,48,Einspannung,nicht untersucht
+POD_Galerkin,Spitzen-uz,48,Neue Topologie,nicht untersucht
+POD_Galerkin,Spitzen-uz,48,Extrapolation,nicht untersucht
+POD_Galerkin,Spitzen-uz,48,Netztransfer,nicht untersucht
+POD_Galerkin,Gittermaximum,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Gittermaximum,48,Einspannung,nicht untersucht
+POD_Galerkin,Gittermaximum,48,Neue Topologie,nicht untersucht
+POD_Galerkin,Gittermaximum,48,Extrapolation,nicht untersucht
+POD_Galerkin,Gittermaximum,48,Netztransfer,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Verschiebungsfeld,96,Einspannung,geprüft am Auswertegitter
+POD_Galerkin,Verschiebungsfeld,96,Neue Topologie,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,96,Extrapolation,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,96,Netztransfer,nicht untersucht
+POD_Galerkin,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Spitzen-uz,96,Einspannung,nicht untersucht
+POD_Galerkin,Spitzen-uz,96,Neue Topologie,nicht untersucht
+POD_Galerkin,Spitzen-uz,96,Extrapolation,nicht untersucht
+POD_Galerkin,Spitzen-uz,96,Netztransfer,nicht untersucht
+POD_Galerkin,Gittermaximum,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Gittermaximum,96,Einspannung,nicht untersucht
+POD_Galerkin,Gittermaximum,96,Neue Topologie,nicht untersucht
+POD_Galerkin,Gittermaximum,96,Extrapolation,nicht untersucht
+POD_Galerkin,Gittermaximum,96,Netztransfer,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Verschiebungsfeld,192,Einspannung,geprüft am Auswertegitter
+POD_Galerkin,Verschiebungsfeld,192,Neue Topologie,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,192,Extrapolation,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,192,Netztransfer,nicht untersucht
+POD_Galerkin,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Spitzen-uz,192,Einspannung,nicht untersucht
+POD_Galerkin,Spitzen-uz,192,Neue Topologie,nicht untersucht
+POD_Galerkin,Spitzen-uz,192,Extrapolation,nicht untersucht
+POD_Galerkin,Spitzen-uz,192,Netztransfer,nicht untersucht
+POD_Galerkin,Gittermaximum,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Gittermaximum,192,Einspannung,nicht untersucht
+POD_Galerkin,Gittermaximum,192,Neue Topologie,nicht untersucht
+POD_Galerkin,Gittermaximum,192,Extrapolation,nicht untersucht
+POD_Galerkin,Gittermaximum,192,Netztransfer,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Verschiebungsfeld,384,Einspannung,geprüft am Auswertegitter
+POD_Galerkin,Verschiebungsfeld,384,Neue Topologie,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,384,Extrapolation,nicht untersucht
+POD_Galerkin,Verschiebungsfeld,384,Netztransfer,nicht untersucht
+POD_Galerkin,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Spitzen-uz,384,Einspannung,nicht untersucht
+POD_Galerkin,Spitzen-uz,384,Neue Topologie,nicht untersucht
+POD_Galerkin,Spitzen-uz,384,Extrapolation,nicht untersucht
+POD_Galerkin,Spitzen-uz,384,Netztransfer,nicht untersucht
+POD_Galerkin,Gittermaximum,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+POD_Galerkin,Gittermaximum,384,Einspannung,nicht untersucht
+POD_Galerkin,Gittermaximum,384,Neue Topologie,nicht untersucht
+POD_Galerkin,Gittermaximum,384,Extrapolation,nicht untersucht
+POD_Galerkin,Gittermaximum,384,Netztransfer,nicht untersucht
+DeepONet,Verschiebungsfeld,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Verschiebungsfeld,12,Einspannung,geprüft am Auswertegitter
+DeepONet,Verschiebungsfeld,12,Neue Topologie,nicht untersucht
+DeepONet,Verschiebungsfeld,12,Extrapolation,nicht untersucht
+DeepONet,Verschiebungsfeld,12,Netztransfer,nicht untersucht
+DeepONet,Spitzen-uz,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Spitzen-uz,12,Einspannung,nicht untersucht
+DeepONet,Spitzen-uz,12,Neue Topologie,nicht untersucht
+DeepONet,Spitzen-uz,12,Extrapolation,nicht untersucht
+DeepONet,Spitzen-uz,12,Netztransfer,nicht untersucht
+DeepONet,Gittermaximum,12,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Gittermaximum,12,Einspannung,nicht untersucht
+DeepONet,Gittermaximum,12,Neue Topologie,nicht untersucht
+DeepONet,Gittermaximum,12,Extrapolation,nicht untersucht
+DeepONet,Gittermaximum,12,Netztransfer,nicht untersucht
+DeepONet,Verschiebungsfeld,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Verschiebungsfeld,24,Einspannung,geprüft am Auswertegitter
+DeepONet,Verschiebungsfeld,24,Neue Topologie,nicht untersucht
+DeepONet,Verschiebungsfeld,24,Extrapolation,nicht untersucht
+DeepONet,Verschiebungsfeld,24,Netztransfer,nicht untersucht
+DeepONet,Spitzen-uz,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Spitzen-uz,24,Einspannung,nicht untersucht
+DeepONet,Spitzen-uz,24,Neue Topologie,nicht untersucht
+DeepONet,Spitzen-uz,24,Extrapolation,nicht untersucht
+DeepONet,Spitzen-uz,24,Netztransfer,nicht untersucht
+DeepONet,Gittermaximum,24,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Gittermaximum,24,Einspannung,nicht untersucht
+DeepONet,Gittermaximum,24,Neue Topologie,nicht untersucht
+DeepONet,Gittermaximum,24,Extrapolation,nicht untersucht
+DeepONet,Gittermaximum,24,Netztransfer,nicht untersucht
+DeepONet,Verschiebungsfeld,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Verschiebungsfeld,48,Einspannung,geprüft am Auswertegitter
+DeepONet,Verschiebungsfeld,48,Neue Topologie,nicht untersucht
+DeepONet,Verschiebungsfeld,48,Extrapolation,nicht untersucht
+DeepONet,Verschiebungsfeld,48,Netztransfer,nicht untersucht
+DeepONet,Spitzen-uz,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Spitzen-uz,48,Einspannung,nicht untersucht
+DeepONet,Spitzen-uz,48,Neue Topologie,nicht untersucht
+DeepONet,Spitzen-uz,48,Extrapolation,nicht untersucht
+DeepONet,Spitzen-uz,48,Netztransfer,nicht untersucht
+DeepONet,Gittermaximum,48,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Gittermaximum,48,Einspannung,nicht untersucht
+DeepONet,Gittermaximum,48,Neue Topologie,nicht untersucht
+DeepONet,Gittermaximum,48,Extrapolation,nicht untersucht
+DeepONet,Gittermaximum,48,Netztransfer,nicht untersucht
+DeepONet,Verschiebungsfeld,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Verschiebungsfeld,96,Einspannung,geprüft am Auswertegitter
+DeepONet,Verschiebungsfeld,96,Neue Topologie,nicht untersucht
+DeepONet,Verschiebungsfeld,96,Extrapolation,nicht untersucht
+DeepONet,Verschiebungsfeld,96,Netztransfer,nicht untersucht
+DeepONet,Spitzen-uz,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Spitzen-uz,96,Einspannung,nicht untersucht
+DeepONet,Spitzen-uz,96,Neue Topologie,nicht untersucht
+DeepONet,Spitzen-uz,96,Extrapolation,nicht untersucht
+DeepONet,Spitzen-uz,96,Netztransfer,nicht untersucht
+DeepONet,Gittermaximum,96,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Gittermaximum,96,Einspannung,nicht untersucht
+DeepONet,Gittermaximum,96,Neue Topologie,nicht untersucht
+DeepONet,Gittermaximum,96,Extrapolation,nicht untersucht
+DeepONet,Gittermaximum,96,Netztransfer,nicht untersucht
+DeepONet,Verschiebungsfeld,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Verschiebungsfeld,192,Einspannung,geprüft am Auswertegitter
+DeepONet,Verschiebungsfeld,192,Neue Topologie,nicht untersucht
+DeepONet,Verschiebungsfeld,192,Extrapolation,nicht untersucht
+DeepONet,Verschiebungsfeld,192,Netztransfer,nicht untersucht
+DeepONet,Spitzen-uz,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Spitzen-uz,192,Einspannung,nicht untersucht
+DeepONet,Spitzen-uz,192,Neue Topologie,nicht untersucht
+DeepONet,Spitzen-uz,192,Extrapolation,nicht untersucht
+DeepONet,Spitzen-uz,192,Netztransfer,nicht untersucht
+DeepONet,Gittermaximum,192,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Gittermaximum,192,Einspannung,nicht untersucht
+DeepONet,Gittermaximum,192,Neue Topologie,nicht untersucht
+DeepONet,Gittermaximum,192,Extrapolation,nicht untersucht
+DeepONet,Gittermaximum,192,Netztransfer,nicht untersucht
+DeepONet,Verschiebungsfeld,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Verschiebungsfeld,384,Einspannung,geprüft am Auswertegitter
+DeepONet,Verschiebungsfeld,384,Neue Topologie,nicht untersucht
+DeepONet,Verschiebungsfeld,384,Extrapolation,nicht untersucht
+DeepONet,Verschiebungsfeld,384,Netztransfer,nicht untersucht
+DeepONet,Spitzen-uz,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Spitzen-uz,384,Einspannung,nicht untersucht
+DeepONet,Spitzen-uz,384,Neue Topologie,nicht untersucht
+DeepONet,Spitzen-uz,384,Extrapolation,nicht untersucht
+DeepONet,Spitzen-uz,384,Netztransfer,nicht untersucht
+DeepONet,Gittermaximum,384,Parameterinterpolation,ausgewertet: 6 feste Testfälle
+DeepONet,Gittermaximum,384,Einspannung,nicht untersucht
+DeepONet,Gittermaximum,384,Neue Topologie,nicht untersucht
+DeepONet,Gittermaximum,384,Extrapolation,nicht untersucht
+DeepONet,Gittermaximum,384,Netztransfer,nicht untersucht

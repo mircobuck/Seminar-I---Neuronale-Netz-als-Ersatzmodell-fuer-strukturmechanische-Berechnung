@@ -1,0 +1,7 @@
+# Vorabprotokoll: kontrollierte GPR-Fits v1
+
+Training IDs 1–12 und 25–30, interne Validierung IDs 31–36. Historische Testfälle werden nicht geladen. Direkter POD-Rang 2 und Differenzfeld-POD-Rang 4; Kernel ARD-Squared-Exponential. Train-only Mittelwerte und Standardabweichungen, konstante Basisfunktion, exakte GPR, quasinewton mit höchstens 200 Iterationen; Seed 42. Rauschstandardabweichung 1e-4 in standardisierten Koeffizienten, Untergrenze 1e-8.
+
+Kandidaten pro Modell: Kontrolle mit MATLAB-Standardinitialisierung und festem Sigma; drei Starts mit initialen sechs ARD-Längenskalen [0.5,1,2] und Signalstandardabweichung 1, jeweils festes Sigma; dieselben drei Starts mit lernbarem Sigma (Initialwert 1e-4, untere Grenze 1e-8; keine explizite obere Grenze); ein normalisierter Kandidat mit Start 1 und festem Sigma. Drei Startwerte je Gruppe werden nach Summe der Trainings-Log-Likelihoods ausgewählt; Validierung wird danach berichtet, nicht zur Gruppenwahl verwendet. MATLABs automatische Initialisierung und Optimierung des historischen Modells waren nicht vollständig protokolliert. Ausfälle bleiben dokumentiert; kein automatisches Nachreichen neuer Kandidaten.
+
+Normierung: s=(F/Fref)*(Eref/E) mit Fref=-500 N und Eref=1e11 Pa; s ist dimensionslos und positiv für den vorhandenen Lastbereich F<0. Vollfelder bzw. Differenzfelder werden durch s geteilt; Vorhersagen und Projektionen werden mit s multipliziert. F=0 und unzulässiges E werden abgelehnt. Geometrie und nu bleiben Eingaben. Keine FEM-Zielgrößen werden für s verwendet.

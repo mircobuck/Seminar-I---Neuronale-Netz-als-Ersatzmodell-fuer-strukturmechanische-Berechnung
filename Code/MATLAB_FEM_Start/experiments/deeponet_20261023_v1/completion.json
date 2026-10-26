@@ -1,0 +1,28 @@
+{
+  "status": "COMPLETE",
+  "date": "2026-10-25",
+  "final_models": 30,
+  "training_sizes": [
+    12,
+    24,
+    48,
+    96,
+    192,
+    384
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "passed_unit_tests": 7,
+  "baseline_model_size_rows": 42,
+  "all_run_rows": 72,
+  "all_case_rows": 432,
+  "pdf_pages": 20,
+  "protected_unchanged_files": 1584,
+  "new_fem_cases": 0,
+  "pilot_started": false
+}

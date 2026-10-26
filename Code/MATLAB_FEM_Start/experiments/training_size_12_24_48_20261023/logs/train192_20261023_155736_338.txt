@@ -1,0 +1,7 @@
+Started: 2026-10-23 15:57:05
+Ended: 2026-10-23 15:57:36
+Elapsed seconds: 30.4649
+Succeeded: true
+
+Frozen 5 models. Test data not used.
+

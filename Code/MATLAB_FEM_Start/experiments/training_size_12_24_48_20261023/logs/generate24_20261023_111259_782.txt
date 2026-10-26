@@ -1,0 +1,43 @@
+Started: 2026-10-23 11:12:42
+Ended: 2026-10-23 11:12:59
+Elapsed seconds: 17.1465
+Succeeded: true
+
+Reuse 1/36
+Reuse 2/36
+Reuse 3/36
+Reuse 4/36
+Reuse 5/36
+Reuse 6/36
+Reuse 7/36
+Reuse 8/36
+Reuse 9/36
+Reuse 10/36
+Reuse 11/36
+Reuse 12/36
+FEM 13/36 (train)
+FEM 14/36 (train)
+FEM 15/36 (train)
+FEM 16/36 (train)
+FEM 17/36 (train)
+FEM 18/36 (train)
+FEM 19/36 (train)
+FEM 20/36 (train)
+FEM 21/36 (train)
+FEM 22/36 (train)
+FEM 23/36 (train)
+FEM 24/36 (train)
+Reuse 25/36
+Reuse 26/36
+Reuse 27/36
+Reuse 28/36
+Reuse 29/36
+Reuse 30/36
+Reuse 31/36
+Reuse 32/36
+Reuse 33/36
+Reuse 34/36
+Reuse 35/36
+Reuse 36/36
+Data ready in C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\n24
+

@@ -1,0 +1,5 @@
+Started: 2026-10-23 16:30:01
+Finished: 2026-10-23 16:30:29
+
+Frozen ROM n=24, rank=11, validation 0.0359953%, snapshots 26.831 s, offline 27.972 s.
+

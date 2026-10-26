@@ -1,0 +1,2 @@
+TrainingCases,Seed,FieldMedianRelL2,FieldP95RelL2,FieldWorstRelL2,TipMAE_m,MaxGridMAE_m,ClampMax_m,OnlineSeconds,TrainingSeconds,PreparationSeconds,Parameters,BestEpoch
+384,45,0.0908546886002183,0.137611845311134,0.137611845311134,1.72639140264884e-05,1.71145918395134e-05,0,0.0046897,28.9848971,1.0119467,4576,1500

@@ -1,0 +1,16 @@
+Started: 2026-10-23 16:09:58
+Ended: 2026-10-23 16:09:59
+Elapsed seconds: 0.81296
+Succeeded: true
+
+Beam theory tip MAE: 4.533e-07 m
+         <strong>Model</strong>         <strong>FieldMedianRelL2</strong>    <strong>FieldP95RelL2</strong>    <strong>FieldWorstRelL2</strong>    <strong>PODProjectionMedian</strong>     <strong>TipMAE_m</strong>     <strong>MaxGridDisplacementMAE_m</strong>    <strong>OnlineSecondsOneCase</strong>    <strong>TrainingAndSelectionSeconds</strong>
+    <strong>_______________</strong>    <strong>________________</strong>    <strong>_____________</strong>    <strong>_______________</strong>    <strong>___________________</strong>    <strong>__________</strong>    <strong>________________________</strong>    <strong>____________________</strong>    <strong>___________________________</strong>
+
+    "Scalar_GPR"                NaN               NaN               NaN                   NaN         7.2855e-07           7.2997e-07                0.00056454                   6.4992           
+    "Beam_plus_GPR"             NaN               NaN               NaN                   NaN         7.6744e-09                  NaN                0.00025965                   1.4417           
+    "POD_GP"              0.0038391          0.026822          0.026822             2.917e-06                NaN           7.4419e-07                 0.0039513                   57.577           
+    "POD_RBF"              0.054593           0.12159           0.12159             2.917e-06                NaN           7.5403e-06                5.8798e-05                   0.6678           
+    "POD_MLP"              0.033136           0.22672           0.22672            0.00012812                NaN           5.4619e-06                 0.0092543                   189.25           
+
+

@@ -1,0 +1,14 @@
+{
+  "rows": 42,
+  "cases": 252,
+  "snapshots": 396,
+  "snapshot_seconds_all": 497.6923131,
+  "mesh_gap_median": 0.000379959347403753,
+  "mesh_gap_max": 0.00211103016112989,
+  "ROM_projected_residual_max": 4.64577629122961e-11,
+  "ROM_free_residual_max": 0.32955349898915,
+  "ROM_energy_max": 0.00255455467058257,
+  "ROM12_total_offline": 50.8445209,
+  "GP384_total_offline": 661.9496695,
+  "cost_crossover_queries_ROM12_vs_GP384": 659.9641419264095
+}

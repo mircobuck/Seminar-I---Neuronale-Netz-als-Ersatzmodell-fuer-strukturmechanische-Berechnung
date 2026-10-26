@@ -1,0 +1,2 @@
+N=48 seed=44 width=64 latent=32 epochs=430 val=0.135657 time=13.48s
+

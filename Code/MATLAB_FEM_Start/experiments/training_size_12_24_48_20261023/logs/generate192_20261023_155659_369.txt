@@ -1,0 +1,211 @@
+Started: 2026-10-23 15:54:16
+Ended: 2026-10-23 15:56:59
+Elapsed seconds: 163.227
+Succeeded: true
+
+Reuse 1/204
+Reuse 2/204
+Reuse 3/204
+Reuse 4/204
+Reuse 5/204
+Reuse 6/204
+Reuse 7/204
+Reuse 8/204
+Reuse 9/204
+Reuse 10/204
+Reuse 11/204
+Reuse 12/204
+Reuse 13/204
+Reuse 14/204
+Reuse 15/204
+Reuse 16/204
+Reuse 17/204
+Reuse 18/204
+Reuse 19/204
+Reuse 20/204
+Reuse 21/204
+Reuse 22/204
+Reuse 23/204
+Reuse 24/204
+Reuse 25/204
+Reuse 26/204
+Reuse 27/204
+Reuse 28/204
+Reuse 29/204
+Reuse 30/204
+Reuse 31/204
+Reuse 32/204
+Reuse 33/204
+Reuse 34/204
+Reuse 35/204
+Reuse 36/204
+Reuse 37/204
+Reuse 38/204
+Reuse 39/204
+Reuse 40/204
+Reuse 41/204
+Reuse 42/204
+Reuse 43/204
+Reuse 44/204
+Reuse 45/204
+Reuse 46/204
+Reuse 47/204
+Reuse 48/204
+Reuse 49/204
+Reuse 50/204
+Reuse 51/204
+Reuse 52/204
+Reuse 53/204
+Reuse 54/204
+Reuse 55/204
+Reuse 56/204
+Reuse 57/204
+Reuse 58/204
+Reuse 59/204
+Reuse 60/204
+Reuse 61/204
+Reuse 62/204
+Reuse 63/204
+Reuse 64/204
+Reuse 65/204
+Reuse 66/204
+Reuse 67/204
+Reuse 68/204
+Reuse 69/204
+Reuse 70/204
+Reuse 71/204
+Reuse 72/204
+Reuse 73/204
+Reuse 74/204
+Reuse 75/204
+Reuse 76/204
+Reuse 77/204
+Reuse 78/204
+Reuse 79/204
+Reuse 80/204
+Reuse 81/204
+Reuse 82/204
+Reuse 83/204
+Reuse 84/204
+Reuse 85/204
+Reuse 86/204
+Reuse 87/204
+Reuse 88/204
+Reuse 89/204
+Reuse 90/204
+Reuse 91/204
+Reuse 92/204
+Reuse 93/204
+Reuse 94/204
+Reuse 95/204
+Reuse 96/204
+FEM 97/204 (train)
+FEM 98/204 (train)
+FEM 99/204 (train)
+FEM 100/204 (train)
+FEM 101/204 (train)
+FEM 102/204 (train)
+FEM 103/204 (train)
+FEM 104/204 (train)
+FEM 105/204 (train)
+FEM 106/204 (train)
+FEM 107/204 (train)
+FEM 108/204 (train)
+FEM 109/204 (train)
+FEM 110/204 (train)
+FEM 111/204 (train)
+FEM 112/204 (train)
+FEM 113/204 (train)
+FEM 114/204 (train)
+FEM 115/204 (train)
+FEM 116/204 (train)
+FEM 117/204 (train)
+FEM 118/204 (train)
+FEM 119/204 (train)
+FEM 120/204 (train)
+FEM 121/204 (train)
+FEM 122/204 (train)
+FEM 123/204 (train)
+FEM 124/204 (train)
+FEM 125/204 (train)
+FEM 126/204 (train)
+FEM 127/204 (train)
+FEM 128/204 (train)
+FEM 129/204 (train)
+FEM 130/204 (train)
+FEM 131/204 (train)
+FEM 132/204 (train)
+FEM 133/204 (train)
+FEM 134/204 (train)
+FEM 135/204 (train)
+FEM 136/204 (train)
+FEM 137/204 (train)
+FEM 138/204 (train)
+FEM 139/204 (train)
+FEM 140/204 (train)
+FEM 141/204 (train)
+FEM 142/204 (train)
+FEM 143/204 (train)
+FEM 144/204 (train)
+FEM 145/204 (train)
+FEM 146/204 (train)
+FEM 147/204 (train)
+FEM 148/204 (train)
+FEM 149/204 (train)
+FEM 150/204 (train)
+FEM 151/204 (train)
+FEM 152/204 (train)
+FEM 153/204 (train)
+FEM 154/204 (train)
+FEM 155/204 (train)
+FEM 156/204 (train)
+FEM 157/204 (train)
+FEM 158/204 (train)
+FEM 159/204 (train)
+FEM 160/204 (train)
+FEM 161/204 (train)
+FEM 162/204 (train)
+FEM 163/204 (train)
+FEM 164/204 (train)
+FEM 165/204 (train)
+FEM 166/204 (train)
+FEM 167/204 (train)
+FEM 168/204 (train)
+FEM 169/204 (train)
+FEM 170/204 (train)
+FEM 171/204 (train)
+FEM 172/204 (train)
+FEM 173/204 (train)
+FEM 174/204 (train)
+FEM 175/204 (train)
+FEM 176/204 (train)
+FEM 177/204 (train)
+FEM 178/204 (train)
+FEM 179/204 (train)
+FEM 180/204 (train)
+FEM 181/204 (train)
+FEM 182/204 (train)
+FEM 183/204 (train)
+FEM 184/204 (train)
+FEM 185/204 (train)
+FEM 186/204 (train)
+FEM 187/204 (train)
+FEM 188/204 (train)
+FEM 189/204 (train)
+FEM 190/204 (train)
+FEM 191/204 (train)
+FEM 192/204 (train)
+Reuse 193/204
+Reuse 194/204
+Reuse 195/204
+Reuse 196/204
+Reuse 197/204
+Reuse 198/204
+Reuse 199/204
+Reuse 200/204
+Reuse 201/204
+Reuse 202/204
+Reuse 203/204
+Reuse 204/204
+Data ready in C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\n192
+

@@ -1,0 +1,34 @@
+{
+  "counts": [
+    12,
+    24,
+    48,
+    96,
+    192,
+    384
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "widths": [
+    32,
+    64
+  ],
+  "latents": [
+    16,
+    32
+  ],
+  "epochs": 1500,
+  "learnRates": [
+    0.001,
+    0.001
+  ],
+  "patience": 30,
+  "validateEvery": 10,
+  "matlabVersion": "25.2.0.3042426 (R2025b) Update 1",
+  "execution": "CPU single precision"
+}

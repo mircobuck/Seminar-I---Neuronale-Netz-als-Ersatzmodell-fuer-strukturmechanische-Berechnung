@@ -1,0 +1,115 @@
+Started: 2026-10-23 11:21:29
+Ended: 2026-10-23 11:22:42
+Elapsed seconds: 72.4907
+Succeeded: true
+
+Reuse 1/108
+Reuse 2/108
+Reuse 3/108
+Reuse 4/108
+Reuse 5/108
+Reuse 6/108
+Reuse 7/108
+Reuse 8/108
+Reuse 9/108
+Reuse 10/108
+Reuse 11/108
+Reuse 12/108
+Reuse 13/108
+Reuse 14/108
+Reuse 15/108
+Reuse 16/108
+Reuse 17/108
+Reuse 18/108
+Reuse 19/108
+Reuse 20/108
+Reuse 21/108
+Reuse 22/108
+Reuse 23/108
+Reuse 24/108
+Reuse 25/108
+Reuse 26/108
+Reuse 27/108
+Reuse 28/108
+Reuse 29/108
+Reuse 30/108
+Reuse 31/108
+Reuse 32/108
+Reuse 33/108
+Reuse 34/108
+Reuse 35/108
+Reuse 36/108
+Reuse 37/108
+Reuse 38/108
+Reuse 39/108
+Reuse 40/108
+Reuse 41/108
+Reuse 42/108
+Reuse 43/108
+Reuse 44/108
+Reuse 45/108
+Reuse 46/108
+Reuse 47/108
+Reuse 48/108
+FEM 49/108 (train)
+FEM 50/108 (train)
+FEM 51/108 (train)
+FEM 52/108 (train)
+FEM 53/108 (train)
+FEM 54/108 (train)
+FEM 55/108 (train)
+FEM 56/108 (train)
+FEM 57/108 (train)
+FEM 58/108 (train)
+FEM 59/108 (train)
+FEM 60/108 (train)
+FEM 61/108 (train)
+FEM 62/108 (train)
+FEM 63/108 (train)
+FEM 64/108 (train)
+FEM 65/108 (train)
+FEM 66/108 (train)
+FEM 67/108 (train)
+FEM 68/108 (train)
+FEM 69/108 (train)
+FEM 70/108 (train)
+FEM 71/108 (train)
+FEM 72/108 (train)
+FEM 73/108 (train)
+FEM 74/108 (train)
+FEM 75/108 (train)
+FEM 76/108 (train)
+FEM 77/108 (train)
+FEM 78/108 (train)
+FEM 79/108 (train)
+FEM 80/108 (train)
+FEM 81/108 (train)
+FEM 82/108 (train)
+FEM 83/108 (train)
+FEM 84/108 (train)
+FEM 85/108 (train)
+FEM 86/108 (train)
+FEM 87/108 (train)
+FEM 88/108 (train)
+FEM 89/108 (train)
+FEM 90/108 (train)
+FEM 91/108 (train)
+FEM 92/108 (train)
+FEM 93/108 (train)
+FEM 94/108 (train)
+FEM 95/108 (train)
+FEM 96/108 (train)
+Reuse 97/108
+Reuse 98/108
+Reuse 99/108
+Reuse 100/108
+Reuse 101/108
+Reuse 102/108
+Reuse 103/108
+Reuse 104/108
+Reuse 105/108
+Reuse 106/108
+Reuse 107/108
+Reuse 108/108
+Data ready in C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\experiments\training_size_12_24_48_20261023\n96
+

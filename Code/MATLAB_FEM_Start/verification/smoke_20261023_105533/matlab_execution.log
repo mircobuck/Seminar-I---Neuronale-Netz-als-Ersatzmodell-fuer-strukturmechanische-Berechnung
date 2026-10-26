@@ -1,0 +1,53 @@
+Selected output excerpts copied from successful MATLAB MCP responses.
+This is an execution record, not a complete MATLAB diary.
+
+=== run_checks(true) ===
+Requested checks passed.
+
+=== run_project("smoke","generate") ===
+FEM 1/24 (train)
+FEM 2/24 (train)
+FEM 3/24 (train)
+FEM 4/24 (train)
+FEM 5/24 (train)
+FEM 6/24 (train)
+FEM 7/24 (train)
+FEM 8/24 (train)
+FEM 9/24 (train)
+FEM 10/24 (train)
+FEM 11/24 (train)
+FEM 12/24 (train)
+FEM 13/24 (val)
+FEM 14/24 (val)
+FEM 15/24 (val)
+FEM 16/24 (val)
+FEM 17/24 (val)
+FEM 18/24 (val)
+FEM 19/24 (test)
+FEM 20/24 (test)
+FEM 21/24 (test)
+FEM 22/24 (test)
+FEM 23/24 (test)
+FEM 24/24 (test)
+Data ready in C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Start\runs\smoke
+
+=== run_project("smoke","train") ===
+Frozen 5 models. Test data not used.
+
+=== run_project("smoke","evaluate") ===
+Beam theory tip MAE: 4.533e-07 m
+Full model metrics are stored in runs/smoke/test_summary.csv.
+
+=== plot_test_case("smoke","POD_GP",1) ===
+POD_GP comparison exported.
+POD_GP: selected POD rank 2, validation mean relative L2 1.5502686
+POD_RBF: selected POD rank 11, validation mean relative L2 0.96213303
+POD_MLP: selected POD rank 4, validation mean relative L2 0.61681131
+
+=== plot export verification ===
+Three-panel comparison exported from the populated figure.
+
+=== generated dataset integrity ===
+train: 12 cases, S=1575x12, finite values
+val: 6 cases, S=1575x6, finite values
+test: 6 cases, S=1575x6, finite values

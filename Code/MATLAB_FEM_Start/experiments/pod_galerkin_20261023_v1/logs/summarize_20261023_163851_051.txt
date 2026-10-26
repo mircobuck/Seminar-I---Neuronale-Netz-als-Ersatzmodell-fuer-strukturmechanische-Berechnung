@@ -1,0 +1,14 @@
+Started: 2026-10-23 16:38:36
+Finished: 2026-10-23 16:38:51
+
+    <strong>TrainingCases</strong>    <strong>PODRank</strong>    <strong>FieldMedianRelL2</strong>    <strong>FieldWorstRelL2</strong>    <strong>OutputProjectionMedian</strong>    <strong>OnlineSeconds</strong>
+    <strong>_____________</strong>    <strong>_______</strong>    <strong>________________</strong>    <strong>_______________</strong>    <strong>______________________</strong>    <strong>_____________</strong>
+
+          12            8          0.00057133          0.0011205             4.9793e-05             0.92856   
+          24           11          0.00058079          0.0011166             2.6576e-05             0.90978   
+          48           11          0.00057961          0.0011197             2.9055e-05             0.90796   
+          96            8          0.00057108          0.0011097             4.8355e-05             0.90095   
+         192            8          0.00057041          0.0011135             4.7577e-05              0.9115   
+         384            8          0.00057156          0.0011266             4.6778e-05             0.89533   
+
+

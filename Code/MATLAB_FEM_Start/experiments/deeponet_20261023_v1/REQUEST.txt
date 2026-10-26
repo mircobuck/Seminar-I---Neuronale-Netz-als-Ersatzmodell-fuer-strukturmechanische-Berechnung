@@ -1,0 +1,174 @@
+Erweitere unser bestehendes MATLAB-Projekt um genau EINE neue
+Modellarchitektur: ein parametrisches DeepONet zur Vorhersage
+des vollständigen statischen Verschiebungsfeldes.
+
+Vergleiche es mit den vorhandenen Modellen über alle bisherigen
+Trainingsdatensatzgrößen. Erstelle anschließend einen PDF-Bericht
+auf Deutsch über den gesamten Vergleich.
+
+Arbeite selbstständig im vorhandenen Projekt und nutze MATLAB MCP
+für Ausführung, Fehlersuche und Tests. Prüfe zunächst Projektstand,
+Datenformate, Datensplits und vorhandene Ergebnisse. Erhalte bestehende
+Daten; speichere neue Experimente in eigenen Ausgabeordnern.
+
+1. DeepONet implementieren
+
+- Branch-Eingabe: die vorhandenen Balkenparameter, beispielsweise
+  L, b, h, E, nu und Fz.
+- Trunk-Eingabe: räumliche Abfragekoordinaten im Referenzraum.
+- Ausgabe: ux, uy und uz am jeweiligen Abfragepunkt.
+- Implementiere die Branch-Trunk-Verknüpfung mit einer klar
+  dokumentierten Mehrkomponenten-Ausgabe.
+- Lerne die räumliche Darstellung gemeinsam mit der Parameterabbildung.
+- Verwende eine geeignete Eingangsskalierung und eine gemeinsame
+  physikalisch sinnvolle Verschiebungsskalierung aus Trainingsdaten.
+- Erzwinge die homogene Einspannung möglichst direkt durch eine
+  geeignete Ausgabeparametrisierung.
+- Nutze eine gewichtete Feldverlustfunktion und gleiche Gewichtung
+  unabhängiger physikalischer Fälle.
+- Implementiere effiziente Auswertung vieler Punkte eines Falls,
+  ohne das Branch-Netz unnötig für jeden Punkt neu auszuwerten.
+- Verwende MATLAB Deep Learning Toolbox und einen überprüfbaren
+  Trainingsablauf mit Validierung, Early Stopping und Checkpoints.
+
+Kennzeichne das Modell als parametrische DeepONet-Adaption.
+Implementiere keine zusätzlichen neuen Architekturklassen.
+
+2. Vorhandene Daten verwenden
+
+Verwende die bereits berechneten FEM-Fälle und deren Abfragepunkte.
+Neue FEM-Berechnungen sind nur erforderlich, falls Daten fehlen oder
+ein separat ausgewiesener Zusatztest dies benötigt.
+
+Prüfe insbesondere:
+- Einheiten und Parameterreihenfolge
+- Zuordnung von Geometrie und Referenzkoordinaten
+- Reihenfolge der Verschiebungskomponenten
+- Quadraturgewichte und Randbedingungen
+- eindeutige Fall-IDs und Datensatztrennung
+
+Teile vollständige physikalische Fälle in Training, Validierung und
+Test auf. Punkte desselben Balkens dürfen nicht über diese
+Partitionen verteilt werden.
+
+Viele Abfragepunkte eines Falls zählen nicht als zusätzliche
+unabhängige Trainingsfälle.
+
+3. Alle vorhandenen Trainingsgrößen untersuchen
+
+- Ermittle sämtliche bisher untersuchten Trainingsdatensatzgrößen.
+- Trainiere DeepONet für jede dieser Größen, einschließlich der
+  vollständigen verfügbaren Trainingsmenge.
+- Verwende dieselben Fall-IDs wie bei den bestehenden Modellen.
+- Halte Validierungs- und Testdaten über alle Größen unverändert.
+- Verwende verschachtelte Trainingsmengen, sofern dies bereits der
+  Versuchsplanung entspricht.
+- Falls alte Experimente andere Splits verwenden, stelle vor dem
+  direkten Vergleich eine gemeinsame reproduzierbare Basis her.
+
+Wähle Netzwerkgröße, latente Dimension und Lernparameter ausschließlich
+über Validierungsdaten. Halte die Suche klein und dokumentiere ihr Budget.
+
+Verwende möglichst fünf feste Trainingsseeds je Trainingsgröße.
+Berichte Streuungen und fehlgeschlagene Läufe. Verwende den Test
+nicht zur Auswahl des besten Seeds oder der Architektur.
+
+Die vollständige Trainingsmenge enthält keine Validierungs- oder
+Testfälle.
+
+4. Mit bestehenden Modellen vergleichen
+
+Beziehe die vorhandenen Ergebnisse ein:
+- skalares GPR
+- POD-GPR
+- POD-RBF
+- POD-MLP
+- Balkentheorie plus GPR-Korrektur
+- Balkentheorie allein
+- klassischen ROM, falls bereits implementiert und geprüft
+
+Ergänze fehlende Vergleichsläufe nur, soweit sie für identische
+Trainingsgrößen und Datensplits notwendig sind.
+
+Vergleiche DeepONet direkt mit den Feldmodellen anhand:
+- relativem gewichtetem L2-Feldfehler
+- Median, 95-Prozent-Quantil und schlechtestem Fall
+- Fehler der Spitzenverschiebung
+- Fehler des Verschiebungsmaximums auf demselben Auswertegitter
+- Einspannfehler
+
+Leite skalare Größen aus DeepONet konsistent zu den Referenzdefinitionen
+ab. Ein Maximum auf einem Gitter ist kein garantiertes Körpermaximum.
+
+Berichte bei POD-Modellen zusätzlich Projektionsfehler und Rang.
+Vergleiche skalare Modelle nur hinsichtlich gemeinsamer Zielgrößen.
+
+5. Laufzeiten und Prüfungen
+
+Prüfe vor langen Läufen:
+- korrekte Tensorformen und Komponentenreihenfolge
+- endliche Gradienten
+- Überanpassbarkeit eines winzigen Trainingssatzes
+- korrekte Einspannung
+- konsistente Einzel- und Batchvorhersagen
+- unveränderte Vorhersagen bei umsortierten Abfragepunkten
+
+Miss getrennt:
+- Datenaufbereitung
+- Training und Hyperparametersuche
+- gesamte Online-Vorhersage inklusive Feldrekonstruktion
+
+Verwende für Zeitvergleiche identische Ausgaben und Hardware,
+Warmup und gegebenenfalls GPU-Synchronisation. Berichte
+Parameterzahl, Hardware, MATLAB-Version und tatsächliche Laufzeiten.
+
+Starte mit einem kleinen vollständigen Probelauf. Führe danach
+alle geplanten Trainingsgrößen aus und ermögliche Wiederaufnahme.
+
+6. PDF-Bericht erstellen
+
+Erstelle einen eigenständig verständlichen deutschen Bericht mit:
+
+- Projektziel und physikalischer Problemdefinition
+- verständlicher Beschreibung aller verglichenen Verfahren
+- genauer Beschreibung der neuen DeepONet-Implementierung
+- Entstehung der FEM-Trainings-, Validierungs- und Testdaten:
+  Parameterbereiche, Sampling, Seeds, Lasten, Einspannung,
+  Netze, Konvergenz und Feldinterpolation
+- Übersicht, welche Frage jedes Verfahren beziehungsweise Experiment
+  untersucht und welche Aussagen die vorhandenen Tests erlauben
+- Ergebnissen für jede Trainingsdatensatzgröße
+- Lernkurven mit Seed-Streuungen
+- Vergleich von Genauigkeit und Rechenkosten
+- repräsentativen guten, mittleren und schlechten Testfällen
+- räumlichen Fehlerbildern mit vergleichbaren Farbskalen
+- Grenzen und begründeter Empfehlung für den nächsten Schritt
+- Quellen und reproduzierbaren Startbefehlen
+
+Bewerte nur tatsächlich untersuchte Fähigkeiten. Die vorhandenen
+Parameterinterpolationstests belegen keine Generalisierung auf
+neue Topologien. Freie räumliche Abfragen allein belegen noch
+keinen erfolgreichen Transfer auf neue Geometrien.
+
+Ergänze eine Übersicht:
+Modell × Ausgabegröße × Trainingsgröße × Testart × Prüfstatus.
+
+Speichere CSV-Ergebnistabellen, Konfigurationen, Fall-IDs, Seeds und
+Modellstände. Liefere die PDF samt bearbeitbarer Berichtsquelle.
+Prüfe das gerenderte Dokument auf vollständige Tabellen, lesbare
+Diagramme und korrekte Einheiten.
+
+7. Abschluss
+
+Liefere:
+- implementierte und geprüfte MATLAB-Dateien
+- tatsächlich ausgeführte Prüfungen
+- Ergebnisse über alle Trainingsgrößen
+- CSV-Tabellen und Diagramme
+- PDF und bearbeitbare Quelle
+- kurze Bewertung: Wo ist DeepONet besser, gleichwertig oder schlechter?
+
+Erfinde keine Messwerte und lasse problematische Läufe nicht
+stillschweigend weg. Behebe Fehler selbstständig und arbeite bis zu
+ausgewerteten Ergebnissen und Bericht. Benenne konkrete Blockaden,
+falls ein Teil tatsächlich nicht ausführbar ist.
