@@ -1,0 +1,8 @@
+name = "MATLAB FEM Surrogate Study"
+
+[folders]
+path = ["src", "scripts/matlab"]
+test = ["tests"]
+
+[project]
+summary = "Reproducible FEM, ROM, and surrogate-model studies."

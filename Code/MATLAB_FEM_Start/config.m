@@ -17,6 +17,6 @@ c.maxDeflectionRatio=0.02;
 c.ranks=[2 4 8 12 20]; c.rbfLambda=[0 1e-8 1e-6 1e-4];
 c.useMLP=true; c.mlpWidths=[32 64]; c.epochs=300;
 c.modelSeed=42;
-c.design=fullfile(c.root,'designs',c.mode+'.csv');
+c.design=fullfile(c.root,'configs','designs',c.mode+'.csv');
 c.out=fullfile(c.root,'runs',c.mode);
 end

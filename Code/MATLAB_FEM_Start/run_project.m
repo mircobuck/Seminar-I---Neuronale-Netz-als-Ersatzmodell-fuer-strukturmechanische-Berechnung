@@ -1,13 +1,9 @@
-function run_project(mode,stage)
-% run_project("smoke","generate") then train then evaluate.
-if nargin<1, mode="smoke"; end
-if nargin<2, stage="generate"; end
-c=config(mode); addpath(fullfile(c.root,'src'));
-if ~isfolder(c.out), mkdir(c.out); end
-switch string(stage)
-    case "generate", generate_dataset(c);
-    case "train", train_models(c);
-    case "evaluate", evaluate_models(c);
-    otherwise, error('stage: generate, train, evaluate');
+function varargout = run_project(varargin)
+%run_project Backward-compatible entry point. See scripts/matlab/run_project_impl.m.
+warning('','Use the documented project entry points; this compatibility wrapper will remain during migration.');
+if nargout
+    [varargout{1:nargout}] = run_project_impl(varargin{:});
+else
+    run_project_impl(varargin{:});
 end
 end
