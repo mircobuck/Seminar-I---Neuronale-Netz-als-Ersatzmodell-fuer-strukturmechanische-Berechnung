@@ -2,6 +2,7 @@
 
 | Location | Decision | Purpose and retained evidence | Reproduction status / successor |
 | --- | --- | --- | --- |
+| `experiments/active/neural_comparison_20261027_v1` | active, implementation in progress | Preregistered neural static-field and variable-density modal comparison; verified prototypes, n=12 static seed comparison, and partial resumable modal references. | `configs/neural_comparison_v1.json`; `scripts/matlab/run_neural_comparison.m`; see PROTOCOL.md, PROTOTYPES.md, and PROGRESS_20261027.md. |
 | `experiments/active/training_size_12_24_48_20261023` | active | Nested training-size learning curve and model artifacts. | Historical result; successor work uses the packaged architecture. |
 | `experiments/active/pod_galerkin_20261023_v1` | active | POD-Galerkin reference study and final report. | Reproducible from runner and recorded provenance. |
 | `experiments/active/static_confirmation_v1` | active | Independent 64-case confirmation of frozen static models. | Final confirmation evidence; do not reuse as untouched test data. |

@@ -13,6 +13,12 @@ Git checkout and keep changes reviewable. The historical loose duplicate must no
 - Versioned inputs belong in `configs`; experiment artifacts belong in `experiments`.
 - `experiments/active` holds current evidence; `experiments/archive` holds closed studies.
 
+## Current project context
+
+Read `docs/PROJECT_STATUS.md` for a dated overview of the implemented models,
+active study, verification status, and known limitations. It is an orientation
+snapshot; verify the live Git state and experiment artifacts before acting.
+
 ## Results and reproducibility
 
 Every new study requires a versioned configuration, explicit invocation, provenance, and

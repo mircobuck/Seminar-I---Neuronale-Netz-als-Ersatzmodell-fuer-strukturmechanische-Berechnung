@@ -1,0 +1,22 @@
+{
+  "schema": "neural-comparison-v1",
+  "study": "neural_comparison_20261027_v1",
+  "sizes": [12,24,48,96,192,384],
+  "seed": 20261027,
+  "modelSeed": 42,
+  "seeds": [42,43,44],
+  "modalSeed": 20261028,
+  "operatorEpochs": 1500,
+  "epochs": 300,
+  "ranks": [2,4,8,11],
+  "widths": [32,64],
+  "finalCount": 64,
+  "modalValidationCount": 12,
+  "modalTestCount": 64,
+  "densityRange": [2700,8900],
+  "timingRepeats": 7,
+  "source": "experiments/active/training_size_12_24_48_20261023",
+  "selection": "minimum mean validation relative weighted L2; frequency mean absolute relative error; ties first candidate",
+  "quantile": "nearest rank ceil(0.95*N)",
+  "testPolicy": "freeze every candidate and select using validation before opening final references; never tune after final evaluation"
+}
