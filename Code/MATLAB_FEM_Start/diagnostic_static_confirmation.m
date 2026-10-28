@@ -1,5 +1,5 @@
 function diagnostic_static_confirmation()
-root=fileparts(mfilename('fullpath'));addpath(root,fullfile(root,'src'));
+root=fileparts(mfilename('fullpath'));addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','static_confirmation_v1');
 a=load(fullfile(out,'design.mat')); X=a.design.X; ids=a.design.id;
 a=load(fullfile(root,'experiments','training_size_12_24_48_20261023','n384','train.mat'),'D');D=a.D;

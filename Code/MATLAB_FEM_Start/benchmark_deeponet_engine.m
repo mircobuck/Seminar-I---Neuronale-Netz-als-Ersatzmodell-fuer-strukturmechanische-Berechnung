@@ -1,7 +1,7 @@
 function result=benchmark_deeponet_engine
 %benchmark_deeponet_engine - Measure cached autodifferentiation equivalence.
 %   This diagnostic changes neither trained models nor optimization options.
-root=fileparts(mfilename('fullpath')); addpath(fullfile(root,'src'));
+root=fileparts(mfilename('fullpath')); addpath(genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','deeponet_20261023_v1');
 a=load(fullfile(out,'n384','candidate1','model.mat')); model=a.model;
 a=load(fullfile(root,'experiments','training_size_12_24_48_20261023','n384','train.mat')); D=a.D;

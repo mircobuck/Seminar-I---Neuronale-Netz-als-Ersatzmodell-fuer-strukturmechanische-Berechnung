@@ -6,7 +6,7 @@ function run_deeponet_study_impl(stage,N,seed)
 %   See also fit_deeponet, predict_deeponet
 if nargin<2, N=12; end
 if nargin<3, seed=42; end
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','archive','deeponet_20261023_v1');
 old=fullfile(root,'experiments','active','training_size_12_24_48_20261023');
 if ~isfolder(out), mkdir(out); end

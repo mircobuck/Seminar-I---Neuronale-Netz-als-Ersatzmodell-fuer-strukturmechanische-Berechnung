@@ -1,7 +1,7 @@
 name = "MATLAB FEM Surrogate Study"
 
 [folders]
-path = ["src", "scripts/matlab"]
+path = ["modelle/MLP_Adam", "modelle/GPR_RBF", "modelle/DeepONet", "modelle/POD_ROM", "modelle/Grundlagen", "modelle/Framework", "scripts/matlab"]
 test = ["tests"]
 
 [project]

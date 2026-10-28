@@ -1,6 +1,6 @@
 function run_static_confirmation_impl(stage)
 %RUN_STATIC_CONFIRMATION Frozen confirmation experiment; one checkpoint per FEM case.
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','static_confirmation_v1');
 c=config('smoke'); [xi,w]=reference_grid(c.gridSize);
 switch string(stage)

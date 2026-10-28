@@ -1,6 +1,6 @@
 function time_fem_confirmation()
 % Repeat one reference case; measure actual mesh, solve, and grid interpolation.
-root=fileparts(mfilename('fullpath'));addpath(root,fullfile(root,'src'));
+root=fileparts(mfilename('fullpath'));addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','static_confirmation_v1');a=load(fullfile(out,'design.mat'));x=a.design.X(1,:);
 L=x(1);b=x(2);h=x(3);E=x(4);nu=x(5);F=x(6); t=zeros(5,4);
 for j=0:5

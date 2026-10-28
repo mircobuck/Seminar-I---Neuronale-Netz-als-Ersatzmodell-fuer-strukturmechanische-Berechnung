@@ -1,6 +1,6 @@
 function export_deeponet_diagnostics
 %export_deeponet_diagnostics - Export reproducible field and component data.
-root=fileparts(mfilename('fullpath')); addpath(fullfile(root,'src'));
+root=fileparts(mfilename('fullpath')); addpath(genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','deeponet_20261023_v1');
 old=fullfile(root,'experiments','training_size_12_24_48_20261023');
 a=load(fullfile(old,'n384','train.mat')); D=a.D;

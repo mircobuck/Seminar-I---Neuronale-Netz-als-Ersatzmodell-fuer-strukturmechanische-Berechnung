@@ -1,6 +1,6 @@
 function evaluate_deeponet_baselines(count)
 %evaluate_deeponet_baselines - Evaluate frozen baselines without retraining.
-root=fileparts(mfilename('fullpath')); addpath(fullfile(root,'src'));
+root=fileparts(mfilename('fullpath')); addpath(genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','deeponet_20261023_v1');
 source=fullfile(root,'experiments','training_size_12_24_48_20261023');
 romFolder=fullfile(root,'experiments','pod_galerkin_20261023_v1');

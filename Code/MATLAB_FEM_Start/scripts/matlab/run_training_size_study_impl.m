@@ -13,7 +13,7 @@ function studyDir=run_training_size_study_impl(stage,studyDir)
 %   See also generate_dataset, train_models, evaluate_models
 
 root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
-addpath(fullfile(root,'src'));
+addpath(genpath(fullfile(root,'modelle')));
 if nargin<1, stage="prepare"; end
 if nargin<2
     studyDir=fullfile(root,'experiments','active','training_size_12_24_48_20261023');
@@ -98,7 +98,7 @@ mkdir(studyDir); mkdir(fullfile(studyDir,'logs'));
 copyfile(baseline,fullfile(studyDir,'n12'));
 copyfile(c0.design,fullfile(studyDir,'baseline_design.csv'));
 snapshot=fullfile(studyDir,'source_snapshot'); mkdir(snapshot);
-copyfile(fullfile(root,'src'),fullfile(snapshot,'src'));
+copyfile(fullfile(root,'modelle'),fullfile(snapshot,'modelle'));
 copyfile(fullfile(root,'tests'),fullfile(snapshot,'tests'));
 sourceFiles=dir(fullfile(root,'*.m'));
 for i=1:numel(sourceFiles)
@@ -182,7 +182,7 @@ for file=files
     copyfile(fullfile(studyDir,file),fullfile(milestone,file));
 end
 snapshot=fullfile(studyDir,'source_snapshot_n96'); mkdir(snapshot);
-copyfile(fullfile(root,'src'),fullfile(snapshot,'src'));
+copyfile(fullfile(root,'modelle'),fullfile(snapshot,'modelle'));
 copyfile(fullfile(root,'tests'),fullfile(snapshot,'tests'));
 sourceFiles=dir(fullfile(root,'*.m'));
 for i=1:numel(sourceFiles)
@@ -243,7 +243,7 @@ for file=files
     copyfile(fullfile(studyDir,file),fullfile(milestone,file));
 end
 snapshot=fullfile(studyDir,'source_snapshot_n192'); mkdir(snapshot);
-copyfile(fullfile(root,'src'),fullfile(snapshot,'src'));
+copyfile(fullfile(root,'modelle'),fullfile(snapshot,'modelle'));
 copyfile(fullfile(root,'tests'),fullfile(snapshot,'tests'));
 sourceFiles=dir(fullfile(root,'*.m'));
 for i=1:numel(sourceFiles)
@@ -304,7 +304,7 @@ for file=files
     copyfile(fullfile(studyDir,file),fullfile(milestone,file));
 end
 snapshot=fullfile(studyDir,'source_snapshot_n384'); mkdir(snapshot);
-copyfile(fullfile(root,'src'),fullfile(snapshot,'src'));
+copyfile(fullfile(root,'modelle'),fullfile(snapshot,'modelle'));
 copyfile(fullfile(root,'tests'),fullfile(snapshot,'tests'));
 sourceFiles=dir(fullfile(root,'*.m'));
 for i=1:numel(sourceFiles)

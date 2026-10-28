@@ -1,6 +1,6 @@
 function evaluate_static_confirmation()
 %EVALUATE_STATIC_CONFIRMATION Evaluate previously frozen predictions.
-root=fileparts(mfilename('fullpath')); addpath(root,fullfile(root,'src'));
+root=fileparts(mfilename('fullpath')); addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','static_confirmation_v1');
 a=load(fullfile(out,'design.mat')); design=a.design; p=load(fullfile(out,'predictions.mat'));
 N=numel(design.id); n=size(p.xi,2); tip=find(all(p.xi==[1;.5;.5],1));

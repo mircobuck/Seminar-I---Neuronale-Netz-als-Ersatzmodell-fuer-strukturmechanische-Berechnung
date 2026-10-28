@@ -1,6 +1,6 @@
 function run_gpr_cause_analysis_impl()
 %RUN_GPR_CAUSE_ANALYSIS Inspect frozen models without retraining or test data.
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,genpath(fullfile(root,'modelle')));
 source=fullfile(root,'experiments','hybrid_static_audit_v1','selection.mat');
 out=fullfile(root,'experiments','hybrid_gpr_diagnosis_v1','analysis_v2.mat');
 assert(~isfile(out),'Previous analysis is immutable.');

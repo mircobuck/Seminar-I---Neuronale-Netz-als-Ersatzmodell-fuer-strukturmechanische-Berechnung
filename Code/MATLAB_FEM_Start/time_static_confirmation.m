@@ -1,5 +1,5 @@
 function time_static_confirmation()
-root=fileparts(mfilename('fullpath'));addpath(root,fullfile(root,'src'));
+root=fileparts(mfilename('fullpath'));addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','static_confirmation_v1');a=load(fullfile(out,'design.mat')); X=a.design.X;
 [xi,~]=reference_grid([21 5 5]); r=cell(1,2);
 for k=1:2,a=load(fullfile(root,'experiments','hybrid_controlled_fits_v1',sprintf('fit_%d_8.mat',k)));r{k}=a.result;end

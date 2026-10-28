@@ -1,7 +1,7 @@
 function run_checks(withFEM)
 if nargin==0, withFEM=false; end
 root=fileparts(fileparts(mfilename('fullpath')));
-addpath(root,fullfile(root,'src')); rng(17);
+addpath(root,genpath(fullfile(root,'modelle'))); rng(17);
 % Independent low-rank data: projection should recover snapshots.
 B=randn(45,3); A=randn(3,20); S=B*A; w=0.1+rand(45,1);
 P=pod_fit(S,w,3); H=P.mean+P.V*pod_encode(P,S)';

@@ -1,7 +1,7 @@
 function run_migration_phase1_impl(stage)
 %RUN_MIGRATION_PHASE1 Independent, resumable small modal integration.
 if nargin==0, stage="convergence"; end
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','archive','architecture_phase1_v1');
 if ~isfolder(out), mkdir(out); end
 lockFile=fullfile(out,'run.lock');

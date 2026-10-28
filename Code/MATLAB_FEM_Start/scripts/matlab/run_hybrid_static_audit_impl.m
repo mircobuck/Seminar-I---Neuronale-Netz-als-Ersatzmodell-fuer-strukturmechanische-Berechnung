@@ -1,6 +1,6 @@
 function run_hybrid_static_audit_impl(stage)
 %RUN_HYBRID_STATIC_AUDIT Frozen development protocol and exploratory test.
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','hybrid_static_audit_v1');
 if ~isfolder(out), mkdir(out); end
 src=fullfile(root,'experiments','active','training_size_12_24_48_20261023','n384');

@@ -1,6 +1,6 @@
 function run_hybrid_diagnostics_impl()
 %RUN_HYBRID_DIAGNOSTICS Read frozen models and record split diagnostics.
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,genpath(fullfile(root,'modelle')));
 folder=fullfile(root,'experiments','hybrid_static_audit_v1');
 output=fullfile(folder,'diagnostics_v1.mat');
 assert(~isfile(output),'Diagnostics already exist; preserve previous results.');

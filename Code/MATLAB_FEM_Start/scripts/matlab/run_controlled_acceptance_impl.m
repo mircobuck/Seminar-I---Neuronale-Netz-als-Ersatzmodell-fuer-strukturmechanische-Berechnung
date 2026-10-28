@@ -1,6 +1,6 @@
 function run_controlled_acceptance_impl()
 %RUN_CONTROLLED_ACCEPTANCE Verify online interface and record timed batches.
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','hybrid_controlled_fits_v1');
 a=load(fullfile(root,'experiments','active','training_size_12_24_48_20261023','n384','train.mat'),'D'); D=a.D;
 a=load(fullfile(root,'experiments','hybrid_static_audit_v1','selection.mat'),'spec');

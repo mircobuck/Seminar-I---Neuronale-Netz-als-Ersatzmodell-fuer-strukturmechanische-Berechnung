@@ -7,8 +7,8 @@ Git checkout and keep changes reviewable. The historical loose duplicate must no
 
 ## Structure
 
-- New MATLAB implementation belongs in `src/+femstudy`.
-- Existing `src` functions are legacy study support; add adapters only in `src/legacy`.
+- Model implementations belong in `modelle/<model family>`; shared FEM and data functions belong in `modelle/Grundlagen`.
+- Package-based MATLAB implementation belongs in `modelle/Framework/+femstudy`; keep thin compatibility adapters only in `src/legacy`.
 - MATLAB runners belong in `scripts/matlab`; Python report tools belong in `scripts/python`.
 - Versioned inputs belong in `configs`; experiment artifacts belong in `experiments`.
 - `experiments/active` holds current evidence; `experiments/archive` holds closed studies.

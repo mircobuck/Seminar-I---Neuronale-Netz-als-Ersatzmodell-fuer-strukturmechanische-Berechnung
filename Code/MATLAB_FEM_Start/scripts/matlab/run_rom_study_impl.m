@@ -4,7 +4,7 @@ function outDir=run_rom_study_impl(stage,varargin)
 %   experiment. run_rom_study("snapshots",START,STOP) checkpoints training
 %   snapshots; run_rom_study("fit",N) freezes one training-size ROM.
 %   See also rom_assemble, rom_predict
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(genpath(fullfile(root,'modelle')));
 outDir=fullfile(root,'experiments','active','pod_galerkin_20261023_v1');
 if string(stage)=="prepare", prepare(root,outDir); return; end
 p=load(fullfile(outDir,'protocol.mat')); mesh=p.mesh; cfg=p.cfg;
@@ -48,7 +48,7 @@ mesh.tipIndex=find(all(mesh.xi==[1;.5;.5],1)); assert(isscalar(mesh.tipIndex));
 mesh.P=rom_observation(mesh.nodes,mesh.elements,mesh.xi);
 mesh.O=blkdiag(mesh.P,mesh.P,mesh.P); mesh.O=mesh.O(:,mesh.free);
 mkdir(outDir); mkdir(fullfile(outDir,'snapshots')); mkdir(fullfile(outDir,'logs'));
-copyfile(fullfile(root,'src'),fullfile(outDir,'source_snapshot','src'));
+copyfile(fullfile(root,'modelle'),fullfile(outDir,'source_snapshot','modelle'));
 copyfile(fullfile(root,'run_rom_study.m'),fullfile(outDir,'source_snapshot'));
 save(fullfile(outDir,'protocol.mat'),'cfg','mesh','-v7.3');
 plan=["# POD-Galerkin comparison protocol"; ...

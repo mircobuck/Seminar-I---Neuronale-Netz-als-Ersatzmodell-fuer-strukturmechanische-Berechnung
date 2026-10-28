@@ -6,15 +6,15 @@ Stand: laufende Implementierung. Historische Dateien in `experiments/` bleiben u
 
 | ID | Implementierung | Ausgabe / Methode | Daten und Online-Dienst | Status |
 |---|---|---|---|---|
-| Scalar_GPR | src/train_models.m, fit_gps.m, predict_surrogate.m | Statik, Skalare; GPR | Parameter und Skalare; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
-| POD_GP | src/pod_fit.m, fit_gps.m, predict_surrogate.m | Statik, Feld; POD und GPR | Parameter und Felder; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
-| POD_RBF | src/pod_fit.m, fit_rbf.m, predict_surrogate.m | Statik, Feld; POD und RBF | Parameter und Felder; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
-| POD_MLP | src/pod_fit.m, fit_mlp.m, predict_surrogate.m | Statik, Feld; POD und MLP | Parameter und Felder; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
-| Beam_theory | src/beam_tip.m | Statik, Skalar; physikalische Balkentheorie | Geometrie, Material, Last; Balkenformel | historisch vorhanden; Adapter getestet |
-| Beam_plus_GPR | src/beam_tip.m, train_models.m, fit_gps.m | Statik, Skalar; Balken plus GPR-Korrektur | Parameter und Skalare; Balkenformel | historisch vorhanden; Adapter getestet |
-| POD_Galerkin | src/rom_assemble.m, rom_observation.m, rom_predict.m | Statik, Feld; physikalisches POD-Galerkin-ROM | native FEM-Snapshots; Online-Matrixaufbau und Übertragung | historisch geprüft; Adapter getestet |
-| DeepONet | src/fit_deeponet.m, deeponet_forward.m, predict_deeponet.m | Statik, Feld; neuronales Operatornetz | Parameter, Felder, Abfragepunkte | historisch geprüft; Adapter getestet |
-| Frequency_GPR | +femstudy/+models/fitFrequency.m, predictFrequency.m | Modal, sortierte Frequenzen; GPR | Trainingsfrequenzen und Parameter | implementiert und im Integrationslauf getestet |
+| Scalar_GPR | modelle/Grundlagen/train_models.m, modelle/GPR_RBF/fit_gps.m, modelle/Grundlagen/predict_surrogate.m | Statik, Skalare; GPR | Parameter und Skalare; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
+| POD_GP | modelle/POD_ROM/pod_fit.m, modelle/GPR_RBF/fit_gps.m, modelle/Grundlagen/predict_surrogate.m | Statik, Feld; POD und GPR | Parameter und Felder; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
+| POD_RBF | modelle/POD_ROM/pod_fit.m, modelle/GPR_RBF/fit_rbf.m, modelle/Grundlagen/predict_surrogate.m | Statik, Feld; POD und RBF | Parameter und Felder; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
+| POD_MLP | modelle/POD_ROM/pod_fit.m, modelle/MLP_Adam/fit_mlp.m, modelle/Grundlagen/predict_surrogate.m | Statik, Feld; POD und MLP | Parameter und Felder; kein FEM-Dienst | historisch vorhanden; Adapter getestet |
+| Beam_theory | modelle/Grundlagen/beam_tip.m | Statik, Skalar; physikalische Balkentheorie | Geometrie, Material, Last; Balkenformel | historisch vorhanden; Adapter getestet |
+| Beam_plus_GPR | modelle/Grundlagen/beam_tip.m, modelle/Grundlagen/train_models.m, modelle/GPR_RBF/fit_gps.m | Statik, Skalar; Balken plus GPR-Korrektur | Parameter und Skalare; Balkenformel | historisch vorhanden; Adapter getestet |
+| POD_Galerkin | modelle/POD_ROM/rom_assemble.m, modelle/POD_ROM/rom_observation.m, modelle/POD_ROM/rom_predict.m | Statik, Feld; physikalisches POD-Galerkin-ROM | native FEM-Snapshots; Online-Matrixaufbau und Übertragung | historisch geprüft; Adapter getestet |
+| DeepONet | modelle/DeepONet/fit_deeponet.m, modelle/DeepONet/deeponet_forward.m, modelle/DeepONet/predict_deeponet.m | Statik, Feld; neuronales Operatornetz | Parameter, Felder, Abfragepunkte | historisch geprüft; Adapter getestet |
+| Frequency_GPR | modelle/Framework/+femstudy/+models/fitFrequency.m, predictFrequency.m | Modal, sortierte Frequenzen; GPR | Trainingsfrequenzen und Parameter | implementiert und im Integrationslauf getestet |
 
 Eigenform-Surrogate, gelernte reduzierte Matrizen und neuronale Physikkorrekturen sind nicht implementiert. Die vorhandene Balken-GPR-Korrektur ist eine skalare und keine Feldkorrektur.
 

@@ -1,7 +1,7 @@
 function result=mesh_check(mode)
 % Run BEFORE expensive data generation. This is not a learned-model test.
 if nargin<1, mode="smoke"; end
-c=config(mode); addpath(fullfile(c.root,'src'));
+c=config(mode); addpath(genpath(fullfile(c.root,'modelle')));
 % Midpoint and the most flexible selected corner.
 X=[(c.lower+c.upper)/2; c.upper(1),c.lower(2:4),0.30,c.lower(6)];
 levels=[2 3 4 5]; result=table();

@@ -3,7 +3,7 @@ function plot_test_case(mode,modelName,caseIndex)
 if nargin<1, mode="pilot"; end
 if nargin<2, modelName="POD_GP"; end
 if nargin<3, caseIndex=1; end
-c=config(mode); addpath(fullfile(c.root,'src'));
+c=config(mode); addpath(genpath(fullfile(c.root,'modelle')));
 a=load(fullfile(c.out,'models.mat')); models=a.models;
 a=load(fullfile(c.out,'test.mat'),'D'); D=a.D;
 assert(caseIndex>=1 && caseIndex<=size(D.X,1));

@@ -1,6 +1,6 @@
 function run_controlled_gpr_fits_impl(out,limit,stopAfter)
 %RUN_CONTROLLED_GPR_FITS Resume immutable, predefined train/validation fits.
-root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,fullfile(root,'src'));
+root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root,genpath(fullfile(root,'modelle')));
 if nargin<1 || isempty(out),out=fullfile(root,'experiments','hybrid_controlled_fits_v1');end
 if nargin<2,limit=8;end
 if nargin<3,stopAfter=inf;end

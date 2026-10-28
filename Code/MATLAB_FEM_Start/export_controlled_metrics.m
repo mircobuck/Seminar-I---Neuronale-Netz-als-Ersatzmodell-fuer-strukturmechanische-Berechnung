@@ -1,6 +1,6 @@
 function export_controlled_metrics()
 %EXPORT_CONTROLLED_METRICS Export saved training and validation predictions.
-root=fileparts(mfilename('fullpath')); addpath(root,fullfile(root,'src'));
+root=fileparts(mfilename('fullpath')); addpath(root,genpath(fullfile(root,'modelle')));
 out=fullfile(root,'experiments','hybrid_controlled_fits_v1');
 a=load(fullfile(root,'experiments','training_size_12_24_48_20261023','n384','train.mat'),'D'); D=a.D;
 a=load(fullfile(root,'experiments','hybrid_static_audit_v1','selection.mat'),'spec'); spec=a.spec;

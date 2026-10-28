@@ -6,7 +6,7 @@ Stand: 26. Oktober 2026. Diese Übersicht beschreibt den vorhandenen Projektstan
 
 Das Projekt untersucht FEM-Ersatzmodelle für einen parametrischen, einseitig eingespannten Balken. Ein Finite-Elemente-Modell erzeugt Referenzdaten. Daraus werden Modelle aufgebaut, die für neue Parameter beispielsweise statische Verschiebungsfelder oder Eigenfrequenzen annähern.
 
-Die Architektur ist teilweise migriert: Die ursprüngliche Implementierung liegt überwiegend in src, neuere Schnittstellen und Modalbausteine liegen im MATLAB-Paket +femstudy. Skripte im Projektwurzelordner steuern die Studien. Ergebnisse und eingefrorene Modelle liegen in getrennten Experimentordnern.
+Die MATLAB-Implementierungen liegen nach Modellfamilien geordnet unter modelle: MLP, Baselines, DeepONet, POD/ROM, gemeinsame Grundlagen und das paketierte Framework +femstudy. Skripte im Projektwurzelordner steuern die Studien. Ergebnisse und eingefrorene Modelle liegen in getrennten Experimentordnern.
 
 **Datenfluss:** Konfiguration und Parameterfälle → FEM-Referenz → gespeicherte Daten und Splits → Training und Modellartefakt → Vorhersage → Fehlerauswertung und Bericht.
 
@@ -21,8 +21,9 @@ Der Projektordner ist **C:\Users\dietz\Downloads\MATLAB_FEM_Start\MATLAB_FEM_Sta
 | config.m | Parameterbereiche, Einheiten und Standardoptionen |
 | run_project.m und weitere run-Skripte | Steuerung der ursprünglichen Abläufe und einzelnen Studien |
 | controlled_predict.m | Vorhersage für kontrollierte normierte Modelle |
-| src/ | Ursprüngliche FEM-, Daten- und Modellfunktionen |
-| +femstudy/ | Neuere paketierte Architekturbausteine |
+| modelle/ | Nach Modellfamilien geordnete MATLAB-Implementierungen |
+| modelle/Framework/+femstudy/ | Paketierte Architekturbausteine |
+| src/legacy/ | Dünne Kompatibilitätsadapter, falls erforderlich |
 | tests/ | MATLAB-Tests und Prüfungen |
 | designs/ | Parameterdesigns für smoke und pilot |
 | runs/ | Ergebnisse des ursprünglichen Projektablaufs |
@@ -40,26 +41,26 @@ Dateien innerhalb von experiments, runs und verification enthalten historische E
 
 Die statische Referenz ist ein linear-elastischer Quader: Eine Stirnfläche ist fest eingespannt, auf die andere wirkt eine gleichmäßig verteilte Last. Die Standardkonfiguration verwendet ein quadratisches Tetraedernetz mit Hmax = min(b,h)/3. Für das ungedämpfte Modalproblem wird statt der statischen Last die Dichte benötigt. Die bisherige kleine Modalstudie verwendet eine konstante Demonstrationsdichte.
 
-## Ursprüngliche Implementierung: src
+## Modellimplementierungen: modelle
 
-| Aufgabe | Wichtige Dateien unter src | Funktion |
+| Aufgabe | Wichtige Dateien unter modelle | Funktion |
 |---|---|---|
-| Statisches FEM | solve_case.m | Geometrie, Material, Netz, Last, Lösung und Gitterübertragung |
-| Datenerzeugung | generate_dataset.m | Gespeicherte Datensätze und Einzelresultate aus Parameterfällen |
-| Gemeinsames Gitter | reference_grid.m | 21 × 5 × 5 Punkte und zugehörige Gewichte |
-| Modelltraining | train_models.m | Ursprüngliche statische Modelle aufbauen |
-| POD | pod_fit.m, pod_encode.m | Feldbasis und Koeffizienten |
-| Regression | fit_gps.m, fit_rbf.m, fit_mlp.m, predict_reg.m | Regression für Skalare oder POD-Koeffizienten |
-| Physikbaseline | beam_tip.m | Analytische Balkenspitze |
-| DeepONet | fit_deeponet.m, deeponet_forward.m, predict_deeponet.m | Training und Vorhersage des Operatornetzes |
-| POD-Galerkin-ROM | rom_assemble.m, rom_observation.m, rom_predict.m | Mechanisch reduziertes Modell und räumliche Übertragung |
-| Auswertung | predict_surrogate.m, evaluate_models.m, field_error.m | Vorhersage und Fehlerberechnung |
+| Statisches FEM | Grundlagen/solve_case.m | Geometrie, Material, Netz, Last, Lösung und Gitterübertragung |
+| Datenerzeugung | Grundlagen/generate_dataset.m | Gespeicherte Datensätze und Einzelresultate aus Parameterfällen |
+| Gemeinsames Gitter | Grundlagen/reference_grid.m | 21 × 5 × 5 Punkte und zugehörige Gewichte |
+| Modelltraining | Grundlagen/train_models.m | Bisherige statische Modelle aufbauen |
+| POD | POD_ROM/pod_fit.m, POD_ROM/pod_encode.m | Feldbasis und Koeffizienten |
+| Regression | GPR_RBF/fit_gps.m, GPR_RBF/fit_rbf.m, MLP_Adam/fit_mlp.m, Grundlagen/predict_reg.m | Regression für Skalare oder POD-Koeffizienten |
+| Physikbaseline | Grundlagen/beam_tip.m | Analytische Balkenspitze |
+| DeepONet | DeepONet/fit_deeponet.m, DeepONet/deeponet_forward.m, DeepONet/predict_deeponet.m | Training und Vorhersage des Operatornetzes |
+| POD-Galerkin-ROM | POD_ROM/rom_assemble.m, POD_ROM/rom_observation.m, POD_ROM/rom_predict.m | Mechanisch reduziertes Modell und räumliche Übertragung |
+| Auswertung | Grundlagen/predict_surrogate.m, Grundlagen/evaluate_models.m, Grundlagen/field_error.m | Vorhersage und Fehlerberechnung |
 
 Der ursprüngliche Ablauf wird über run_project.m mit den Phasen generate, train und evaluate gesteuert. predict_new.m und plot_test_case.m dienen vorhandenen Projektläufen als weitere Einstiegspunkte. Welche Daten und Modelle ein Aufruf verwendet, hängt von Modus und Ergebnisordner ab.
 
-## Neuere Architektur: +femstudy
+## Paketierte Architektur: modelle/Framework/+femstudy
 
-Ein Pluszeichen kennzeichnet ein MATLAB-Paket. Die Datei +femstudy/+fem/modal.m wird als femstudy.fem.modal angesprochen.
+Ein Pluszeichen kennzeichnet ein MATLAB-Paket. Die Datei modelle/Framework/+femstudy/+fem/modal.m wird als femstudy.fem.modal angesprochen.
 
 | Paket | Wichtige Inhalte | Rolle |
 |---|---|---|
@@ -69,7 +70,7 @@ Ein Pluszeichen kennzeichnet ein MATLAB-Paket. Die Datei +femstudy/+fem/modal.m 
 | femstudy.metrics | frequency | Frequenzmetriken |
 | femstudy.report | writeIntegration | Berichtsfunktion für den Integrationslauf |
 
-Das Paket ersetzt die ursprünglichen Funktionen nicht vollständig. Legacy-Adapter verbinden registrierte Modellnamen mit älteren Vorhersagefunktionen; neuere Versuchs- und Auswertungsskripte liegen weiterhin auch im Projektwurzelordner.
+Das Paket ergänzt die modellfamilienbezogenen Funktionen. Legacy-Adapter verbinden registrierte Modellnamen mit den bestehenden Vorhersagefunktionen; neuere Versuchs- und Auswertungsskripte liegen weiterhin auch im Projektwurzelordner.
 
 **Wichtig:** Die textuellen Statuswerte in registry.m enthalten Formulierungen wie „pending“. Sie sind nicht allein maßgeblich für den tatsächlichen Prüfstand: Spätere Experimentartefakte dokumentieren bereits durchgeführte Adapter- und Hybridprüfungen.
 

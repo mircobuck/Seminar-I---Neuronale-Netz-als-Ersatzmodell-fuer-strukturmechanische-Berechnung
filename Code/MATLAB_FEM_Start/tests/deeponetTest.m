@@ -6,7 +6,7 @@ classdef deeponetTest < matlab.unittest.TestCase
     methods (TestClassSetup)
         function loadFixture(test)
             root=fileparts(fileparts(mfilename('fullpath')));
-            addpath(fullfile(root,'src'));
+            addpath(genpath(fullfile(root,'modelle')));
             a=load(fullfile(root,'experiments','deeponet_20261023_v1', ...
                 'tiny_overfit','model.mat')); test.M=a.model;
             a=load(fullfile(root,'experiments','training_size_12_24_48_20261023', ...

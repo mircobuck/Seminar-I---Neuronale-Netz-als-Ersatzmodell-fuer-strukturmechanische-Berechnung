@@ -1,6 +1,6 @@
 function summarize_controlled_gpr()
 %SUMMARIZE_CONTROLLED_GPR Summarize saved fits without training or FEM.
-root=fileparts(mfilename('fullpath')); addpath(root,fullfile(root,'src'));
+root=fileparts(mfilename('fullpath')); addpath(root,genpath(fullfile(root,'modelle')));
 folder=fullfile(root,'experiments','hybrid_controlled_fits_v1');
 source=fullfile(root,'experiments','training_size_12_24_48_20261023','n384','train.mat');
 a=load(source); D=a.D; old=load(fullfile(root,'experiments','hybrid_static_audit_v1','selection.mat'));
