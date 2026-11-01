@@ -1,6 +1,8 @@
 # Projekt-Skills
 
-Skills beschreiben wiederholbare Arbeitsabläufe. Die Rollen in [../agents/README.md](../agents/README.md) bestimmen die Zuständigkeit; ein Skill beschreibt das Vorgehen für eine konkrete Aufgabe.
+Skills beschreiben wiederholbare Arbeitsabläufe für konkrete Aufgaben. In
+diesem Projekt liegen die Skills unter `.agents/skills/`; separate
+Agent-Rollendefinitionen sind hier nicht abgelegt.
 
 ## Aufbau und Benennung
 
