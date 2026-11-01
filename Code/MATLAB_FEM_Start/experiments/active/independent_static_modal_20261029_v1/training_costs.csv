@@ -1,0 +1,9 @@
+Model,Seed,Seconds,Source
+static_mlp,42,42.7680077,historical
+static_mlp,43,30.8816073,historical
+static_mlp,44,29.9830092,historical
+static_gpr,42,10.0155019,historical
+modal_mlp,42,26.4217715,historical
+modal_mlp,43,25.6831329,historical
+modal_mlp,44,22.2451575,historical
+modal_gpr,42,13.220289,new_fit

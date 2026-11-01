@@ -1,0 +1,13 @@
+# Lesefassung: Zeichenkodierung korrigiert; Original bleibt eingefroren
+
+# Versuchsprotokoll: Lernkurve Balken-Restfeld (28.10.2026)
+
+Vor Training und Referenzerzeugung gespeichert. Forschungsfrage: Welche der untersuchten Trainingsgroessen erreicht auf einer festen Entwicklungsvalidierung P95 <= 1 % fuer jeden der drei Seeds? Die Stichprobe dient der Entwicklung und ist kein unabhaengiger Abschlusstest.
+
+Trainingsgroessen: 12, 24, 48, 96, 192, 384. IDs: 1-12 und bei n>12 zusaetzlich 25 bis n+12. Daten aus den bestehenden train.mat; keine neuen Trainings-FEM-Faelle. Eine feste, sechsdimensionale maximin-Latin-Hypercube-Entwicklungsvalidierung mit 128 Faellen, Seed 20261030, 100 Iterationen, IDs 800001-800128 und Grenzen aus der statischen Vergleichsstudie wird vor der FEM-Erzeugung gespeichert. Gegen bekannte IDs und normalisierte Parameterkombinationen (Chebyshev-Abstand > 1e-10) pruefen; keine fehlerbasierte Punktauswahl. Referenzfehler und Wiederholungen bleiben erhalten; bei erfolglosem Fall wird die Auswertung angehalten, ohne den Punkt zu ersetzen.
+
+MLP: [32,32], tanh, standardisierte MSE, L2 1e-4, L-BFGS 250 Iterationen, History 10, Gradienten- und Schritttoleranz 1e-6 bzw. 1e-8, CPU, Seeds 42, 43, 44, kein Early Stopping. GPR: ARD-Matern-5/2, Sigma=1e-4, Hyperparameterfit nur auf Training. Analytisches Balkenfeld als datenfreie Referenz. Je n wird eine gemeinsame gewichtete POD des zentrierten Restfelds ausschliesslich mit Trainingsfaellen berechnet; Rang erste 99,99%-Energie, hoechstens 32 und n-1 sowie numerischer Rang. Skalierung ausschliesslich aus Trainingsdaten. Validierung beeinflusst weder Training noch Vorverarbeitung.
+
+Metriken je Fall: relativer gewichteter Feld-L2-Fehler (Referenznormboden 1e-14 m), absoluter gewichteter RMS, Projektion des Referenzrestfelds auf die trainierte POD. Mittel, Median, nearest-rank P95 (ceil(.95*N)) und Maximum je Modell/Seed/n; Zeiten, Status und Abbruchgruende. Kleinste untersuchte Groesse mit P95 <= 0,01 fuer alle Seeds und zusaetzlich jede groessere Groesse pruefen; GPR analog. Keine Poolung ueber Seeds als Ersatz fuer Einzelwerte.
+
+Pilot: getrennte technische Fits mit n=12 und verkuerztem 10-Iterations-Budget; keine Pilotresultate in der Kampagnenauswertung. Vor Kampagne Splits, Reproduktion, gemeinsame POD, Rekonstruktion, Metriken und Wiederaufnahme pruefen. Fehlversuche unveraenderlich protokollieren; Wiederholung mit neuer Versuchnummer. Bei Inkonsistenz oder unvollstaendigem FEM-Design abbrechen. Die vorhandenen n=384-Modelle nur nach belegter uebereinstimmung von Daten, Darstellung und Konfiguration verwenden; sonst neu fitten und Grund dokumentieren. Keine Hyperparameteraenderung anhand von Validierungsfehlern.

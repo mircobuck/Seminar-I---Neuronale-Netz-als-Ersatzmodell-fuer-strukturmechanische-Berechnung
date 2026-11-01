@@ -10,12 +10,20 @@ Open `matlab.toml` in MATLAB R2026b+ or `blank_project.prj` in MATLAB R2025b. It
 
 ```matlab
 run_checks(false)       % fast algebra and split checks
-run_project("smoke","generate")
-run_project("smoke","train")
+run_study                 % show the available stages
+run_study("all")          % current static/modal study, in order
 ```
 
-Run FEM-dependent checks only with the required PDE Toolbox installed. Current studies
-and their status are indexed in [docs/experiment-index.md](docs/experiment-index.md).
+The main workflow is split into resumable stages: `run_study("prepare")`,
+`run_study("train")`, `run_study("evaluate")`, and `run_study("plot")`.
+Final test FEM labels are generated only during evaluation, after models have
+been fitted. `run_study("all")` invokes these stages sequentially and may take
+substantial time because FEM calculations and model training are required.
+
+The older `run_project("smoke","generate")` / `"train"` / `"evaluate"` workflow
+remains available for compatibility and historical experiments. Run FEM-dependent
+checks only with the required PDE Toolbox installed. Current studies and their
+status are indexed in [docs/experiment-index.md](docs/experiment-index.md).
 Architecture and migration rules are in [docs/architecture/overview.md](docs/architecture/overview.md).
 
 ## Layout

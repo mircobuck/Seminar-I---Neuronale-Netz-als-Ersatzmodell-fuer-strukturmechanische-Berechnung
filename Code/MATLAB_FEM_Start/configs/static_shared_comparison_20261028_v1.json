@@ -1,0 +1,50 @@
+{
+  "schema": "static-shared-comparison-v1",
+  "study": "static_shared_comparison_20261028_v1",
+  "trainingSource": "experiments/active/training_size_12_24_48_20261023/n384",
+  "neuralSource": "experiments/active/neural_comparison_20261027_v1/n384",
+  "trainingIdRanges": [[1, 12], [25, 396]],
+  "validationIds": [13, 14, 15, 16, 17, 18],
+  "previousKnownTestIds": [19, 20, 21, 22, 23, 24],
+  "trainingCases": 384,
+  "neuralSeeds": [42, 43, 44],
+  "podGprSeed": 42,
+  "beamResidualGprSeed": 42,
+  "parameterNames": ["L_m", "b_m", "h_m", "E_Pa", "nu", "Fz_N"],
+  "lower": [0.6, 0.06, 0.08, 70000000000, 0.25, -1000],
+  "upper": [1.2, 0.10, 0.14, 210000000000, 0.35, -100],
+  "fieldComponents": ["ux", "uy", "uz"],
+  "fieldUnits": "m",
+  "fieldPointCount": 525,
+  "componentOrder": "component blocks ux, uy, uz",
+  "residualGpr": {
+    "podRanks": [2, 4, 8, 12],
+    "kernels": ["ardmatern52", "ardsquaredexponential"],
+    "selection": "minimum mean validation relative weighted field L2; ties use first rank/kernel in listed order",
+    "podAndScalingData": "training split only",
+    "seed": 42
+  },
+  "holdout": {
+    "count": 64,
+    "idStart": 700001,
+    "sampling": "six-dimensional maximin Latin hypercube",
+    "seed": 20261029,
+    "criterion": "maximin",
+    "iterations": 100,
+    "normalizedChebyshevMinimumDistance": 1e-10,
+    "excludeKnownIds": true,
+    "excludeKnownParameterCombinations": true,
+    "labelsPolicy": "do not generate or read until after freeze"
+  },
+  "timing": {
+    "predictionRepeatsPerCase": 7,
+    "warmupCalls": 1,
+    "measurement": "load frozen models before timing; one prediction per case per repetition; report case medians"
+  },
+  "knownReferenceProbe": {
+    "source": "historical n384 test split",
+    "ids": [19, 20, 21, 22, 23, 24],
+    "purpose": "technical interface/reconstruction/metric probe only; not a new independent test"
+  },
+  "outputPolicy": "immutable outputs; resume by verifying existing artifacts; abort on conflicts"
+}

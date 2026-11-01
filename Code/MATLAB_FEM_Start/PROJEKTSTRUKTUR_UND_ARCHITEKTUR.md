@@ -106,11 +106,45 @@ Die FEM-Lösung lebt zunächst auf den Knoten und Freiheitsgraden des jeweiligen
 
 Das Abfragegitter ist nicht das native FEM-Netz. Gleiche Matrixabmessungen allein beweisen deshalb keine Raumkompatibilität. femstudy.data.assertCompatible prüft unter anderem Raumkennung, Einheiten, Reihenfolge und Randbedingungen. Für den POD-Galerkin-ROM sind passende native FEM-Räume, Freiheitsgrade und Operatoren erforderlich; datengetriebene POD-Basen auf Abfragepunkten können nicht ohne Weiteres mit nativen Matrizen kombiniert werden.
 
-## Studiensteuerung im Projektwurzelordner
+## Zentraler Studienablauf und historische Einstiegspunkte
+
+Fuer den aktuellen statischen und modalen Vergleich ist
+`scripts/matlab/run_study.m` der Main-Einstieg. Er koordiniert vier getrennte,
+wiederaufnehmbare Funktionen:
+
+| Funktion | Verantwortung |
+|---|---|
+| `prepare_study_data.m` | Design vorbereiten, Modalsolver qualifizieren und Modal-Trainings-/Validierungsreferenzen erzeugen |
+| `train_study_models.m` | Statische Feld- und modale Frequenzmodelle trainieren |
+| `evaluate_study_models.m` | Eingefrorene Modelle auswerten; unabhängige Test-FEM-Labels erst nach dem Training erzeugen |
+| `plot_study_results.m` | Medianfehler ueber Trainingsgroesse plotten und PDF-Bericht ausgeben |
+
+Aufruf nach dem Oeffnen des MATLAB-Projekts:
+
+```matlab
+run_study("prepare")
+run_study("train")
+run_study("evaluate")
+run_study("plot")
+```
+
+`run_study("all")` fuehrt die vier Phasen der Reihe nach aus. Die FEM- und
+Trainingsstufen koennen lange dauern. Testreferenzen werden bewusst bis zur
+Auswertung zurueckgehalten, damit sie nicht in die Modellwahl einfliessen.
+Modelle, Metriken und FEM-Implementierungen bleiben eigenstaendige Funktionen;
+der Main koordiniert nur deren Ablauf.
+
+Die aktuelle Studienlogik und ihre wiederaufnehmbaren Einzelstufen liegen
+weiterhin in `scripts/matlab/run_neural_comparison.m`. Die obigen vier
+Funktionen bilden die verstaendliche Benutzeroberflaeche und delegieren an
+diesen bestehenden Studien-Runner, statt eine zweite Kopie der Rechenlogik
+einzufuehren.
+
+Daneben bleiben folgende historische Einstiegspunkte erhalten:
 
 | Einstiegspunkt | Zweck |
 |---|---|
-| run_project.m | Ursprünglicher smoke-/pilot-Ablauf |
+| run_project.m | Urspruenglicher smoke-/pilot-Ablauf |
 | run_training_size_study.m | Historische statische Trainingsgrößenreihe |
 | run_rom_study.m, run_rom_logged.m | POD-Galerkin-Studie |
 | run_deeponet_study.m, run_deeponet_logged.m | DeepONet-Studie |
@@ -123,7 +157,9 @@ Das Abfragegitter ist nicht das native FEM-Netz. Gleiche Matrixabmessungen allei
 | diagnostic_static_confirmation.m | Nachträgliche Abstands- und Feldbilddiagnose |
 | time_static_confirmation.m, time_fem_confirmation.m | Zeitmessungen für Vorhersage beziehungsweise FEM |
 
-Dies sind experimentelle Einstiegspunkte, keine einheitliche vollständig abgesicherte Produktionspipeline. Manche erzeugen Daten oder trainieren Modelle; sie sollten nicht allein zum Lesen dieser Übersicht ausgeführt werden.
+Diese historischen Runner sind keine weiteren Schritte des neuen Main-Ablaufs.
+Sie bleiben fuer Reproduktion alter Studien erhalten. Manche erzeugen Daten oder
+trainieren Modelle und sollten nicht allein zum Lesen dieser Uebersicht ausgefuehrt werden.
 
 ## Experimente und Ergebnisablagen
 

@@ -1,0 +1,79 @@
+{
+  "schema": "fem-reference-data-v1",
+  "seed": 20261029,
+  "static": {
+    "idStart": 1810001,
+    "counts": {
+      "train": 2,
+      "val": 1,
+      "test": 1
+    },
+    "parameterNames": [
+      "L_m",
+      "b_m",
+      "h_m",
+      "E_Pa",
+      "nu",
+      "Fz_N"
+    ],
+    "lower": [
+      0.6,
+      0.06,
+      0.08,
+      70000000000,
+      0.25,
+      -1000
+    ],
+    "upper": [
+      1.2,
+      0.1,
+      0.14,
+      210000000000,
+      0.35,
+      -100
+    ],
+    "fieldGrid": [
+      21,
+      5,
+      5
+    ],
+    "meshDivisor": 3,
+    "geometricOrder": "quadratic",
+    "saveRawMesh": false,
+    "maxDeflectionRatio": 0.02
+  },
+  "modal": {
+    "idStart": 1910001,
+    "counts": {
+      "train": 2,
+      "val": 1,
+      "test": 1
+    },
+    "parameterNames": [
+      "L_m",
+      "b_m",
+      "h_m",
+      "E_Pa",
+      "nu",
+      "rho_kg_m3"
+    ],
+    "lower": [
+      0.6,
+      0.06,
+      0.08,
+      70000000000,
+      0.25,
+      2700
+    ],
+    "upper": [
+      1.2,
+      0.1,
+      0.14,
+      210000000000,
+      0.35,
+      8900
+    ],
+    "meshDivisor": 3
+  },
+  "testPolicy": "Test designs are sealed with train/validation designs, but test FEM labels are generated only by explicit static_test or modal_test stages after model freeze."
+}

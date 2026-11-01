@@ -1,0 +1,21 @@
+{
+  "pilotSeconds": [
+    5.4604833,
+    2.6615286,
+    4.4975529
+  ],
+  "adamArchitectureStageSeconds": 13165.446981814719,
+  "optimizerStageUpperEstimateSeconds": 4392.5354623096446,
+  "gprStageSeconds": 13.4926587,
+  "finalFitEstimateAdamSeconds": 4505.9381546002542,
+  "finalFitEstimateLbfgsSeconds": 2196.2677311548223,
+  "remainingTotalLowerEstimateSeconds": 19767.742833979184,
+  "remainingTotalUpperEstimateSeconds": 22077.413257424618,
+  "architectureParameterCounts": [
+    197,
+    469,
+    1445
+  ],
+  "method": "linear scaling by parameter count, budget steps, and final/cv sample count; rough estimate, not a measured total",
+  "foldTrainingCases": 256
+}

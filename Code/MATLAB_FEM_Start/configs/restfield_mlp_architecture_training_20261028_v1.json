@@ -1,0 +1,91 @@
+{
+  "schema": "restfield-mlp-architecture-training-v1",
+  "study": "restfield_mlp_architecture_training_20261028_v1",
+  "created": "2026-10-28",
+  "source": "experiments/active/training_size_12_24_48_20261023/n384/train.mat",
+  "trainingIdRanges": [[1, 12], [25, 396]],
+  "trainingCaseCount": 384,
+  "excludedKnownTestIdRanges": [[13, 24], [200001, 200064], [700001, 700064]],
+  "parameterNames": ["L_m", "b_m", "h_m", "E_Pa", "nu", "Fz_N"],
+  "fieldComponents": ["ux", "uy", "uz"],
+  "fieldUnits": "m",
+  "componentOrder": "component blocks ux, uy, uz",
+  "validation": {
+    "method": "three-fold grouped cross-validation within the 384 established training cases",
+    "foldSeed": 20261028,
+    "foldCount": 3,
+    "expectedTrainingCasesPerFold": 256,
+    "expectedValidationCasesPerFold": 128,
+    "duplicateGroupingToleranceNormalized": 1e-12
+  },
+  "pod": {
+    "inputField": "static FEM displacement minus analytical Euler-Bernoulli beam field",
+    "energyTolerance": 0.9999,
+    "maximumRank": 32,
+    "fitScope": "outer-fold training IDs only",
+    "scalingScope": "outer-fold training IDs only"
+  },
+  "architectureStage": {
+    "architectures": [[16], [16, 16], [32, 32]],
+    "activation": "tanh",
+    "optimizer": "adam",
+    "seeds": [42, 43, 44],
+    "maximumEpochs": 250,
+    "batchSize": 256,
+    "initialLearningRate": 0.001,
+    "l2Regularization": 0.0001,
+    "earlyStopping": false
+  },
+  "optimizerStage": {
+    "architecture": "selected by architectureStage",
+    "optimizers": ["adam", "lbfgs"],
+    "seeds": [42, 43, 44],
+    "maximumAdamEpochs": 250,
+    "maximumLbfgsIterations": 250,
+    "batchSize": 256,
+    "initialLearningRate": 0.001,
+    "l2Regularization": 0.0001,
+    "lbfgsHistorySize": 10,
+    "lbfgsGradientTolerance": 1e-6,
+    "lbfgsStepTolerance": 1e-8,
+    "earlyStopping": false,
+    "initialization": "same MATLAB RNG seed, fold, and selected architecture; initial parameter hash recorded"
+  },
+  "gprReference": {
+    "kernel": "ardmatern52",
+    "fitScope": "same outer-fold training rows, POD basis, and standardized coefficients as MLP",
+    "hyperparameterSelection": "fixed before outer-fold evaluation; no outer-fold tuning",
+    "seeds": [42],
+    "l2RegularizationEquivalent": false,
+    "note": "The existing GPR package implementation standardizes from training rows and fixes Sigma=1e-4; this is not the MLP weight-decay penalty."
+  },
+  "selection": {
+    "primaryMetric": "mean relative weighted field L2 error over the pooled outer validation cases and seeds",
+    "referenceNormFloor_m": 1e-14,
+    "summaryQuantile": "nearest-rank ceil(0.95*N)",
+    "architectureTieBreak": "within absolute 1e-12, choose first listed architecture (simplest candidate)",
+    "optimizerTieBreak": "within absolute 1e-12, choose Adam",
+    "holdoutsUsedForSelection": false
+  },
+  "technicalPilot": {
+    "fold": 1,
+    "architecture": [16],
+    "seed": 42,
+    "adamEpochs": 10,
+    "lbfgsIterations": 10,
+    "gprKernel": "ardmatern52",
+    "purpose": "interface, fold, initialization, reconstruction, metric, resume and runtime estimate only; all pilot runs are excluded from candidate scores"
+  },
+  "campaign": {
+    "technicalPilotRuns": 3,
+    "architectureRuns": 27,
+    "additionalLbfgsRuns": 9,
+    "gprRuns": 3,
+    "finalFullDataMlpRuns": 3,
+    "finalTrainingCasesPerSeed": 384,
+    "finalTrainingDataScope": "all and only the established 384 training cases",
+    "totalPlannedRunsIncludingPilot": 45,
+    "newFemRuns": 0
+  },
+  "outputPolicy": "immutable run artifacts; verify configuration, source-data, and code hashes before resuming"
+}

@@ -1,0 +1,2 @@
+optimizer,adamMean,lbfgsMean,metric,tieTolerance,manifestSHA
+lbfgs,0.055023900333056,0.00997863472256954,"mean absolute relative error in Hz over raw frequency outputs, cases, modes and seeds",1e-12,ae750f927432640c7c1b01b3c14813ad91c46277c38f922c3bd478345e120ef8

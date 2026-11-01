@@ -1,0 +1,4 @@
+Seed,PODRank,TrainingSeconds,EpochsCompleted,IterationsCompleted,StopReason,TrainingCases
+42,5,42.7680077,0,250,Max iterations completed,384
+43,5,30.8816073,0,250,Max iterations completed,384
+44,5,29.9830092,0,250,Max iterations completed,384

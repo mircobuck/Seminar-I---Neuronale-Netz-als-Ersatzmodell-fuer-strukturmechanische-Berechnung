@@ -31,3 +31,8 @@ Stand: 26. Oktober 2026. Diese zehn Veröffentlichungen sind Referenzen für die
 - Jetzt experimentell vergleichen: vollständig verbundenes Vorwärtsnetz für Skalare und Frequenzen; Hauptkomponentendarstellung mit neuronaler Koeffizientenvorhersage für Felder; physikalisches Balkenfeld plus gelerntes Restfeld; vorhandenes tiefes Operatornetz.
 - Später anhand konkreter Anforderungen prüfen: physik-informierte Netze, Fourier-basierte Operatoren und Graphnetze. Die Wahl hängt unter anderem von Geometrie, Netzrepräsentation, Randbedingungen, Zielgrößen und verfügbarer Datenmenge ab.
 - Die Eigenfrequenz-Arbeit unter Nummer 1 ersetzt die zuvor genannte Knieknorpel-Studie als deutlich näher liegende Referenz für den Kragträger.
+
+## Ergaenzung vom 27. Oktober 2026
+
+Weitere Originalarbeiten zu FEM-informiertem Training, exakt erfuellten Randbedingungen, adaptiver Datenauswahl und Multi-Fidelity-Training sowie eine Uebersicht der abgedeckten Modellfamilien stehen in [UEBERBLICK_NEURONALE_ERSATZMODELLE.md](./UEBERBLICK_NEURONALE_ERSATZMODELLE.md).
+

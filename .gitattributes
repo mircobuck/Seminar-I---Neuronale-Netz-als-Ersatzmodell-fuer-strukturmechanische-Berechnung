@@ -1,5 +1,9 @@
 * text=auto
 
+# Code v2 stores SHA-256 hashes of source and configuration file bytes.
+# Preserve the original bytes across platforms so provenance remains verifiable.
+"Code v2/**" -text
+
 *.fig binary
 *.mat binary
 *.mdl binary diff merge=mlAutoMerge

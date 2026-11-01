@@ -1,0 +1,24 @@
+{
+  "oldRunnerHash": "c14bee026d0eab4d5cf55cb9e9bff572f8d92b7a38bb63b05113b6c6443a047b",
+  "newRunnerHash": "9e298ff7a297868f9319d44dde1cbe5c23fc1c81767384ff09d02e1655ab99b2",
+  "paths": [
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\src\\pod_fit.m",
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\src\\pod_encode.m",
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\src\\fit_gps.m",
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\src\\predict_reg.m",
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\src\\+femstudy\\+models\\fitControlledRestMLP.m",
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\src\\+femstudy\\+fem\\beamField.m",
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\experiments\\active\\training_size_12_24_48_20261023\\n384\\val.mat",
+    "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code\\MATLAB_FEM_Start\\experiments\\active\\training_size_12_24_48_20261023\\n384\\test.mat"
+  ],
+  "hashes": [
+    "13d4313ec1785edf8b1751aaa65e7da6f6163dd84544809b710cdeccb5f1c45c",
+    "1bab540d0e182fa50e7be6854228275dee29ef890643778a5eb5c41bbc20d6d2",
+    "d95d52ed1a93c300948879b7d147b40b0eed3d4a9b5825d110b1a19d8a6d7dfa",
+    "fbd17dc52b6f5e2059ab57d3fe4295d34bfdf2efa656fd73229d6e9b6b8cf337",
+    "d50404b88ccc0ed3325354a6303b2d8482cd6b14067234bdaf01a4a5dbd7d91e",
+    "116bdb0d53a434f48a2db70d0e65beb02d17f5e177dc35377a788033f493a448",
+    "1cbaedf8765ea7ebb0696bcb81f97d42ebdb72975173e085000de44f97916613",
+    "34303299365a7e304eaec20cee6e827796d531195c78d54fe8f77b24aa3cbe4d"
+  ]
+}
