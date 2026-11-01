@@ -1,3 +1,0 @@
-# Technischer Nachtrag 01 ? 28.10.2026
-
-Nach der Erzeugung der 128 Entwicklungsreferenzen und vor dem Pilot wurde der Runner erg?nzt: Die trainierte POD speichert wie die vorhandene 384er-Darstellung das rein beschreibende Feld selectedEnergy. Mittelwert, Basis, Gewichte und Koeffizienten wurden vorher exakt gleich gepr?ft; diese Erg?nzung erm?glicht den strukturellen Vergleich und ?ndert keine Modellrechnung. Zus?tzlich sichert ein unver?nderlicher Provenienznachtrag die Runner-Revision und weitere Modell-/Quelldateien mit SHA-256 ab. Keine Trainingsresultate lagen vor. Konfiguration, Design, FEM-Referenzen, Auswahlregel und Versuchsbudget bleiben unver?ndert.

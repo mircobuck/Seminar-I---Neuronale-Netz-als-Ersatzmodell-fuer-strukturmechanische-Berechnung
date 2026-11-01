@@ -1,5 +1,0 @@
-Strategy,Model,GroupCount,sum_MeetsTarget
-lhs,gpr,3,2
-lhs,mlp,9,3
-uniform,gpr,3,2
-uniform,mlp,9,6

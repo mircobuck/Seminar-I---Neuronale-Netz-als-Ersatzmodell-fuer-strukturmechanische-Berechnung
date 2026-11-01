@@ -1,2 +1,0 @@
-Model,Optimizer,MeanRelativeError,MedianRelativeError,P95RelativeError,MaximumRelativeError,MeanAbsoluteRMS_m,MeanPODProjectionError,PhysicalCaseCount
-GPRReference,fixed-kernel,0.000397475894743313,0.000242479008507323,0.00128760331066491,0.00348449587185101,1.98886438890964e-08,4.19993760064433e-05,384
