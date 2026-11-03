@@ -2,10 +2,15 @@ function net = levenbergMarquardt(XTrain, YTrain, layers, XValidation, YValidati
 %levenbergMarquardt Train the same one-hidden-layer MLP with trainlm.
 
 rng(settings.randomSeed);
-hiddenWidth = layers(2).OutputSize;
+hasHiddenLayer = numel(layers) > 2;
 inputCount = size(XTrain, 2);
 outputCount = size(YTrain, 2);
-parameterCount = hiddenWidth * (inputCount + outputCount + 1) + outputCount;
+if hasHiddenLayer
+    hiddenWidth = layers(2).OutputSize;
+    parameterCount = hiddenWidth * (inputCount + outputCount + 1) + outputCount;
+else
+    parameterCount = inputCount * outputCount + outputCount;
+end
 estimatedHessianBytes = 8 * parameterCount^2;
 availableMemory = memory;
 
@@ -20,9 +25,14 @@ XAll = [XTrain; XValidation]';
 YAll = [YTrain; YValidation]';
 trainCount = size(XTrain, 1);
 
-net = feedforwardnet(hiddenWidth, "trainlm");
-net.layers{1}.transferFcn = "tansig";
-net.layers{2}.transferFcn = "purelin";
+if hasHiddenLayer
+    net = feedforwardnet(hiddenWidth, "trainlm");
+    net.layers{1}.transferFcn = "tansig";
+    net.layers{2}.transferFcn = "purelin";
+else
+    net = feedforwardnet([], "trainlm");
+    net.layers{1}.transferFcn = "purelin";
+end
 net = configure(net, XAll, YAll);
 net.inputs{1}.processFcns = {};
 net.outputs{net.numLayers}.processFcns = {};
