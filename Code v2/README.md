@@ -1,5 +1,62 @@
 # Code v2: FEM-Referenzdaten
 
+## POD-MLP für statische Verschiebungsfelder
+
+Das Modell `pod_mlp` berechnet eine gewichtete, mittelwertzentrierte POD-Basis
+aus den Trainingsfeldern und trainiert ein MLP mit Adam auf deren Koeffizienten.
+Basis und Normierung stammen ausschließlich aus dem Trainingssplit. Das Modell
+liefert vollständige Felder in Metern über die gemeinsame Schnittstelle.
+
+Beispiel aus `Code v2` (die Zieldatei darf noch nicht existieren):
+
+```matlab
+addpath('examples')
+[model, report, metrics] = podMlpExample('pod_mlp_model.mat');
+```
+
+Das Beispiel nutzt Trainings- und Validierungsdaten, keine Testdaten. Rang,
+Netzbreite und Adam-Einstellungen stehen im Beispiel; der Standardrang ist 10.
+Das Training verwendet die letzte Epoche ohne Validierungsdaten zur Steuerung.
+Die Auswertung nutzt den gemeinsamen gewichteten Feldfehler. Voraussetzung ist
+MATLAB R2025b mit Deep Learning Toolbox. Modelltests:
+`runtests('tests/podMlpTest.m')`.
+
+### Modellvergleich auf dem Validierungssplit
+
+`examples/plotSurrogateValidation.m` lädt das vorhandene Pilotmodell und zeigt
+den gewichteten absoluten Feldfehler pro Fall in Metern sowie Median und P95
+des gewichteten relativen Feldfehlers in Prozent. P95 verwendet Nearest Rank.
+Die Zusammenfassung verwendet nur definierte relative Fehler; die Anzahl der
+undefinierten Werte steht im Plot. Fallwerte bleiben in `results` erhalten.
+
+Der Modellpfad steht am Anfang des Skripts. Das vorgegebene Pilotmodell liegt
+zwei Ordner oberhalb von `Code v2`; auf einem anderen Rechner muss der Pfad
+angepasst werden. Weitere gespeicherte Modelle können in der `models`-Liste
+ergänzt werden, sobald sie die gemeinsame `surrogate`-Schnittstelle erfüllen.
+Das Skript lädt ausschließlich statische Validierungsdaten und ist kein
+Abschlusstest. Aus `Code v2` starten:
+
+```matlab
+run('examples/plotSurrogateValidation.m')
+```
+
+Für eine Lernkurve mit 12, 24, 48, 96, 192 und 384 Trainingsfällen und drei
+Seeds kann ein noch nicht existierender Ausgabeordner gewählt werden:
+
+```matlab
+addpath('examples')
+[summary, outputDir] = runPodMlpLearningCurve('pfad/zum/neuen_ordner');
+plotPodMlpLearningCurve(outputDir)  % gespeicherte Ergebnisse erneut plotten
+```
+
+Die Teilmengen sind je Seed verschachtelt; Basis und Normierung werden für
+jeden Lauf neu aus dessen Trainingsdaten bestimmt. Gespeichert werden die
+18 Modelle, Fall-IDs, Validierungsmetriken, eine CSV und drei Lernkurven. Der
+Absolutfehler ist der mittlere gewichtete Fehler über alle Validierungsfälle;
+Median und P95 beziehen sich auf den relativen gewichteten Feldfehler. Der
+POD-Rang ist 10; bei weniger als 32 Fällen entspricht die Batchgröße der
+Fallzahl. Die Ergebnisse sind Pilotwerte auf dem Validierungssplit.
+
 Dieser Ordner enthaelt einen getrennten Datenworkflow fuer statische
 Verschiebungsfelder und modale Eigenfrequenzen. Die benötigten FEM-Kernfunktionen liegen unter `fem_core` in diesem Ordner.
 Der Workflow benötigt den benachbarten Ordner `Code` nicht. Designs und neu
