@@ -40,6 +40,17 @@ Abschlusstest. Aus `Code v2` starten:
 run('examples/plotSurrogateValidation.m')
 ```
 
+### Abschlusstest auf statischen Verschiebungsfeldern
+
+Der separate Prüfstand unter
+[`studies/static_final_evaluation`](studies/static_final_evaluation/README.md)
+wertet gespeicherte Modelle auf demselben statischen Testsplit aus. Er ist
+vorbereitet, führt aber keinen echten Abschlusstest aus. Auswahl, Freeze-Stand,
+Testlabel-Nutzung, Metriken und Schwellenwerte müssen vor einem späteren
+Testlauf dokumentiert werden. Der Ablauf trainiert keine Modelle, startet
+keine FEM und bietet keine technische Zugangssperre für Testlabels. Der
+bestehende Validierungsplot bleibt davon getrennt.
+
 Für eine Lernkurve mit 12, 24, 48, 96, 192 und 384 Trainingsfällen und drei
 Seeds kann ein noch nicht existierender Ausgabeordner gewählt werden:
 

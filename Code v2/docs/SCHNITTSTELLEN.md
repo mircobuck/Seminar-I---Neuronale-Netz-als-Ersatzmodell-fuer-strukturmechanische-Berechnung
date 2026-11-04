@@ -123,20 +123,24 @@ Statisch: Für jeden Fall `sqrt(sum(w .* (prediction-reference).^2))` und die
 entsprechende gewichtete Referenznorm; der relative Fehler ist ihr Quotient.
 Modal: absoluter Fehler in Hz und relativer Fehler pro Fall und Frequenz.
 `nonpositivePrediction` und `nonmonotonePrediction` markieren Auffälligkeiten;
-Werte werden nicht verändert. Die Funktion liefert Fehler **pro Fall**, noch
-keine aggregierten Kennzahlen, Auswahlregeln, Zeitmessungen oder Berichtsgrafiken.
-Ein zukünftiges Studienprotokoll muss diese Ergänzungen und den Umgang mit
-`NaN` vorab festlegen.
+Werte werden nicht verändert. Die gemeinsame Funktion liefert Fehler pro Fall;
+Aggregation und Studienprotokoll gehören in die jeweilige Studiensteuerung.
+Der statische Abschlusstest unter
+`studies/static_final_evaluation/` aggregiert Mittelwert, Median,
+Nearest-Rank-P95 und Maximum, dokumentiert `NaN`-Gründe und erzeugt eigene
+Ergebnisdateien. Er ist getrennt vom Validierungsplot und trainiert weder
+Modelle noch startet er FEM.
 
 ## Prüfungen und Grenzen
 
-In `Code v2` ausführen: `results = runtests('tests/surrogateContractTest.m');`.
-Die Tests verwenden synthetische Beispiele und lesen zusätzlich die vorhandenen
-statischen und modalen Trainingsdaten sowie modale Validierungsdaten, sofern
-vorhanden; sie führen keine FEM aus und verändern keine Produktionsdaten. Ein
-echter Modellvergleich und ein eingefrorenes
-Auswahlprotokoll sind noch nicht implementiert. Die zwölf Validierungsfälle
-stellen keine Garantie für eine stabile Auswahl dar.
+In `Code v2` ausführen:
+`results = runtests('tests/surrogateContractTest.m');`. Der separate
+synthetische Abschlusstest wird mit
+`runtests('tests/staticFinalEvaluationTest.m')` geprüft. Er liest keine
+produktiven Testlabels. Der Prüfstand schützt Testdaten nicht technisch vor
+Zugriff; Modellauswahl, Freeze-Stand und bekannte Nutzungshistorie müssen
+vorher dokumentiert werden. Die zwölf Validierungsfälle stellen keine Garantie
+für eine stabile Auswahl dar.
 
 Die Checks erkennen formale Abweichungen. Ein fehlerhaftes Verfahren kann eine
 falsche interne Reihenfolge oder Skalierung trotzdem behaupten; jedes Modellteam
