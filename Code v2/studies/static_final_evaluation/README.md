@@ -56,6 +56,17 @@ definierte relative Fehler Mittelwert, Median, Nearest-Rank-P95 und Maximum
 aus. Die drei PNG-Plots zeigen mittleren absoluten Fehler, Median des absoluten
 Fehlers und P95 des absoluten Fehlers, jeweils in Metern.
 
+Der vorab festgelegte Test aller 12 Breiten-/Tiefenkombinationen und Seeds
+42/43/44 kann mit `runStaticTrainingTestEvaluation(OUTPUTDIR,TRAININGCASES)`
+für die gespeicherten 384er- oder 768er-Modelle gestartet werden.
+`runStatic768TestEvaluation(OUTPUTDIR)` bleibt als Kurzaufruf für die
+768er-Stufe verfügbar. Der Aufruf prüft zunächst alle 36 Modellartefakte und
+ihre Trainingsfallzahl, dokumentiert danach Auswahl und Freeze und lädt
+anschließend die unveränderten Testlabels. Diese Aufrufe exportieren keine
+Plots. Werden beide Trainingsstufen am selben Testsatz ausgewertet, ist ein
+nachträglicher Stufenvergleich nicht mehr als unabhängige Testauswertung zu
+interpretieren.
+
 Jeder Seed ist ein eigener Lauf und wird nicht als unabhängiger FEM-Fall
 gezählt. Fehlgeschlagene Modellartefakte werden in `run_status.csv` mit
 Fehlermeldung protokolliert; erfolgreiche Modelle werden trotzdem ausgewertet.

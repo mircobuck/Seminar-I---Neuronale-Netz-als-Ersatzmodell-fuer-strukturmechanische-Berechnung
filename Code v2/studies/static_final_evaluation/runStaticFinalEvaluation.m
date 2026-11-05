@@ -1,6 +1,7 @@
-function result = runStaticFinalEvaluation(config,outputDir)
+function result = runStaticFinalEvaluation(config,outputDir,generatePlots)
 %runStaticFinalEvaluation Evaluate frozen static models on a specified split.
 %   CONFIG records decisions before reference labels are loaded; see README.
+if nargin<3, generatePlots=true; end
 root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
 addpath(root);
 required={'datasetFile','datasetId','split','selectionRule','freezeDescription', ...
@@ -97,7 +98,9 @@ if ~isempty(cases), writetable(cases,fullfile(outputDir,'case_errors.csv')); end
 failures=table(labels(:),string({details.status})',string({details.errorId})', ...
     string({details.errorMessage})','VariableNames',{'Model','Status','ErrorId','ErrorMessage'});
 writetable(failures,fullfile(outputDir,'run_status.csv'));
-plotResults(summary,outputDir);
+if generatePlots
+    plotResults(summary,outputDir);
+end
 end
 
 function values=statistics(x)

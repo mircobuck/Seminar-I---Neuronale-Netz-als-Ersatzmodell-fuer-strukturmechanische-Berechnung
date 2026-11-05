@@ -1,0 +1,10 @@
+{
+    "originalTrainingCases": 384.0,
+    "trainingCases": 768.0,
+    "additionalDesignSeed": 20261105.0,
+    "sampling": "independent Latin hypercube",
+    "originalConfig": "data_generation_v1.json (frozen original design)",
+    "validationCases": 12.0,
+    "testCases": 64.0,
+    "modalModified": false
+}
