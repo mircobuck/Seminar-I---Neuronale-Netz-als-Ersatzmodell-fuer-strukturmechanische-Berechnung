@@ -3,12 +3,12 @@ function [state,report] = fit(data,config)
 assert(string(data.modality)=="static",'surrogate:pod_mlp:Task', ...
     'POD-MLP supports static displacement fields only.');
 defaults=struct('rank',10,'hiddenWidth',64,'maxEpochs',200, ...
-    'miniBatchSize',32,'learningRate',1e-3);
+    'miniBatchSize',32,'learningRate',1e-3,'hiddenLayers',1);
 names=fieldnames(defaults);
 for k=1:numel(names)
     if ~isfield(config,names{k}), config.(names{k})=defaults.(names{k}); end
 end
-integers={'rank','hiddenWidth','maxEpochs','miniBatchSize'};
+integers={'rank','hiddenWidth','maxEpochs','miniBatchSize','hiddenLayers'};
 for k=1:numel(integers)
     value=config.(integers{k});
     assert(isnumeric(value) && isreal(value) && isscalar(value) && ...
@@ -41,10 +41,11 @@ constantCoefficients=coefficientScale==0;
 coefficientScale(constantCoefficients)=1;
 X=(X-inputMean)./inputScale;
 Y=(coefficients-coefficientMean)./coefficientScale;
-layers=[featureInputLayer(size(X,2),Normalization="none")
-    fullyConnectedLayer(config.hiddenWidth)
-    tanhLayer
-    fullyConnectedLayer(config.rank)];
+layers=featureInputLayer(size(X,2),Normalization="none");
+for k=1:config.hiddenLayers
+    layers=[layers; fullyConnectedLayer(config.hiddenWidth); tanhLayer]; %#ok<AGROW>
+end
+layers=[layers; fullyConnectedLayer(config.rank)];
 options=trainingOptions("adam",MaxEpochs=config.maxEpochs, ...
     MiniBatchSize=config.miniBatchSize,InitialLearnRate=config.learningRate, ...
     Shuffle="every-epoch",OutputNetwork="last-iteration", ...
