@@ -34,6 +34,15 @@ während Abweichungen bei höheren Moden deutlich größer sein können.
   fehlgeschlagenen FEM-Läufe.
 - Validierungs- und Testlabels wurden nicht eingelesen oder verwendet.
 
+**Nachtrag vom 2026-11-06:** Eine separate Erweiterung prüfte die 384 später
+ergänzten statischen Trainingsfälle sowie alle 12 Validierungs- und 64
+Testfälle ebenfalls gegen die Balkenmodelle. Sie ist getrennt dokumentiert in
+[remaining_static_20261106/REPORT.md](remaining_static_20261106/REPORT.md);
+die hier berichteten Kennzahlen der ursprünglichen Studie bleiben auf deren
+384 statische Trainingsfälle beschränkt. Für die spätere physikalische
+Referenzprüfung wurden Validierungs- und Test-FEM-Felder gelesen; dies war
+keine POD-MLP-Testauswertung oder Modellauswahl.
+
 ## Analytische Vergleiche
 
 ### Statische Mittelachse

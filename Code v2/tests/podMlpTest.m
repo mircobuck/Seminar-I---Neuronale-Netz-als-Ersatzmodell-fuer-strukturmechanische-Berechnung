@@ -55,6 +55,20 @@ classdef podMlpTest < matlab.unittest.TestCase
             cfg.rank=0;
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg),'surrogate:pod_mlp:Config');
         end
+        function missingConfigFieldsReported(testCase)
+            data=makeContractData("static","train");
+            cfg=rmfield(podMlpTest.config(),{'hiddenWidth','hiddenLayers'});
+            caughtException=[];
+            try
+                surrogate.fitModel("pod_mlp",data,cfg);
+            catch exception
+                caughtException=exception;
+            end
+            testCase.verifyNotEmpty(caughtException);
+            testCase.verifyEqual(caughtException.identifier,'surrogate:pod_mlp:Config');
+            testCase.verifyTrue(contains(caughtException.message,'hiddenWidth'));
+            testCase.verifyTrue(contains(caughtException.message,'hiddenLayers'));
+        end
         function modalTaskRejected(testCase)
             data=makeContractData("modal","train");
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,podMlpTest.config()), ...
@@ -64,7 +78,8 @@ classdef podMlpTest < matlab.unittest.TestCase
     methods (Static, Access=private)
         function cfg=config()
             cfg=struct('seed',42,'datasetId',"synthetic",'rank',1, ...
-                'hiddenWidth',4,'maxEpochs',2,'miniBatchSize',2,'learningRate',1e-3);
+                'hiddenWidth',4,'maxEpochs',2,'miniBatchSize',2,'learningRate',1e-3, ...
+                'hiddenLayers',1);
         end
     end
 end

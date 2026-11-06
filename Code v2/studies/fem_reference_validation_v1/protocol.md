@@ -171,3 +171,28 @@ stillschweigend mit vorhandenen Studienergebnissen vermischt werden.
 - Die Studie beurteilt die FEM-Referenz für den angegebenen Modellbereich; sie
   belegt nicht automatisch, dass ein späteres Surrogat die FEM ausreichend
   genau approximiert.
+
+## Datierte Erweiterung: übrige statische Fälle (2026-11-06)
+
+Vor der zusätzlichen Auswertung wurde der Umfang festgelegt: geprüft werden
+die 384 nach der ursprünglichen Studie ergänzten statischen Trainingsfälle
+sowie alle 12 statischen Validierungs- und 64 Testfälle. Zusammen sind das
+460 Fälle, die nicht in der ursprünglichen analytischen Statikprüfung mit 384
+Trainingsfällen enthalten waren. Die 384 ursprünglichen Trainingsfälle
+werden nicht erneut berechnet; ihre gespeicherten Ergebnisse bleiben
+unverändert und dienen nur für eine getrennt ausgewiesene Gesamtübersicht.
+
+Die gleiche eindimensionale Mittelachsen- und Spitzendurchbiegungsprüfung
+gegen Euler-Bernoulli und Timoshenko wird verwendet. Es werden ausschließlich
+vorhandene FEM-Datendateien gelesen; es gibt keine neuen FEM-Läufe, keine
+POD-MLP-Auswertung und keine Modellauswahl. Für diese zusätzliche
+physikalische Referenzprüfung werden die Verschiebungsfelder der
+Validierungs- und Test-Splits ausdrücklich gelesen. Die Prüfung ist daher
+keine unabhängige Surrogat-Testauswertung und darf nicht zur Auswahl oder
+Anpassung eines POD-MLP verwendet werden.
+
+Die separate Implementierung ist
+`scripts/run_remaining_static_validation.m`; Ergebnisse werden in einem
+eigenen Unterordner `results/remaining_static_20261106/` gespeichert. Die
+Ergebnisdateien der ursprünglichen `fem_reference_validation_v1`-Studie
+werden nicht überschrieben.
