@@ -40,6 +40,21 @@ Abschlusstest. Aus `Code v2` starten:
 run('examples/plotSurrogateValidation.m')
 ```
 
+Der unabhängige Abschlusstest der bevorzugten `weighted_field_mse`-Variante
+friert die Breite-64-/2-Schicht-Konfiguration mit 768 Trainingsfällen und
+Seeds 42/43/44 ein, erzeugt 128 neue statische FEM-Testfälle und wertet alle
+drei Modelle aus:
+
+```matlab
+addpath('studies/static_final_evaluation')
+result = runWeightedLossIndependentTest();
+```
+
+Die Auswahl samt SHA-256-Hashes wird vor der FEM-Testdatenerzeugung
+gespeichert. Die Testfälle liegen unter
+`experiments/pod_mlp_weighted_independent_test_20261109/` und dürfen nach
+Sichtung nicht mehr für Modellauswahl oder Abstimmung verwendet werden.
+
 ### Abschlusstest auf statischen Verschiebungsfeldern
 
 Der separate Prüfstand unter

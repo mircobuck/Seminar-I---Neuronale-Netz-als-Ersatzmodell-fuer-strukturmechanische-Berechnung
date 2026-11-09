@@ -78,6 +78,38 @@ Ergebnisse und Referenzdaten werden unter `OUTPUTROOT` gespeichert; der
 Ausgabeordner darf noch nicht existieren. Die Testlabels werden beim Lauf
 erzeugt, daher kann die FEM-Phase abhängig von der Laufzeit je Fall dauern.
 
+Für den unabhängigen Abschlusstest der bevorzugten Loss-Variante startet
+`runWeightedLossIndependentTest(OUTPUTROOT)` mit drei zuvor eingefrorenen
+Modellen (`weighted_field_mse`, Breite 64, zwei versteckte Schichten,
+768 Trainingsfälle, Seeds 42/43/44). Die Auswahl basiert ausschließlich auf
+den bereits ausgewerteten Validierungsdaten. Der Runner prüft und hasht die
+Modelle, erzeugt 128 neue statische Latin-Hypercube-Testfälle mit Seed
+`20261110` und IDs ab `814001`, prüft auf ID- und exakte Parameterüberschneidung
+mit den bekannten Designs und wertet erst danach alle drei Modelle auf den
+neuen FEM-Referenzen aus. Ausgabe und Modell-Freeze liegen im neuen Ordner
+`experiments/pod_mlp_weighted_independent_test_20261109/`; dieser Ordner darf
+noch nicht existieren. Die Testfälle dürfen nach Sichtung der Ergebnisse nicht
+für weitere Modellauswahl oder Abstimmung verwendet werden.
+
+Der Lauf wurde am 9. November 2026 abgeschlossen: alle 128 FEM-Fälle und
+alle drei Modellbewertungen waren erfolgreich; undefinierte relative Fehler
+gab es nicht. Die relative Metrik ist in Prozent angegeben, der P95 verwendet
+Nearest Rank.
+
+| Seed | Mittlerer Absolutfehler [m] | Median relativ | P95 relativ |
+|---:|---:|---:|---:|
+| 42 | 2,00e-6 | 1,62 % | 6,64 % |
+| 43 | 2,02e-6 | 1,74 % | 9,92 % |
+| 44 | 2,78e-6 | 2,86 % | 31,14 % |
+
+Der Median dieser drei Seed-Metriken beträgt 2,02e-6 m mittleren
+Absolutfehler, 1,74 % Medianfehler und 9,92 % P95. Diese Werte gelten für
+die eingefrorene Konfiguration und diesen Testentwurf; die drei Seeds sind
+keine zusätzlichen Testfälle. Der Testsplit ist nach Sichtung nicht mehr
+unberührt und darf nicht zur nachträglichen Modellauswahl verwendet werden.
+Die Einzelergebnisse stehen in
+`experiments/pod_mlp_weighted_independent_test_20261109/evaluation/summary.csv`.
+
 ## Frischer Vergleich der beiden POD-MLP-Losses
 
 `runPodMlpFreshValidationComparison(OUTPUTDIR,CASECOUNT,DESIGNSEED,IDSTART)`
