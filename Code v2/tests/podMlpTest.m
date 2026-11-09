@@ -48,6 +48,34 @@ classdef podMlpTest < matlab.unittest.TestCase
             prediction=surrogate.predictModel(model,request);
             testCase.verifyTrue(all(isfinite(prediction.displacementFields),'all'));
         end
+        function weightedFieldLossUsesSharedCoefficientScale(testCase)
+            data=makeContractData("static","train");
+            cfg=podMlpTest.config(); cfg.lossMode="weighted_field_mse";
+            model=surrogate.fitModel("pod_mlp",data,cfg);
+            testCase.verifyEqual(model.state.lossMode,"weighted_field_mse");
+            testCase.verifyEqual(model.state.coefficientScale, ...
+                repmat(model.state.coefficientScale(1),1,cfg.rank));
+            testCase.verifyEqual(model.state.settings.lossMode,"weighted_field_mse");
+        end
+        function unsupportedLossModeRejected(testCase)
+            data=makeContractData("static","train");
+            cfg=podMlpTest.config(); cfg.lossMode="unweighted_field_mse";
+            testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg), ...
+                'surrogate:pod_mlp:Config');
+        end
+        function optimizerSelectionAndValidation(testCase)
+            data=makeContractData("static","train");
+            for optimizer=["rmsprop","sgdm"]
+                cfg=podMlpTest.config(); cfg.optimizer=optimizer;
+                [model,report]=surrogate.fitModel("pod_mlp",data,cfg);
+                testCase.verifyEqual(report.optimizer,optimizer);
+                testCase.verifyEqual(model.state.settings.optimizer,optimizer);
+                testCase.verifyEqual(model.state.lossMode,"per_coefficient_mse");
+            end
+            cfg=podMlpTest.config(); cfg.optimizer="unsupported";
+            testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg), ...
+                'surrogate:pod_mlp:Config');
+        end
         function invalidRankRejected(testCase)
             data=makeContractData("static","train");
             cfg=podMlpTest.config(); cfg.rank=2;

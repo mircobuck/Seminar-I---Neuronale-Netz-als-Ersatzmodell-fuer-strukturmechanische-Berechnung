@@ -1,6 +1,7 @@
 function run_data_generation_v2(stage, configFile, out)
 %RUN_DATA_GENERATION_V2 Create and assign static/modal FEM reference data.
-% Stages: design, static_train_val, modal_train_val, static_test, modal_test.
+% Stages: design, static_train_val, static_val, modal_train_val, static_test,
+% modal_test. STATIC_VAL generates only the assigned static validation cases.
 if nargin==0
     fprintf(['Stages:\n' ...
         '  run_data_generation_v2("design")\n' ...
@@ -11,7 +12,7 @@ if nargin==0
     return
 end
 stage=validatestring(char(stage), ...
-    {'design','static_train_val','modal_train_val','static_test','modal_test'});
+    {'design','static_train_val','static_val','modal_train_val','static_test','modal_test'});
 root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
 sourceRoot=fullfile(root,'fem_core');
 assert(isfolder(sourceRoot),'femdata:v2:SourceMissing', ...
@@ -50,6 +51,8 @@ end
 switch stage
     case "static_train_val"
         generatePartition(out,cfg,"static",["train","val"]);
+    case "static_val"
+        generatePartition(out,cfg,"static","val");
     case "modal_train_val"
         generatePartition(out,cfg,"modal",["train","val"]);
     case "static_test"

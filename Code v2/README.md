@@ -68,6 +68,41 @@ Median und P95 beziehen sich auf den relativen gewichteten Feldfehler. Der
 POD-Rang ist 10; bei weniger als 32 Fällen entspricht die Batchgröße der
 Fallzahl. Die Ergebnisse sind Pilotwerte auf dem Validierungssplit.
 
+### Probelauf: Trainings-Loss
+
+`examples/runPodMlpLossPilot.m` vergleicht bei 64 Neuronen und 1–3
+versteckten Schichten die bisherige pro Koeffizient standardisierte MSE mit
+einer gemeinsamen Koeffizientenskalierung. Wegen der gewichteten
+POD-Orthonormalität entspricht deren MSE bis auf einen konstanten Faktor dem
+quadrierten gewichteten Feldfehler. Der Vergleich nutzt dieselben 768
+Trainingsfälle, 12 Validierungsfälle und Seeds 42–44; Testdaten werden nicht
+geladen. Pro Loss, Tiefe und Seed entsteht ein gespeichertes Modell.
+Versuchsplan und Ergebnisdokumentation:
+[`experiments/POD_MLP_LOSS_PILOT_20261107.md`](experiments/POD_MLP_LOSS_PILOT_20261107.md).
+Ergebnisse: `experiments/pod_mlp_loss_pilot_20261107/summary.csv`.
+
+Der vollständige Vergleich der neuen Loss über die Breiten 64/128, Tiefen 1–5
+und Trainingsgrößen 12–768 mit drei Seeds umfasst 210 Modellläufe.
+Versuchsplan und Dokumentation:
+[`experiments/POD_MLP_LOSS_STUDY_20261107.md`](experiments/POD_MLP_LOSS_STUDY_20261107.md).
+Starten mit `addpath('examples'); result = runPodMlpLossStudy();`. Der Runner
+vergleicht die Ergebnisse direkt mit der vorhandenen alten-Loss-Studie und
+nutzt ausschließlich Validierungsdaten.
+Der Lauf vom 8. November 2026 ist abgeschlossen; der direkte Vergleich liegt
+in `experiments/pod_mlp_loss_study_20261107/comparison_old_vs_weighted_loss.csv`.
+
+### Frischer Validierungsvergleich der Loss-Funktionen
+
+Für einen Vergleich auf zwölf neuen statischen Fällen kann
+`studies/static_final_evaluation/runPodMlpFreshValidationComparison.m`
+verwendet werden. Der Runner prüft und hasht zuerst alle 420 gespeicherten
+Modelle der beiden Loss-Studien, einschließlich identischer Trainings-IDs
+innerhalb jedes Modellpaars. Erst danach erstellt er mit Seed `20261108` und
+IDs 812001–812012 ein Validierungsdesign und berechnet ausschließlich dessen
+statische FEM-Labels. Training und Testlabels werden nicht erzeugt oder
+geladen. Die dokumentierte Methodik und Ergebnisdateien stehen in
+[`studies/static_final_evaluation/README.md`](studies/static_final_evaluation/README.md).
+
 Dieser Ordner enthaelt einen getrennten Datenworkflow fuer statische
 Verschiebungsfelder und modale Eigenfrequenzen. Die benötigten FEM-Kernfunktionen liegen unter `fem_core` in diesem Ordner.
 Der Workflow benötigt den benachbarten Ordner `Code` nicht. Designs und neu
