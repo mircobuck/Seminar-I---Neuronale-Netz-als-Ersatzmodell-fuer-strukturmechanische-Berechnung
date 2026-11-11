@@ -1,7 +1,6 @@
 function validateTrainingSplits(trainingData,validationData)
 %validateTrainingSplits Check training and validation data are disjoint.
-surrogate.validateDataset(trainingData);
-surrogate.validateDataset(validationData);
+%   Expects contract data from surrogate.loadDataset or validateDataset.
 assert(string(trainingData.split)=="train" && string(validationData.split)=="val" && ...
     string(trainingData.modality)==string(validationData.modality), ...
     'surrogate:splits:Role','Expected training and validation splits of the same task.');

@@ -1,5 +1,36 @@
 # Code v2: FEM-Referenzdaten
 
+## Einheitlicher Modellvergleich: L2-Auswertung
+
+Die statische Vergleichsmetrik ist der relative, gewichtete L2-Fehler je
+Balkenfall: `sqrt(sum(w.*(u_pred-u_ref).^2))/sqrt(sum(w.*u_ref.^2))`.
+Ausgewertet werden **Median, arithmetischer Mittelwert, Nearest-Rank-P95 und
+Maximum** der Fallfehler in Prozent. Der Mittelwert ist die Hauptmetrik.
+Bei Referenznorm null bleibt der relative Fehler undefiniert; die Anzahl wird
+berichtet. Verschiebungen werden vor der Fehlerberechnung nicht gemittelt.
+
+Die erneute Auswertung der gespeicherten Architektur-/Loss-, Optimierer-,
+Lernraten-, Breiten- und POD-Rang-Studien wird aus `Code v2` gestartet:
+
+```matlab
+addpath('studies/static_final_evaluation')
+result = runL2Reevaluation();
+plotL2Reevaluation(fullfile('experiments','l2_reevaluation_20261111'));
+```
+
+Der Ausgabeordner `experiments/l2_reevaluation_20261111` muss neu sein. Dort
+liegen `ERGEBNISSE.md`, Kennzahlen je Seed und Konfiguration, Fallfehler,
+Vergleichsplots sowie Modell-, Referenz- und Code-Hashes. Die Modelle werden
+geladen und ihre Vorhersagen neu berechnet; es erfolgt kein Training und keine
+FEM. Produktive Testlabels werden nicht geladen. Für weitere Läufe einen neuen
+Ausgabeordner als Argument übergeben. Die erneute Auswertung derselben
+Validierungsfälle ist kein unabhängiger Abschlusstest.
+
+Die Konfigurationsübersicht mittelt jede der vier Kennzahlen über drei Seeds.
+`MaximumPercent` ist der Mittelwert ihrer Fallmaxima;
+`WorstObservedMaximumPercent` zeigt zusätzlich das tatsächlich größte Maximum.
+Die Seeds werden nicht als zusätzliche unabhängige Balkenfälle gezählt.
+
 ## POD-MLP für statische Verschiebungsfelder
 
 Das Modell `pod_mlp` berechnet eine gewichtete, mittelwertzentrierte POD-Basis

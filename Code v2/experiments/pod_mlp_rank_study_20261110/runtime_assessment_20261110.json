@@ -1,0 +1,23 @@
+{
+  "measurementDate": "2026-11-10",
+  "matlabVersion": "25.2.0.3042426 (R2025b) Update 1",
+  "model": "POD-MLP rank15 width64 layers2 seed43 CPU",
+  "timingMethod": "timeit after warmup, loaded model and inputs, public surrogate.predictModel including reconstruction and validation; no disk I/O",
+  "singleCaseSeconds": 0.0151895543,
+  "batch128Seconds": 0.016002654300000002,
+  "batch128SecondsPerCase": 0.00012502073671875002,
+  "historicalTrainingFemMedianSeconds": 1.80729895,
+  "historicalTrainingFemMeanSeconds": 2.1261947296875,
+  "historicalValidationFemMedianSeconds": 2.9047488,
+  "historicalValidationFemMeanSeconds": 4.1916109578125,
+  "historical768TrainingFemSumSeconds": 1632.9175524000002,
+  "historical128ValidationFemSumSeconds": 536.5262026,
+  "historicalComparableRank10FitSeconds": [
+    52.5883405,
+    55.5634164,
+    44.5586097
+  ],
+  "caveat": "FEM timings and rank10 training timings are historical, not a simultaneous controlled benchmark. Offline sums are accumulated per-case solver time, not parallel wall time. Parameter tuning and test-generation costs excluded.",
+  "illustrativeOfflineSeconds": 2222.0320955,
+  "illustrativeBreakEvenAdditionalCases": 1052.594338188735
+}

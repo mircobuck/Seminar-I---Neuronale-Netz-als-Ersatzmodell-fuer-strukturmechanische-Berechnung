@@ -1,13 +1,11 @@
 function data = loadDataset(filePath)
 %loadDataset Load and validate an existing Code v2 split.
-data = loadFemDataset(filePath);
+[data, T] = loadFemDataset(filePath);
 c = surrogate.contract(data.modality);
 data.contractVersion = c.version;
 data.parameterUnits = c.parameterUnits;
 surrogate.validateDataset(data);
 % A matching header alone does not establish that this CSV belongs to the MAT.
-designPath=fullfile(fileparts(filePath),'design.csv');
-T=readtable(designPath,'TextType','string');
 assert(ismember('id',T.Properties.VariableNames) && ...
     ismember('split',T.Properties.VariableNames) && ...
     numel(unique(T.id))==height(T), ...

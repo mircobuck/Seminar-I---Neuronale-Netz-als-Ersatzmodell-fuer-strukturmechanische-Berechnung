@@ -1,0 +1,1 @@
+﻿Stopped before metrics were saved: historical per-coefficient models do not store state.lossMode. The evaluator now handles their historical default explicitly. This folder is an incomplete attempt, not study results.

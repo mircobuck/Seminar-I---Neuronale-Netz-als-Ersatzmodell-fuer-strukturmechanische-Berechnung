@@ -97,8 +97,8 @@ erlauben der Auswertung, unterschiedliche Reihenfolgen zwischen Vorhersage und
 Referenz zu erkennen, beweisen aber nicht die interne Zuordnung eines Modells.
 
 Das Verfahren gibt physikalische, rücktransformierte Werte zurück: statisch
-1575 × N in Metern, modal N × 6 in Hz. Der Wrapper prüft Version, Aufgabe,
-Parameter, Einheiten, Gitter, Größe und endliche reelle Werte. Es findet keine
+1575 × N in Metern, modal N × 6 in Hz. Der Wrapper prueft Parameterreihenfolge und Einheiten der Anfrage, das
+Modellgitter sowie Groesse und endliche reelle Werte der Ausgabe. Es findet keine
 FEM-Berechnung, Sortierung oder Korrektur der Vorhersage statt. Ein neues Modell
 entspricht genau einer Aufgabe. Die Implementierung ist unter der Paketkennung
 auffindbar; unbekannte Kennungen führen zu einem Fehler.
@@ -125,6 +125,13 @@ Modal: absoluter Fehler in Hz und relativer Fehler pro Fall und Frequenz.
 `nonpositivePrediction` und `nonmonotonePrediction` markieren Auffälligkeiten;
 Werte werden nicht verändert. Die gemeinsame Funktion liefert Fehler pro Fall;
 Aggregation und Studienprotokoll gehören in die jeweilige Studiensteuerung.
+Für den statischen Vergleich werden Median, arithmetischer Mittelwert,
+Nearest-Rank-P95 und Maximum der relativen gewichteten L2-Fallfehler berichtet.
+Die Hauptmetrik ist der Mittelwert. Null-Referenzen werden ausgeschlossen und
+gezählt, nicht durch einen künstlichen Nenner ersetzt. Bei zwölf Fällen ist
+Nearest-Rank-P95 das Maximum. Statistiken werden zuerst pro Seed über die
+Balkenfälle berechnet. Eine Zusammenfassung über Seeds muss ihre Aggregation
+ausdrücklich benennen; Seeds sind keine zusätzlichen unabhängigen Balkenfälle.
 Der statische Abschlusstest unter
 `studies/static_final_evaluation/` aggregiert Mittelwert, Median,
 Nearest-Rank-P95 und Maximum, dokumentiert `NaN`-Gründe und erzeugt eigene
@@ -146,3 +153,27 @@ Die Checks erkennen formale Abweichungen. Ein fehlerhaftes Verfahren kann eine
 falsche interne Reihenfolge oder Skalierung trotzdem behaupten; jedes Modellteam
 muss daher eigene aussagekräftige numerische Tests ergänzen. Datei- und
 Versionsmetadaten ersetzen keine vollständige Reproduzierbarkeitsprüfung.
+
+## Validierungsgrenzen nach dem Cleanup (2026-11-11)
+
+`surrogate.loadDataset` prueft den Datenvertrag einmal beim Laden und gleicht
+Fall-IDs, Split und Parameter mit `design.csv` ab. Die CSV wird dabei nur einmal
+gelesen; `loadFemDataset` liefert sie bei Bedarf als zweiten Rueckgabewert.
+`fitModel`, `validateTrainingSplits`, `plotStaticComparison` und
+`evaluatePrediction` setzen diese Datenstruktur voraus und wiederholen die
+vollstaendige Datensatzpruefung nicht. Manuell aufgebaute oder strukturell
+veraenderte Daten koennen ausdruecklich mit `surrogate.validateDataset` geprueft
+werden. Die Feldnamen und Dimensionen des Vertrags gelten weiterhin.
+
+Modellartefakte aus `fitModel` werden ohne wiederholte Feldlistenpruefung geladen
+und gespeichert. Fehlende Pflichtfelder und Dateien melden die MATLAB-Zugriffe
+selbst. `predictModel` erwartet Modelle aus dieser Pipeline und Anfragen im
+beschriebenen Format; es validiert nicht mehr saemtliche Eingabefelder und IDs.
+
+Erhalten bleiben fachliche Pruefungen: Split-Rollen und Ueberschneidungen,
+Zuordnung von Vorhersagen zu Referenzfaellen, Parameterreihenfolge und Einheiten,
+Gitter, numerische Ausgaben, POD-Rang und Trainingsoptionen. Ebenso bleiben
+Ueberschreibschutz, Checkpoint-/Hash-Abgleiche und Vollstaendigkeitspruefungen der
+Studien bestehen. Optionale `lossMode`-/`optimizer`-Felder und historische
+Modellvarianten benoetigen weiterhin `isfield`. Die Regressionstests pruefen
+Berechnung und Ablauf unabhaengig von diesen Laufzeitabsicherungen.

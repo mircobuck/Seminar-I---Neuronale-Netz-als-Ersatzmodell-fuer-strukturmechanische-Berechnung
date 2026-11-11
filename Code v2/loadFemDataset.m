@@ -1,21 +1,18 @@
-function dataset = loadFemDataset(filePath)
+function [dataset, design] = loadFemDataset(filePath)
 %loadFemDataset - Load a FEM split with descriptive field names
 %   DATASET = loadFemDataset(FILEPATH) loads a static or modal split
 %   without changing the MAT-file or the original data values.
+%   [DATASET, DESIGN] also returns the associated design table.
 
 loaded = load(filePath, 'D');
-assert(isfield(loaded, 'D'), 'femdata:load:MissingDataset', ...
-    'The MAT-file does not contain the D structure.');
 source = loaded.D;
 dataset.schema = source.schema;
 dataset.modality = source.modality;
 dataset.split = source.split;
 dataset.caseIds = source.id;
 dataset.inputParameters = source.X;
-% Die Spaltennamen stammen aus dem Design, das zu diesem Split geh?rt.
+% Parameter names come from the design belonging to this split.
 designPath = fullfile(fileparts(filePath), 'design.csv');
-assert(isfile(designPath), 'femdata:load:MissingDesign', ...
-    'Cannot find the design file: %s', designPath);
 design = readtable(designPath, 'TextType', 'string');
 parameterNames = string(design.Properties.VariableNames);
 parameterNames = parameterNames(~ismember(parameterNames, ["id", "split"]));

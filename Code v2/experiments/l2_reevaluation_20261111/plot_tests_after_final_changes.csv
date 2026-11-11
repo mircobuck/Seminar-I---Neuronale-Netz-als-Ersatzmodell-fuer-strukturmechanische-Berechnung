@@ -1,0 +1,4 @@
+Name,Passed
+staticComparisonTest/knownErrorsAndMultipleModels,1
+staticComparisonTest/undefinedRelativeErrorsRemainVisible,1
+staticComparisonTest/testSplitRejected,1

@@ -1,0 +1,12 @@
+Error using exportgraphics
+Input was not a valid graphics object.
+
+Error in plotPodMlpLearningCurve (line 44)
+    exportgraphics(figures(metric),fullfile(outputDir,files{metric}),'Resolution',160);
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in runPodMlpLearningCurve (line 71)
+plotPodMlpLearningCurve(outputDir);
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in runStatic768Study (line 31)
+                summary=runPodMlpLearningCurve(folder,layers,width,768);
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,4 +1,4 @@
-﻿function plotSixLayerComparison(root)
+function plotSixLayerComparison(root)
 dirs={'mein_lernkurven_lauf','lernkurven_2_hidden_layer','lernkurven_3_hidden_layer', ...
     'lernkurven_4_hidden_layer','lernkurven_5_hidden_layer','lernkurven_6_hidden_layer'};
 data=cell(1,6);
@@ -12,10 +12,10 @@ for m=2:6
         assert(isequal(ref.metrics.caseIds,d.details(j).metrics.caseIds));
     end
 end
-names={'Mittlerer Absolutfehler','Median','P95'};
-files={'vergleich_1_bis_6_absolut.png','vergleich_1_bis_6_median.png','vergleich_1_bis_6_p95.png'};
+names={'Mittlerer Absolutfehler','Median','P95','Mittelwert relativer L2-Fehler (Hauptmetrik)','Maximum relativer L2-Fehler'};
+files={'vergleich_1_bis_6_absolut.png','vergleich_1_bis_6_median.png','vergleich_1_bis_6_p95.png','vergleich_1_bis_6_relative_l2_mean.png','vergleich_1_bis_6_relative_l2_maximum.png'};
 colors=lines(6); outputDir=fullfile(root,dirs{6});
-for metric=1:3
+for metric=1:5
     f=figure('Visible','off','Position',[100 100 1500 520]);
     t=tiledlayout(f,1,numel(base.seeds),'TileSpacing','compact');
     for k=1:numel(base.seeds)
@@ -27,14 +27,25 @@ for metric=1:3
                 row=find(d.summary.Seed==base.seeds(k) & d.summary.TrainingCases==d.counts(n));
                 if metric==1, values(n)=mean(d.details(ix).metrics.absoluteWeightedFieldError);
                 elseif metric==2, values(n)=d.summary.MedianRelativePercent(row);
-                else, values(n)=d.summary.P95RelativePercent(row); end
+                elseif metric==3, values(n)=d.summary.P95RelativePercent(row);
+                else
+                    metrics=d.details(ix).metrics;
+                    relative=metrics.relativeWeightedFieldError(metrics.relativeErrorDefined);
+                    if isempty(relative)
+                        values(n)=NaN;
+                    elseif metric==4
+                        values(n)=100*mean(relative);
+                    else
+                        values(n)=100*max(relative);
+                    end
+                end
             end
             plot(ax,d.counts,values,'-o','Color',colors(m,:),'LineWidth',1.3, ...
                 'DisplayName',sprintf('%d Schicht(en)',m));
         end
         grid(ax,'on'); xticks(ax,base.counts); xlabel(ax,'Trainingsfälle');
         if metric==1, ylabel(ax,'Mittlerer gewichteter absoluter Feldfehler [m]');
-        else, ylabel(ax,'Gewichteter relativer Feldfehler [%]'); end
+        else, ylabel(ax,'Relativer gewichteter L2-Fehler [%]'); end
         title(ax,sprintf('Seed %d',base.seeds(k)));
         if k==1, legend(ax,'Location','best'); end
     end

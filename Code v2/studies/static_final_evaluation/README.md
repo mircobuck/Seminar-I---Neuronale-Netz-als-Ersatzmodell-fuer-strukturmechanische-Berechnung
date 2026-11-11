@@ -110,6 +110,113 @@ unberührt und darf nicht zur nachträglichen Modellauswahl verwendet werden.
 Die Einzelergebnisse stehen in
 `experiments/pod_mlp_weighted_independent_test_20261109/evaluation/summary.csv`.
 
+## Breitenstudie mit zwei versteckten Schichten
+
+`examples/runPodMlpWidthStudy.m` vergleicht Breiten von 16, 20, 32, 40, 64,
+80, 100 und 128 Neuronen je versteckter Schicht bei konstant zwei Schichten. Alle
+Modelle verwenden `weighted_field_mse`, 768 Trainingsfälle, Adam mit
+Lernrate 0,001, 200 Epochen und Seeds 42/43/44. Ausgewertet werden dieselben
+128 Validierungsfälle (IDs 813001–813128), die bereits für vorherige
+Modellvergleiche verwendet wurden. Die Studie ist explorativ; Testdaten werden
+nicht geladen.
+
+Der Lauf ist abgeschlossen und liegt unter
+`experiments/pod_mlp_width_study_20261109_with128/`. Die ursprüngliche Studie
+unter `experiments/pod_mlp_width_study_20261109/` bleibt erhalten. Ihre 18
+Modelle und Einzelfehler wurden unverändert übernommen; nur Breite 100 wurde
+mit denselben drei Seeds und Trainings-IDs ergänzt. Anschließend wurden die
+21 Modelle aus `pod_mlp_width_study_20261109_with100/` unverändert übernommen
+und um drei Läufe mit Breite 128 ergänzt. Der gemeinsame Vergleich enthält
+24 Modelle und 3072 Fallfehler. Die folgenden Kennzahlen sind
+je Breite erst pro Seed über 128 Fälle bestimmt und anschließend als Median
+über die drei Seeds zusammengefasst:
+
+| Neuronen je Schicht | Mittlerer Absolutfehler [m] | Median relativ | P95 relativ |
+|---:|---:|---:|---:|
+| 16 | 2,66e-6 | 3,37 % | 19,65 % |
+| 20 | 1,95e-6 | 2,47 % | 18,52 % |
+| 32 | 1,73e-6 | 2,03 % | 12,83 % |
+| 40 | 1,57e-6 | 1,63 % | 19,03 % |
+| 64 | 1,51e-6 | 1,61 % | 13,72 % |
+| 80 | 1,54e-6 | 1,77 % | 15,48 % |
+| 100 | 1,76e-6 | 2,17 % | 17,36 % |
+| 128 | 1,71e-6 | 2,00 % | 15,13 % |
+
+Breite 64 hatte in diesem Vergleich den niedrigsten aggregierten Medianfehler
+und mittleren Absolutfehler; der niedrigste P95 trat bei Breite 32 auf. Die
+Ergebnisse zeigen keinen monotonen Gewinn durch weiteres Verbreitern.
+Breite 100 verschlechtert alle drei aggregierten Kennzahlen gegenüber 64
+und 80 Neuronen. Breite 128 verbessert die drei Kennzahlen gegenüber 100,
+bleibt bei Absolutfehler und Median aber hinter 64 und 80 zurück. Die
+Einzelergebnisse aller Seeds und Fälle stehen in `model_metrics.csv` und
+`validation_case_errors.csv`; `summary_by_width.csv` enthält die Aggregation.
+`error_by_width.png` und `error_by_case.png` sind die exportierten MATLAB-
+Plots, die editierbaren MATLAB-Figuren liegen als `.fig` daneben.
+
+## POD-Rangstudie
+
+`examples/runPodMlpRankStudy.m` vergleicht POD-Ränge 1, 2, 4, 6, 8, 10,
+15 und 20 bei Breite 64 und zwei versteckten Schichten. Konstant bleiben
+`weighted_field_mse`, `tanh`, Adam mit Lernrate 0,001, 200 Epochen,
+Batchgröße 32 und dieselben 768 Trainingsfälle mit derselben Reihenfolge
+je Seed 42/43/44. Die drei bestehenden Rang-10-Modelle aus der Breitenstudie
+dienen als Kontrolle; die anderen 21 Modelle werden neu trainiert.
+
+Bewertet werden ausschließlich die bereits verwendeten 128 Validierungsfälle
+813001–813128. Der Vergleich bleibt explorativ; Testdaten werden nicht geladen.
+Die POD-Basis und die Normierung werden allein aus Trainingsdaten bestimmt.
+Erhaltene POD-Energie bezeichnet die gewichtete, zentrierte Variation der
+Trainingsfelder und ist keine Genauigkeitsangabe für die Netzvorhersage.
+
+Zusätzlich zur vollständigen POD-MLP-Vorhersage wird das Referenzfeld auf die
+jeweilige Trainings-POD-Basis projiziert. Der Fehler dieser Projektion misst
+die Begrenzung durch die Modenzahl bei exakt bekannten Koeffizienten. Er ist
+eine Diagnose mit Referenzdaten, keine praktisch verfügbare Netzvorhersage.
+Der Runner prüft die gewichtete quadratische Zerlegung in Projektionsfehler
+und Koeffizientenvorhersagefehler für jeden Fall. Eine Rangänderung verändert
+auch die Ausgabedimension, die Initialisierung und die gemeinsame RMS-Skala
+der Zielkoeffizienten in der bestehenden Implementierung.
+
+Ergebnisse und wiederaufnehmbare Modellartefakte liegen unter
+`experiments/pod_mlp_rank_study_20261110/`. `model_metrics.csv` enthält die
+Seed-Metriken und `validation_case_errors.csv` die einzelnen Fallfehler.
+`summary_by_rank.csv` aggregiert per Median über die drei Seeds. Der P95 wird
+pro Modell als Nearest Rank über die 128 Fälle berechnet. `model_manifest.csv`
+dokumentiert Pfade, SHA-256-Hashes und wiederverwendete Kontrollen.
+`error_by_rank.fig/.png` zeigt den Rangvergleich;
+`pod_projection_diagnostics.fig/.png` zeigt die POD-Diagnose.
+
+Der Lauf ist abgeschlossen: 24 Modellbewertungen auf jeweils 128 Fällen,
+darunter 21 neu trainierte Modelle und drei unveränderte Rang-10-Kontrollen.
+Die Kontrolle reproduziert die bisherigen Absolut-, Median- und P95-Metriken.
+
+| POD-Rang | Mittlerer Absolutfehler [µm] | Median relativ | P95 relativ |
+|---:|---:|---:|---:|
+| 1 | 2,25 | 3,14 % | 25,01 % |
+| 2 | 1,49 | 1,76 % | 14,93 % |
+| 4 | 1,81 | 2,22 % | 24,92 % |
+| 6 | 1,54 | 2,04 % | 14,75 % |
+| 8 | 1,46 | 1,74 % | 17,31 % |
+| 10 | 1,51 | 1,61 % | 13,72 % |
+| 15 | 1,20 | 1,32 % | 12,05 % |
+| 20 | 1,41 | 1,75 % | 15,89 % |
+
+Alle Tabellenwerte sind Mediane über die drei Seed-Metriken. Rang 15 ist in
+diesem Vergleich bei allen drei aggregierten Kennzahlen am besten; sein
+Medianfehler liegt etwa 18 % unter Rang 10. Eine monotone Verbesserung mit
+steigendem Rang ist nicht erkennbar. Der reine POD-Projektionsmedian sinkt
+von 1,384 % bei Rang 1 auf 0,0469 % bei Rang 2 und 0,000308 % bei Rang 15.
+Ab Rang 2 ist der Darstellungsfehler damit viel kleiner als der gesamte
+Netzfehler. Der Vorteil von Rang 15 belegt keine entsprechend große Verbesserung
+der POD-Darstellung; Rang beeinflusst zugleich das zu trainierende Netz.
+Dies ist eine explorative Rangwahl bei festem Trainingsbudget, keine neue
+unabhängige Testbewertung oder universelle Aussage zum optimalen POD-Rang.
+
+```matlab
+addpath('examples')
+result = runPodMlpRankStudy();
+```
+
 ## Frischer Vergleich der beiden POD-MLP-Losses
 
 `runPodMlpFreshValidationComparison(OUTPUTDIR,CASECOUNT,DESIGNSEED,IDSTART)`

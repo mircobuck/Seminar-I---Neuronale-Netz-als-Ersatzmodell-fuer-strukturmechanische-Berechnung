@@ -1,0 +1,1 @@
+﻿Stopped before metrics were saved: historical one-layer models omit config.hiddenLayers. The evaluator now derives depth from the stored network and cross-checks explicit metadata. Incomplete attempt, not study results.

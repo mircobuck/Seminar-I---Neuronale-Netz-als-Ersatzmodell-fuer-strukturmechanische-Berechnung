@@ -8,12 +8,12 @@ assert(all(arrayfun(@(x)isequal(x.metrics.caseIds,ids),details)), ...
     'surrogate:learningCurve:Cases','Validation case IDs or order differ.');
 
 % The absolute curve is the mean of all validation-case absolute errors.
-names={'Absolutfehler','Median','P95'};
-files={'absolut_lernkurve.png','median_lernkurve.png','p95_lernkurve.png'};
-figures=gobjects(1,3);
-for metric=1:3
+names={'Absolutfehler','Median','P95','Mittelwert relativer L2-Fehler (Hauptmetrik)','Maximum relativer L2-Fehler'};
+files={'absolut_lernkurve.png','median_lernkurve.png','p95_lernkurve.png','relative_l2_mean_lernkurve.png','relative_l2_maximum_lernkurve.png'};
+figures=gobjects(1,5);
+for metric=1:5
     figures(metric)=figure('Name',names{metric},'NumberTitle','off');
-    ax=axes(figures(metric)); hold(ax,'on');
+    ax=axes('Parent',figures(metric)); hold(ax,'on');
     for seed=seeds
         values=nan(size(counts));
         for j=1:numel(counts)
@@ -25,8 +25,18 @@ for metric=1:3
                 values(j)=mean(details(index).metrics.absoluteWeightedFieldError);
             elseif metric==2
                 values(j)=summary.MedianRelativePercent(row);
-            else
+            elseif metric==3
                 values(j)=summary.P95RelativePercent(row);
+            else
+                metrics=details(index).metrics;
+                relative=metrics.relativeWeightedFieldError(metrics.relativeErrorDefined);
+                if isempty(relative)
+                    values(j)=NaN;
+                elseif metric==4
+                    values(j)=100*mean(relative);
+                else
+                    values(j)=100*max(relative);
+                end
             end
         end
         plot(ax,counts,values,'-o','DisplayName',sprintf('Seed %d',seed));
@@ -36,9 +46,9 @@ for metric=1:3
     if metric==1
         ylabel(ax,'Mittlerer gewichteter absoluter Feldfehler [m]');
     else
-        ylabel(ax,'Gewichteter relativer Feldfehler [%]');
+        ylabel(ax,'Relativer gewichteter L2-Fehler [%]');
     end
-    title(ax,sprintf('POD_MLP_ADAM_64: %s, Validierung (%d Fälle)',names{metric},numel(ids)), ...
+    title(ax,sprintf('POD-MLP: %s, Validierung (%d Fälle)',names{metric},numel(ids)), ...
         'Interpreter','none');
     legend(ax,'Location','best');
     exportgraphics(figures(metric),fullfile(outputDir,files{metric}),'Resolution',160);

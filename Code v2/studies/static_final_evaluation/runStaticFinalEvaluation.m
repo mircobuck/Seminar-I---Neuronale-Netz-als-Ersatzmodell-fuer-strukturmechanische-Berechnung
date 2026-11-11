@@ -88,6 +88,9 @@ for k=1:n
     summary.Status(k)=details(k).status;
 end
 metadata=struct('task',"static_displacement_field",'datasetId',string(config.datasetId), ...
+    'primaryMetric',"mean_relative_weighted_l2_error", ...
+    'primaryMetricSummaryColumn',"RelativeMean", ...
+    'undefinedRelativeErrorPolicy',"exclude_and_report_count", ...
     'datasetFile',string(config.datasetFile),'split',string(config.split), ...
     'caseIds',reference.caseIds,'matlabVersion',string(version), ...
     'createdAt',string(datetime('now','TimeZone','UTC','Format','yyyy-MM-dd''T''HH:mm:ssXXX')));
@@ -110,16 +113,24 @@ values=[mean(x),median(x),x(ceil(.95*numel(x))),max(x)];
 end
 
 function plotResults(summary,outputDir)
-names={'Mittlerer Absolutfehler','Median','P95'};
-fields={'AbsoluteMeanM','AbsoluteMedianM','AbsoluteP95M'};
-files={'absolute_mean.png','median.png','p95.png'};
-for i=1:3
+names={'Mittlerer Absolutfehler','Median','P95','Mittelwert relativer L2-Fehler (Hauptmetrik)', ...
+    'Median relativer L2-Fehler','P95 relativer L2-Fehler','Maximum relativer L2-Fehler'};
+fields={'AbsoluteMeanM','AbsoluteMedianM','AbsoluteP95M','RelativeMean', ...
+    'RelativeMedian','RelativeP95','RelativeMax'};
+files={'absolute_mean.png','median.png','p95.png','relative_l2_mean.png', ...
+    'relative_l2_median.png','relative_l2_p95.png','relative_l2_maximum.png'};
+for i=1:numel(fields)
     fig=figure('Visible','off','Name',names{i});
     cleanup=onCleanup(@()close(fig));
     ax=axes(fig); values=summary.(fields{i});
+    if i>=4, values=100*values; end
     bar(ax,values); xticks(ax,1:height(summary)); xticklabels(ax,summary.Model);
     ax.TickLabelInterpreter='none'; xtickangle(ax,30); grid(ax,'on');
-    ylabel(ax,'Gewichteter absoluter Feldfehler [m]');
+    if i>=4
+        ylabel(ax,'Relativer gewichteter L2-Fehler [%]');
+    else
+        ylabel(ax,'Gewichteter absoluter Feldfehler [m]');
+    end
     title(ax,[names{i} ' – Testsplit']);
     exportgraphics(fig,fullfile(outputDir,files{i}),'Resolution',150);
     clear cleanup

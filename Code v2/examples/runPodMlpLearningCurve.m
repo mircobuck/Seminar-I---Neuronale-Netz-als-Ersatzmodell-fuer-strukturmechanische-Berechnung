@@ -52,10 +52,11 @@ for seed=seeds
             'report',report,'metrics',metrics,'modelFile',file);
     end
 end
-summary=table('Size',[numel(details) 6], ...
-    'VariableTypes',{'double','double','double','double','double','double'}, ...
+summary=table('Size',[numel(details) 8], ...
+    'VariableTypes',repmat({'double'},1,8), ...
     'VariableNames',{'TrainingCases','Seed','MeanAbsoluteError_m', ...
-    'MedianRelativePercent','P95RelativePercent','UndefinedCount'});
+    'MedianRelativePercent','P95RelativePercent','UndefinedCount', ...
+    'MeanRelativePercent','MaximumRelativePercent'});
 for k=1:numel(details)
     errors=sort(details(k).metrics.relativeWeightedFieldError(details(k).metrics.relativeErrorDefined));
     summary.TrainingCases(k)=details(k).count; summary.Seed(k)=details(k).seed;
@@ -63,7 +64,10 @@ for k=1:numel(details)
     summary.UndefinedCount(k)=nnz(~details(k).metrics.relativeErrorDefined);
     if isempty(errors)
         summary.MedianRelativePercent(k)=NaN; summary.P95RelativePercent(k)=NaN;
+        summary.MeanRelativePercent(k)=NaN; summary.MaximumRelativePercent(k)=NaN;
     else
+        summary.MeanRelativePercent(k)=100*mean(errors);
+        summary.MaximumRelativePercent(k)=100*max(errors);
         summary.MedianRelativePercent(k)=100*median(errors);
         summary.P95RelativePercent(k)=100*errors(ceil(.95*numel(errors)));
     end

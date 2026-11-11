@@ -116,7 +116,8 @@ classdef surrogateContractTest < matlab.unittest.TestCase
             filePath=fullfile(projectRoot,'data_generation','data','static','train.mat');
             testCase.assumeTrue(isfile(filePath),'Optional real training dataset not present.');
             data=surrogate.loadDataset(filePath);
-            testCase.verifySize(data.inputParameters,[384,6]);
+            % Static training was extended to 768 cases on 2026-11-05.
+            testCase.verifySize(data.inputParameters,[768,6]);
             testCase.verifyEqual(string(data.split),"train");
         end
         function productionModalSplitsCanBeLoaded(testCase)
