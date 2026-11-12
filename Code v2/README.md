@@ -274,3 +274,8 @@ results = runtests('tests/surrogateContractTest.m');
 Eine Studiensteuerung für Kandidatenauswahl, Modell-Freeze und Abschlussberichte
 ist noch nicht implementiert. Testlabels werden durch den Loader nicht technisch
 gesperrt; der Umgang damit muss im Studienprotokoll festgelegt werden.
+
+## MLP und RBF in der gemeinsamen Architektur
+
+Die Methoden `mlp` und `rbf` sind ueber `surrogate.fitModel` verfuegbar.
+Konfiguration und Beispiel: [Direkte MLP- und RBF-Modelle](docs/SCHNITTSTELLEN.md#direkte-mlp--und-rbf-modelle).

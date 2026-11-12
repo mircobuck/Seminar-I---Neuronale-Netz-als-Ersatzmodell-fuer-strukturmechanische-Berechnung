@@ -1,0 +1,15 @@
+{
+  "inputs_sha256": {
+    "run_results.csv": "04ccb3d3ae005f5b9b9c6632f3425934c9c280c67569e207b847b09b7e2e849f",
+    "case_results.csv": "a91cfa90166a91be4342045446541ebb4ebbf038eec31d7148c419a3a23e6b81",
+    "candidate_design.csv": "9307c8d729fb8a238349a554b7bfe7b1da75f96b921707d5e8296e9296c72eaf",
+    "supplementary_analysis/controlled_pod_diagnostics.csv": "3bfbfa9339e642eaa9738bdcc8553158bf90c435c46d8ae40a9e43dcabb75832",
+    "gpr_fit_timing_repeats.csv": "ee8e82b1259dff3036d1ca5a695ccdb5b16f6fa8894687fcded2bcfcaae523ca",
+    "freeze_manifest.csv": "a7dddb5fa4bb36d5984b0e23367d6f464e34c1a9836d8e3d959076973310342c",
+    "selections.mat": "eab09a0a509e5931bef934d9d8e6655c816d56c0e074324e6ded760de7bd61cc"
+  },
+  "reference_export_sha256": "40ce3d094915175ef1f40a728b90921745c936bcd5cb4e3aba7058a69ab96f45",
+  "analysis_script_sha256": "965c2247e21e645e9eef4bef95ef702c555e48ba47db722bb69823e506aa52da",
+  "outlier_rule": "union of per-method maximum relative-error test cases across full-pool runs; paired comparison uses fixed seed 42",
+  "caveat": "Post-hoc descriptive diagnosis; not model selection; no causal conclusion."
+}

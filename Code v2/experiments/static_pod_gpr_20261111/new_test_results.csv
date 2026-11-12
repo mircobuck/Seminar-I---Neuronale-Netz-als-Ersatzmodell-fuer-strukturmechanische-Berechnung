@@ -1,0 +1,13 @@
+names,passed,failed,incomplete,duration
+podGprTest/sharedPodAndMismatch,1,0,0,4.8874312
+podGprTest/decomposition,1,0,0,0.0830818
+podGprTest/badRankAndSplit,1,0,0,0.2931514
+podGprTest/constantFieldsHaveNoRank,1,0,0,0.0680467
+podGprTest/maternLinearUsesExactGpr,0,1,0,5.5824187
+podGprTest/fitPredictAndPersist,1,0,0,1.0336279
+nestedTrainingSubsetsTest/nestedBalancedAndRngPreserved,1,0,0,0.3773042
+nestedTrainingSubsetsTest/normalizedParameterOverlap,1,0,0,0.1411455
+nestedTrainingSubsetsTest/unbalancedBlocksRejected,1,0,0,0.1425872
+weightedDirectLossTest/weightedObjectiveIsProportional,1,0,0,18.9442834
+weightedDirectLossTest/constantFieldRestored,1,0,0,4.1006611
+weightedDirectLossTest/modalLossRejected,1,0,0,0.4338223

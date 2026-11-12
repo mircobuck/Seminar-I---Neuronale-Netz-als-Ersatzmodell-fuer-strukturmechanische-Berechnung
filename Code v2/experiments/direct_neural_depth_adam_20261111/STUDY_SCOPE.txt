@@ -1,0 +1,11 @@
+Exploratory static validation study, not an independent test.
+768 identical training cases in original order; 128 reused validation cases.
+Methods: direct MLP and RBF+tanh; total hidden depths 1,2,3.
+MLP: depth tanh layers of width 64. RBF: 64 fixed Gaussian features,
+width 1 in standardized input space, then depth-1 tanh layers of width 64.
+Adam, learning rate 0.001, 200 epochs, batch 32, seeds 42/43/44, CPU.
+Training loss: per-output standardized MSE, no POD or weighted-field loss.
+Last training iteration, no validation early stopping; no test data read.
+Selection metric: mean relative weighted L2 case error, averaged over seeds.
+P95: nearest rank per seed; maximum: worst actual case across all seeds.
+Same RBF centers for every seed; seeds change initialization and batch order.

@@ -1,0 +1,3 @@
+PILOT ONLY: no candidate selection or test reference labels.
+Elapsed wall seconds: 587.4901
+Differences compare mesh 4 and 6 separately to mesh 3; not an error bound.

@@ -1,0 +1,35 @@
+--- frozen/studyReport.m
++++ repair/studyReportRepaired.m
+@@ -1,11 +1,11 @@
+-function studyReport(out,cfg)
+-studyCheckFrozen(out); assert(isfile(fullfile(out,'evaluation.complete')),'study:EvaluationIncomplete','Evaluate first.');
+-files=dir(fullfile(out,'evaluation','**','*.mat')); rows=table; cases=table;
++function studyReportRepaired(out,cfg)
++studyCheckFrozen(out); assert(isfile(fullfile(out,'evaluation_repaired.complete')),'study:EvaluationIncomplete','Evaluate first.');
++files=dir(fullfile(out,'evaluation_repaired','**','*.mat')); rows=table; cases=table;
+ for k=1:numel(files)
+     filename=fullfile(files(k).folder,files(k).name); expected=strtrim(fileread(string(filename)+'.sha256'));
+     assert(strcmp(studyHash(filename),expected),'study:EvaluationChanged','Evaluation result changed.');
+     a=load(filename,'observed'); q=a.observed; folder=string(files(k).folder);
+-    runId=extractAfter(folder,strlength(string(fullfile(out,'evaluation')))+1);
++    runId=extractAfter(folder,strlength(string(fullfile(out,'evaluation_repaired')))+1);
+     e=q.relative; good=e(isfinite(e)); avg=NaN; med=NaN; p95=NaN; worst=NaN;
+     if ~isempty(good), good=sort(good); avg=mean(good); med=median(good); p95=good(ceil(.95*numel(good))); worst=max(good); end
+     absolute=mean(q.absolute,'omitnan'); single=NaN; batch=NaN; singleIqr=NaN; batchIqr=NaN;
+@@ -70,7 +70,7 @@
+     end
+ end
+ writetable(summaries,fullfile(out,'pipeline_summary.csv'));
+-root=fileparts(fileparts(fileparts(mfilename('fullpath'))));
++root=fileparts(fileparts(fileparts(which('runStaticGprStudy'))));
+ train=surrogate.loadDataset(fullfile(root,'data_generation','data','static','train.mat'));
+ referenceRole="historical_training_pool"; solverSeconds=sum(train.computationTimeSeconds); activeWallSeconds=NaN;
+ failedCases=NaN; costs=table(referenceRole,solverSeconds,activeWallSeconds,failedCases);
+@@ -115,6 +115,7 @@
+ writetable(repeatTimes,fullfile(out,'gpr_fit_timing_repeats.csv'));
+ summary=fullfile(out,'REPORT.md'); fid=fopen(summary,'w'); cleaner=onCleanup(@()fclose(fid));
+ fprintf(fid,'# Statischer Vier-Methoden-Vergleich\n\nTest-Freeze vor Auswertung geprueft. Details: run_results.csv und case_results.csv.\n\n');
++fprintf(fid,'Technische Auswertekorrektur nach dem urspruenglichen Freeze: siehe evaluation_repair_v1/PROTOKOLL_NACHTRAG.md. Modelle und Auswahl blieben unveraendert.\n\n');
+ fprintf(fid,'Erfolgreiche Lauf/Split-Auswertungen: %d; fehlgeschlagene: %d.\n\n',nnz(rows.status=="ok"),nnz(rows.status~="ok"));
+ fprintf(fid,'Gewichtete relative Fehler sind Fallgroessen; Wiederholungen sind keine zusaetzlichen unabhaengigen Faelle. Interpolation und Extrapolation bleiben getrennt.\n\n');
+ final=summaries(summaries.role=="interpolation" & summaries.n==768 & summaries.failed==0 & isfinite(summaries.meanError),:);

@@ -1,0 +1,18 @@
+{
+  "created_utc": "2026-11-11T18:23:54.093586+00:00",
+  "freeze_sha256": "a7dddb5fa4bb36d5984b0e23367d6f464e34c1a9836d8e3d959076973310342c",
+  "script_sha256": "a7f0c15716e42f30fca4e27c08d7114eefbdbf60dfe56e0660487787ef6d713c",
+  "input_sha256": {
+    "pipeline_summary.csv": "4aebce618f2cff5a45b6a66c0cbeb685bccb0ae527392704389debd0fde3c38f",
+    "run_results.csv": "04ccb3d3ae005f5b9b9c6632f3425934c9c280c67569e207b847b09b7e2e849f",
+    "case_results.csv": "a91cfa90166a91be4342045446541ebb4ebbf038eec31d7148c419a3a23e6b81",
+    "search_costs.csv": "b7cfd694f372e64e86b5987f9fc235e645628583643b3a51fe10ff39399640a9",
+    "reference_costs.csv": "280062e9452cf154de49a3a963b5ce1dd3ebbad7e9d8642b4ca0e9ed3e148954",
+    "gpr_fit_timing_repeats.csv": "ee8e82b1259dff3036d1ca5a695ccdb5b16f6fa8894687fcded2bcfcaae523ca"
+  },
+  "output_sha256": {
+    "pipeline_summary_corrected.csv": "469f21fa3cee2a37fe0bea9f803f3869f59afed9f48c80325ffe6250bb8391fb",
+    "controlled_pod_diagnostics.csv": "3bfbfa9339e642eaa9738bdcc8553158bf90c435c46d8ae40a9e43dcabb75832",
+    "ANALYSE.md": "12cc3ee1f222bc656c5b6ea04178002ad1d460ca594ab891724906bd84bd79e5"
+  }
+}

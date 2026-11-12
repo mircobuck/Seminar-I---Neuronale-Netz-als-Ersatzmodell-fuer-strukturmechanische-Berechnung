@@ -1,0 +1,9 @@
+role,method,n,count,failed,variation,meanError,runStd,medianError,p95Error,maxObserved,fitMedian,predictMedian
+interpolation,mlp,768,3,0,none,0.03,0,0.02,0.08,0.1,10,0.01
+interpolation,rbf,768,3,0,none,0.03,0,0.02,0.08,0.1,10,0.01
+interpolation,pod_mlp,768,3,0,none,0.03,0,0.02,0.08,0.1,10,0.01
+interpolation,pod_gpr,768,1,0,none,0.03,NaN,0.02,0.08,0.1,10,0.01
+extrapolation,mlp,768,3,0,none,0.03,0,0.02,0.08,0.1,10,0.01
+extrapolation,rbf,768,3,0,none,0.03,0,0.02,0.08,0.1,10,0.01
+extrapolation,pod_mlp,768,3,0,none,0.03,0,0.02,0.08,0.1,10,0.01
+extrapolation,pod_gpr,768,1,0,none,0.03,NaN,0.02,0.08,0.1,10,0.01

@@ -1,0 +1,2 @@
+RunId,Method,Role,Cases,Undefined,MeanRelativeProjection,MeanRelativeRegression,MeanRelativeReconstruction,InvalidDecomposition
+controlled\n768_rep1_rank2_pod_mlp,pod_mlp,interpolation,1,0,0.1,0.15,0.18027756377319948,0

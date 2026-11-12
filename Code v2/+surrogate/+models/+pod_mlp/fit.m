@@ -52,24 +52,17 @@ end
 assert(isscalar(optimizer) && any(optimizer==["adam","rmsprop","sgdm"]), ...
     'surrogate:pod_mlp:Config','Unsupported optimizer: %s.',optimizer);
 
-% POD: displacementFields hat die Groesse [nDof x nCases].
-% Die Zentrierung entfernt das mittlere Feld; sqrt(weights) ueberfuehrt
-% die gewichtete Metrik fuer die SVD in die euklidische Metrik.
+% Shared training-only POD; optionally use the identical checked basis.
+podTimer=tic; prepared=[];
+if isfield(config,'preparedPod'), prepared=config.preparedPod; end
+pod=surrogate.models.shared.fitPod(data,config.rank,"pod_mlp",prepared);
+podSeconds=toc(podTimer);
 displacementFields=double(data.displacementFields);
-componentWeights=double(data.displacementComponentWeights(:));
-fieldMean=mean(displacementFields,2);
+componentWeights=pod.weights; fieldMean=pod.fieldMean; podBasis=pod.basis;
+numericalRank=pod.numericalRank;
 centeredFields=displacementFields-fieldMean;
-weightedCenteredFields=sqrt(componentWeights).*centeredFields;
-[leftSingularVectors,singularValueMatrix,~]=svd(weightedCenteredFields,'econ');
-singularValues=diag(singularValueMatrix);
-rankTolerance=max(size(weightedCenteredFields))*eps(max(singularValues));
-numericalRank=sum(singularValues>rankTolerance);
-% Rangpruefung: Moden oberhalb des numerischen Rangs waeren nicht unabhaengig.
-assert(config.rank<=numericalRank,'surrogate:pod_mlp:Rank', ...
-    'Requested POD rank %d exceeds numerical training rank %d.', ...
-    config.rank,numericalRank);
-podBasis=leftSingularVectors(:,1:config.rank)./sqrt(componentWeights);
 targetCoefficients=(podBasis'*(componentWeights.*centeredFields))';
+preprocessTimer=tic;
 
 % Normierung: Eingaben [nCases x nParameter], Ziele [nCases x rank].
 % Statistiken stammen nur aus dem Trainingssatz, damit Vorhersagen dieselbe
@@ -100,6 +93,7 @@ end
 normalizedInputs=(inputParameters-inputMean)./inputScale;
 normalizedTargets=(targetCoefficients-coefficientMean)./coefficientScale;
 
+preprocessSeconds=toc(preprocessTimer);
 % Netz: Konfigurierte tanh-Schichten und lineare Ausgabe fuer POD-Koeffizienten.
 layers=featureInputLayer(size(normalizedInputs,2),Normalization="none");
 for k=1:config.hiddenLayers
@@ -113,7 +107,9 @@ options=trainingOptions(optimizer,MaxEpochs=config.maxEpochs, ...
     MiniBatchSize=config.miniBatchSize,InitialLearnRate=config.learningRate, ...
     Shuffle="every-epoch",OutputNetwork="last-iteration", ...
     ExecutionEnvironment="cpu",Verbose=false);
+trainTimer=tic;
 network=trainnet(normalizedInputs,normalizedTargets,layers,"mse",options);
+trainSeconds=toc(trainTimer);
 
 % Rueckgabe: State enthaelt alle Transformationen, die predict.m benoetigt.
 % Store the retained POD energy and loss name alongside the transforms so
@@ -122,11 +118,13 @@ state=struct('network',network,'basis',podBasis,'fieldMean',fieldMean, ...
     'inputMean',inputMean,'inputScale',inputScale, ...
     'coefficientMean',coefficientMean,'coefficientScale',coefficientScale, ...
     'constantCoefficients',constantCoefficients,'lossMode',lossMode, ...
-    'retainedEnergy',sum(singularValues(1:config.rank).^2)/sum(singularValues.^2), ...
+    'retainedEnergy',pod.retainedEnergy,'weights',pod.weights, ...
+    'numericalRank',pod.numericalRank,'podFingerprint',pod.fingerprint, ...
     'settings',config);
 % Report dokumentiert Trainingsumfang, Rang, Energieanteil und Einstellungen.
 report=struct('method',"pod_mlp",'trainingCount',size(inputParameters,1), ...
     'numericalRank',numericalRank,'podRank',config.rank, ...
     'retainedEnergy',state.retainedEnergy, ...
-    'optimizer',optimizer,'lossMode',lossMode,'settings',config);
+    'optimizer',optimizer,'lossMode',lossMode,'settings',config, ...
+    'timing',struct('podSeconds',podSeconds,'preprocessSeconds',preprocessSeconds,'regressionSeconds',trainSeconds));
 end

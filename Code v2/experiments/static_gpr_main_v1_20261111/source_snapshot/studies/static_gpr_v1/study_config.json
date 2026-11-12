@@ -1,0 +1,66 @@
+{
+  "study_version": "static-gpr-v1.0",
+  "seed_design": 20261111,
+  "seeds_selection": [
+    20261112,
+    20261113,
+    20261114
+  ],
+  "seeds_network": [
+    42,
+    43,
+    44
+  ],
+  "training_sizes": [
+    48,
+    96,
+    192,
+    384,
+    768
+  ],
+  "counts": {
+    "val": 128,
+    "interpolation": 256,
+    "extrapolation": 128
+  },
+  "lower": [
+    0.6,
+    0.06,
+    0.08,
+    70000000000.0,
+    0.25,
+    -1000
+  ],
+  "upper": [
+    1.2,
+    0.1,
+    0.14,
+    210000000000.0,
+    0.35,
+    -100
+  ],
+  "duplicate_tolerance": 1e-10,
+  "max_deflection_ratio": 0.02,
+  "mesh_divisor": 3,
+  "geometric_order": "quadratic",
+  "search_budget_seconds_per_family": 5400,
+  "total_budget_seconds": 86400,
+  "pilot_spent_seconds": 3600,
+  "execution_environment": "cpu",
+  "selection_metric": "mean_weighted_relative_field_error",
+  "tie_break": [
+    "p95",
+    "configuration_id"
+  ],
+  "seed_tuning": 42,
+  "max_epochs": 200,
+  "mini_batch_size": 32,
+  "prediction_repetitions": 30,
+  "reference_floor": 0,
+  "extrapolation_fraction": [
+    0.05,
+    0.1
+  ],
+  "id_start": 830001,
+  "budget_origin_posix": 1794405600
+}

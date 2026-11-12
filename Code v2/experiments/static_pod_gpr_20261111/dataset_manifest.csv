@@ -1,0 +1,9 @@
+dataset,split,cases,S_hdf_shape,sha256
+data_generation\data\static\backup_384\train.mat,train,384,"(384, 1575)",d0730895ebf15767b66dd7eee4eeb34bcd651d25ea62dc9259d1fc750d3f4cf2
+data_generation\data\static\train.mat,train,768,"(768, 1575)",b1b94da764f552451179ac78e439edd6dd7eccac64bffc34b1d9d8e3d94a1386
+data_generation\data\static\val.mat,val,12,"(12, 1575)",65f672da42809c7df93e4bba3d55f66ca68e6c90a7395fe9e9b2ea9577787003
+data_generation\data\static\test.mat,test,64,"(64, 1575)",acd47ee833d07ecb00b40fbf961bded854f471e11f5dff89f176221e2e3a069f
+experiments\pod_mlp_fresh_validation_128_20261108\reference_data\static\val.mat,val,128,"(128, 1575)",264dcb0c4f2a6dab411ac9defe864228887ee8b35ed94df5ebde23c2523ddcac
+experiments\pod_mlp_fresh_validation_20261108\reference_data\static\val.mat,val,12,"(12, 1575)",7d38a8d0eb0dd5f522181732baa308d286e0f6f616730e56d586aca13de6fb56
+experiments\pod_mlp_independent_test_20261106\reference_data\static\test.mat,test,64,"(64, 1575)",e876296e1ceaf901874426b331f16440d76fcca8ca8e8c54d292a08ecac68005
+experiments\pod_mlp_weighted_independent_test_20261109\reference_data\static\test.mat,test,128,"(128, 1575)",5ead24cb55e5d0737bd15549bf5dee6ec2f8792bd4157f7cf2604e5f0247be68

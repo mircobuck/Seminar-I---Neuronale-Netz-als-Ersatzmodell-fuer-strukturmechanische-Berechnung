@@ -177,3 +177,106 @@ Ueberschreibschutz, Checkpoint-/Hash-Abgleiche und Vollstaendigkeitspruefungen d
 Studien bestehen. Optionale `lossMode`-/`optimizer`-Felder und historische
 Modellvarianten benoetigen weiterhin `isfield`. Die Regressionstests pruefen
 Berechnung und Ablauf unabhaengig von diesen Laufzeitabsicherungen.
+
+## Direkte MLP- und RBF-Modelle
+
+Mircos Modelle sind als `mlp` und `rbf` in `+surrogate/+models` integriert.
+Das MLP hat eine tanh-Schicht und eine lineare Ausgabe. Das RBF verwendet
+feste Gauss-Zentren aus gleichmaessig verteilten Trainingszeilen und trainiert
+nur die lineare Ausgabe. Beide unterstuetzen statische Felder und modale
+Frequenzen. `pod_mlp` bleibt die separate Variante mit POD-Reduktion.
+
+```matlab
+addpath('examples');
+cfg = struct('seed',42,'hiddenWidth',64,'maxEpochs',200,'optimizer',"adam");
+[model,report,metrics] = runDirectNeuralExample("mlp","static",cfg);
+% Alternativ: method="rbf", mit centerCount=64 und rbfWidth=1.
+% Anschliessend kann das Modell mit surrogate.saveModel gespeichert werden.
+```
+
+Die Methoden funktionieren direkt mit `surrogate.fitModel`, `predictModel`,
+`evaluatePrediction`, `saveModel` und `loadModel`. Es genuegt, `Code v2`
+auf den MATLAB-Pfad zu setzen; `Testverfahren` ist keine Abhaengigkeit.
+Die alten MLP-/RBF-Skripte sind jetzt Aufrufbeispiele fuer diese Schnittstelle.
+
+Konfiguration (neben dem Pflichtfeld `seed`):
+
+| Feld | Standard | Bedeutung |
+| --- | --- | --- |
+| `hiddenWidth` | 64 | Neuronen der einen MLP-Schicht |
+| `centerCount` | 64 | RBF-Zentren, maximal Anzahl Trainingsfaelle |
+| `rbfWidth` | 1 | Gauss-Breite im standardisierten Eingaberaum |
+| `optimizer` | `"adam"` | `"adam"`, `"sgdm"`, `"levenberg-marquardt"`, `"bayesian-regularization"` |
+| `maxEpochs` | 200 | Maximale Trainingsepochen |
+| `miniBatchSize` | 32 | Adam-/SGDM-Batchgroesse |
+| `learningRate` | 1e-3 | Adam-/SGDM-Lernrate |
+| `momentum` | 0.9 | SGDM-Momentum |
+| `maxWorkspaceBytes` | 1073741824 | Obergrenze der LM-/BR-Speicherschaetzung |
+
+`"sgd-momentum"` wird als Alias fuer `"sgdm"` akzeptiert. Die aufgeloesten
+Optionen stehen in `model.state.settings` und `report.settings`.
+Deep Learning Toolbox wird benoetigt. LM/BR verwenden `feedforwardnet`.
+Die konservative Schaetzung aus Jacobi- und Hesse-Matrix weist grosse direkte
+Feldmodelle vor dem Training ab; sie garantiert keinen festen RAM-Verbrauch.
+Fuer statische Felder mit 1575 Ausgaben vorzugsweise Adam oder SGDM verwenden.
+
+Mittelwerte und Standardabweichungen stammen nur aus dem Trainingssplit.
+Konstante Ausgaben werden exakt rekonstruiert. Das Trainingsziel ist die MSE
+pro standardisierter Ausgabe, nicht die gewichtete physikalische Feld-MSE.
+Die Auswertung erfolgt trotzdem mit den gemeinsamen physikalischen Metriken.
+Anders als die urspruenglichen Skripte verwenden die Adapter keine Validierung
+zur Epochenwahl: Adam/SGDM liefern die letzte Iteration; LM/BR nutzen alle
+uebergebenen Trainingsfaelle ohne internen Validierungs- oder Testsplit.
+Dadurch sind alte Trainingsresultate nicht numerisch identisch reproduzierbar.
+
+Integrationstests: `runtests('tests/directNeuralTest.m')`.
+
+## Adam-Tiefenstudie fuer direkte MLP/RBF
+
+`hiddenLayers` (Standard 1) steuert die Gesamtzahl versteckter Schichten.
+Beim MLP sind das `hiddenLayers` tanh-Schichten mit je `hiddenWidth` Neuronen.
+Beim RBF zaehlt die feste Gauss-Schicht mit: Es folgen `hiddenLayers-1`
+tanh-Schichten mit je `hiddenWidth` Neuronen. Zentren und Gauss-Breite bleiben
+fest. Die lineare Ausgabeschicht zaehlt bei beiden Methoden nicht mit.
+RBF mit Tiefe 2 oder 3 ist damit ein RBF+tanh-Hybrid.
+
+Die Studie `examples/runDirectNeuralDepthStudy.m` vergleicht beide Methoden
+mit 64 Einheiten und 1/2/3 versteckten Schichten, Adam, 200 Epochen,
+Lernrate 0.001, Batch 32 und drei Seeds (42/43/44). Sie verwendet 768 statische
+Trainingsfaelle und die bereits genutzten 128 Validierungsfaelle. Testdaten
+werden nicht geladen. Checkpoints, Daten-/Code-Hashes, Fallfehler, aggregierte
+Metriken und ein Vergleichsplot werden im Studienordner gespeichert.
+
+```matlab
+addpath('examples');
+summary = runDirectNeuralDepthStudy();
+```
+
+Start erfordert mindestens 1 GiB freien Platz; vor jedem neuen Training
+werden mindestens 256 MiB verlangt. Nach einer Unterbrechung kann derselbe
+Aufruf abgeschlossene Checkpoints wiederverwenden, sofern Code, Daten und
+Konfiguration unveraendert sind.
+
+
+## POD?GPR: Implementierung im Erprobungsstand
+
+`surrogate.fitModel("pod_gpr", train, config)` trainiert ein skalares exaktes
+GPR je gewichteter POD-Mode. `config` ben?tigt `rank`, `seed` und `datasetId`;
+optional sind `kernel` (`ardsquaredexponential` oder `ardmatern52`),
+`basisFunction` (`constant` oder `linear`) und `sigma` (Standard `1e-4`).
+Die konstante numerische Sigma-Stabilisierung ist keine Messrauschannahme.
+Zwei Startwerte und Warnungen stehen im Modellzustand; vollst?ndige Felder
+werden durch die bestehende Vorhersageschnittstelle in Metern ausgegeben.
+
+`surrogate.models.shared.fitPod` erzeugt die gemeinsame gewichtete Basis.
+Ein unter `config.preparedPod` ?bergebener Zustand wird gegen einen SHA-256
+Fingerabdruck von Feldern, Parametern, Gewichten und sortierungserhaltenden
+Fall-IDs sowie gegen den Rang gepr?ft. Die Modellzust?nde sind nicht gegen
+b?swillige Manipulation der Basis selbst abgesichert.
+
+F?r direkte statische MLP/RBF-Modelle kann explizit
+`lossMode="weighted_field_mse"` gew?hlt werden; der bisherige Standard bleibt
+`standardized_output_mse`. Modellberichte enthalten Segmentzeiten.
+Der neue unabh?ngige Studienablauf ist noch nicht fertiggestellt. Die
+explorativen Piloten unter `experiments/static_pod_gpr_20261111` sind kein
+Abschlusstest.
