@@ -1,0 +1,12 @@
+{
+  "startingCommit": "1ca58df30d7aa6f528ea689540973ca1588f2776",
+  "programFiles": 380,
+  "codeLines": 17544,
+  "groups": {
+    "functional_and_tools": 8353,
+    "historical_copies": 8099,
+    "tests": 1092
+  },
+  "preservedNonCodeFiles": 7312,
+  "untrackedProgramFiles": 0
+}
