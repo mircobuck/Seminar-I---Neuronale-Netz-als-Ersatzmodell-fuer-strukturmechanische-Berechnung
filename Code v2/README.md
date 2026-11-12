@@ -2,6 +2,10 @@
 
 Vier Methoden sagen aus sechs Balkenparametern das vollstaendige statische Verschiebungsfeld voraus: direktes MLP, vorhandenes RBF-Netz, POD-MLP und POD-GPR. Ausgabe: 1575 Verschiebungen in Metern auf 525 Punkten. Eigenfrequenzen gehoeren nicht zum aktiven Ablauf.
 
+## Abgeschlossene Wiederholung
+
+Die Hauptwiederholung vom 12.11.2026 ist abgeschlossen: 234 erfolgreiche Fits, 288 Auswertungen, identische Modellwahl und reproduzierte Fallkennzahlen. [Ergebnisse und neue Zeiten](experiments/static_comparison_refactor_20261112_attempt4/WIEDERHOLUNG.md), [Laufbedingungen](experiments/static_comparison_refactor_20261112_attempt4/LAUFBEDINGUNGEN.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Grosse Modell- und MAT-Dateien bleiben lokal.
+
 ## Voraussetzungen und sicherer Start
 
 MATLAB R2025b, Deep Learning Toolbox, Statistics and Machine Learning Toolbox, Partial Differential Equation Toolbox und Java. Fuer Diagramme: Python 3 mit Matplotlib. In MATLAB Code v2 als Ordner oeffnen oder einmal auf den Pfad setzen:
@@ -45,7 +49,7 @@ Phasen sind wiederaufnehmbar; gleiche Konfiguration und gleicher Quellstand sind
 oldPath = path;
 cleanup = onCleanup(@() path(oldPath));
 addpath("examples")
-showStaticResultsExample("experiments/static_gpr_main_v1_20261111_run2")
+showStaticResultsExample("experiments/static_comparison_refactor_20261112_attempt4")
 ```
 
 `examples/trainStaticModelExample.m` zeigt Training und Validierung eines einzelnen Modells mit expliziten Dateipfaden. Andere Beispiele sind historische Versuche und nicht Teil des aktiven Pfads.

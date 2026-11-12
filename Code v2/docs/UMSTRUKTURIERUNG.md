@@ -47,3 +47,5 @@ Der erste Smoke-Versuch blieb unter experiments/static_comparison_smoke_20261112
 Die Wiederholung schreibt comparison_previous.csv und VERGLEICH.md. Neue und historische Laufzeiten bleiben getrennte Spalten. Abweichungen fuehren nicht zu nachtraeglicher Anpassung der Modelle. Es handelt sich um bekannte Referenzfaelle, nicht um einen neuen unabhaengigen Abschlusstest.
 
 Dateiweise reproduzierbare Codezaehlung: CODEZAEHLUNG.csv und CODEZAEHLUNG.md. Die Anzahl der Codezeilen ist kein Optimierungsziel.
+
+Abgeschlossen am 12.11.2026: Hauptwiederholung static_comparison_refactor_20261112_attempt4, 234 erfolgreiche Fits, 288 Auswertungen. Identische Modellwahl und Fallkennzahlen; nur 13 Mittelwerte mit Rundungsdifferenzen bis 9.992e-16 durch die dokumentierte Summationsreihenfolge. Ergebnisse, neue Laufzeiten und bedingter Break-even: [WIEDERHOLUNG.md](../experiments/static_comparison_refactor_20261112_attempt4/WIEDERHOLUNG.md).
