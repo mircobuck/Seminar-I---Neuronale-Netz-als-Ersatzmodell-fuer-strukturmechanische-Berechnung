@@ -21,11 +21,7 @@ function benchmark(root,out,cfg)
     methods=string(cfg.methods(:)');
     caseTable=array2table([double(ids(:)),X],  'VariableNames',  [{'id'},cellstr(data.parameterNames)]);
     writetable(caseTable,fullfile(folder,'benchmark_cases.csv'));
-    femConfig=config('smoke');
-    femConfig.meshDivisor=cfg.mesh_divisor;
-    femConfig.geometricOrder=string(cfg.geometric_order);
-    femConfig.saveRawMesh=false;
-    femConfig.maxDeflectionRatio=cfg.max_deflection_ratio;
+    femConfig=staticFemConfig(cfg);
     meta=struct('matlab',version,'startedUTC',string(datetime('now','TimeZone','UTC')),  'indices',  indices, ...
         'ids',  ids,  'femConfig',  femConfig,  'warmup',  1,  'femRepeats',  cfg.benchmark_fem_repetitions,  'surrogateRepeats',  cfg.benchmark_surrogate_repetitions);
     save(fullfile(folder,'benchmark_meta.mat'),'meta');

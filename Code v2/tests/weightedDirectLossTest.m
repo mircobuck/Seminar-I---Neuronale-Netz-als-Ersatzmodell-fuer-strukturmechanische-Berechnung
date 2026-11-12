@@ -8,7 +8,7 @@ classdef weightedDirectLossTest < matlab.unittest.TestCase
     end
     methods (Test)
         function weightedObjectiveIsProportional(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             data.displacementComponentWeights=(1:1575)'/1575;
             cfg=weightedDirectLossTest.config();
             [model,report]=surrogate.fitModel("mlp",data,cfg);
@@ -20,18 +20,13 @@ classdef weightedDirectLossTest < matlab.unittest.TestCase
             testCase.verifyEqual(report.lossMode,"weighted_field_mse");
         end
         function constantFieldRestored(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             data.displacementFields(:,2)=data.displacementFields(:,1);
             model=surrogate.fitModel("mlp",data,weightedDirectLossTest.config());
             request=struct('inputParameters',data.inputParameters,'parameterNames',data.parameterNames, ...
                 'parameterUnits',data.parameterUnits,'caseIds',data.caseIds);
             prediction=surrogate.predictModel(model,request);
             testCase.verifyEqual(prediction.displacementFields,data.displacementFields,AbsTol=1e-12);
-        end
-        function modalLossRejected(testCase)
-            data=makeContractData("modal","train");
-            testCase.verifyError(@()surrogate.fitModel("mlp",data,weightedDirectLossTest.config()), ...
-                'surrogate:neural:LossTask');
         end
     end
     methods (Static,Access=private)

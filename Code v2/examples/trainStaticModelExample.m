@@ -20,6 +20,6 @@ request=struct('inputParameters',val.inputParameters,'parameterNames',val.parame
     'parameterUnits',val.parameterUnits,'caseIds',val.caseIds);
 prediction=surrogate.predictModel(model,request);
 metrics=surrogate.evaluatePrediction(prediction,val, ...
-    struct('staticReferenceFloor',0,'frequencyReferenceFloorHz',0));
+    struct('staticReferenceFloor',0));
 disp(surrogate.study.summarizeErrors(metrics.relativeWeightedFieldError));
 end

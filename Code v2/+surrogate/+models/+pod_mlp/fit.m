@@ -7,7 +7,7 @@ function [state,report] = fit(data,config)
 %   "weighted_field_mse". Die zweite Variante normiert alle POD-Zielkoeffizienten
 %   mit derselben Trainings-RMS-Skala; dadurch entspricht die trainnet-MSE bis
 %   auf einen konstanten Faktor dem mittleren gewichteten Feldfehler.
-%   Optional ist optimizer: "adam" (Standard), "rmsprop" oder "sgdm".
+%   Der aktuelle Studienablauf verwendet ausschliesslich Adam.
 %   state enthaelt Netz und Transformationen fuer Vorhersagen.
 %   report enthaelt Trainingsumfang, POD-Rang und erhaltene Energie.
 %   Fehler-IDs: surrogate:pod_mlp:Task, surrogate:pod_mlp:Config,
@@ -49,7 +49,7 @@ optimizer="adam";
 if isfield(config,'optimizer')
     optimizer=string(config.optimizer);
 end
-assert(isscalar(optimizer) && any(optimizer==["adam","rmsprop","sgdm"]), ...
+assert(isscalar(optimizer) && optimizer=="adam", ...
     'surrogate:pod_mlp:Config','Unsupported optimizer: %s.',optimizer);
 
 % Shared training-only POD; optionally use the identical checked basis.

@@ -1,3 +1,5 @@
+> Historischer Nachweis der ersten Umstrukturierung. Die anschliessende tatsaechliche Codebereinigung und ihre neuen Pruefungen stehen in [STATISCHE_BEREINIGUNG.md](STATISCHE_BEREINIGUNG.md). Aussagen unten zum Behalten alter Programme gelten fuer den damaligen Stand.
+
 # Umstrukturierung direkt in Code v2
 
 ## Entscheidungen und Dateizuordnung

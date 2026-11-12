@@ -48,8 +48,7 @@ function result=fitCheckpoint(folder,method,training,validation,config)
         request=struct('inputParameters',validation.inputParameters,'parameterNames',validation.parameterNames, ...
             'parameterUnits',  validation.parameterUnits,  'caseIds',  validation.caseIds);
         prediction=surrogate.predictModel(model,request);
-        metric=surrogate.evaluatePrediction(prediction,validation,  struct('staticReferenceFloor',0, ...
-            'frequencyReferenceFloorHz',0));
+        metric=surrogate.evaluatePrediction(prediction,validation,  struct('staticReferenceFloor',0));
         e=metric.relativeWeightedFieldError;
         stats=surrogate.study.summarizeErrors(e);
         valid=e(isfinite(e));

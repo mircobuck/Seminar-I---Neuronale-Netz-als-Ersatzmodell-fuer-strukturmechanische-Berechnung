@@ -4,8 +4,7 @@ function [observed,request] = observeModel(model,data,observed,method,cfg)
     request=struct('inputParameters',data.inputParameters,'parameterNames',data.parameterNames, ...
         'parameterUnits',  data.parameterUnits,  'caseIds',  data.caseIds);
     prediction=surrogate.predictModel(model,request);
-    metric=surrogate.evaluatePrediction(prediction,data,  struct('staticReferenceFloor',cfg.reference_floor, ...
-        'frequencyReferenceFloorHz',0));
+    metric=surrogate.evaluatePrediction(prediction,data,  struct('staticReferenceFloor',cfg.reference_floor));
     observed.absolute=metric.absoluteWeightedFieldError;
     observed.referenceNorm=metric.referenceWeightedFieldNorm;
     observed.relative=metric.relativeWeightedFieldError;

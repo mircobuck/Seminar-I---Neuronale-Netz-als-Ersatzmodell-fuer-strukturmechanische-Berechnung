@@ -2,7 +2,7 @@
   "training_file": "data_generation/data/static/train.mat",
   "training_blocks": "workflows/static_comparison/configs/training_blocks.csv",
   "reference_run": "experiments/static_gpr_main_v1_20261111_run2",
-  "output_dir": "experiments/static_comparison_refactor_20261112_attempt4",
+  "output_dir": "experiments/static_comparison_cleanup_20261112",
   "python": "python",
   "exclusion_designs": [
     "data_generation/data/static/design.csv"

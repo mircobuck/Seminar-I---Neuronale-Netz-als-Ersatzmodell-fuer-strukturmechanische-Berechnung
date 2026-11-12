@@ -1,148 +1,76 @@
 Kategorie,Datei,Codezeilen
-Fachlicher Kern,+surrogate/+models/+dummy/fit.m,10
-Fachlicher Kern,+surrogate/+models/+dummy/predict.m,7
-Fachlicher Kern,+surrogate/+models/+mlp/fit.m,3
-Fachlicher Kern,+surrogate/+models/+mlp/predict.m,3
-Fachlicher Kern,+surrogate/+models/+pod_gpr/fit.m,60
-Fachlicher Kern,+surrogate/+models/+pod_gpr/predict.m,10
-Fachlicher Kern,+surrogate/+models/+pod_mlp/fit.m,91
-Fachlicher Kern,+surrogate/+models/+pod_mlp/predict.m,8
-Fachlicher Kern,+surrogate/+models/+rbf/fit.m,3
-Fachlicher Kern,+surrogate/+models/+rbf/predict.m,3
-Fachlicher Kern,+surrogate/+models/+shared/fitNeural.m,122
-Fachlicher Kern,+surrogate/+models/+shared/fitPod.m,25
-Fachlicher Kern,+surrogate/+models/+shared/podDiagnostics.m,19
-Fachlicher Kern,+surrogate/+models/+shared/podFingerprint.m,10
-Fachlicher Kern,+surrogate/+models/+shared/predictNeural.m,14
-Fachlicher Kern,+surrogate/+models/+shared/rbfFeatures.m,6
-Fachlicher Kern,+surrogate/+study/assertDisjointParameters.m,14
-Fachlicher Kern,+surrogate/+study/nestedTrainingSubsets.m,27
-Fachlicher Kern,+surrogate/+study/summarizeErrors.m,18
-Fachlicher Kern,+surrogate/contract.m,19
-Fachlicher Kern,+surrogate/evaluatePrediction.m,46
-Fachlicher Kern,+surrogate/fitModel.m,18
-Fachlicher Kern,+surrogate/loadDataset.m,18
-Fachlicher Kern,+surrogate/loadModel.m,4
-Fachlicher Kern,+surrogate/plotStaticComparison.m,56
-Fachlicher Kern,+surrogate/predictModel.m,30
-Fachlicher Kern,+surrogate/saveModel.m,4
-Fachlicher Kern,+surrogate/validateDataset.m,47
-Fachlicher Kern,+surrogate/validateTrainingSplits.m,13
-Studiensteuerung und Verwaltung,docs/count_code.py,69
-Historische Programme,examples/exportAllExperiments.m,42
-Historische Programme,examples/plot128LayerComparison.m,54
-Historische Programme,examples/plotLayerComparison.m,51
-Historische Programme,examples/plotPodMlpLearningCurve.m,52
-Historische Programme,examples/plotSixLayerComparison.m,55
-Historische Programme,examples/plotSurrogateValidation.m,11
-Historische Programme,examples/podMlpExample.m,22
-Historische Programme,examples/runDirectNeuralDepthStudy.m,180
-Historische Programme,examples/runDirectNeuralExample.m,15
-Historische Programme,examples/runPodGprExploratoryPilot.m,44
-Historische Programme,examples/runPodMlpLearningCurve.m,76
-Historische Programme,examples/runPodMlpLossPilot.m,85
-Historische Programme,examples/runPodMlpLossStudy.m,197
-Historische Programme,examples/runPodMlpRankStudy.m,206
-Historische Programme,examples/runPodMlpWidthStudy.m,329
-Historische Programme,examples/runStatic768Study.m,47
-Historische Programme,examples/runStaticGprFemPilot.m,56
-Studiensteuerung und Verwaltung,examples/showStaticResultsExample.m,18
-Historische Programme,examples/summarizeDirectNeuralDeflection.m,36
-Studiensteuerung und Verwaltung,examples/trainStaticModelExample.m,24
-Fachlicher Kern,fem_core/config.m,21
-Fachlicher Kern,fem_core/src/+femstudy/+fem/modal.m,32
-Fachlicher Kern,fem_core/src/reference_grid.m,11
-Fachlicher Kern,fem_core/src/rom_observation.m,25
-Fachlicher Kern,fem_core/src/solve_case.m,38
-Fachlicher Kern,loadFemDataset.m,33
-Historische Programme,main.m,30
-Historische Programme,Netzarchitekturen/MLP/MLP.m,9
-Historische Programme,Netzarchitekturen/RBF/RBF.m,9
-Studiensteuerung und Verwaltung,runStaticStudy.m,66
-Historische Programme,scripts/matlab/extend_static_training_768.m,88
-Historische Programme,scripts/matlab/generate_modal_data_v2.m,14
-Historische Programme,scripts/matlab/generate_static_data_v2.m,14
-Historische Programme,scripts/matlab/run_data_generation_v2.m,280
-Studiensteuerung und Verwaltung,setupProject.m,6
-Historische Programme,studies/fem_reference_validation_v1/scripts/run_remaining_static_validation.m,262
-Historische Programme,studies/fem_reference_validation_v1/scripts/run_validation.m,700
-Historische Programme,studies/static_final_evaluation/plotL2Reevaluation.m,79
-Historische Programme,studies/static_final_evaluation/runIndependentPodMlpTest.m,100
-Historische Programme,studies/static_final_evaluation/runL2Reevaluation.m,324
-Historische Programme,studies/static_final_evaluation/runPodMlpFreshValidationComparison.m,324
-Historische Programme,studies/static_final_evaluation/runPodMlpLearningRateStudy.m,338
-Historische Programme,studies/static_final_evaluation/runPodMlpOptimizerPilot.m,240
-Historische Programme,studies/static_final_evaluation/runStatic768TestEvaluation.m,4
-Historische Programme,studies/static_final_evaluation/runStaticFinalEvaluation.m,133
-Historische Programme,studies/static_final_evaluation/runStaticTrainingTestEvaluation.m,65
-Historische Programme,studies/static_final_evaluation/runWeightedLossIndependentTest.m,166
-Historische Programme,studies/static_final_evaluation/studyConfigTemplate.m,9
-Historische Programme,studies/static_gpr_v1/runStaticGprStudy.m,69
-Historische Programme,studies/static_gpr_v1/studyCandidates.m,30
-Historische Programme,studies/static_gpr_v1/studyCheckFrozen.m,20
-Historische Programme,studies/static_gpr_v1/studyDesign.m,48
-Historische Programme,studies/static_gpr_v1/studyDistribution.m,26
-Historische Programme,studies/static_gpr_v1/studyEvaluation.m,98
-Historische Programme,studies/static_gpr_v1/studyFitCheckpoint.m,63
-Historische Programme,studies/static_gpr_v1/studyFreeze.m,67
-Historische Programme,studies/static_gpr_v1/studyGenerate.m,92
-Historische Programme,studies/static_gpr_v1/studyHash.m,9
-Historische Programme,studies/static_gpr_v1/studyPlots.py,48
-Historische Programme,studies/static_gpr_v1/studyRecordGeneration.m,7
-Historische Programme,studies/static_gpr_v1/studyRecordSearch.m,7
-Historische Programme,studies/static_gpr_v1/studyReference.m,13
-Historische Programme,studies/static_gpr_v1/studyReport.m,129
-Historische Programme,studies/static_gpr_v1/studyRequireBudget.m,7
-Historische Programme,studies/static_gpr_v1/studyRequireSpace.m,5
-Historische Programme,studies/static_gpr_v1/studySources.m,23
-Historische Programme,studies/static_gpr_v1/studySubset.m,5
-Historische Programme,studies/static_gpr_v1/studyTraining.m,78
-Historische Programme,studies/static_gpr_v1/studyTuning.m,66
-Historische Programme,studies/static_gpr_v1/studyVerify.m,5
-Tests,tests/directNeuralTest.m,110
-Tests,tests/evaluationRepairTest.m,124
-Tests,tests/makeContractData.m,14
-Tests,tests/nestedTrainingSubsetsTest.m,32
-Tests,tests/podGprTest.m,84
-Tests,tests/podMlpTest.m,113
-Tests,tests/runStaticWorkflowSmoke.m,50
-Tests,tests/staticComparisonTest.m,48
-Tests,tests/staticFinalEvaluationTest.m,126
-Tests,tests/staticGprStudyTest.m,117
-Tests,tests/staticWorkflowTest.m,97
-Tests,tests/surrogateContractTest.m,134
-Tests,tests/weightedDirectLossTest.m,43
-Historische Programme,Testverfahren/adam.m,16
-Historische Programme,Testverfahren/bayesianRegularization.m,37
-Historische Programme,Testverfahren/levenbergMarquardt.m,42
-Historische Programme,Testverfahren/sgdMomentum.m,17
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/benchmark.m,146
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/candidates.m,19
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/checkFrozen.m,24
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/comparePrevious.m,28
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/configure.m,34
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/createDesign.m,65
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/distribution.m,45
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/evaluation.m,80
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/fitCheckpoint.m,83
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/freeze.m,43
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/generate.m,155
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/hash.m,14
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/initialize.m,48
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/loadReference.m,12
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/observeModel.m,42
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/recordGeneration.m,11
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/recordSearch.m,11
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/reference.m,11
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/report.m,200
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/requireBudget.m,8
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/requireSpace.m,6
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/sources.m,31
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/subset.m,8
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/timePrediction.m,20
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/training.m,105
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/trainingBlocks.m,9
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/tuning.m,105
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/validateReferences.m,28
-Studiensteuerung und Verwaltung,workflows/static_comparison/+staticstudy/verify.m,8
-Studiensteuerung und Verwaltung,workflows/static_comparison/studyPlots.py,48
+2 Modellaufbau und Training,+surrogate/+models/+mlp/fit.m,3
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/+models/+mlp/predict.m,3
+2 Modellaufbau und Training,+surrogate/+models/+pod_gpr/fit.m,60
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/+models/+pod_gpr/predict.m,10
+2 Modellaufbau und Training,+surrogate/+models/+pod_mlp/fit.m,91
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/+models/+pod_mlp/predict.m,8
+2 Modellaufbau und Training,+surrogate/+models/+rbf/fit.m,3
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/+models/+rbf/predict.m,3
+2 Modellaufbau und Training,+surrogate/+models/+shared/fitNeural.m,86
+2 Modellaufbau und Training,+surrogate/+models/+shared/fitPod.m,25
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/+models/+shared/podDiagnostics.m,19
+"5 Datenvertraege, Einstieg und Laufverwaltung",+surrogate/+models/+shared/podFingerprint.m,10
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/+models/+shared/predictNeural.m,12
+2 Modellaufbau und Training,+surrogate/+models/+shared/rbfFeatures.m,6
+3 Trainingsauswahl und Suchsteuerung,+surrogate/+study/assertDisjointParameters.m,14
+3 Trainingsauswahl und Suchsteuerung,+surrogate/+study/nestedTrainingSubsets.m,27
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/+study/summarizeErrors.m,18
+"5 Datenvertraege, Einstieg und Laufverwaltung",+surrogate/contract.m,12
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/evaluatePrediction.m,28
+2 Modellaufbau und Training,+surrogate/fitModel.m,18
+"5 Datenvertraege, Einstieg und Laufverwaltung",+surrogate/loadDataset.m,18
+"5 Datenvertraege, Einstieg und Laufverwaltung",+surrogate/loadModel.m,4
+"4 Vorhersage, Auswertung und Benchmark",+surrogate/predictModel.m,23
+"5 Datenvertraege, Einstieg und Laufverwaltung",+surrogate/saveModel.m,4
+"5 Datenvertraege, Einstieg und Laufverwaltung",+surrogate/validateDataset.m,36
+"5 Datenvertraege, Einstieg und Laufverwaltung",+surrogate/validateTrainingSplits.m,11
+"5 Datenvertraege, Einstieg und Laufverwaltung",docs/count_code.py,83
+6 Aktuelle Beispiele,examples/showStaticResultsExample.m,18
+6 Aktuelle Beispiele,examples/trainStaticModelExample.m,24
+1 FEM und Datenerzeugung,fem_core/src/reference_grid.m,11
+1 FEM und Datenerzeugung,fem_core/src/solve_case.m,38
+1 FEM und Datenerzeugung,fem_core/staticFemConfig.m,7
+"5 Datenvertraege, Einstieg und Laufverwaltung",loadFemDataset.m,25
+"5 Datenvertraege, Einstieg und Laufverwaltung",runStaticStudy.m,66
+"5 Datenvertraege, Einstieg und Laufverwaltung",setupProject.m,6
+7 Automatisierte Tests,tests/directNeuralTest.m,102
+7 Automatisierte Tests,tests/makeContractData.m,9
+7 Automatisierte Tests,tests/nestedTrainingSubsetsTest.m,32
+7 Automatisierte Tests,tests/podGprTest.m,84
+7 Automatisierte Tests,tests/podMlpTest.m,102
+7 Automatisierte Tests,tests/runStaticValidation.m,69
+7 Automatisierte Tests,tests/runStaticWorkflowSmoke.m,50
+7 Automatisierte Tests,tests/staticWorkflowTest.m,96
+7 Automatisierte Tests,tests/surrogateContractTest.m,123
+7 Automatisierte Tests,tests/weightedDirectLossTest.m,38
+"4 Vorhersage, Auswertung und Benchmark",workflows/static_comparison/+staticstudy/benchmark.m,142
+3 Trainingsauswahl und Suchsteuerung,workflows/static_comparison/+staticstudy/candidates.m,19
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/checkFrozen.m,24
+"4 Vorhersage, Auswertung und Benchmark",workflows/static_comparison/+staticstudy/comparePrevious.m,28
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/configure.m,34
+1 FEM und Datenerzeugung,workflows/static_comparison/+staticstudy/createDesign.m,65
+3 Trainingsauswahl und Suchsteuerung,workflows/static_comparison/+staticstudy/distribution.m,45
+"4 Vorhersage, Auswertung und Benchmark",workflows/static_comparison/+staticstudy/evaluation.m,80
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/fitCheckpoint.m,82
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/freeze.m,43
+1 FEM und Datenerzeugung,workflows/static_comparison/+staticstudy/generate.m,151
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/hash.m,14
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/initialize.m,48
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/loadReference.m,12
+"4 Vorhersage, Auswertung und Benchmark",workflows/static_comparison/+staticstudy/observeModel.m,41
+1 FEM und Datenerzeugung,workflows/static_comparison/+staticstudy/recordGeneration.m,11
+3 Trainingsauswahl und Suchsteuerung,workflows/static_comparison/+staticstudy/recordSearch.m,11
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/reference.m,11
+"4 Vorhersage, Auswertung und Benchmark",workflows/static_comparison/+staticstudy/report.m,200
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/requireBudget.m,8
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/requireSpace.m,6
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/sources.m,31
+3 Trainingsauswahl und Suchsteuerung,workflows/static_comparison/+staticstudy/subset.m,8
+"4 Vorhersage, Auswertung und Benchmark",workflows/static_comparison/+staticstudy/timePrediction.m,20
+3 Trainingsauswahl und Suchsteuerung,workflows/static_comparison/+staticstudy/training.m,105
+3 Trainingsauswahl und Suchsteuerung,workflows/static_comparison/+staticstudy/trainingBlocks.m,9
+3 Trainingsauswahl und Suchsteuerung,workflows/static_comparison/+staticstudy/tuning.m,105
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/validateReferences.m,28
+"5 Datenvertraege, Einstieg und Laufverwaltung",workflows/static_comparison/+staticstudy/verify.m,8
+"4 Vorhersage, Auswertung und Benchmark",workflows/static_comparison/studyPlots.py,48

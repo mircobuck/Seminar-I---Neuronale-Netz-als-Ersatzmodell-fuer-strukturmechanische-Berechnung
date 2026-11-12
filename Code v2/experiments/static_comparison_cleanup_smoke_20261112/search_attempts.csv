@@ -1,0 +1,5 @@
+Checkpoint,Method,Status,FitSeconds,WallSeconds,Message
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\static_comparison_cleanup_smoke_20261112\tuning\mlp\candidate_001_seed42,mlp,ok,1.6015316,1.8973911,
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\static_comparison_cleanup_smoke_20261112\tuning\pod_gpr\candidate_001_seed42,pod_gpr,ok,0.5739458,0.6801631,
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\static_comparison_cleanup_smoke_20261112\tuning\pod_mlp\candidate_001_seed42,pod_mlp,ok,0.4500698,0.5490512,
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\static_comparison_cleanup_smoke_20261112\tuning\rbf\candidate_001_seed42,rbf,ok,0.5523638,0.6893469,

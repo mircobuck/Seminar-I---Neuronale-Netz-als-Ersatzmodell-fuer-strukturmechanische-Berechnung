@@ -2,9 +2,9 @@
 
 Vier Methoden sagen aus sechs Balkenparametern das vollstaendige statische Verschiebungsfeld voraus: direktes MLP, vorhandenes RBF-Netz, POD-MLP und POD-GPR. Ausgabe: 1575 Verschiebungen in Metern auf 525 Punkten. Eigenfrequenzen gehoeren nicht zum aktiven Ablauf.
 
-## Abgeschlossene Wiederholung
+## Bereinigter aktueller Bestand
 
-Die Hauptwiederholung vom 12.11.2026 ist abgeschlossen: 234 erfolgreiche Fits, 288 Auswertungen, identische Modellwahl und reproduzierte Fallkennzahlen. [Ergebnisse und neue Zeiten](experiments/static_comparison_refactor_20261112_attempt4/WIEDERHOLUNG.md), [Laufbedingungen](experiments/static_comparison_refactor_20261112_attempt4/LAUFBEDINGUNGEN.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Grosse Modell- und MAT-Dateien bleiben lokal.
+Aktiv bleiben nur der statische Vier-Methoden-Ablauf und seine Tests. Historische Programme, modale Berechnung, alte Optimierer und Quellkopien sind aus dem Arbeitsstand entfernt und im lokalen Git-Commit `4e83631` gesichert. Wissenschaftliche Daten und Ergebnisse bleiben unveraendert. [Bereinigungsnachweis](docs/STATISCHE_BEREINIGUNG.md), [Codeumfang](docs/CODEZAEHLUNG.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Die neue Hauptwiederholung liegt unter `experiments/static_comparison_cleanup_20261112`; ihr Abschluss wird im Arbeitsstand dokumentiert.
 
 ## Voraussetzungen und sicherer Start
 
@@ -13,8 +13,6 @@ MATLAB R2025b, Deep Learning Toolbox, Statistics and Machine Learning Toolbox, P
 ```matlab
 runStaticStudy   % zeigt nur Hilfe, startet keine Berechnung
 ```
-
-`main` zeigt ohne Argument einen Hinweis auf den historischen gemischten Ablauf. Seine ausdruecklichen alten Modi bleiben verfuegbar.
 
 ## Konfiguration und Phasen
 
@@ -52,20 +50,19 @@ addpath("examples")
 showStaticResultsExample("experiments/static_comparison_refactor_20261112_attempt4")
 ```
 
-`examples/trainStaticModelExample.m` zeigt Training und Validierung eines einzelnen Modells mit expliziten Dateipfaden. Andere Beispiele sind historische Versuche und nicht Teil des aktiven Pfads.
+`examples/trainStaticModelExample.m` zeigt Training und Validierung eines einzelnen Modells mit expliziten Dateipfaden. Dies sind die einzigen beiden verbleibenden Anwendungsbeispiele.
 
 ## Tests
 
 ```matlab
-r = runtests("tests/staticWorkflowTest.m"); assertSuccess(r)
-r = runtests("tests/surrogateContractTest.m"); assertSuccess(r)
-r = runtests("tests/podGprTest.m"); assertSuccess(r)
 addpath("tests")
-runStaticWorkflowSmoke("workflows/static_comparison/configs/smoke.json", ...
+runStaticValidation("experiments/static_cleanup_validation_neu", ...
     "workflows/static_comparison/configs/smoke.local.json")
 ```
 
-Der Smoke-Test braucht einen neuen Ausgabeordner und prueft alle vier Methoden, FEM, Wiederaufnahme, Freeze, Auswertung und Bericht. Der gespeicherte Vorhersagevergleich benoetigt die lokalen Baseline-Artefakte unter `experiments/refactor_validation_20261112`.
+Vor Wiederholung in `smoke.local.json` einen noch nicht vorhandenen Ausgabeordner einstellen. Der Treiber beginnt mit einem ausschliesslich aus der MATLAB-Installation stammenden Pfad, aktiviert nur aktuelle Projektteile, prueft dynamische Abhaengigkeiten, alle aktuellen Unit-Tests und den vollstaendigen FEM-Smoke. Er protokolliert aufgeloeste und tatsaechlich geladene Projektfunktionen. Keine dauerhafte Pfadaenderung.
+
+Der Smoke prueft alle vier Methoden, FEM, Wiederaufnahme, Freeze-Sperren, Auswertung und wiederholte Berichte. Die numerische Regression verwendet vorhandene Modelle/Daten des konfigurierten `reference_run` sowie `experiments/refactor_validation_20261112/baseline_predictions.mat`. Suchkandidaten und Trainingsauswahlen sind in `tests/fixtures/study_baseline.mat` gesichert; historische Programme werden nicht geladen. Die Tests verwenden `matlab.unittest`; die separate MATLAB Test Toolbox ist nicht erforderlich.
 
 ## Ablage
 
@@ -78,6 +75,14 @@ Der Smoke-Test braucht einen neuen Ausgabeordner und prueft alle vier Methoden, 
 | `experiments` | Artefakte konkreter Laeufe; grosse MAT-Dateien neuer Laeufe bleiben lokal |
 | `tests` | Vertrags-, Modell-, numerische Regressions- und Ablaufpruefungen |
 | `docs` | Schnittstellen, Migration, Studienprotokoll und Nachweise |
-| `studies` | Historische Einzelstudien, nicht auf dem aktiven Pfad |
+| `studies`, `Netzarchitekturen`, `Testverfahren` | Erhaltene historische Nicht-Code-Artefakte; keine Studienprogramme |
 
 Details: [Schnittstellen](docs/SCHNITTSTELLEN.md), [Migration](docs/UMSTRUKTURIERUNG.md), [Studienprotokoll](docs/STATISCHE_STUDIE.md). Alte Bedienhinweise stehen unveraendert in [README_HISTORISCH](docs/README_HISTORISCH.md); sie beschreiben fruehere Einstiege.
+
+## Historische Programme aus Git wiederherstellen
+
+`4e83631` sichert den vollstaendigen Programmstand vor dieser Bereinigung. Dateinamen und Hashes stehen in `docs/CLEANUP_SOURCE_BASELINE.csv`; jede Entscheidung in `docs/CLEANUP_FILE_PLAN.csv`. Historische Manifeste bleiben unveraendert und beziehen sich auf ihre damaligen Quellen, nicht auf den bereinigten Bestand.
+
+Vom Repository-Wurzelordner zeigt beispielsweise `git show "4e83631:Code v2/main.m"` den alten Einstieg. Fuer eine bewusst gewuenschte historische Reproduktion kann `git restore --source=4e83631 -- "Code v2/<Dateipfad>"` einzelne Quellen wiederherstellen. Danach ist der Arbeitsstand nicht mehr der bereinigte Studienstand. Keine zweite aktive Kopie wird fuer den aktuellen Ablauf benoetigt.
+
+Die lokale Datenkonfiguration verweist ausdruecklich auf `data_generation/data/static/train.mat`, die zugehoerige `design.csv`, `configs/training_blocks.csv` und die bekannten FEM-Referenzen in `experiments/static_gpr_main_v1_20261111_run2`. Aus diesem historischen Ordner werden Daten, Pruefsummen und Kostenmetadaten gelesen, keine Programme. Modelle der numerischen Regression stammen ebenfalls von dort. Grosse MAT-Dateien bleiben lokal; Git allein ersetzt deren Datensicherung nicht.

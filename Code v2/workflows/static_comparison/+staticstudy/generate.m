@@ -9,11 +9,7 @@ function generate(root,out,cfg,roles)
     assert(strcmp(staticstudy.hash(fullfile(out,'candidate_design.mat')),expectedHash),  'study:DesignChanged', ...
         'Candidate design was changed.');
     names={'L_m','b_m','h_m','E_Pa','nu','Fz_N'};
-    femConfig=config('smoke');
-    femConfig.meshDivisor=cfg.mesh_divisor;
-    femConfig.geometricOrder=string(cfg.geometric_order);
-    femConfig.saveRawMesh=false;
-    femConfig.maxDeflectionRatio=cfg.max_deflection_ratio;
+    femConfig=staticFemConfig(cfg);
     for role=string(roles(:)')
         assert(any(role==["val","interpolation","extrapolation"]),'study:Role','Invalid reference role.');
         folder=fullfile(out,'references',role);

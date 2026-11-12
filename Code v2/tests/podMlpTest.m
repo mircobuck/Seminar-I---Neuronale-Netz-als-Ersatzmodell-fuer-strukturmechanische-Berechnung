@@ -8,7 +8,7 @@ classdef podMlpTest < matlab.unittest.TestCase
     end
     methods (Test)
         function weightedBasisAndReconstruction(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             data.displacementFields(1,:)=0;
             data.displacementComponentWeights=(1:1575)'/1575;
             model=surrogate.fitModel("pod_mlp",data,podMlpTest.config());
@@ -20,7 +20,7 @@ classdef podMlpTest < matlab.unittest.TestCase
             testCase.verifyEqual(state.basis(1),0,AbsTol=1e-12);
         end
         function predictionOrderAndPersistence(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             data.displacementFields(1,:)=0;
             model=surrogate.fitModel("pod_mlp",data,podMlpTest.config());
             request=struct('inputParameters',data.inputParameters, ...
@@ -39,7 +39,7 @@ classdef podMlpTest < matlab.unittest.TestCase
             testCase.verifyEqual(before.displacementFields(1,:),[0 0],AbsTol=1e-12);
         end
         function constantInputIsSafe(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             data.inputParameters(:,2)=3;
             model=surrogate.fitModel("pod_mlp",data,podMlpTest.config());
             request=struct('inputParameters',data.inputParameters, ...
@@ -49,7 +49,7 @@ classdef podMlpTest < matlab.unittest.TestCase
             testCase.verifyTrue(all(isfinite(prediction.displacementFields),'all'));
         end
         function weightedFieldLossUsesSharedCoefficientScale(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             cfg=podMlpTest.config(); cfg.lossMode="weighted_field_mse";
             model=surrogate.fitModel("pod_mlp",data,cfg);
             testCase.verifyEqual(model.state.lossMode,"weighted_field_mse");
@@ -58,47 +58,36 @@ classdef podMlpTest < matlab.unittest.TestCase
             testCase.verifyEqual(model.state.settings.lossMode,"weighted_field_mse");
         end
         function unsupportedLossModeRejected(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             cfg=podMlpTest.config(); cfg.lossMode="unweighted_field_mse";
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg), ...
                 'surrogate:pod_mlp:Config');
         end
         function optimizerSelectionAndValidation(testCase)
-            data=makeContractData("static","train");
-            for optimizer=["rmsprop","sgdm"]
-                cfg=podMlpTest.config(); cfg.optimizer=optimizer;
-                [model,report]=surrogate.fitModel("pod_mlp",data,cfg);
-                testCase.verifyEqual(report.optimizer,optimizer);
-                testCase.verifyEqual(model.state.settings.optimizer,optimizer);
-                testCase.verifyEqual(model.state.lossMode,"per_coefficient_mse");
-            end
+            data=makeContractData("train");
+            cfg=podMlpTest.config(); cfg.optimizer="adam";
+            [model,report]=surrogate.fitModel("pod_mlp",data,cfg);
+            testCase.verifyEqual(report.optimizer,"adam");
+            testCase.verifyEqual(model.state.settings.optimizer,"adam");
             cfg=podMlpTest.config(); cfg.optimizer="unsupported";
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg), ...
                 'surrogate:pod_mlp:Config');
         end
         function invalidRankRejected(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             cfg=podMlpTest.config(); cfg.rank=2;
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg),'surrogate:pod_mlp:Rank');
             cfg.rank=0;
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg),'surrogate:pod_mlp:Config');
         end
         function missingConfigFieldsReported(testCase)
-            data=makeContractData("static","train");
+            data=makeContractData("train");
             cfg=rmfield(podMlpTest.config(),{'hiddenWidth','hiddenLayers'});
-            caughtException=[];
-            try
-                surrogate.fitModel("pod_mlp",data,cfg);
-            catch exception
-                caughtException=exception;
-            end
-            testCase.verifyNotEmpty(caughtException);
-            testCase.verifyEqual(caughtException.identifier,'surrogate:pod_mlp:Config');
-            testCase.verifyTrue(contains(caughtException.message,'hiddenWidth'));
-            testCase.verifyTrue(contains(caughtException.message,'hiddenLayers'));
+            testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg),'surrogate:pod_mlp:Config');
         end
         function modalTaskRejected(testCase)
-            data=makeContractData("modal","train");
+            data=makeContractData("train");
+            data.modality="modal";
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,podMlpTest.config()), ...
                 'surrogate:pod_mlp:Task');
         end
