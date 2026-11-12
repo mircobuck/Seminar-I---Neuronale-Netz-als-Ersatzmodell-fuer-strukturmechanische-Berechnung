@@ -22,7 +22,7 @@ Die Unterbrechungen sind pro Versuch in INTERRUPTION.md dokumentiert. Alle Artef
 
 ## Konkrete Voraussetzung und Fortsetzung
 
-Fuer kontrollierte Messungen muss der Rechner waehrend des gesamten seriellen Laufs wach bleiben (kein Zuklappen/Standby). Der Nutzer wurde hierzu um Rueckmeldung gebeten; weitere automatische Neustarts wurden gestoppt. Lokale Konfiguration ist auf einen noch nicht gestarteten neuen Ordner static_comparison_refactor_20261112_attempt4 vorbereitet.
+Fuer kontrollierte Messungen muss der Rechner waehrend des gesamten seriellen Laufs wach bleiben (kein Zuklappen/Standby). Der Nutzer hat am 12.11.2026 ausdruecklich entschieden: Hauptstudie spaeter fortsetzen. Es wird kein weiterer Lauf gestartet; die eigenen Studienprozesse sind beendet. Lokale Konfiguration ist auf einen noch nicht gestarteten neuen Ordner static_comparison_refactor_20261112_attempt4 vorbereitet.
 
 Danach init, generate (Referenzwiederverwendung), tune, train, freeze, evaluate, benchmark und report ausfuehren. Die Fachkonfiguration und Auswahlregeln bleiben unveraendert. Nach erfolgreichem Lauf sind Ergebnisgleichheit/Abweichungen, neue Zeiten, bedingte Break-even-Szenarien, Diagramme und der abschliessende Ergebniscommit noch zu pruefen und zu dokumentieren.
 
