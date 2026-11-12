@@ -36,6 +36,7 @@ else
 end
 centerSeconds=toc(centerTimer);
 trainTimer=tic;
+setupTimer=tic;
 if any(cfg.optimizer==["adam","sgdm"])
     layers=featureInputLayer(size(X,2),Normalization="none");
     for layer=1:numel(hidden)
@@ -48,7 +49,10 @@ if any(cfg.optimizer==["adam","sgdm"])
         'MiniBatchSize',cfg.miniBatchSize,'InitialLearnRate',cfg.learningRate, ...
         'Shuffle','every-epoch','OutputNetwork','last-iteration', ...
         'ExecutionEnvironment','cpu','Verbose',false,args{:});
+    networkSetupSeconds=toc(setupTimer);
+    optimizationTimer=tic;
     network=trainnet(X,Y,layers,"mse",options);
+    trainingSeconds=toc(optimizationTimer);
     backend="trainnet";
 else
     widths=[size(X,2),hidden,size(Y,2)];
@@ -72,7 +76,10 @@ else
     network.trainParam.showWindow=false;
     network.trainParam.showCommandLine=false;
     network=configure(network,X',Y');
+    networkSetupSeconds=toc(setupTimer);
+    optimizationTimer=tic;
     network=train(network,X',Y');
+    trainingSeconds=toc(optimizationTimer);
     backend="legacy";
 end
 trainSeconds=toc(trainTimer);
@@ -82,7 +89,8 @@ state=struct('method',method,'task',task,'network',network,'backend',backend, ..
     'centers',centers,'settings',cfg);
 report=struct('method',method,'trainingCount',size(X,1), ...
     'optimizer',cfg.optimizer,'lossMode',cfg.lossMode,'settings',cfg, ...
-    'timing',struct('preprocessSeconds',preprocessSeconds,'centerSeconds',centerSeconds,'regressionSeconds',trainSeconds));
+    'timing',struct('preprocessSeconds',preprocessSeconds,'centerSeconds',centerSeconds, ...
+    'networkSetupSeconds',networkSetupSeconds,'trainingSeconds',trainingSeconds,'regressionSeconds',trainSeconds));
 if method=="rbf", report.centerCount=size(centers,1); end
 end
 

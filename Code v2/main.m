@@ -1,8 +1,12 @@
 function main(mode)
 %MAIN Generate static and modal FEM reference datasets.
 % main("smoke") runs a small separate check; main("all") runs all splits.
-% Ohne Argument werden alle Splits einschlie?lich der Testf?lle berechnet.
-if nargin==0, mode="all"; end
+% Historical mixed static/modal generation. Explicit modes remain available.
+if nargin==0
+    fprintf('Historical mixed static/modal FEM entry. Use runStaticStudy for the current static comparison.\n');
+    fprintf('Explicit legacy modes: main("smoke"), main("train_val"), main("test"), main("all").\n');
+    return
+end
 mode=string(validatestring(char(mode),{'all','smoke','train_val','test'}));
 % Pfade relativ zu dieser Datei bestimmen, unabh?ngig vom Installationsort.
 root=fileparts(mfilename('fullpath'));

@@ -1,3 +1,5 @@
+> Aktualisierung 12.11.2026: Die aktive statische Studiensteuerung ist `runStaticStudy` unter `workflows/static_comparison`. Unten stehende Aussagen zum damaligen Implementierungsstand sind historisch. Daten-/Modellvertrag und numerische Formate bleiben erhalten. Die gemeinsame Aggregation steht jetzt in `surrogate.study.summarizeErrors`; Mittelwert bleibt in Fallreihenfolge, P95 verwendet Nearest Rank.
+
 # Schnittstellenvertrag für FEM-Ersatzmodelle – Version 1
 
 Dieser Vertrag ist die gemeinsame Arbeitsgrundlage für Modellteams und die

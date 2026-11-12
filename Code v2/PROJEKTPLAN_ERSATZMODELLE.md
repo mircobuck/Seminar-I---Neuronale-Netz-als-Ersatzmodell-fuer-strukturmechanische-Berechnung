@@ -1,3 +1,5 @@
+> Historischer Stand. Aktive Bedienung: README.md und runStaticStudy.m. `main` ohne Argument startet keine Berechnung mehr.
+
 # Projektplan: FEM-Daten, Ersatzmodelle und Modellvergleich
 
 **Zweck:** Arbeitsgrundlage für die Aufteilung im Team. Die Arbeitspakete sind

@@ -8,3 +8,8 @@ __pycache__/
 *.out
 *.toc
 .DS_Store
+
+# New rerun artifacts remain local; provenance and compact reports are versioned.
+Code v2/experiments/static_comparison_*/**/*.mat
+Code v2/experiments/static_comparison_*/case_results.csv
+Code v2/experiments/refactor_validation_*/*.mat

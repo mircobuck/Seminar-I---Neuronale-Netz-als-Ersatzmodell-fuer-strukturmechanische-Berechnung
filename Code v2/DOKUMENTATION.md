@@ -1,3 +1,5 @@
+> Historischer Stand. Aktive Bedienung: README.md und runStaticStudy.m. `main` ohne Argument startet keine Berechnung mehr.
+
 # Code v2 – FEM-Datenerzeugung und Datenschnittstelle
 
 Diese Dokumentation beschreibt den aktuellen Aufbau von Code v2. Der Workflow

@@ -1,0 +1,10 @@
+{
+  "training_file": "data_generation/data/static/train.mat",
+  "training_blocks": "workflows/static_comparison/configs/training_blocks.csv",
+  "reference_run": "experiments/static_gpr_main_v1_20261111_run2",
+  "output_dir": "experiments/static_comparison_smoke_20261112_attempt2",
+  "python": "python",
+  "exclusion_designs": [
+    "data_generation/data/static/design.csv"
+  ]
+}
