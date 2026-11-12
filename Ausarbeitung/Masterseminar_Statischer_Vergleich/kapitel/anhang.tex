@@ -1,0 +1,14 @@
+\chapter{Ergänzende Tabellen und Reproduzierbarkeit}
+\section{Aufwand und bedingte Einzelfallszenarien}
+Tabelle~\ref{tab:break} enthält die Familiensuche und die berechneten Einzelfallschwellen für bereits verfügbare Trainings- und Validierungsdaten. Die Randbedingungen und die Grenzen der Szenarien sind in Kapitel~\ref{chap:ergebnisse} erläutert.
+\begin{table}[htbp]\centering\caption{Bedingte Szenarien bei bereits verfügbaren Daten: Seed-42-Fit, äußere Familiensuche und rechnerische Einzelfallschwellen.}\label{tab:break}
+\small\begin{tabular}{lrrrr}\toprule Methode & Fit [s] & Suche [s] & Fälle: Fit & Fälle: Fit + Suche\\\midrule
+MLP & 52,67 & 721,25 & 25 & 356\\
+RBF & 43,71 & 708,47 & 21 & 346\\
+POD--MLP & 32,26 & 299,29 & 15 & 153\\
+POD--GPR & 353,57 & 1203,16 & 163 & 714\\\bottomrule\end{tabular}\end{table}
+
+\section{Daten- und Quellnachweise}
+Die Abbildungen dieses Berichts wurden aus den kopierten Tabellen im Unterordner \texttt{daten} mit \texttt{skripte/diagramme.py} erzeugt. Die ursprünglichen Falltabellen, Modelle, Suchhistorie, das Studienprotokoll und die Checkpoints verbleiben in den zugehörigen Projektordnern der Hauptstudie. Der ergänzende Seminarbericht und die Benchmark-Rohdaten liegen im separaten Ergänzungsordner. Die Kopien in diesem Bericht dienen dem portablen Nachvollzug der gezeigten Diagramme; sie ersetzen nicht die vollständige Studienprovenienz.
+
+Die Hauptstudie enthält 288 erfolgreiche Lauf-/Split-Auswertungen und 55.296 Fallzeilen. Dieselben Testfälle werden über mehrere Modelle wiederholt ausgewertet; die Zeilen sind daher keine 55.296 unabhängigen Balkenfälle. Die Studienauswertung zählt keine fehlgeschlagenen Lauf-/Split-Auswertungen und keine undefinierten relativen Fallfehler.

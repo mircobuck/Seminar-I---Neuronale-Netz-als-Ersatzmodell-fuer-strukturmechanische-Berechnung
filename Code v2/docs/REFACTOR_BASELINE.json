@@ -1,0 +1,281 @@
+{
+  "branch": "github_dd_branch_new",
+  "commit": "c3809d4772bebf46841e12dd2abcb13c70ab5ea7",
+  "untracked": [
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/PRUEFPROTOKOLL.md",
+      "bytes": 1953,
+      "sha256": "8c6bcefc49c5462750ea87cf255defc8b5e32f4fbb5056accf2dbb9dd9b3008d"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/README.md",
+      "bytes": 1301,
+      "sha256": "9077f1f0d749fee56214067c72db63587ead7881c1e89da5035dfde1f837d925"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/THU_RECHERCHE.md",
+      "bytes": 2314,
+      "sha256": "0df97d60088bda2b2fa2dd8fdaba2a1a6a1b48cbf3f39bc2920686013446654a"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/abbildungen/ablauf.pdf",
+      "bytes": 14457,
+      "sha256": "76d3502fa6ca6c617ba3ec836a3be4a7bf0c10869a54001659be02c66616fbf3"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/abbildungen/ausreisser.pdf",
+      "bytes": 17252,
+      "sha256": "9a8661c34d1050085a59194b5e17d6828cbd29f1b870f8fb653b09af602f468c"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/abbildungen/genauigkeit.pdf",
+      "bytes": 12228,
+      "sha256": "852cc157f382128b87678fdd0a6924fa54c83021099ca30c4b34ac3c165069e4"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/abbildungen/lernkurven.pdf",
+      "bytes": 18252,
+      "sha256": "016e675653a434f42fda036a12c80f89d25e3240b9030c0615c22a15d0b06271"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/abbildungen/pod_rang.pdf",
+      "bytes": 16339,
+      "sha256": "a826d8b68a70af168d7422cbd032951f13b8069a39eb4a3755b7bec9a8648204"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/abbildungen/verteilung.pdf",
+      "bytes": 13048,
+      "sha256": "8976b3031b3dd0c447c22b311e12c53e3e2861255537022413668a1cdab23159"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/abbildungen/vorhersagezeit.pdf",
+      "bytes": 12770,
+      "sha256": "ccfc8b94e088a4d500b52cd7b9d8a6e4541689879567cd4ae1f2b72c2b2c5458"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/daten/benchmark_summary.csv",
+      "bytes": 541,
+      "sha256": "554b2960416921dc6e8035349ff26e400705fb52a770f510b4b2bfab57bf78cb"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/daten/break_even_scenarios.csv",
+      "bytes": 595,
+      "sha256": "7c47ead7d9457739c07869725380cc4b44c148444a12ff65293281a01ea2fd3b"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/daten/controlled_pod_diagnostics.csv",
+      "bytes": 20109,
+      "sha256": "3bfbfa9339e642eaa9738bdcc8553158bf90c435c46d8ae40a9e43dcabb75832"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/daten/controlled_rank_n768.csv",
+      "bytes": 1676,
+      "sha256": "22db5ed5595cd8217682714d1ef8e01e83f94636abe44c86da44bcd2bc6aff7f"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/daten/extrapolation_outliers_paired.csv",
+      "bytes": 1704,
+      "sha256": "8880aa3f3cff2e442db709fc509558f0884a7fee76695bf4be5323d9daeb27f4"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/daten/pipeline_summary_corrected.csv",
+      "bytes": 6431,
+      "sha256": "469f21fa3cee2a37fe0bea9f803f3869f59afed9f48c80325ffe6250bb8391fb"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/daten/run_results.csv",
+      "bytes": 82690,
+      "sha256": "04ccb3d3ae005f5b9b9c6632f3425934c9c280c67569e207b847b09b7e2e849f"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/kapitel/anhang.tex",
+      "bytes": 1761,
+      "sha256": "eb557b2551d545a5c4a95207afb1b3d6a8d1b7a9075d1a89ccc8953eeadf36e0"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/kapitel/diskussion.tex",
+      "bytes": 3847,
+      "sha256": "9d7e29b658ec5ea3c91fcecb6792020d7c6d723c913c16c397c4ea8e2900155c"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/kapitel/einleitung_grundlagen.tex",
+      "bytes": 5099,
+      "sha256": "6e7a959e80e9c4db1626e36190709a7fc14757756f8e8b2e8e4d30ce3db2e2a1"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/kapitel/ergebnisse.tex",
+      "bytes": 10321,
+      "sha256": "088fd88416862b9e31b922fe2cb9b45aaa73d0c81f8f11e91557b9c15e5cf80c"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/kapitel/kurzfassung.tex",
+      "bytes": 1687,
+      "sha256": "1847e605a3c224bb23053cd509a7e0e28d9213ec3743c41b264b586277fb0a91"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/kapitel/methodik.tex",
+      "bytes": 7066,
+      "sha256": "6f3531a20041916a8d9c1cd836dfa54a5f609663503e18c265930aebb2073eb9"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/literatur.bib",
+      "bytes": 2470,
+      "sha256": "0ac275399cd995fd38db72534ffcf5816690a417ffd5aa8f70ddfa8a9a060a39"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/main.bbl",
+      "bytes": 2357,
+      "sha256": "4852292a96ae6c2286749c3833c53f35206db50b65d8cb11315ff62bd0f4b06a"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/main.blg",
+      "bytes": 1018,
+      "sha256": "4a67c3212e05399e87ca56a69f4f23f624a233b1a4053f157eb0f637588aa731"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/main.pdf",
+      "bytes": 412789,
+      "sha256": "f94014d016735fc8a3c09afef68ab36e12e05c0708341f9714b6a83b9cc448d6"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/main.tex",
+      "bytes": 1381,
+      "sha256": "baf2463c07436fe78e8a4112f9deb4d660b593924c8c81f2ee4a50896797f93f"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/metadaten.tex",
+      "bytes": 727,
+      "sha256": "ddb11db9e004a5a53a594290c6df7dd6d7ac917f97d6ee7239eec6a9704550ee"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/kontakt.png",
+      "bytes": 553158,
+      "sha256": "1d21e4ad4d3fdfdd3d5f8450a4589b880f6e2e0a2ede1e2ee2cee61fcbb49332"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/pdf_text.txt",
+      "bytes": 43979,
+      "sha256": "71d877760e2d1e89242e96d78ba9ffcd0a77588f66b55b2f36af1393bec8a59a"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-01.png",
+      "bytes": 49073,
+      "sha256": "7ac1951b644b5f3121582a2f3fa210543607be3faf3ad6cff17c6f7e81aaf1c3"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-02.png",
+      "bytes": 109795,
+      "sha256": "88b4534248418f11021f029f17ff1305b57e009a9c5f0fc462907ca50030e93c"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-03.png",
+      "bytes": 86940,
+      "sha256": "917d3a934ad515b2a69d76be3d29bb5dc6cd2cfa2c2e0a1151fa1880336fa0f5"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-04.png",
+      "bytes": 86038,
+      "sha256": "40ab86db4f69136a2436e9347a057e91c57e21a2c198654a0b856edb7fba24b0"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-05.png",
+      "bytes": 169985,
+      "sha256": "7a7636e77d2564abef24b7819e146695320863aba0af7b905be16feea618b894"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-06.png",
+      "bytes": 60408,
+      "sha256": "878d97bd71280ffdc9a814023c6e18334dda5a43c20a5e48b1640f756dacc94d"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-07.png",
+      "bytes": 157026,
+      "sha256": "2c34e5b7462e5256f8cc40785d6333960f5ac3a7d238efb76760a7f12b6d909a"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-08.png",
+      "bytes": 132397,
+      "sha256": "cc730bd2667e426c26e65f8758d256190c07528ee5085d3b7b5019cf4fd33115"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-09.png",
+      "bytes": 150468,
+      "sha256": "edd934bb99901216e2163b2b795c6f323e72392d165fb1c07c7b870f73672588"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-10.png",
+      "bytes": 124898,
+      "sha256": "90338214bc94955ae351984320d7e37532c4a0bf3a2aadafa35f4f4f6a0d5979"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-11.png",
+      "bytes": 187986,
+      "sha256": "89e36d66aa79aacca66d957ca438726dd34ff5b1cb725ea31f86f6621676af76"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-12.png",
+      "bytes": 135776,
+      "sha256": "7a3b101601b763be45f735b006548552d10ceb102f773b42db42113f46e5496e"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-13.png",
+      "bytes": 171399,
+      "sha256": "6df28d57c89fc8f3729db11a8fffb66bbb62b5b6026109adf7d261f40407f190"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-14.png",
+      "bytes": 80509,
+      "sha256": "4997227686d81af7153ec37d9efadbe6a54ead9053763101d7237c8c3f7a5163"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-15.png",
+      "bytes": 170295,
+      "sha256": "580dc3da3c96c76fd218993a9885200bbfda0ff383fb24196a40368e5429cd75"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-16.png",
+      "bytes": 76020,
+      "sha256": "01685a2125ea735eb59437718fb513e8ebcf78e6b555fd84ad6df58804a2f504"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-17.png",
+      "bytes": 137537,
+      "sha256": "589bcb94cfad2e667ee7719ea6b1f923ce7c71b3e38096b70acdf64934e4b416"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/qa_render/seite-18.png",
+      "bytes": 108797,
+      "sha256": "f6580aa3087417eade2d763138a11095b4c76c9c639846066acc87c49c6a7ebf"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/skripte/diagramme.py",
+      "bytes": 5922,
+      "sha256": "147890e5c85e4c1e9cc69d579073abc9a21e744058c5460c6a5e70adac0c7f79"
+    },
+    {
+      "path": "Ausarbeitung/Masterseminar_Statischer_Vergleich/skripte/pruefen.py",
+      "bytes": 1861,
+      "sha256": "2a538865aaafb0fdd8ce6d7e383e6e40ce4ab9fc931f4e4f9855167e094a5741"
+    }
+  ],
+  "ignored_code_v2": [
+    "Code v2/direct_neural_deflection.log",
+    "Code v2/direct_neural_depth_study.log",
+    "Code v2/direct_neural_depth_tests.log",
+    "Code v2/direct_neural_regression.log",
+    "Code v2/direct_neural_test.log",
+    "Code v2/direct_neural_validation.log",
+    "Code v2/experiments/static_384_test_20261105_batch.log",
+    "Code v2/experiments/static_384_test_codecheck.log",
+    "Code v2/experiments/static_768_20261105/matlab_batch.log",
+    "Code v2/experiments/static_768_20261105/matlab_batch_attempt_1.log",
+    "Code v2/experiments/static_768_20261105/run.log",
+    "Code v2/experiments/static_768_20261105/run_attempt_1.log",
+    "Code v2/experiments/static_768_test_20261105_batch.log",
+    "Code v2/experiments/static_768_test_unit_tests.log",
+    "Code v2/experiments/static_gpr_main_v1_20261111_run2/evaluation_repair_v1/repair_run.log",
+    "Code v2/experiments/static_gpr_main_v1_20261111_run2/run.log",
+    "Code v2/studies/static_gpr_v1/__pycache__/studyPlots.cpython-312.pyc"
+  ],
+  "ignored_other_count": 9566
+}

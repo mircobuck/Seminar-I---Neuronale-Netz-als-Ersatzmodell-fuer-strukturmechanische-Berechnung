@@ -1,0 +1,54 @@
+\documentclass[11pt,a4paper,oneside]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{left=30mm,right=25mm,top=27mm,bottom=27mm}
+\hypersetup{hidelinks,pdftitle={Statische strukturmechanische Ersatzmodelle}}
+\setlength{\emergencystretch}{2em}
+\graphicspath{{abbildungen/}}
+\input{metadaten}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\centering
+{\large Technische Hochschule Ulm\par}
+\vspace{1.5cm}
+{\large \SeminarTitel\par}
+\vspace{0.4cm}
+{\normalsize \AufgabenTitel\par}
+\vfill
+{\LARGE\bfseries \BerichtTitel\par}
+\vspace{0.8cm}
+{\large Wissenschaftlicher Seminarbericht\par}
+\vfill
+\begin{tabular}{@{}ll@{}}
+Verfasser/in: & \AutorName\\
+Matrikelnummer: & \Matrikelnummer\\
+Studiengang: & \Studiengang\\
+Betreuung: & \Betreuung\\
+Abgabe: & \AbgabeDatum
+\end{tabular}
+\vspace{2cm}
+\end{titlepage}
+\pagenumbering{Roman}
+\hypersetup{pageanchor=true}
+\input{kapitel/kurzfassung}
+\tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
+\input{kapitel/einleitung_grundlagen}
+\input{kapitel/methodik}
+\input{kapitel/ergebnisse}
+\input{kapitel/diskussion}
+\bibliographystyle{unsrt}
+\bibliography{literatur}
+\appendix
+\input{kapitel/anhang}
+\end{document}
