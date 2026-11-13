@@ -1,0 +1,19 @@
+{
+  "manifestFiles": {
+    "source_manifest.csv": 85,
+    "freeze_manifest.csv": 889
+  },
+  "sealedFits": 234,
+  "searchFits": 88,
+  "evaluations": 288,
+  "caseRows": 55296,
+  "absoluteTolerance": 1e-12,
+  "relativeTolerance": 1e-12,
+  "outsideTolerance": 0,
+  "note": "Known references; timing columns deliberately excluded from equality checks.",
+  "previousRun": "static_comparison_refactor_20261112_attempt4",
+  "previousDifferent": 0,
+  "previousOutsideTolerance": 0,
+  "auditSourceCommit": "4e83631",
+  "auditSourcePath": "Code v2/experiments/static_comparison_refactor_20261112_attempt4/verify_results.py"
+}

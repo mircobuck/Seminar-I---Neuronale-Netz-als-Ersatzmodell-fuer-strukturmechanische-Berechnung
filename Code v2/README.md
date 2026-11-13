@@ -4,7 +4,7 @@ Vier Methoden sagen aus sechs Balkenparametern das vollstaendige statische Versc
 
 ## Bereinigter aktueller Bestand
 
-Aktiv bleiben nur der statische Vier-Methoden-Ablauf und seine Tests. Historische Programme, modale Berechnung, alte Optimierer und Quellkopien sind aus dem Arbeitsstand entfernt und im lokalen Git-Commit `4e83631` gesichert. Wissenschaftliche Daten und Ergebnisse bleiben unveraendert. [Bereinigungsnachweis](docs/STATISCHE_BEREINIGUNG.md), [Codeumfang](docs/CODEZAEHLUNG.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Die neue Hauptwiederholung liegt unter `experiments/static_comparison_cleanup_20261113_attempt2`; ihr Abschluss wird im Arbeitsstand dokumentiert.
+Aktiv bleiben nur der statische Vier-Methoden-Ablauf und seine Tests. Historische Programme, modale Berechnung, alte Optimierer und Quellkopien sind aus dem Arbeitsstand entfernt und im lokalen Git-Commit `4e83631` gesichert. Wissenschaftliche Daten und Ergebnisse bleiben unveraendert. [Bereinigungsnachweis](docs/STATISCHE_BEREINIGUNG.md), [Codeumfang](docs/CODEZAEHLUNG.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Die vollstaendige neue Hauptstudie ist abgeschlossen: 234 erfolgreiche Fits, 288 Auswertungen, 55.296 Fallzeilen und identische numerische Kennzahlen gegenueber der unmittelbar vorherigen Wiederholung. [Ergebnisse und neue Zeiten](experiments/static_comparison_cleanup_20261113_attempt2/WIEDERHOLUNG.md), [Laufbedingungen](experiments/static_comparison_cleanup_20261113_attempt2/LAUFBEDINGUNGEN.md).
 
 ## Voraussetzungen und sicherer Start
 
@@ -47,7 +47,7 @@ Phasen sind wiederaufnehmbar; gleiche Konfiguration und gleicher Quellstand sind
 oldPath = path;
 cleanup = onCleanup(@() path(oldPath));
 addpath("examples")
-showStaticResultsExample("experiments/static_comparison_refactor_20261112_attempt4")
+showStaticResultsExample("experiments/static_comparison_cleanup_20261113_attempt2")
 ```
 
 `examples/trainStaticModelExample.m` zeigt Training und Validierung eines einzelnen Modells mit expliziten Dateipfaden. Dies sind die einzigen beiden verbleibenden Anwendungsbeispiele.

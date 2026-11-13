@@ -1,0 +1,61 @@
+{
+  "decoded": [
+    {
+      "File": "extrapolation_distribution.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "extrapolation_error_vs_data.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "extrapolation_error_vs_prediction.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "extrapolation_error_vs_train.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "extrapolation_train_vs_data.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "interpolation_distribution.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "interpolation_error_vs_data.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "interpolation_error_vs_prediction.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "interpolation_error_vs_train.png",
+      "Width": 1260,
+      "Height": 810
+    },
+    {
+      "File": "interpolation_train_vs_data.png",
+      "Width": 1260,
+      "Height": 810
+    }
+  ],
+  "visuallyInspected": [
+    "interpolation_error_vs_data.png",
+    "extrapolation_error_vs_data.png",
+    "interpolation_error_vs_train.png",
+    "extrapolation_distribution.png"
+  ],
+  "result": "Legible axes, legends and complete plots; no rendering defect observed."
+}

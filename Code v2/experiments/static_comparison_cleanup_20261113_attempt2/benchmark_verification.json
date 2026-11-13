@@ -1,0 +1,9 @@
+{
+  "femMeasurements": 24,
+  "surrogateSingleMeasurements": 1440,
+  "batchMeasurementsPerMethod": 30,
+  "caseCount": 12,
+  "allExpectedRepeatIdentities": true,
+  "summaryMediansAndFemBatchRecomputed": true,
+  "breakEvenScenariosRecomputed": 8
+}
