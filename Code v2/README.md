@@ -4,7 +4,7 @@ Vier Methoden sagen aus sechs Balkenparametern das vollstaendige statische Versc
 
 ## Bereinigter aktueller Bestand
 
-Aktiv bleiben nur der statische Vier-Methoden-Ablauf und seine Tests. Historische Programme, modale Berechnung, alte Optimierer und Quellkopien sind aus dem Arbeitsstand entfernt und im lokalen Git-Commit `4e83631` gesichert. Wissenschaftliche Daten und Ergebnisse bleiben unveraendert. [Bereinigungsnachweis](docs/STATISCHE_BEREINIGUNG.md), [Codeumfang](docs/CODEZAEHLUNG.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Die neue Hauptwiederholung liegt unter `experiments/static_comparison_cleanup_20261112`; ihr Abschluss wird im Arbeitsstand dokumentiert.
+Aktiv bleiben nur der statische Vier-Methoden-Ablauf und seine Tests. Historische Programme, modale Berechnung, alte Optimierer und Quellkopien sind aus dem Arbeitsstand entfernt und im lokalen Git-Commit `4e83631` gesichert. Wissenschaftliche Daten und Ergebnisse bleiben unveraendert. [Bereinigungsnachweis](docs/STATISCHE_BEREINIGUNG.md), [Codeumfang](docs/CODEZAEHLUNG.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Die neue Hauptwiederholung liegt unter `experiments/static_comparison_cleanup_20261113_attempt2`; ihr Abschluss wird im Arbeitsstand dokumentiert.
 
 ## Voraussetzungen und sicherer Start
 

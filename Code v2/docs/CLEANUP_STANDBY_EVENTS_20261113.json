@@ -1,0 +1,26 @@
+﻿[
+    {
+        "TimeCreated":  "\/Date(1794560602493)\/",
+        "Id":  1,
+        "ProviderName":  "Microsoft-Windows-Power-Troubleshooter",
+        "Message":  "Das System wurde aus einem Standbymodus reaktiviert.\r\n\r\nZeit im Energiesparmodus: ‎2026‎-‎11‎-‎12T23:52:35.402098900Z\r\nReaktivierungszeit: ‎2026‎-‎11‎-‎13T09:03:19.582967700Z\r\n\r\nReaktivierungsquelle: Unbekannt"
+    },
+    {
+        "TimeCreated":  "\/Date(1794527563619)\/",
+        "Id":  42,
+        "ProviderName":  "Microsoft-Windows-Kernel-Power",
+        "Message":  "Das System wird in den Standbymodus versetzt.\r\n\r\nUrsache: Hibernate from Sleep - Fixed Timeout"
+    },
+    {
+        "TimeCreated":  "\/Date(1794527558241)\/",
+        "Id":  1,
+        "ProviderName":  "Microsoft-Windows-Power-Troubleshooter",
+        "Message":  "Das System wurde aus einem Standbymodus reaktiviert.\r\n\r\nZeit im Energiesparmodus: ‎2026‎-‎11‎-‎12T23:52:35.402098900Z\r\nReaktivierungszeit: ‎2026‎-‎11‎-‎12T23:52:35.402098900Z\r\n\r\nReaktivierungsquelle: S4-Standbymodus in Ruhezustand"
+    },
+    {
+        "TimeCreated":  "\/Date(1794516754642)\/",
+        "Id":  42,
+        "ProviderName":  "Microsoft-Windows-Kernel-Power",
+        "Message":  "Das System wird in den Standbymodus versetzt.\r\n\r\nUrsache: Button or Lid"
+    }
+]

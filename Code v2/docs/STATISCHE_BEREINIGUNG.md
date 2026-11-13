@@ -34,4 +34,4 @@ Alle sieben gewuenschten Kategorien und Einzeldateien: CODEZAEHLUNG.md / CODEZAE
 
 ## Neue Hauptwiederholung
 
-Zielordner experiments/static_comparison_cleanup_20261112. Unveraenderte Fachkonfiguration, vier Methoden, 76 Suchkandidaten, Trainingsgroessen 48 bis 768, Seeds 42/43/44 und kontrollierte POD-Raenge. Bekannte FEM-Referenzen werden wiederverwendet; diese Wiederholung ist kein neuer unabhaengiger Abschlusstest. Vollstaendige Durchfuehrung und neue Zeitmessungen sind noch ausstehend und werden hier erst nach erfolgreichem Abschluss bestaetigt.
+Zielordner experiments/static_comparison_cleanup_20261113_attempt2. Unveraenderte Fachkonfiguration, vier Methoden, 76 Suchkandidaten, Trainingsgroessen 48 bis 768, Seeds 42/43/44 und kontrollierte POD-Raenge. Bekannte FEM-Referenzen werden wiederverwendet; diese Wiederholung ist kein neuer unabhaengiger Abschlusstest. Vollstaendige Durchfuehrung und neue Zeitmessungen sind noch ausstehend und werden hier erst nach erfolgreichem Abschluss bestaetigt.
