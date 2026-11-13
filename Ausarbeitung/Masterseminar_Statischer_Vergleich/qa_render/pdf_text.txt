@@ -1,0 +1,762 @@
+                           Technische Hochschule Ulm
+
+
+
+                   Masterseminar I – Angewandte Mathematik
+
+Einsatz von Neuronalen Netzen als Ersatzmodell für strukturmechanische Berechnungen
+
+
+
+
+  Vergleich neuronaler und gaußprozessbasierter
+ Ersatzmodelle für statische strukturmechanische
+                  Berechnungen
+
+                        Wissenschaftlicher Seminarbericht
+
+
+
+
+               Verfasser/in:      [Name ergänzen]
+               Matrikelnummer:    [Matrikelnummer ergänzen]
+               Studiengang:       [Studiengang ergänzen]
+               Betreuung:         [Zugewiesene Betreuung ergänzen]
+               Abgabe:            [Abgabedatum ergänzen]
+Kurzfassung
+Parametrisierte strukturmechanische Berechnungen können bei wiederholter Auswertung
+durch datengetriebene Ersatzmodelle beschleunigt werden. Diese Arbeit vergleicht ein
+direktes mehrschichtiges neuronales Netz (MLP), eine konkrete radiale Basisfunktionsva-
+riante (RBF), ein POD–MLP und ein POD–GPR. Ausgangspunkt sind sechs Geometrie-,
+Material- und Lastparameter; vorhergesagt wird das vollständige statische Verschiebungsfeld
+an 525 Punkten mit drei Komponenten. Der Trainingspool umfasst 768 FEM-Fälle. Für
+die Modellwahl werden 128 neue Validierungsfälle und für die unabhängige Bewertung 256
+Interpolations- sowie 128 Extrapolationsfälle verwendet.
+   Bei 768 Trainingsfällen beträgt der mittlere gewichtete relative Interpolationsfehler 4,64 %
+für das MLP, 7,41 % für die RBF-Variante, 4,78 % für POD–MLP und 0,55 % für POD–
+GPR. Für die definierte Extrapolation ergeben sich 16,24 %, 32,67 %, 13,74 % beziehungs-
+weise 3,85 %. Die vollständige Fit-Zeit des ausgewerteten POD–GPR-Hauptmodells beträgt
+353,57 s und übersteigt die neuronalen Fit-Zeiten deutlich. Ein zusätzlicher Benchmark ver-
+gleicht vollständige Surrogatvorhersagen mit FEM-Lösung und Feldinterpolation auf zwölf
+vorab gewählten Fällen. Die daraus abgeleiteten Amortisationswerte sind bedingte Szenari-
+en. Große relative Extrapolationsfehler treten insbesondere bei kleinen Referenznormen auf;
+zudem sind absolute Abweichungen und falsche Vorzeichen einzelner neuronaler Spitzenvor-
+hersagen nachweisbar. Die Befunde gelten für das untersuchte lineare Balkenproblem und die
+begrenzten Such- und Testbereiche.
+
+
+
+
+                                               I
+Inhaltsverzeichnis
+Kurzfassung                                                                                     I
+
+1. Einleitung und Zielsetzung                                                                  1
+   1.1. Motivation und Fragestellung . . . . . . . . . . . . . . . . . . . . . . . . . . .     1
+
+2. Grundlagen                                                                                  2
+   2.1. Direktes Netz und radiale Basisfunktionen . . . . . . . . . . . . . . . . . . . .      2
+   2.2. Gewichtete Proper Orthogonal Decomposition . . . . . . . . . . . . . . . . . .         2
+   2.3. Gaußprozessregression . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    2
+   2.4. Fehlergrößen und POD-Zerlegung . . . . . . . . . . . . . . . . . . . . . . . . .       3
+
+3. Referenzproblem und Datengrundlage                                                          4
+
+4. Methoden und Versuchsplanung                                                                5
+   4.1. Konfigurationswahl und Datenrollen . . . . . . . . . . . . . . . . . . . . . . .       5
+   4.2. Kontrollierter POD- und Verteilungsvergleich . . . . . . . . . . . . . . . . . .       6
+   4.3. Freeze, Messung und Auswertung . . . . . . . . . . . . . . . . . . . . . . . . .       6
+
+5. Ergebnisse                                                                                   7
+   5.1. Genauigkeit bei 768 Trainingsfällen . . . . . . . . . . . . . . . . . . . . . . . .     7
+   5.2. Datenbedarf und Trainingszeit . . . . . . . . . . . . . . . . . . . . . . . . . .       8
+   5.3. Einfluss der Trainingsverteilung . . . . . . . . . . . . . . . . . . . . . . . . . .    8
+   5.4. POD-Rang, Fehleranteile und Aufbauaufwand . . . . . . . . . . . . . . . . . .           8
+   5.5. Extrapolationsausreißer . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     9
+   5.6. Zusätzlicher FEM- und Vorhersagebenchmark . . . . . . . . . . . . . . . . . .          10
+   5.7. Bedingte Amortisationsszenarien . . . . . . . . . . . . . . . . . . . . . . . . .      10
+
+6. Diskussion                                                                                  12
+
+7. Fazit und Ausblick                                                                          13
+
+A. Ergänzende Tabellen und Reproduzierbarkeit                                                  15
+   A.1. Aufwand und bedingte Einzelfallszenarien . . . . . . . . . . . . . . . . . . . .       15
+   A.2. Daten- und Quellnachweise . . . . . . . . . . . . . . . . . . . . . . . . . . . .      15
+
+
+
+
+                                                II
+1. Einleitung und Zielsetzung
+1.1. Motivation und Fragestellung
+Die Finite-Elemente-Methode (FEM) ermöglicht die numerische Untersuchung strukturme-
+chanischer Probleme, verursacht aber bei wiederholter Lösung unterschiedlicher Parameter-
+kombinationen wiederkehrende Rechenkosten. Ein aus bereits berechneten Beispielen ange-
+passtes Ersatzmodell kann die Parameter-Lösungs-Abbildung approximieren. Dem schnellen
+Online-Aufruf stehen die Kosten für Referenzdaten und Modellanpassung gegenüber. Die Auf-
+gabenbeschreibung des Masterseminars schlägt dafür zunächst einen einseitig eingespannten
+Biegebalken und die statische Auslenkung als Ausgangspunkt vor[1].
+  Die Leitfrage dieser Arbeit lautet: Wie unterscheiden sich die untersuchten Ersatzmodelle
+hinsichtlich Genauigkeit vollständiger Verschiebungsfelder, Datenbedarf, Trainingsaufwand
+und Vorhersagezeit? Verglichen werden ein direktes MLP, die vorhandene RBF-Variante,
+POD–MLP und POD–GPR. Die Studie untersucht ausschließlich statische Verschiebun-
+gen; Eigenfrequenzen werden nicht ausgewertet. Die Bewertung erfolgt auf separaten
+Interpolations- und Extrapolationsfällen. Ein kleiner nachträglicher Benchmark ergänzt die
+ursprünglichen Messungen um einen begrenzten FEM-Vergleich.
+
+
+
+
+                                            1
+2. Grundlagen
+2.1. Direktes Netz und radiale Basisfunktionen
+Ein mehrschichtiges Perzeptron bildet einen Eingabevektor durch aufeinanderfolgende affine
+Transformationen und nichtlineare Aktivierungen auf eine Ausgabe ab. Im direkten Ansatz
+besteht die Ausgabe aus allen 1575 Feldkomponenten. Die Netzbreite und -tiefe bestimmen
+die Architektur; Adam ist dagegen ein Optimierungsverfahren zur iterativen Anpassung der
+Gewichte[2]. Eine gewichtete Feld-MSE misst im Training die Abweichung über das Feld,
+während die alternative Standardisierung einzelne Ausgabespalten skaliert.
+  Radiale Basisfunktionen ordnen Eingaben anhand ihrer Distanz zu Zentren Merkmale zu[3].
+Die hier verwendete Implementierung berechnet zunächst Gaußmerkmale für feste Zentren
+und führt sie anschließend durch trainierbare Tanh-Schichten. Sie ist weder mit einem belie-
+bigen RBF-Verfahren noch mit einer Optimierung der Zentren gleichzusetzen.
+
+
+2.2. Gewichtete Proper Orthogonal Decomposition
+Die Proper Orthogonal Decomposition (POD) bestimmt aus Beispielschnappschüssen einen
+niedrigdimensionalen linearen Raum[4]. Für einen zentrierten Feldvektor u − ū und eine im
+Projekt verwendete positive Gewichtsmatrix W gelten für die behaltenen Basisvektoren Φr
+die gewichtete Orthonormalität ΦT
+                                r W Φr = I und die Projektion
+
+                            a = ΦT
+                                 r W (u − ū),     b = ū + Φr a
+                                                   u           b.                        (2.1)
+
+Der Rang r legt die Zahl der Koeffizienten fest. POD ist eine Dimensionsreduktion und
+kein neuronales Netz. Im POD–MLP lernt das Netz die Abbildung der Parameter auf a.
+Verwandte Forschungsarbeiten kombinieren reduzierte Lösungsräume und neuronale Modelle
+auch für parametrisierte partielle Differentialgleichungen; deren nichtlineare beziehungsweise
+zeitabhängige Aufgaben sind nicht identisch mit dem vorliegenden statischen Balken[5, 6].
+
+
+2.3. Gaußprozessregression
+Ein Gaußprozess beschreibt eine Verteilung über Funktionen, deren endliche Auswertun-
+gen gemeinsam normalverteilt sind. Mittelwert- und Kovarianzfunktion bestimmen diese
+Verteilung[7]. Beim POD–GPR wird für jeden nicht konstanten POD-Koeffizienten ein se-
+parates GPR-Modell trainiert. Die konkrete Implementierung verwendet exakte Anpassung
+mit fitrgp[8]. Die Eingaben und Koeffizienten werden anhand der Trainingsdaten standardi-
+siert. Konstante Eingabespalten werden aus dem Prädiktor entfernt; konstante Ziele werden
+direkt rekonstruiert. Das feste numerische Sigma stabilisiert das Modell und wird hier nicht
+als Messrauschen interpretiert. Eine Kalibrierung der GPR-Unsicherheit ist nicht Gegenstand
+der Untersuchung.
+
+
+
+
+                                              2
+2.4. Fehlergrößen und POD-Zerlegung
+Für ein Referenzfeld u und eine Vorhersage u
+                                           b ist der gewichtete relative Feldfehler definiert
+als
+                                ∥u − u
+                                     b∥W                √
+                         erel =          ,     ∥v∥W = v T W v.                          (2.2)
+                                  ∥u∥W
+Die Größe ist ein Fehler des gesamten Feldes, keine punktweise Fehlerschranke. Bei kleiner
+Referenznorm kann sie trotz begrenzter absoluter Abweichung stark ansteigen. Ergänzend
+werden absolute Feldfehler sowie Fehler der Spitzenauslenkung und des maximalen Verschie-
+bungsbetrags ausgewiesen.
+  Die orthogonale Projektion erlaubt eine fallweise quadratische Zerlegung des Feldfehlers in
+Projektions- und Regressionsanteil. Die in den Ergebnissen berichteten Mittelwerte relativer
+Wurzeln sind im Allgemeinen nicht additiv. P95 bezeichnet das nach der Nearest-Rank-Regel
+ermittelte 95. Perzentil der Fallfehler. Es beschreibt die Verteilung der beobachteten Fälle,
+keine garantierte Fehlerschranke.
+
+
+
+
+                                             3
+3. Referenzproblem und Datengrundlage
+Untersucht wird ein linear-elastischer Quaderbalken, der an einer Stirnfläche fest eingespannt
+und an der anderen durch eine gleichmäßig verteilte z-gerichtete Flächenlast beansprucht
+wird. Die Geometrie wird für jeden Fall neu vernetzt. Die FEM-Lösung wird auf ein gemein-
+sames normiertes Raster mit 21 × 5 × 5 = 525 Punkten interpoliert. Ausgegeben werden die
+drei Verschiebungskomponenten in Metern. Für die Stützfläche wird im gemeinsamen Raster
+die bekannte homogene Verschiebungsrandbedingung gesetzt.
+   Die sechs Eingaben und ihre Trainingsgrenzen sind in Tabelle 3.1 angegeben. Der Trai-
+ningspool umfasst je 384 Fälle aus zwei Erzeugungsblöcken. Die Auswahlen sind blockausge-
+glichen und für die Größen 48, 96, 192, 384 und 768 verschachtelt. Drei Auswahlen dienen
+der Untersuchung kleinerer Trainingsmengen; bei 768 Fällen sind sie identisch. Für neuronale
+Vollpoolmodelle werden zusätzlich drei Initialisierungen betrachtet.
+
+
+                Tabelle 3.1.: Parameter und Grenzen des Trainingsintervalls.
+               Parameter                  Einheit   Untergrenze   Obergrenze
+               Länge L                    m               0,60            1,20
+               Breite b                   m               0,06            0,10
+               Höhe h                     m               0,08            0,14
+               Elastizitätsmodul E        GPa               70             210
+               Querkontraktionszahl ν     –               0,25            0,35
+               Kraft Fz                   N              −1000           −100
+
+   Neben dem Trainingspool entstehen 128 neue Validierungs-, 256 Interpolations- und 128
+Extrapolationsfälle. Validierungs- und Interpolationsparameter werden unabhängig innerhalb
+der Grenzen mittels Latin-Hypercube-Verfahren erzeugt. Ein Extrapolationsfall überschreitet
+genau eine Parametergrenze um 5–10 % der zugehörigen Intervallbreite. Die zwölf Parameter-
+/Seitengruppen enthalten je zehn oder elf Fälle. Parametervektoren werden gegen bekannte
+Designs und neue Kandidaten auf Überschneidungen in einer durch Intervallbreiten normier-
+ten Maximumsnorm mit Toleranz 10−10 geprüft.
+   Die FEM-Referenzen verwenden quadratische Elemente und den Netzdivisor 3. Fälle müs-
+sen physikalische und numerische Prüfungen einschließlich eines maximalen Auslenkungsver-
+hältnisses von 0,02 erfüllen. Ein separater Pilot umfasst zwölf Extrapolationsfälle auf drei
+Netzstufen; er ist keine Garantie für Netzkonvergenz im gesamten Parameterraum. Euler–
+Bernoulli- und Timoshenko-Balkentheorie werden als Plausibilitätsreferenzen genutzt, nicht
+als exakte Lösungen aller Komponenten des dreidimensionalen Feldes.
+
+
+
+
+                                              4
+4. Methoden und Versuchsplanung
+4.1. Konfigurationswahl und Datenrollen
+Die Modellauswahl erfolgt bei N = 384 auf einer Trainingsauswahl und den 128 Validierungs-
+fällen. Zielgröße ist der mittlere gewichtete relative Feldfehler. Bei Gleichstand folgen P95 und
+eine feste Konfigurationskennung; die zwei besten neuronalen Kandidaten werden mit drei
+Initialisierungen bestätigt. GPR wird nach einem deterministischen Protokoll abgestimmt.
+Für die Lernkurven bleibt danach je Familie dieselbe Konfiguration erhalten; eine separate
+Abstimmung je N findet nicht statt. Abbildung 4.1 stellt die Trennung der Datenrollen dar.
+
+
+
+
+    FEM-Referenzen           Training         Auswahl: N = 384         Freeze von         Unabhängige Tests
+   und Trainingspool      N = 48 … 768          128 Val.-Fälle          Modellen         Interpolation / Extra.
+
+
+
+
+                          Konfigurationen der Lernkurven bleiben nach der Auswahl fest
+
+
+
+
+Abbildung 4.1.: Datenrollen und zeitliche Trennung der Modellwahl vom unabhängigen Test.
+                Eigene Darstellung nach Studienprotokoll.
+
+   Die tatsächlich ausgewählten Einstellungen stehen in Tabelle 4.1. Die neuronalen Modelle
+verwenden Adam, höchstens 200 Epochen, eine Batchgröße von 32 und die Lernrate 0,001.
+GPR verwendet ardmatern52, einen linearen Mittelwert, ein konstantes numerisches Sigma
+von 0,001 und zwei Startlängenskalen. Die Quasi-Newton-Optimierung ist auf höchstens 500
+Iterationen begrenzt. Der tatsächlich durchsuchte MLP-Raum umfasst Breiten 64 und 128,
+Tiefen 2 und 3, Lernraten 0,0005 und 0,001 sowie zwei Loss-Varianten; die ursprünglich
+vorgesehenen Breiten 32 und 80 fehlen.
+
+
+                Tabelle 4.1.: Auf der Validierung ausgewählte Konfigurationen.
+ Methode               Architektur beziehungsweise Kernel                      Training / Loss            Rang
+ MLP                   3 Tanh-Schichten, Breite 128                            Adam, gew.                         –
+                                                                               Feld-MSE
+ RBF                   64 feste Gaußzentren, Breite 2; 2                       Adam, gew.                         –
+                       Tanh-Schichten à 64                                     Feld-MSE
+ POD–MLP               3 Tanh-Schichten, Breite 80                             Adam, gew.                         2
+                                                                               Feld-MSE
+ POD–GPR               ARD-Matérn-5/2, linearer Mittelwert, Sigma              exakte GPR                     15
+                       0,001
+
+
+
+
+                                                       5
+4.2. Kontrollierter POD- und Verteilungsvergleich
+Im kontrollierten POD-Vergleich werden die Ränge 2, 10 und 15 untersucht. POD–MLP
+und POD–GPR erhalten für denselben Rang, dieselbe Trainingsauswahl und Reihenfolge
+exakt denselben Mittelwert und dieselbe gewichtete Basis. Die Regressoreinstellungen der
+ausgewählten Familienkonfigurationen bleiben ansonsten fest. Die eigenständige Fit-Zeit wird
+als Summe aus der gemessenen Fit-Zeit mit vorbereiteter Basis und der separat gemessenen
+gemeinsamen POD-Zeit geschätzt.
+   Eine separate Untersuchung bei N = 192 vergleicht eine raumfüllende mit einer auf niedrige
+Längen konzentrierten Auswahl. Beide sind blockausgeglichen und besitzen identische äußere
+Parametergrenzen. Die Bewertung erfolgt auf denselben unabhängigen Fällen.
+
+
+4.3. Freeze, Messung und Auswertung
+Vor Testlabelzugriff werden Konfigurationen, Daten- und Quellprüfsummen sowie die vor-
+gesehenen Modellartefakte eingefroren. Die Tests werden anschließend getrennt nach Inter-
+polation und Extrapolation ausgewertet. Die ursprüngliche Testauswertung brach nach dem
+ersten Modell wegen einer überschriebenen Manifestvariablen ab. Eine separat dokumentierte
+und gehashte technische Korrektur entstand nach dem ersten Testzugriff; Modelle, Auswahl-
+regel und Metriken blieben unverändert. Für die beiden bereits berechneten Splits stimmen
+zwölf geprüfte numerische Fehler- und Referenzgrößen mit der Wiederholung überein. Die
+Korrektur ist somit dokumentiert, jedoch nicht nachträglich Teil des ursprünglichen Freeze.
+   Fit, Vorverarbeitung, POD beziehungsweise Zentrenaufbau, Regression, Suche sowie Laden
+und Speichern werden getrennt erfasst. Für vollständige Vorhersagen werden nach Warm-up
+wiederholte Einzelfall- und 128er-Batch-Aufrufe gemessen. Im Vollpool sind die drei neu-
+ronalen Wiederholungen unterschiedliche Netzinitialisierungen; zusätzliche deterministische
+GPR-Fits dienen ausschließlich der Zeitmessung.
+   Ein zusätzlicher, nachträglich angelegter Benchmark wählt vor der Messung zwölf Interpo-
+lationsfälle anhand fester Datenpositionen, unabhängig vom Vorhersagefehler. Auf derselben
+Maschine werden FEM-Lösung mit Feldinterpolation und vollständige Vorhersagen der ein-
+gefrorenen Modelle gemessen. Details und Kostenabgrenzung folgen in Kapitel 5.
+
+
+
+
+                                             6
+5. Ergebnisse
+5.1. Genauigkeit bei 768 Trainingsfällen
+Tabelle 5.1 und Abbildung 5.1 zeigen den vollständigen Feldfehler für die ausgewählten Fami-
+lienkonfigurationen. Mittelwert und P95 werden je Lauf über Fälle bestimmt und für neuro-
+nale Modelle anschließend über drei Initialisierungen gemittelt. Das Maximum ist das größte
+tatsächlich beobachtete Fallmaximum über die jeweiligen Läufe. Für POD–GPR liegt ein de-
+terministischer Vollpool-Hauptlauf vor; seine zwei zusätzlichen Fits sind Zeitwiederholungen,
+keine unabhängigen Datenziehungen. POD–GPR erzielt auf beiden untersuchten Testvertei-
+
+
+      Tabelle 5.1.: Gewichteter relativer Feldfehler bei N = 768. Angaben in Prozent.
+                                                              Interpolation             Extrapolation
+                                                Methode   Mittel    P95    Max.    Mittel      P95      Max.
+                                                MLP         4,64   14,78   58,59   16,24     50,74    638,23
+                                                RBF         7,41   22,57   97,21   32,67    102,03   1253,55
+                                                POD–MLP     4,78   15,73   43,78   13,74     47,82    286,56
+                                                POD–GPR     0,55    2,20    6,65    3,85     15,85     88,55
+
+
+
+                                                                                                           Interpolation
+                                           30
+      Mittlerer relativer Feldfehler [%]
+
+
+
+
+                                                                                                           Extrapolation
+
+                                           25
+
+                                           20
+
+                                           15
+
+                                           10
+
+                                            5
+
+                                            0
+                                                   MLP             RBF               POD–MLP             POD–GPR
+
+
+Abbildung 5.1.: Mittlerer relativer Feldfehler bei N = 768. Neuronale Werte sind Mittel über
+                drei Initialisierungen; POD–GPR umfasst einen Hauptlauf. Eigene Darstel-
+                lung der Studienergebnisse.
+
+lungen den kleinsten mittleren Fehler. Der Unterschied zwischen Interpolations- und Extra-
+polationsfällen ist bei allen Methoden deutlich. Auch für POD–GPR liegt das beobachtete
+Extrapolationsmaximum bei 88,55 %; der Mittelwert allein beschreibt die Randfälle folglich
+nicht ausreichend.
+  Für die Spitzenauslenkung am normierten Punkt (1; 0,5; 0,5) beträgt der mittlere absolute
+Fehler bei POD–GPR 0,0007 mm für Interpolation und 0,0023 mm für Extrapolation. Beim
+direkten MLP sind es 0,0057 beziehungsweise 0,0106 mm. Diese Punktgrößen ergänzen, aber
+ersetzen den vollständigen Feldfehler nicht.
+
+
+
+                                                                           7
+5.2. Datenbedarf und Trainingszeit
+Abbildung 5.2 zeigt die Interpolationslernkurven und die mediane vollständige Fit-Zeit pro
+untersuchter Trainingsgröße. Die Konfigurationen wurden bei N = 384 gewählt und bleiben
+über die Größen fest. Bei N = 192 beträgt der mittlere Interpolationsfehler 5,58 % für MLP,
+11,22 % für RBF, 9,71 % für POD–MLP und 2,69 % für POD–GPR. Bei N = 48 treten
+teilweise sehr große Fehler und erhebliche Unterschiede zwischen Trainingsauswahlen auf.
+Bei N = 768 unterscheiden sich die neuronalen Vollpoolläufe durch ihre Initialisierung, nicht
+durch verschiedene Vollpool-Daten.
+
+                                                                              MLP
+                                     102                                      RBF
+Mittlerer relativer Feldfehler [%]
+
+
+
+
+                                                                              POD–MLP
+                                                                              POD–GPR
+                                                                                                                  102
+
+
+
+
+                                                                                            Median Fit-Zeit [s]
+                                     101
+
+
+                                                                                                                  101
+
+
+                                     100
+
+
+
+                                           48   96         192          384       768                                   48   96         192          384   768
+                                                     Trainingsfälle N                                                             Trainingsfälle N
+
+
+Abbildung 5.2.: Mittlerer Interpolationsfeldfehler und mediane öffentliche Fit-Zeit gegen die
+                Trainingsgröße. Logarithmische Achsen. Die Konfigurationen wurden bei
+                N = 384 festgelegt; die Art der Wiederholung ändert sich beim Vollpool.
+                Eigene Darstellung.
+
+  Die Fit-Zeit des ausgewerteten POD–GPR-Hauptmodells beträgt 353,5687942 s. Zwei wei-
+tere Fits derselben Konfiguration dauern 337,1902846 s und 336,1487963 s. Der Median dieser
+drei vergleichbaren Zeitmessungen beträgt 337,1902846 s; Trainingsfälle, Konfiguration und
+Fingerprints stimmen überein. Der Median ist somit nicht die Fit-Zeit des einzelnen aus-
+gewerteten Hauptmodells. Die Zeiten umfassen den öffentlichen Fit, aber weder Speichern
+noch Validierungsvorhersage. Die Fit-Zeiten der neuronalen Seed-42-Hauptmodelle betragen
+52,67 s, 43,71 s und 32,26 s für MLP, RBF und POD–MLP.
+
+
+5.3. Einfluss der Trainingsverteilung
+Abbildung 5.3 zeigt bei N = 192 den separaten Vergleich einer raumfüllenden und einer auf
+kleine Längen konzentrierten Auswahl. Die raumfüllende Auswahl erreicht für alle vier unter-
+suchten Familien den geringeren mittleren Interpolationsfehler. Beispielsweise ergeben sich
+für POD–GPR 2,90 % gegenüber 5,08 %. Gleiche äußere Parametergrenzen bedeuten somit
+nicht notwendig eine vergleichbare Abdeckung im Inneren. Es handelt sich um die konkret
+untersuchten Designs, nicht um eine allgemeine Aussage über jede mögliche Verteilung.
+
+
+5.4. POD-Rang, Fehleranteile und Aufbauaufwand
+Abbildung 5.4 zeigt den Projektions- und Koeffizientenregressionsanteil sowie die geschätzte
+eigenständige Fit-Zeit für die drei Ränge im kontrollierten Vollpoolvergleich. Beide Methoden
+verwenden dieselbe Basis pro Rang. Es handelt sich je Methode und Rang um einen Lauf,
+
+
+
+                                                                                        8
+                                                                                                              Interpolation, N = 192
+                                                                                                                                                                                            raumfüllend
+
+
+                                           Mittlerer relativer Feldfehler [%]
+                                                                                                                                                                                            konzentriert
+                                                                                20
+
+
+                                                                                15
+
+
+                                                                                10
+
+
+                                                                                    5
+
+
+                                                                                    0
+                                                                                        MLP                  RBF                                                        POD–MLP          POD–GPR
+
+
+
+Abbildung 5.3.: Einfluss der Trainingsverteilung bei N = 192 auf dieselben Interpolationsfäl-
+                le. Eigene Darstellung der separaten Verteilungsstudie.
+
+
+nicht um ein Mittel über neuronale Initialisierungen. Für POD–GPR beträgt der vollständige
+Interpolationsfehler bei Rang 2 beziehungsweise 15 0,560 % beziehungsweise 0,549 %; die ent-
+sprechenden eigenständigen Fit-Schätzungen sind 70,53 s und 348,22 s. Für die Extrapolation
+ergeben sich 3,861 % und 3,854 %. Die Unterschiede sind deskriptiv und nach Testeinsicht
+ermittelt.
+
+                                                                                                                                                                  350       POD–MLP
+                                                                                                                               Eigenständiger Fit inkl. POD [s]
+
+
+
+
+                                                                                                                                                                            POD–GPR
+Mittlerer relativer Anteil [%]
+
+
+
+
+                                  100                                                                                                                             300
+
+                                                                                                                                                                  250
+                                 10−1                                                             POD–MLP Regression
+                                                                                                  POD–GPR Regression                                              200
+                                                                                                  Projektion (gemeinsam)
+                                                                                                                                                                  150
+                                 10−2
+                                                                                                                                                                  100
+
+                                      −3
+                                 10                                                                                                                                50
+
+                                                                                2                10                  15                                                 2                    10            15
+                                                                                          POD-Rang                                                                                    POD-Rang
+
+
+Abbildung 5.4.: Kontrollierter POD-Vollpoolvergleich: mittlere relative Projektions- und Re-
+                gressionsanteile für Interpolation sowie eigenständiger Fit einschließlich sepa-
+                rat gemessener POD-Kosten. Ein Lauf je Rang und Methode; logarithmische
+                Fehlerachse. Eigene Darstellung.
+
+
+
+5.5. Extrapolationsausreißer
+Der größte beobachtete relative Vollpoolfehler aller vier Familien betrifft Fall 830644. Der
+extrapolierte Parameter ist Fz = −29,9502 N, oberhalb der Trainingsgrenze −100 N und um
+7,7833 % der Trainingsintervallbreite entfernt. Die Referenznorm beträgt 5,076 · 10−7 m. Der
+größte relative Fehler je Familie beträgt 638,23 % für MLP, 1253,55 % für RBF, 286,56 %
+für POD–MLP und 88,55 % für POD–GPR. Die Maxima von MLP und RBF stammen von
+anderen Initialisierungen als Seed 42.
+  Abbildung 5.5 vergleicht für denselben Fall die vorab festgelegten Seed-42-Hauptmodelle.
+Die FEM-Spitze liegt bei −0,001033 mm. Die direkte MLP-, RBF- und POD–MLP-
+
+
+
+                                                                                                                           9
+Vorhersage besitzen dort ein falsches positives Vorzeichen; POD–GPR sagt −0,001955 mm
+vorher. Die jeweiligen absoluten Feldfehler sind ungleich null. Unter den 13 größten relativen
+Fehlern je Seed-42-Modell liegen sieben, neun, sechs beziehungsweise acht Fälle in der zehn
+Fälle umfassenden Gruppe Fz oberhalb der Grenze. Der Median der Referenznorm über
+alle 128 Extrapolationsfälle beträgt 5,04 · 10−5 m und ist damit deutlich größer als die
+typischen Normen der größten relativen Fehler. Niedrige Referenznormen verstärken die
+relative Kennzahl; sie erklären jedoch nicht alle absoluten Feldabweichungen.
+
+                                                         Extrapolationsfall 830644, Seed 42
+                                         0.008
+                                                                                              FEM: -0.0010 mm
+       Vorhergesagtes Spitzen-uz [mm]
+
+
+
+
+                                         0.006
+
+
+                                         0.004
+
+
+                                         0.002
+
+
+                                         0.000
+
+
+                                        −0.002
+                                                 MLP           RBF             POD–MLP         POD–GPR
+
+
+
+Abbildung 5.5.: Vorhergesagtes vorzeichenbehaftetes Spitzen-uz des Extrapolationsfalls
+                830644 für die Seed-42-Hauptmodelle. Die gestrichelte Linie zeigt die FEM-
+                Referenz. Eigene Darstellung.
+
+
+
+5.6. Zusätzlicher FEM- und Vorhersagebenchmark
+Der nachträgliche Benchmark verwendet zwölf vorab unabhängig vom Fehler gewählte Inter-
+polationsfälle auf einem AMD Ryzen 5 4500U unter MATLAB R2025b. Nach einem FEM-
+Warm-up werden die Fälle je zweimal seriell gelöst, im zweiten Durchlauf in umgekehrter
+Reihenfolge. Der FEM-Aufruf umfasst Geometrie, Netz, Lösung, vollständige Feldinterpola-
+tion sowie Spitzenabfrage und Prüfungen. Für die eingefrorenen Seed-42-Modelle werden nach
+Warm-up 30 vollständige Einzelfallaufrufe pro Fall und 30 gemeinsame 12er-Batches gemes-
+sen. Das Laden wird getrennt erfasst; Dateizugriffe sind aus den eigentlichen Vorhersagezeiten
+ausgeschlossen.
+   Der Median der fallweisen FEM-Mediane beträgt 2,189 s; der Interquartilsabstand zwischen
+Fällen beträgt 1,734 s. Die Summe der zwölf fallweisen FEM-Mediane ist 29,418 s und keine
+Messung eines optimierten FEM-Batchsolvers. Abbildung 5.6 zeigt die Surrogatzeiten. Beim
+Einzelfall liegen sie zwischen 7,573 und 9,252 ms; beim gemeinsamen 12er-Aufruf zwischen
+9,835 und 18,469 ms. FEM enthält zusätzliche Spitzenabfragen und Prüfungen; die Messum-
+fänge sind deshalb nicht völlig identisch.
+
+
+5.7. Bedingte Amortisationsszenarien
+Für einen positiven Zeitgewinn pro Einzelfall wird die rechnerische Schwelle bestimmt durch
+                                                              &                  '
+                                                                 Coffline
+                                                       QBE =                  .                                 (5.1)
+                                                             tFEM − tSurrogat
+Mit vorhandenen Trainings- und Validierungsdaten umfasst Coffline hier den Fit des Seed-42-
+Hauptmodells, wahlweise zuzüglich äußerer Familiensuche. Für POD–GPR ergeben sich 163
+
+
+
+                                                                     10
+                                                    Einzelfall
+
+
+
+
+       Vollständiger Vorhersageaufruf [ms]
+                                             17.5
+                                                    Batch mit 12 Fällen
+                                             15.0
+
+                                             12.5
+
+                                             10.0
+
+                                              7.5
+
+                                              5.0
+
+                                              2.5
+
+                                              0.0
+                                                       MLP                RBF        POD–MLP   POD–GPR
+
+
+
+Abbildung 5.6.: Median vollständiger Surrogataufrufe im nachträglichen Benchmark: ein Fall
+                und gemeinsamer 12er-Batch. Ladezeiten sind ausgeschlossen. Eigene Dar-
+                stellung.
+
+
+Einzelfälle mit Fit beziehungsweise 714 mit Fit und Suche. Im seriellen FEM-/12er-Batch-
+Szenario sind es 156 beziehungsweise 636 Fälle. Fit und Suche stammen aus der Hauptstu-
+die, Vorhersage- und FEM-Zeiten aus dem späteren Benchmark auf derselben Maschine. Die
+Werte sind bedingte Szenarien auf Medianbasis, ohne Unsicherheitsintervall und ohne Lade-,
+Speicher- oder Qualitätssicherungskosten.
+  Für eine hypothetische Neuerzeugung wird lediglich eine gemischte historische Rechen-
+annahme aus 1632,92 s Trainings-Solverzeit und 566,11 s aktiver Validierungserzeugung an-
+gesetzt. Die Trainings-Gesamtzeit fehlt; diese Summe ist keine neu kontrolliert gemessene
+vollständige Datenerzeugung. Testdatenerzeugung, Pilot und weitere Studienkosten bleiben
+in den Szenarien unberücksichtigt. Die vollständigen methodenspezifischen Zahlen und Kos-
+tenabgrenzungen stehen im Anhang.
+
+
+
+
+                                                                                11
+6. Diskussion
+Die Ergebnisse zeigen für die konkret gewählten Konfigurationen einen deutlichen Genauig-
+keitsvorteil von POD–GPR. Dies ist keine allgemeine Überlegenheit von Gaußprozessen: Die
+Aussage betrifft einen begrenzten Parameterraum, ein linear-elastisches Referenzproblem und
+die durchsuchten Modell- und Hyperparameterräume. Das direkte MLP wurde nur für die
+Breiten 64 und 128 untersucht; die ursprünglich vorgesehenen Breiten 32 und 80 fehlen. Das
+Ergebnis der RBF-Familie betrifft feste Gaußzentren und nachgeschaltete Tanh-Schichten.
+   Im kontrollierten Vollpoolvergleich ist der Projektionsfehler bereits bei Rang 2 klein. Dass
+der vollständige POD–GPR-Fehler bei höheren Rängen nur geringfügig sinkt, legt einen güns-
+tigen Kompromiss bei kleinem Rang nahe. Diese Interpretation entstand nach Einsicht in die
+Testdaten. Sie ist eine Folgehypothese und ändert nicht den auf der Validierung gewählten
+Rang 15. Bei POD–MLP verändern sich die Fehler je Rang anders; aus einzelnen kontrol-
+lierten Läufen sollte nicht auf die gesamte Verteilung möglicher neuronaler Initialisierungen
+geschlossen werden.
+   Die Extrapolationsfälle überschreiten jeweils nur eine Grenze. Die großen relativen Feh-
+ler bei kleiner Referenznorm sind nicht gleichbedeutend mit gleich großen absoluten Feh-
+lern. Umgekehrt zeigen die absoluten Fehler und falschen Vorzeichen im auffälligen Lastfall,
+dass die relativen Ausreißer nicht allein ein Effekt der Normierung sind. Die nachträgliche
+Gruppenauswertung enthält nur zehn oder elf Fälle pro Gruppe und erlaubt keine gesicherte
+Ursachenzuordnung.
+   Die FEM-Felder sind Referenzen des verwendeten numerischen Netzes. Die Netzuntersu-
+chung im Pilot ist begrenzt; eine flächendeckende Konvergenzprüfung liegt nicht vor. Analy-
+tische Balkentheorien dienen als Plausibilisierung und beschreiben nicht alle Komponenten
+des dreidimensionalen Feldes exakt. Die unabhängigen Testfälle sind in ihrer Rolle von der
+Validierung getrennt, wurden jedoch über dieselben Modelle wiederholt vorhergesagt; Seeds
+erzeugen keine zusätzlichen unabhängigen Balkenfälle.
+   Die technische Auswertekorrektur nach dem ersten Testzugriff ist eine Einschränkung
+der ursprünglichen Vorabprovenienz. Ihr Änderungsumfang, die unveränderten Modelle und
+Kennzahlen sowie der Vergleich der ersten beiden Split-Ergebnisse sind separat dokumentiert.
+Für POD–GPR wurde keine Unsicherheitskalibrierung vorgenommen; der Spitzen-RAM wur-
+de nicht gemessen. Die Laufzeit- und Break-even-Werte hängen von Messumfang, Rechner,
+Datenkosten und Aufgabenverteilung ab. Der kleine spätere Benchmark erlaubt eine bedingte
+Szenariorechnung, nicht die Behauptung einer universellen Schwelle.
+
+
+
+
+                                              12
+7. Fazit und Ausblick
+Für den vorliegenden statischen Vergleich ist POD–GPR bei N = 768 der genauigkeitsori-
+entierte Ausgangspunkt: Der mittlere Interpolationsfehler beträgt 0,55 % und der mittlere
+Extrapolationsfehler 3,85 %. Dem steht eine vollständige Fit-Zeit des ausgewerteten Haupt-
+modells von 353,57 s gegenüber. POD–MLP ist schneller trainiert, erreicht aber einen größeren
+Feldfehler. Direkte MLP- und RBF-Modelle sind weitere Bezugspunkte, deren Ergebnisse von
+ihrem begrenzten Suchraum abhängen. Der Datenbedarf wird nicht allein durch die Fallzahl
+bestimmt: Die separate Verteilungsstudie zeigt für alle vier Familien einen Vorteil des konkret
+betrachteten raumfüllenden Designs.
+   Für weiterführende Arbeiten bietet sich eine vorab definierte Untersuchung kleiner POD-
+Ränge mit neuen unabhängigen Bewertungsfällen an. Ebenso können Netzkonvergenz, kri-
+tische Lastfälle und eine mögliche Kalibrierung der GPR-Unsicherheit vertieft werden. Eine
+Erweiterung auf Eigenfrequenzen wäre ein eigenständiger nächster Schritt und ist nicht durch
+die statischen Ergebnisse dieser Arbeit belegt.
+
+
+
+
+                                              13
+Literaturverzeichnis
+[1] Technische Hochschule Ulm, Labor für Strukturmechanik und Akustik. Einsatz von Neu-
+    ronalen Netzen als Ersatzmodell für strukturmechanische Berechnungen. Aufgabenbe-
+    schreibung, Masterseminar I – Angewandte Mathematik. Projektinterne PDF.
+
+[2] Diederik P. Kingma and Jimmy Ba. Adam: A Method for Stochastic Optimization. In
+    International Conference on Learning Representations, 2015. https://arxiv.org/abs/
+    1412.6980.
+
+[3] D. S. Broomhead and David Lowe. Multivariable Functional Interpolation and Adaptive
+    Networks. Complex Systems, 2:321–355, 1988. https://www.complex-systems.com/
+    abstracts/v02_i03_a05/.
+
+[4] Lawrence Sirovich. Turbulence and the Dynamics of Coherent Structures. Part I: Coherent
+    Structures. Quarterly of Applied Mathematics, 45(3):561–571, 1987. DOI: https://doi.
+    org/10.1090/qam/910462.
+
+[5] Matteo Salvador, Luca Dedè, and Andrea Manzoni. Non intrusive reduced order modeling
+    of parametrized PDEs by kernel POD and neural networks. Computers & Mathematics
+    with Applications, 104:1–13, 2021. DOI: https://doi.org/10.1016/j.camwa.2021.11.
+    001.
+
+[6] Stefania Fresca, Luca Dedè, and Andrea Manzoni. A Comprehensive Deep Learning-
+    Based Approach to Reduced Order Modeling of Nonlinear Time-Dependent Parametrized
+    PDEs. Journal of Scientific Computing, 87:61, 2021. DOI: https://doi.org/10.1007/
+    s10915-021-01462-7.
+
+[7] Carl Edward Rasmussen and Christopher K. I. Williams. Gaussian Processes for Machine
+    Learning. MIT Press, Cambridge, MA, 2006. https://gaussianprocess.org/gpml/
+    chapters/.
+
+[8] The MathWorks, Inc. fitrgp: Fit a Gaussian process regression model. MATLAB Statistics
+    and Machine Learning Toolbox, Dokumentation. https://www.mathworks.com/help/
+    stats/fitrgp.html, Abruf: 12.11.2026; verwendete Software: R2025b.
+
+
+
+
+                                            14
+A. Ergänzende Tabellen und
+   Reproduzierbarkeit
+A.1. Aufwand und bedingte Einzelfallszenarien
+Tabelle A.1 enthält die Familiensuche und die berechneten Einzelfallschwellen für bereits
+verfügbare Trainings- und Validierungsdaten. Die Randbedingungen und die Grenzen der
+Szenarien sind in Kapitel 5 erläutert.
+
+
+Tabelle A.1.: Bedingte Szenarien bei bereits verfügbaren Daten: Seed-42-Fit, äußere Famili-
+              ensuche und rechnerische Einzelfallschwellen.
+                Methode      Fit [s]   Suche [s]    Fälle: Fit   Fälle: Fit + Suche
+                MLP          52,67       721,25            25                  356
+                RBF          43,71       708,47            21                  346
+                POD–MLP      32,26       299,29            15                  153
+                POD–GPR     353,57      1203,16           163                  714
+
+
+
+
+A.2. Daten- und Quellnachweise
+Die Abbildungen dieses Berichts wurden aus den kopierten Tabellen im Unterordner daten
+mit skripte/diagramme.py erzeugt. Die ursprünglichen Falltabellen, Modelle, Suchhistorie,
+das Studienprotokoll und die Checkpoints verbleiben in den zugehörigen Projektordnern der
+Hauptstudie. Der ergänzende Seminarbericht und die Benchmark-Rohdaten liegen im sepa-
+raten Ergänzungsordner. Die Kopien in diesem Bericht dienen dem portablen Nachvollzug
+der gezeigten Diagramme; sie ersetzen nicht die vollständige Studienprovenienz.
+  Die Hauptstudie enthält 288 erfolgreiche Lauf-/Split-Auswertungen und 55.296 Fallzeilen.
+Dieselben Testfälle werden über mehrere Modelle wiederholt ausgewertet; die Zeilen sind
+daher keine 55.296 unabhängigen Balkenfälle. Die Studienauswertung zählt keine fehlgeschla-
+genen Lauf-/Split-Auswertungen und keine undefinierten relativen Fallfehler.
+
+
+
+
+                                               15
+
