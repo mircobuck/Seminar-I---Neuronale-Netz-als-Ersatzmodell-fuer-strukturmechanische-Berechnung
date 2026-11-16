@@ -14,6 +14,8 @@ MATLAB R2025b, Deep Learning Toolbox, Statistics and Machine Learning Toolbox, P
 runStaticStudy   % zeigt nur Hilfe, startet keine Berechnung
 ```
 
+`setupProject` fuegt die aktuellen Studien- und FEM-Ordner dem MATLAB-Suchpfad fuer die laufende Sitzung hinzu. Bei einem Phasenaufruf geschieht das automatisch; fuer direkten Zugriff auf die Funktionen kann es einmal manuell aufgerufen werden. Die Aenderung wird nicht mit `savepath` dauerhaft gespeichert.
+
 ## Konfiguration und Phasen
 
 Wissenschaftliche Einstellungen: `workflows/static_comparison/configs/study.json`. Suchkandidaten und ihre Reihenfolge, Seeds, Trainingsgroessen, POD-Raenge, Referenzanzahlen und Messwiederholungen sind versioniert. Die Falllisten in `training_blocks.csv` ordnen die beiden Trainingsbloecke ausdruecklich zu.
@@ -37,15 +39,13 @@ runStaticStudy("report", cfg, local)
 
 Die Wiederholung verwendet bereits bekannte Referenzfaelle und ist **kein neuer unabhaengiger Abschlusstest**. Auswahl erfolgt ausschliesslich auf Validierung. Testlabels sind im oeffentlichen Ablauf bis zum Freeze gesperrt. Ein Freeze ist eine Ablaufkontrolle, keine Dateisystem-Zugriffssperre.
 
-Phasen sind wiederaufnehmbar; gleiche Konfiguration und gleicher Quellstand sind erforderlich. Abgeschlossene Fit-Checkpoints werden verifiziert und wiederverwendet. Code oder Inputaenderungen erfordern einen neuen Ausgabeordner. Training nach Freeze wird abgelehnt. Keine zweite aktive Projektkopie, keine dauerhafte MATLAB-Pfadaenderung.
+Phasen sind wiederaufnehmbar; gleiche Konfiguration und gleicher Quellstand sind erforderlich. Abgeschlossene Fit-Checkpoints werden verifiziert und wiederverwendet. Code oder Inputaenderungen erfordern einen neuen Ausgabeordner. Training nach Freeze wird abgelehnt. Die Projektpfade bleiben bis zum Ende der MATLAB-Sitzung aktiv.
 
 ## Vorhandene Ergebnisse darstellen
 
 `report` liest gespeicherte Auswertungen und erzeugt Tabellen und Diagramme ohne FEM, Training oder neue Modellwahl. Fuer eine schlanke Darstellung beliebiger vorhandener Tabellen:
 
 ```matlab
-oldPath = path;
-cleanup = onCleanup(@() path(oldPath));
 addpath("examples")
 showStaticResultsExample("experiments/static_comparison_cleanup_20261113_attempt2")
 ```
@@ -78,6 +78,8 @@ Der Smoke prueft alle vier Methoden, FEM, Wiederaufnahme, Freeze-Sperren, Auswer
 | `studies`, `Netzarchitekturen`, `Testverfahren` | Erhaltene historische Nicht-Code-Artefakte; keine Studienprogramme |
 
 Details: [Schnittstellen](docs/SCHNITTSTELLEN.md), [Migration](docs/UMSTRUKTURIERUNG.md), [Studienprotokoll](docs/STATISCHE_STUDIE.md). Alte Bedienhinweise stehen unveraendert in [README_HISTORISCH](docs/README_HISTORISCH.md); sie beschreiben fruehere Einstiege.
+
+Fuer eigene Erklaerungen zu `runStaticStudy` gibt es ein [LaTeX-Geruest fuer persoenliche Lernnotizen](docs/lernnotizen/README.md).
 
 ## Historische Programme aus Git wiederherstellen
 

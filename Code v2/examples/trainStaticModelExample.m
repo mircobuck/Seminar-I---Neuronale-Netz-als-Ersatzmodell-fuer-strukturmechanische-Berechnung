@@ -6,8 +6,6 @@ arguments
     validationFile (1,1) string
 end
 root=fileparts(fileparts(mfilename('fullpath')));
-oldPath=path;
-cleanup=onCleanup(@()path(oldPath)); %#ok<NASGU>
 addpath(root);
 train=surrogate.loadDataset(trainingFile);
 val=surrogate.loadDataset(validationFile);

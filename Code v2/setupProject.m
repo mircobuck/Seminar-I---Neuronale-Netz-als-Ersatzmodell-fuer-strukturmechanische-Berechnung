@@ -1,8 +1,6 @@
-function cleanup = setupProject
-%setupProject Activate only the current static workflow until cleanup is cleared.
-% Keep the returned onCleanup object alive for the desired scope.
+function setupProject
+%setupProject Add the active study and FEM folders to the MATLAB path.
 root = fileparts(mfilename('fullpath'));
-previousPath = path;
-cleanup = onCleanup(@() path(previousPath));
-addpath(root, fullfile(root,'workflows','static_comparison'), '-begin');
+addpath(root, fullfile(root,'workflows','static_comparison'), ...
+    fullfile(root,'fem_core'), fullfile(root,'fem_core','src'), '-begin');
 end

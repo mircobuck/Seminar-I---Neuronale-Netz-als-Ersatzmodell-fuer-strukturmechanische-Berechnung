@@ -22,6 +22,18 @@ classdef staticWorkflowTest < matlab.unittest.TestCase
             runStaticStudy;
             t.verifyEqual(path,before);
         end
+        function setupMakesStudyAndFemAvailable(t)
+            before=path;
+            t.addTeardown(@()path(before));
+            setupProject;
+            t.verifyEqual(which('staticstudy.generate'), ...
+                fullfile(t.Root,'workflows','static_comparison','+staticstudy','generate.m'));
+            t.verifyEqual(which('staticFemConfig'),fullfile(t.Root,'fem_core','staticFemConfig.m'));
+            t.verifyEqual(which('solve_case'),fullfile(t.Root,'fem_core','src','solve_case.m'));
+            activePath=path;
+            setupProject;
+            t.verifyEqual(path,activePath);
+        end
         function nearestRankAndUndefined(t)
             actual=surrogate.study.summarizeErrors([1:20 NaN]);
             t.verifyEqual([actual.mean actual.median actual.p95 actual.maximum],[10.5 10.5 19 20]);

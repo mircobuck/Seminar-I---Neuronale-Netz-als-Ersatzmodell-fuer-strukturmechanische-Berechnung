@@ -1,4 +1,4 @@
-function benchmark(root,out,cfg)
+function benchmark(~,out,cfg)
     %benchmark Repeat the predeclared serial FEM/public-prediction timing experiment.
     folder=fullfile(out,'benchmark');
     if ~isfolder(folder)
@@ -10,9 +10,6 @@ function benchmark(root,out,cfg)
             'study:BenchmarkChanged',  'Benchmark result changed.');
         return
     end
-    priorPath=path;
-    cleanup=onCleanup(@()path(priorPath));
-    addpath(fullfile(root,'fem_core'),fullfile(root,'fem_core','src'));
     data=staticstudy.loadReference(out,"interpolation");
     indices=cfg.benchmark_indices;
     X=data.inputParameters(indices,:);
