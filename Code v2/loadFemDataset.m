@@ -5,7 +5,9 @@ function [dataset, design] = loadFemDataset(filePath)
 %   [DATASET, DESIGN] also returns the associated design table.
 
 loaded = load(filePath, 'D');
+% D is a struct with fields: schema, modality, split, id, X, S, Y, xi, w, seconds, nodes
 source = loaded.D;
+% building a dataset with structure to work with this
 dataset.schema = source.schema;
 dataset.modality = source.modality;
 dataset.split = source.split;

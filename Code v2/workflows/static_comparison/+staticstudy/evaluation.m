@@ -1,8 +1,9 @@
 function evaluation(~,out,cfg)
     % Test references are inaccessible here until the complete freeze is checked.
-
+    % interpolation and extrapolation data are loaded and saved in struct
     refs=struct('interpolation',staticstudy.loadReference(out,"interpolation"),  'extrapolation', ...
         staticstudy.loadReference(out,"extrapolation"));
+        
     freezeManifest=readtable(fullfile(out,'freeze_manifest.csv'),'TextType','string',  'Delimiter',  ',', ...
         'ReadVariableNames',  true,  'VariableNamingRule',  'preserve');
     paths=strings(0,1);

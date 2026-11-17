@@ -1,32 +1,47 @@
 function out=solve_case(x,c)
+%x are the 6 paramteres of the cantilever and c ist the config     
 % Full 3D linear elasticity, uniform end traction, clamp at x=-L/2.
 L=x(1); b=x(2); h=x(3); E=x(4); nu=x(5); F=x(6);
 ticID=tic;
+% geometry of the cantilever
 g=multicuboid(L,b,h);
+% sides of the cantilever
 left=nearestFace(g,[-L/2 0 h/2]);
 right=nearestFace(g,[L/2 0 h/2]);
+% generate the FEM model
 m=femodel(AnalysisType="structuralStatic",Geometry=g);
 m.MaterialProperties=materialProperties(YoungsModulus=E,PoissonsRatio=nu);
 m.FaceBC(left)=faceBC(Constraint="fixed");
 m.FaceLoad(right)=faceLoad(SurfaceTraction=[0;0;F/(b*h)]);
 m=generateMesh(m,Hmax=min(b,h)/c.meshDivisor, ...
     GeometricOrder=c.geometricOrder);
+% solving the FEM model    
 R=solve(m);
+% solutions are interpolated to a regular grid for comparison with other cases. 
 [xi,w]=reference_grid(c.gridSize);
+% normalized grid coordinates are scaled to the cantilever
 xyz=[L*(xi(1,:)-0.5);b*(xi(2,:)-0.5);h*xi(3,:)];
+% displacements are interpolated to the regular grid
 U=interpolateDisplacement(R,xyz);
+% S matrix contains now the displacements 
 out.S=[U.ux(:);U.uy(:);U.uz(:)];
+% no inf and NaN values
 assert(all(isfinite(out.S)),'Nonfinite displacement interpolation.');
 % Enforce known homogeneous clamp in the common representation.
+% set the displacements at the fixed end to zero because of numerical noise
 fixed=find(xi(1,:)==0); nq=size(xi,2);
 out.S([fixed fixed+nq fixed+2*nq])=0;
 T=interpolateDisplacement(R,[L/2;0;h/2]);
+% V 3x525
 V=reshape(out.S,nq,3);
+% adds the tip displacement and the maxmimum displacement
 out.Y=[T.uz,max(sqrt(sum(V.^2,2)))]; % tip uz, grid max |u|
+% check if FEM is plausible 
 assert(all(isfinite(out.Y)));
 assert(out.Y(1)<0,'Check traction and clamp orientation.');
 assert(out.Y(2)/L<c.maxDeflectionRatio, ...
     'Small-deformation guard exceeded; review parameter domain.');
+% saves some stuff in out. and R.    
 out.x=x; out.xi=xi; out.w=w;
 out.nNodes=size(m.Geometry.Mesh.Nodes,2);
 out.meshDivisor=c.meshDivisor;

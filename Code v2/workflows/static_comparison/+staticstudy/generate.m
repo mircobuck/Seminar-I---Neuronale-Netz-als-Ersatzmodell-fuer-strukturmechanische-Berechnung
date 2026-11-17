@@ -116,21 +116,29 @@ function generate(~,out,cfg,roles)
         nodes=zeros(n,1);
         %iterae over the cases
         for j=1:n
+            
             a=load(fullfile(cases,sprintf('case_%06d.mat',ids(j))),'record');
             v=a.record.value;
+            % if this is the first case, store the grid points and weights. For subsequent cases, verify that the grid points and weights are consistent
             if j==1
                 xi=v.xi;
                 w=v.w;
             else
                 assert(isequal(v.xi,xi)&&isequal(v.w,w),'study:Grid','Inconsistent FEM grid.');
             end
+            % saves the FEM results for each case in the S and Y matrices, and records the computation time and number of nodes
+            % S is "Verschiebungsfeld"
             S(:,j)=v.S;
+            % Y is displacement at the tip and maximum displacement in the structure
             Y(j,:)=v.Y;
             seconds(j)=v.seconds;
+            % number of nodes in the FEM mesh
             nodes(j)=v.nNodes;
         end
+        % protokol the ledger for the specific role. The ledger contains the case ID, group, status, message, wall time, and solver time for each case.
         allRows=find(Dsg.role==role);
         ledger=table;
+        % Load the selected FEM cases and combine their results into dataset arrays.
         for j=allRows(:)'
             caseFile=fullfile(cases,sprintf('case_%06d.mat',Dsg.id(j)));
             if ~isfile(caseFile)
@@ -145,13 +153,17 @@ function generate(~,out,cfg,roles)
             ledger=[ledger;table(r.id,r.group,r.status,r.message,r.wallSeconds,solverSeconds,  'VariableNames', ... %#ok<AGROW>
                 {'id','group','status','message','wall_seconds','solver_seconds'})];
         end
+
         split="test";
         if role=="val"
             split="val";
         end
+        % build dataset
         D=struct('schema',"static-displacement-fields-v1",'modality',"static",'split',split,  'id',  ids,  'X', ...
             X,  'S',  S,  'Y',  Y,  'xi',  xi,  'w',  w,  'seconds',  seconds,  'nodes',  nodes);
+        % table with the design parameters and the role and group for each case
         design=Dsg(selected,[{'id'},names]);
+        % add the role and group columns to the design table and save it as a CSV file.
         design.split=repmat(split,n,1);
         dataFile=fullfile(folder,split+'.mat');
         designFile=fullfile(folder,'design.csv');
