@@ -1,0 +1,4 @@
+{
+  "predictions_file": "experiments/refactor_validation_20261112/baseline_predictions.mat",
+  "study_baseline": "tests/fixtures/study_baseline.mat"
+}

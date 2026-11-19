@@ -1,0 +1,23 @@
+[
+  {
+    "run": "runs\\n768_rep1_pod_gpr_seed42\\result.mat",
+    "sameIds": true,
+    "sameValidationErrors": true,
+    "sameRankAndSeed": true,
+    "fitSeconds": 333.9702247
+  },
+  {
+    "run": "timing_repeats\\n768_pod_gpr_repeat2\\result.mat",
+    "sameIds": true,
+    "sameValidationErrors": true,
+    "sameRankAndSeed": true,
+    "fitSeconds": 343.1683386
+  },
+  {
+    "run": "timing_repeats\\n768_pod_gpr_repeat3\\result.mat",
+    "sameIds": true,
+    "sameValidationErrors": true,
+    "sameRankAndSeed": true,
+    "fitSeconds": 341.675738
+  }
+]

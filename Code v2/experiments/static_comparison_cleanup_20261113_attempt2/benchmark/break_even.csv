@@ -1,0 +1,9 @@
+method,includeSearch,offlineSeconds,singleCases,batchCases
+mlp,0,60.3978597,22,24
+mlp,1,562.427242,203,204
+rbf,0,52.986502,20,24
+rbf,1,619.9866621,223,216
+pod_mlp,0,32.6767136,12,12
+pod_mlp,1,293.7100621,106,108
+pod_gpr,0,419.6344306,151,144
+pod_gpr,1,1471.5682288,529,516

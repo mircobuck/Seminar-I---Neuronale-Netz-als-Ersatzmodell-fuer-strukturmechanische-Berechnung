@@ -1,0 +1,3 @@
+Exploratory validation study; model selection uses only the existing 128-case validation split (IDs 813001-813128). These validation cases were already used for model comparisons. The separate 128-case test split is not read.
+Fixed: weighted_field_mse, two hidden tanh layers, rank 10, Adam, learning rate 0.001, 200 epochs, 768 training cases, seeds 42/43/44.
+Widths per hidden layer: 16, 20, 32, 40, 64, 80.

@@ -1,0 +1,11 @@
+# THU-Vorlagen und formale Hinweise
+
+Recherche und Abruf: 12. November 2026. Alle nachstehenden Hochschulquellen gehören zur **Technischen Hochschule Ulm (THU)**, nicht zur Universität Ulm.
+
+- [THU: Satzungen und Ordnungen](https://www.thu.de/studium/satzungen-ordnungen): zentrale Übersicht zu studienrelevanten Ordnungen; darunter der Hinweis auf den kooperativen Studiengang Computational Science and Engineering. Geltungsbereich und konkrete Fassung müssen zum eigenen Studiengang passen. Die Seite ist keine LaTeX-Gestaltungsvorlage.
+- [THU: Studienorganisation](https://www.thu.de/studium/im-studium/studienorganisation): offizielle Formulare unter anderem für Anmeldung und Abgabe von Abschlussarbeiten. Dies sind Verwaltungsformulare für Abschlussarbeiten, keine verbindlichen Titelblattvorgaben für diesen Seminarbericht.
+- [THU: Bibliotheksservice](https://www.thu.de/hochschule/abteilungen-services/bibliothek/bibliotheksservice): Hinweise auf Literaturverwaltung und Rechercheangebote der THU-Bibliothek; keine verbindliche Berichtsvorlage.
+- [THU: Kommunikation und Marketing](https://www.thu.de/hochschule/abteilungen-services/kommunikation-marketing): offizielle Hochschulkommunikation und Logo-Downloads. Aus den verfügbaren Hinweisen konnte für diesen konkreten Seminarbericht keine eindeutige Logo-Nutzungsregel abgeleitet werden. Das Dokument verwendet deshalb kein Logo.
+- [THU: Modulhandbuch Data Science in der Medizin, Bachelor](https://www.thu.de/de/Downloads/modulhandbuch_I_DSM_70_202402250630.pdf): nennt wissenschaftliches Arbeiten und Bericht im Kontext dieses Bachelorstudiengangs. Daraus werden keine fachfremden oder hochschulweiten Formatvorgaben abgeleitet.
+
+Bei der Recherche wurde keine öffentlich zugängliche, für dieses Masterseminar eindeutig gültige offizielle LaTeX-Vorlage oder hochschulweit verbindliche Titelblattregel verifiziert. Der Bericht nutzt daher eine eigenständige schlichte KOMA-Script-Gestaltung, eine konsistente Gliederung und ein nummeriertes Literaturverzeichnis. Dies ist eine Gestaltungsentscheidung, keine Behauptung verbindlicher THU-Formatregeln. Offizieller Seminartitel und Aufgabenname stammen aus der lokal vorliegenden Aufgabenbeschreibung. Namen dort genannter Ansprechpartner wurden nicht als zugewiesene Betreuung übernommen.

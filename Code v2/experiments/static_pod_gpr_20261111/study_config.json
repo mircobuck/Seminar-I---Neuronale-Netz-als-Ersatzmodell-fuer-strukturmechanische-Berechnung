@@ -1,0 +1,69 @@
+{
+  "status": "DRAFT_NOT_FROZEN",
+  "budget_seconds": 86400,
+  "search_budget_seconds_per_method": 5400,
+  "sizes": [
+    48,
+    96,
+    192,
+    384,
+    768
+  ],
+  "replicates": 3,
+  "seed_design": 20261111,
+  "seeds_selection": [
+    20261112,
+    20261113,
+    20261114
+  ],
+  "seeds_network": [
+    42,
+    43,
+    44
+  ],
+  "counts": {
+    "validation": 128,
+    "interpolation_test": 256,
+    "extrapolation_test": 128
+  },
+  "bounds": {
+    "lower": [
+      0.6,
+      0.06,
+      0.08,
+      70000000000.0,
+      0.25,
+      -1000
+    ],
+    "upper": [
+      1.2,
+      0.1,
+      0.14,
+      210000000000.0,
+      0.35,
+      -100
+    ]
+  },
+  "metric": "mean_weighted_relative_field_l2",
+  "kernels": [
+    "ardsquaredexponential",
+    "ardmatern52"
+  ],
+  "means": [
+    "constant",
+    "linear"
+  ],
+  "sigma": [
+    0.0001,
+    0.001
+  ],
+  "ranks": [
+    2,
+    10,
+    15
+  ],
+  "optimizer": "quasinewton",
+  "max_iterations": 500,
+  "max_deflection_ratio": 0.02,
+  "duplicate_tolerance_normalized": 1e-10
+}

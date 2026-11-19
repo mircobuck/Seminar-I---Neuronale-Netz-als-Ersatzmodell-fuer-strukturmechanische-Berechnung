@@ -1,0 +1,38 @@
+﻿[
+    {
+        "File":  "experiments/refactor_validation_20261112/baseline_predictions.mat",
+        "ExpectedSHA256":  "dbeba2149f2ca188bdefcf52e9948dc83e1f668ed6334bb86bbbf4794d7545c2",
+        "ActualSHA256":  "dbeba2149f2ca188bdefcf52e9948dc83e1f668ed6334bb86bbbf4794d7545c2",
+        "Identical":  true
+    },
+    {
+        "File":  "experiments/refactor_validation_20261112/baseline_tests.log",
+        "ExpectedSHA256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ActualSHA256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "Identical":  true
+    },
+    {
+        "File":  "experiments/refactor_validation_20261112/baseline_tests.mat",
+        "ExpectedSHA256":  "0b0a5b327fc3f641ef0b336f2f2409f086fc3f32d51c27565c1a5fbcb939ba64",
+        "ActualSHA256":  "0b0a5b327fc3f641ef0b336f2f2409f086fc3f32d51c27565c1a5fbcb939ba64",
+        "Identical":  true
+    },
+    {
+        "File":  "experiments/refactor_validation_20261112/code_analysis.mat",
+        "ExpectedSHA256":  "73e03a40635b934a0f10d6d469d73dee781ff4de382e33e02e72f1a5e30a9f40",
+        "ActualSHA256":  "73e03a40635b934a0f10d6d469d73dee781ff4de382e33e02e72f1a5e30a9f40",
+        "Identical":  true
+    },
+    {
+        "File":  "experiments/refactor_validation_20261112/final_model_workflow_tests.mat",
+        "ExpectedSHA256":  "7be5988719199d197608e1c5bc938d635fabb545bc8300f7d54009d004880ad5",
+        "ActualSHA256":  "7be5988719199d197608e1c5bc938d635fabb545bc8300f7d54009d004880ad5",
+        "Identical":  true
+    },
+    {
+        "File":  "experiments/refactor_validation_20261112/workflow_tests.mat",
+        "ExpectedSHA256":  "6ef964a891c78e2da0cfd8bf95e11fac970097ea660d46e1705bff982e967edc",
+        "ActualSHA256":  "6ef964a891c78e2da0cfd8bf95e11fac970097ea660d46e1705bff982e967edc",
+        "Identical":  true
+    }
+]

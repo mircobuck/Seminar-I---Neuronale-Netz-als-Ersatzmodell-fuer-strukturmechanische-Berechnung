@@ -1,0 +1,2 @@
+id,method,role,status,N,fitSeconds,single,batch,avg,undefined
+runs\n768_rep1_pod_gpr_seed42,pod_gpr,interpolation,ok,768,10,0.01,0.02,0.03,0

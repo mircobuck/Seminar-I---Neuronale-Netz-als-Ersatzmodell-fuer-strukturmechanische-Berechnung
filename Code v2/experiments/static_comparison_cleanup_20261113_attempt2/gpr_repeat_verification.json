@@ -1,0 +1,19 @@
+{
+  "main": "runs\\n768_rep1_pod_gpr_seed42\\result.mat",
+  "repeats": [
+    "timing_repeats\\n768_pod_gpr_repeat2\\result.mat",
+    "timing_repeats\\n768_pod_gpr_repeat3\\result.mat"
+  ],
+  "comparedNumericFields": [
+    "trainingIds",
+    "validationIds",
+    "config/rank",
+    "config/seed",
+    "caseErrors/absoluteWeightedFieldError",
+    "caseErrors/caseIds",
+    "caseErrors/referenceWeightedFieldNorm",
+    "caseErrors/relativeErrorDefined",
+    "caseErrors/relativeWeightedFieldError"
+  ],
+  "allExactlyEqual": true
+}

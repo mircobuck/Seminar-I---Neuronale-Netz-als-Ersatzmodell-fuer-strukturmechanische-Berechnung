@@ -1,0 +1,6 @@
+Exploratory POD-rank study on the previously used 128 validation cases; no test data loaded.
+Fixed: width 64, two tanh hidden layers, weighted_field_mse, Adam, learning rate 0.001, 200 epochs, batch size 32, 768 training cases.
+Ranks: 1, 2, 4, 6, 8, 10, 15, 20. Seeds: 42, 43, 44. Rank 10 reuses the frozen width-study controls.
+POD energy uses centered, weighted training fields. Projection errors use exact validation coefficients in the training-only POD basis; they are diagnostics, not deployable predictions.
+Summary: median over the three seed-level metrics. P95: nearest rank across the 128 validation cases.
+Changing rank also changes output dimension, initialization and the shared coefficient RMS normalization under the existing training implementation.

@@ -1,0 +1,56 @@
+\begin{thebibliography}{1}
+
+\bibitem{aufgabe}
+{Technische Hochschule Ulm, Labor für Strukturmechanik und Akustik}.
+\newblock {Einsatz von Neuronalen Netzen als Ersatzmodell für
+  strukturmechanische Berechnungen}.
+\newblock Aufgabenbeschreibung, Masterseminar I -- Angewandte Mathematik.
+\newblock Projektinterne PDF.
+
+\bibitem{kingma2015}
+Diederik~P. Kingma and Jimmy Ba.
+\newblock {Adam: A Method for Stochastic Optimization}.
+\newblock In {\em International Conference on Learning Representations}, 2015.
+\newblock \url{https://arxiv.org/abs/1412.6980}.
+
+\bibitem{broomhead1988}
+D.~S. Broomhead and David Lowe.
+\newblock {Multivariable Functional Interpolation and Adaptive Networks}.
+\newblock {\em Complex Systems}, 2:321--355, 1988.
+\newblock \url{https://www.complex-systems.com/abstracts/v02_i03_a05/}.
+
+\bibitem{sirovich1987}
+Lawrence Sirovich.
+\newblock {Turbulence and the Dynamics of Coherent Structures. Part I: Coherent
+  Structures}.
+\newblock {\em Quarterly of Applied Mathematics}, 45(3):561--571, 1987.
+\newblock DOI: \url{https://doi.org/10.1090/qam/910462}.
+
+\bibitem{salvador2021}
+Matteo Salvador, Luca Ded{\`e}, and Andrea Manzoni.
+\newblock {Non intrusive reduced order modeling of parametrized PDEs by kernel
+  POD and neural networks}.
+\newblock {\em Computers \& Mathematics with Applications}, 104:1--13, 2021.
+\newblock DOI: \url{https://doi.org/10.1016/j.camwa.2021.11.001}.
+
+\bibitem{fresca2021}
+Stefania Fresca, Luca Ded{\`e}, and Andrea Manzoni.
+\newblock {A Comprehensive Deep Learning-Based Approach to Reduced Order
+  Modeling of Nonlinear Time-Dependent Parametrized PDEs}.
+\newblock {\em Journal of Scientific Computing}, 87:61, 2021.
+\newblock DOI: \url{https://doi.org/10.1007/s10915-021-01462-7}.
+
+\bibitem{rasmussen2006}
+Carl~Edward Rasmussen and Christopher K.~I. Williams.
+\newblock {\em {Gaussian Processes for Machine Learning}}.
+\newblock MIT Press, Cambridge, MA, 2006.
+\newblock \url{https://gaussianprocess.org/gpml/chapters/}.
+
+\bibitem{mathworks2025}
+{The MathWorks, Inc.}
+\newblock {{fitrgp}: Fit a Gaussian process regression model}.
+\newblock MATLAB Statistics and Machine Learning Toolbox, Dokumentation.
+\newblock \url{https://www.mathworks.com/help/stats/fitrgp.html}, Abruf:
+  12.11.2026; verwendete Software: R2025b.
+
+\end{thebibliography}

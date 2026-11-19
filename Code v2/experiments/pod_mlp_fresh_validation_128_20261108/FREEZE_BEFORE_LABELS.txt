@@ -1,0 +1,10 @@
+Frozen model comparison
+Created before new validation labels: true
+Models: 420
+Loss modes: per_coefficient_mse, weighted_field_mse
+Widths: 64, 128
+Hidden layers: 1, 2, 3, 4, 5
+Training counts: 12, 24, 48, 96, 192, 384, 768
+Seeds: 42, 43, 44
+Test data loaded: false
+Details: All 420 model artifacts were frozen before reference generation. The new static validation design contains 128 unique IDs (813001-813128), seed 20261109, split val only, and has no ID or exact parameter-row overlap with the known static designs.

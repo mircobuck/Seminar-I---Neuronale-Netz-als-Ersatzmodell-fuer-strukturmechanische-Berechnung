@@ -1,0 +1,249 @@
+﻿\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{url}
+\usepackage{enumitem}
+\urlstyle{tt}
+\setlist[description]{style=nextline,leftmargin=1em,itemsep=2pt,parsep=0pt}
+\newcommand{\datei}[1]{\path{#1}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+
+\section{runStaticStudy}
+
+\subsection{Aufgabe des Hauptskripts}
+Das Hauptskript dient der Koordination von Datenerzeugung, Modellkonfiguration
+und -training, Auswertung sowie Laufzeitvergleich und Berichtserstellung.
+Über das Argument \texttt{phase} wird festgelegt, welcher Verarbeitungsschritt
+ausgeführt werden soll. Die Argumente \texttt{configFile} und
+\texttt{localFile} bestimmen die fachlichen Einstellungen sowie die
+verwendeten Datenpfade und den Ausgabeordner. Die eigentlichen Berechnungen
+übernehmen die jeweils aufgerufenen Funktionen.
+
+\subsection{Aufruf und Ablauf}
+\begin{verbatim}
+output = runStaticStudy(phase, configFile, localFile)
+\end{verbatim}
+% Hier den Ablauf und die Rueckgabe in eigenen Worten beschreiben.
+\vspace{2\baselineskip}
+
+\subsection{Argument: phase}
+% Hier die einzelnen Phasen nach und nach erklaeren.
+% help, init, generate, tune, train, freeze, evaluate, benchmark, report
+% Bei Bedarf je Phase einen Unterabschnitt mit \subsubsection{...} anlegen.
+\vspace{2\baselineskip}
+
+\subsection{Argument: configFile}
+% Hier meine Erklaerung und eigene Beispiele ergaenzen.
+\vspace{2\baselineskip}
+
+\subsection{Argument: localFile}
+% Hier meine Erklaerung und eigene Beispiele ergaenzen.
+\vspace{2\baselineskip}
+
+\section{FEM-Datenerzeugung}
+
+\subsection{Ein einzelner FEM-Fall}
+Datei: \texttt{fem\_core/src/solve\_case.m}
+
+Die Funktion \texttt{solve\_case} berechnet für eine vorgegebene
+Parameterkombination einen einzelnen statischen FEM-Fall. Dazu erstellt sie
+ein dreidimensionales, linear-elastisches Modell, löst es und bereitet das
+berechnete Verschiebungsfeld für die weitere Verwendung auf.
+
+\subsection{Eingaben und Berechnung}
+% Hier Parameter, Geometrie, Material, Einspannung, Last und Loesung erklaeren.
+\vspace{2\baselineskip}
+
+\subsection{Ergebnis}
+% Hier das Ergebnis und seine Weiterverwendung beschreiben.
+\vspace{2\baselineskip}
+
+\newpage
+\appendix
+\raggedright
+\section{Bestandteile des Projekts}
+
+Dieser Anhang gibt eine Übersicht über den aktiven statischen Studienablauf.
+Alle Pfade beziehen sich auf \textbf{Code v2}. Nicht jede Datei muss für den
+Einstieg im Detail verstanden werden. Viele Ergebnisse entstehen mehrfach;
+dafür sind unten die Dateinamen und Ordner als Muster angegeben.
+
+\subsection{Fünf Stationen zum Einstieg}
+\begin{enumerate}[nosep]
+\item \datei{runStaticStudy.m}: Welche Phase wird ausgeführt?
+\item \datei{study.json} und \datei{local.example.json}: Welche Einstellungen und Daten werden verwendet?
+\item \datei{generate.m} und \datei{solve_case.m}: Wie entstehen FEM-Daten?
+\item \datei{fitModel.m} und eine Modellmethode: Wie wird ein Modell trainiert?
+\item \datei{evaluation.m} und \datei{benchmark.m}: Wie werden Genauigkeit und Laufzeit untersucht?
+\end{enumerate}
+
+\subsection{Voraussetzungen, Einstieg und Konfiguration}
+Für den vollständigen Ablauf werden MATLAB mit Deep Learning Toolbox,
+Statistics and Machine Learning Toolbox und Partial Differential Equation
+Toolbox sowie Java, Git und Python mit Matplotlib benötigt. Der Studienlauf
+prüft während der Ausführung eine Speicherplatzreserve von 512 MiB.
+\begin{description}
+\item[\datei{runStaticStudy.m}] Startet jeweils eine Phase der Studie.
+\item[\datei{setupProject.m}] Fügt Studien- und FEM-Ordner zum MATLAB-Suchpfad hinzu.
+\item[\datei{workflows/static_comparison/configs/study.json}] Fachliche Einstellungen, Methoden, Kandidaten und Trainingsgrößen.
+\item[\datei{workflows/static_comparison/configs/local.example.json}] Lokale Datenpfade, Python und Ausgabeordner; für einen neuen Lauf eine Kopie mit neuem Ausgabeordner verwenden.
+\item[\datei{workflows/static_comparison/configs/training_blocks.csv}] Zuordnung der Trainingsfälle zu den beiden Trainingsblöcken.
+\item[\datei{workflows/static_comparison/studyPlots.py}] Erstellt die Diagramme der Berichtsphase.
+\end{description}
+
+\subsection{Vorhandene Eingabedaten}
+\begin{description}
+\item[\datei{data_generation/data/static/train.mat}] Vorhandener Trainingspool mit FEM-Verschiebungsfeldern.
+\item[\datei{data_generation/data/static/design.csv}] Fall-IDs und Parameter; wird unter anderem für Überschneidungsprüfungen verwendet.
+\item[\datei{training_blocks.csv}] Metadaten zu den Trainingsblöcken im Konfigurationsordner.
+\end{description}
+Bei \texttt{reference\_mode="reuse"} werden außerdem Design und Referenzdaten
+aus dem eingestellten vorherigen Lauf verwendet: \datei{candidate_design.mat},
+\datei{candidate_design.csv}, \datei{candidate_design.sha256},
+\datei{reference_costs.csv} sowie unter \datei{references/val/},
+\datei{references/interpolation/} und \datei{references/extrapolation/} die
+Dateien \datei{val.mat} beziehungsweise \datei{test.mat}, jeweils mit
+\datei{design.csv}, \datei{data.sha256}, \datei{ledger.csv} und
+\datei{generation_sessions.csv}. Für einen anwendbaren Vergleich mit dem
+früheren Lauf dienen dort auch \datei{run_results.csv} und \datei{selections.mat}.
+Bei \texttt{reference\_mode="generate"} werden neue Validierungs- und
+Testreferenzen erzeugt; der Trainingspool wird separat bereitgestellt.
+
+\subsection{FEM und gemeinsame Schnittstellen}
+\begin{description}
+\item[\datei{fem_core/staticFemConfig.m}] Stellt die FEM-Einstellungen zusammen.
+\item[\datei{fem_core/src/solve_case.m}] Berechnet einen einzelnen statischen FEM-Fall.
+\item[\datei{fem_core/src/reference_grid.m}] Erstellt Auswertegitter und Gewichte.
+\item[\datei{loadFemDataset.m}] Lädt FEM-Daten im zugrunde liegenden Format.
+\end{description}
+Im Paket \datei{+surrogate/} liegen die gemeinsamen Funktionen:
+\begin{description}
+\item[\datei{contract.m}] Definiert Parameter, Einheiten und Auswertegitter.
+\item[\datei{loadDataset.m}, \datei{validateDataset.m}] Laden und prüfen Datensätze.
+\item[\datei{validateTrainingSplits.m}] Prüft Trainings- und Validierungsdaten.
+\item[\datei{fitModel.m}, \datei{predictModel.m}] Gemeinsame Aufrufe für Training und Vorhersage.
+\item[\datei{evaluatePrediction.m}] Vergleicht Vorhersagen mit Referenzen.
+\item[\datei{saveModel.m}, \datei{loadModel.m}] Speichern und laden Modelle.
+\end{description}
+Unter \datei{+surrogate/+study/} prüfen
+\datei{assertDisjointParameters.m} die Trennung von Parametern,
+\datei{nestedTrainingSubsets.m} erstellt Trainingsauswahlen und
+\datei{summarizeErrors.m} fasst Fehler zusammen.
+
+\subsection{Die vier Modellverfahren}
+Unter \datei{+surrogate/+models/} besitzen die vier Methoden jeweils eine
+\datei{fit.m} für das Training und eine \datei{predict.m} für die Vorhersage:
+\begin{description}
+\item[\datei{+mlp/}] Direktes neuronales Netz.
+\item[\datei{+rbf/}] Netz mit RBF-Merkmalen.
+\item[\datei{+pod_mlp/}] POD mit einem neuronalen Netz für die Koeffizienten.
+\item[\datei{+pod_gpr/}] POD mit Gaußprozessregression für die Koeffizienten.
+\end{description}
+Der Ordner \datei{+shared/} enthält \datei{fitNeural.m} und
+\datei{predictNeural.m} für MLP und RBF, \datei{rbfFeatures.m} für die
+RBF-Merkmale, \datei{fitPod.m} für die POD-Basis sowie
+\datei{podFingerprint.m} und \datei{podDiagnostics.m} für Prüfung und Diagnostik.
+
+\subsection{Funktionen zur Studiensteuerung}
+Alle folgenden Dateien liegen unter \datei{workflows/static_comparison/+staticstudy/}.
+\begin{description}
+\item[\datei{configure.m}, \datei{initialize.m}] Lesen Einstellungen und bereiten den Lauf vor.
+\item[\datei{createDesign.m}] Erstellt das Design für neue Referenzfälle.
+\item[\datei{sources.m}, \datei{hash.m}, \datei{verify.m}] Erfassen und prüfen Quellen und Eingaben.
+\item[\datei{requireSpace.m}, \datei{requireBudget.m}] Prüfen Speicherplatz und ein gegebenenfalls gesetztes Zeitbudget.
+\item[\datei{generate.m}, \datei{recordGeneration.m}] Erzeugen FEM-Referenzen und protokollieren deren Laufzeit.
+\item[\datei{validateReferences.m}, \datei{loadReference.m}, \datei{reference.m}] Prüfen und laden Referenzen; regeln den Zugriff auf Testdaten.
+\item[\datei{candidates.m}, \datei{tuning.m}, \datei{recordSearch.m}] Erstellen und untersuchen Modellkandidaten und protokollieren die Suche.
+\item[\datei{trainingBlocks.m}, \datei{subset.m}, \datei{distribution.m}] Stellen Trainingsauswahlen und Verteilungen zusammen.
+\item[\datei{fitCheckpoint.m}, \datei{training.m}] Trainieren und speichern einzelne Fits beziehungsweise organisieren die Studienläufe.
+\item[\datei{freeze.m}, \datei{checkFrozen.m}] Halten den Stand fest und prüfen ihn.
+\item[\datei{evaluation.m}, \datei{observeModel.m}, \datei{timePrediction.m}] Werten Modelle aus und erfassen Vorhersagezeiten.
+\item[\datei{benchmark.m}] Vergleicht FEM- und Modelllaufzeiten.
+\item[\datei{report.m}, \datei{comparePrevious.m}] Erstellen Zusammenfassungen und gegebenenfalls einen Vergleich mit dem vorherigen Lauf.
+\end{description}
+
+\subsection{Erzeugte Dateien: Initialisierung und Referenzen}
+Die folgenden Pfade liegen im Ausgabeordner des jeweiligen Studienlaufs.
+\begin{description}
+\item[\datei{resolved_config.json}] Tatsächlich verwendete Konfiguration.
+\item[\datei{source_manifest.csv}, \datei{environment.mat}] Quell- und Eingabestand sowie Angaben zur Umgebung.
+\item[\datei{reference_locations.json}] Orte der Validierungs- und Testreferenzen.
+\item[\datei{candidate_design.mat}, \datei{candidate_design.csv}, \datei{candidate_design.sha256}] Design und Prüfsumme; neu erstellt oder übernommen.
+\end{description}
+Bei neuer Referenzerzeugung entstehen unter \datei{references/val/},
+\datei{references/interpolation/} und \datei{references/extrapolation/}:
+\begin{description}
+\item[\datei{cases/case_<ID>.mat} und \datei{case_<ID>.mat.sha256}] Einzelner FEM-Fall und Prüfsumme.
+\item[\datei{val.mat} oder \datei{test.mat}] Zusammengesetzter Datensatz.
+\item[\datei{design.csv}, \datei{ledger.csv}] Ausgewählte Eingaben und Protokoll der Berechnungsversuche.
+\item[\datei{generation_sessions.csv}, \datei{data.sha256}] Zeitprotokoll und Prüfsumme des Datensatzes.
+\end{description}
+Bei Wiederverwendung bleiben die Referenzen im eingestellten vorhandenen Ordner.
+
+\subsection{Erzeugte Dateien: Tuning, Training und Freeze}
+Unter \datei{tuning/<Methode>/candidate_<Nummer>_seed<Seed>/} und in den
+Modellordnern des Trainings stehen typischerweise \datei{model.mat},
+\datei{result.mat} und \datei{result.sha256}: Modell, Fit-Ergebnis und
+Prüfsumme. Fehlgeschlagene Fits besitzen nicht notwendigerweise ein Modell.
+\begin{description}
+\item[\datei{tuning/<Methode>/candidate_summary.csv}] Fehlerübersicht der Kandidaten.
+\item[\datei{tuning/<Methode>/search_summary.mat}, \datei{search_sessions.csv}] Suchergebnis und Zeitprotokoll je Methode.
+\item[\datei{search_sessions.csv}] Übergreifendes Zeitprotokoll im Ausgabeordner.
+\item[\datei{selections.mat}, \datei{selections.sha256}] Gewählte Einstellungen und Prüfsumme.
+\item[\datei{runs/}, \datei{controlled/}, \datei{distribution/}, \datei{timing_repeats/}] Hauptläufe, Rangvergleiche, Verteilungsvergleiche und Zeitwiederholungen.
+\item[\datei{bases/}] Enthält \datei{pod.mat} und \datei{pod.sha256} für gespeicherte POD-Basen.
+\item[\datei{distribution_ids.mat}, \datei{training.complete}] Fallauswahlen und Abschlusskennzeichen des Trainings.
+\item[\datei{freeze_manifest.csv}, \datei{freeze_manifest.sha256}] Festgeschriebene Dateien und Prüfsumme des Manifests.
+\end{description}
+Bei Unterbrechungen oder ungültigen Rängen können zusätzliche Dateien wie
+\datei{pod_incomplete.mat}, \datei{invalid_rank.txt} oder
+\datei{case_<ID>.mat.incomplete_...} entstehen.
+
+\subsection{Erzeugte Dateien: Auswertung, Benchmark und Bericht}
+Unter \datei{evaluation/} entstehen für jeden ausgewerteten Modelllauf
+\datei{interpolation.mat} und \datei{extrapolation.mat}, jeweils mit einer
+\datei{.sha256}-Datei. \datei{evaluation.complete} kennzeichnet den Abschluss.
+\begin{description}
+\item[\datei{benchmark/benchmark_cases.csv}, \datei{benchmark_meta.mat}] Fälle und Einstellungen des Laufzeitvergleichs.
+\item[\datei{benchmark/fem_partial.mat}, \datei{surrogate_partial.mat}] Zwischenstände der Zeitmessungen.
+\item[\datei{benchmark/benchmark_results.mat} und \datei{benchmark_results.mat.sha256}] Gesamte Benchmarkdaten und Prüfsumme.
+\item[\datei{benchmark/fem_raw.csv}, \datei{surrogate_raw.csv}, \datei{batch_raw.csv}] Einzelne Zeitmessungen.
+\item[\datei{benchmark/summary.csv}, \datei{break_even.csv}] Zusammenfassung und Break-even-Szenarien.
+\item[\datei{benchmark/BENCHMARK.md}, \datei{benchmark.complete}] Beschreibung und Abschlusskennzeichen.
+\item[\datei{run_results.csv}, \datei{case_results.csv}, \datei{pipeline_summary.csv}] Ergebnisse je Lauf, Fall und zusammengefasster Studiengruppe.
+\item[\datei{search_costs.csv}, \datei{search_attempts.csv}, \datei{gpr_fit_timing_repeats.csv}] Suchkosten, Kandidatenversuche und GPR-Zeitwiederholungen.
+\item[\datei{reference_costs_historical.csv}, \datei{REPORT.md}, \datei{report.complete}] Historische Referenzkosten, Bericht und Abschlusskennzeichen.
+\item[\datei{comparison_previous.csv}, \datei{VERGLEICH.md}] Gegebenenfalls Vergleich mit dem vorherigen Lauf.
+\item[\datei{plots/*.png}] Diagramme aus der Berichtsphase.
+\end{description}
+Bei einer unterbrochenen Auswertung können zusätzliche Dateien mit
+\datei{.incomplete} entstehen. Weitere Abschlussprüfungen eines konkreten
+Laufs können zusätzliche Dokumente erzeugen; sie gehören nicht automatisch
+zu jeder Studie.
+
+\subsection{Beispiele und Tests}
+Die Beispiele \datei{examples/trainStaticModelExample.m} und
+\datei{examples/showStaticResultsExample.m} zeigen ein einzelnes Training
+beziehungsweise vorhandene Ergebnisse. Sie sind für die Hauptstudie nicht
+erforderlich.
+
+Im Ordner \datei{tests/} prüfen \datei{runStaticValidation.m} und
+\datei{runStaticWorkflowSmoke.m} das Projekt beziehungsweise einen kleinen
+vollständigen Studienablauf. \datei{staticWorkflowTest.m},
+\datei{directNeuralTest.m}, \datei{podMlpTest.m}, \datei{podGprTest.m},
+\datei{surrogateContractTest.m}, \datei{nestedTrainingSubsetsTest.m} und
+\datei{weightedDirectLossTest.m} enthalten die zugehörigen Unit-Tests;
+\datei{makeContractData.m} stellt kleine Testdaten bereit. Unter
+\datei{tests/fixtures/} liegen \datei{study_baseline.mat} und
+\datei{regression.json} für Regressionsprüfungen. Der Smoke-Test verwendet
+\datei{configs/smoke.json} und eine eigene lokale Konfiguration; er erzeugt
+einen separaten Testlauf.
+
+\end{document}

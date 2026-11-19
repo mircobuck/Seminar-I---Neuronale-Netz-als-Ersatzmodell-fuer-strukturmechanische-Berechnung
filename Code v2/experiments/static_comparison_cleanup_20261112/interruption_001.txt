@@ -1,0 +1,15 @@
+Error using assert
+Only 297 MiB free; 512 MiB reserve required for new checkpoints.
+
+Error in staticstudy/requireSpace (line 4)
+    assert(available>=512*1024^2,'study:DiskSpace', ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in staticstudy/fitCheckpoint (line 32)
+    staticstudy.requireSpace(rootFolder);
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in staticstudy/tuning (line 39)
+            result=staticstudy.fitCheckpoint(folder,method,data,val,candidates{k});
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in runStaticStudy (line 42)
+        staticstudy.tuning(root,out,cfg);
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

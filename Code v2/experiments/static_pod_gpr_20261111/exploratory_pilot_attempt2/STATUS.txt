@@ -1,0 +1,2 @@
+EXPLORATORY ONLY: historical 12-case validation, not an independent test.
+Fit times exclude separate shared POD construction; see SharedPodSeconds.

@@ -1,0 +1,14 @@
+{
+  "manifestFiles": {
+    "source_manifest.csv": 90,
+    "freeze_manifest.csv": 894
+  },
+  "sealedFits": 234,
+  "searchFits": 88,
+  "evaluations": 288,
+  "caseRows": 55296,
+  "absoluteTolerance": 1e-12,
+  "relativeTolerance": 1e-12,
+  "outsideTolerance": 0,
+  "note": "Known references; timing columns deliberately excluded from equality checks."
+}

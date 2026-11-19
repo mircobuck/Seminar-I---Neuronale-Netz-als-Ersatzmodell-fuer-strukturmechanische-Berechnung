@@ -1,0 +1,38 @@
+--- frozen/studyEvaluation.m
++++ repair/studyEvaluationRepaired.m
+@@ -1,4 +1,4 @@
+-function studyEvaluation(root,out,cfg)
++function studyEvaluationRepaired(root,out,cfg)
+ % Test references are inaccessible here until the complete freeze is checked.
+ studyCheckFrozen(out);
+ refs=struct('interpolation',studyReference(out,"evaluate","interpolation"), ...
+@@ -21,7 +21,7 @@
+     modelFile=fullfile(fileparts(checkpoint),'model.mat');
+     if fit.status=="ok", assert(any(F.Path==string(modelFile)),'study:FreezeInvalid','Model absent from freeze.'); end
+     relative=extractAfter(string(fileparts(checkpoint)),strlength(string(out))+1);
+-    resultFolder=fullfile(out,'evaluation',relative); if ~isfolder(resultFolder), mkdir(resultFolder); end
++    resultFolder=fullfile(out,'evaluation_repaired',relative); if ~isfolder(resultFolder), mkdir(resultFolder); end
+     for role=["interpolation","extrapolation"]
+         filename=fullfile(resultFolder,role+'.mat');
+         hashFile=filename+'.sha256';
+@@ -60,10 +60,10 @@
+                 predicted=prediction.displacementFields; reference=data.displacementFields;
+                 observed.tipError=(predicted(1050+tip,:)-reference(1050+tip,:))';
+                 observed.femTip=reference(1050+tip,:)'; X=data.inputParameters;
+-                L=X(:,1); b=X(:,2); h=X(:,3); E=X(:,4); nu=X(:,5); F=X(:,6);
++                L=X(:,1); b=X(:,2); h=X(:,3); E=X(:,4); nu=X(:,5); forceZ=X(:,6);
+                 I=b.*h.^3/12; G=E./(2*(1+nu));
+-                observed.eulerBernoulliTip=F.*L.^3./(3*E.*I);
+-                observed.timoshenkoTip=observed.eulerBernoulliTip+F.*L./((5/6)*G.*b.*h);
++                observed.eulerBernoulliTip=forceZ.*L.^3./(3*E.*I);
++                observed.timoshenkoTip=observed.eulerBernoulliTip+forceZ.*L./((5/6)*G.*b.*h);
+                 P=reshape(predicted,525,3,n); R=reshape(reference,525,3,n);
+                 observed.maxMagnitudeError=squeeze(max(sqrt(sum(P.^2,2)),[],1)-max(sqrt(sum(R.^2,2)),[],1));
+                 observed.maxMagnitudeError=observed.maxMagnitudeError(:);
+@@ -95,5 +95,5 @@
+         writelines(string(studyHash(filename)),filename+'.sha256');
+     end
+ end
+-writelines("test evaluation completed",fullfile(out,'evaluation.complete'));
++writelines("test evaluation completed",fullfile(out,'evaluation_repaired.complete'));
+ end

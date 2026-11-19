@@ -1,0 +1,600 @@
+{
+  "study_version": "static-comparison-refactor-v1",
+  "seed_design": 2.0261111E+7,
+  "seeds_selection": [
+    2.0261112E+7,
+    2.0261113E+7,
+    2.0261114E+7
+  ],
+  "seeds_network": [
+    42,
+    43,
+    44
+  ],
+  "training_sizes": [
+    48,
+    96,
+    192,
+    384,
+    768
+  ],
+  "counts": {
+    "val": 128,
+    "interpolation": 256,
+    "extrapolation": 128
+  },
+  "lower": [
+    0.6,
+    0.06,
+    0.08,
+    7.0E+10,
+    0.25,
+    -1000
+  ],
+  "upper": [
+    1.2,
+    0.1,
+    0.14,
+    2.1E+11,
+    0.35,
+    -100
+  ],
+  "duplicate_tolerance": 1E-10,
+  "max_deflection_ratio": 0.02,
+  "mesh_divisor": 3,
+  "geometric_order": "quadratic",
+  "search_budget_seconds_per_family": 5400,
+  "total_budget_seconds": [],
+  "execution_environment": "cpu",
+  "selection_metric": "mean_weighted_relative_field_error",
+  "tie_break": [
+    "p95",
+    "configuration_id"
+  ],
+  "seed_tuning": 42,
+  "max_epochs": 200,
+  "mini_batch_size": 32,
+  "prediction_repetitions": 30,
+  "reference_floor": 0,
+  "extrapolation_fraction": [
+    0.05,
+    0.1
+  ],
+  "id_start": 830001,
+  "methods": [
+    "mlp",
+    "rbf",
+    "pod_mlp",
+    "pod_gpr"
+  ],
+  "controlled_ranks": [
+    2,
+    10,
+    15
+  ],
+  "tuning_size": 384,
+  "distribution_size": 192,
+  "gpr_timing_repetitions": 3,
+  "seed_evaluation": 2.0261115E+7,
+  "prediction_batch_size": 128,
+  "benchmark_indices": [
+    1,
+    24,
+    47,
+    70,
+    93,
+    116,
+    139,
+    162,
+    185,
+    208,
+    231,
+    254
+  ],
+  "benchmark_fem_repetitions": 2,
+  "benchmark_surrogate_repetitions": 30,
+  "reference_mode": "reuse",
+  "known_reference_repeat": true,
+  "search": {
+    "mlp": [
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      }
+    ],
+    "rbf": [
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      }
+    ],
+    "pod_mlp": [
+      {
+        "rank": 2,
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 80,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 2,
+        "hiddenWidth": 80,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 2,
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 80,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 80,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 2,
+        "hiddenWidth": 80,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 80,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      }
+    ],
+    "pod_gpr": [
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      }
+    ]
+  },
+  "training_optimizer": "adam",
+  "learning_rate": 0.001,
+  "paths": {
+    "training_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\data_generation\\data\\static\\train.mat",
+    "training_blocks": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\workflows\\static_comparison\\configs\\training_blocks.csv",
+    "reference_run": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2",
+    "output_dir": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_comparison_refactor_20261112_attempt4",
+    "python": "python",
+    "exclusion_designs": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\data_generation\\data\\static\\design.csv"
+  },
+  "config_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\workflows\\static_comparison\\configs\\study.json",
+  "local_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\workflows\\static_comparison\\configs\\local.example.json"
+}

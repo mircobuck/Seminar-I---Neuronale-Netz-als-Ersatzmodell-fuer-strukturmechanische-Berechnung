@@ -1,0 +1,12 @@
+﻿{
+    "CheckedAt":  "2026-11-12T17:44:44.4971507+01:00",
+    "Since":  "2026-11-12T15:54:50.0000000",
+    "Events":  [
+
+               ],
+    "QueryErrors":  [
+                        "NoMatchingEventsFound,Microsoft.PowerShell.Commands.GetWinEventCommand"
+                    ],
+    "OwnBatchStillRunning":  false,
+    "AwakeHelperStillRunning":  false
+}

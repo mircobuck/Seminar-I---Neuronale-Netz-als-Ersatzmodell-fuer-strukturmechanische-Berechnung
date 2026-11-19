@@ -1,0 +1,7 @@
+Created before generating new test FEM labels.
+Selection: weighted_field_mse; width 64; two hidden tanh layers; POD rank 10; 768 training cases; seeds 42, 43, and 44. This architecture was selected using the previously reported validation results; no results from this test set will be used for model selection.
+Test design: 128 static Latin-hypercube cases, seed 20261110, IDs 814001-814128.
+Model SHA-256 hashes:
+POD_MLP_WEIGHTED_FIELD_MSE_64_NEURONS_2_LAYERS_N768_SEED42 a058d9ef923ce8ea7e54158c9be4e0157133537d399319ea6822a619fe6f0681
+POD_MLP_WEIGHTED_FIELD_MSE_64_NEURONS_2_LAYERS_N768_SEED43 5784ad1068dafb028bcecbdd79188e1cfae5f155e07fe50f0cb0443bf45cf7d3
+POD_MLP_WEIGHTED_FIELD_MSE_64_NEURONS_2_LAYERS_N768_SEED44 f104709dc9b07725225f2af51093f0332febc8ac2b4e0dafd590878bf1993505

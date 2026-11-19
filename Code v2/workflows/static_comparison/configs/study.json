@@ -1,0 +1,590 @@
+{
+  "study_version": "static-comparison-refactor-v1",
+  "seed_design": 20261111,
+  "seeds_selection": [
+    20261112,
+    20261113,
+    20261114
+  ],
+  "seeds_network": [
+    42,
+    43,
+    44
+  ],
+  "training_sizes": [
+    48,
+    96,
+    192,
+    384,
+    768
+  ],
+  "counts": {
+    "val": 128,
+    "interpolation": 256,
+    "extrapolation": 128
+  },
+  "lower": [
+    0.6,
+    0.06,
+    0.08,
+    70000000000.0,
+    0.25,
+    -1000
+  ],
+  "upper": [
+    1.2,
+    0.1,
+    0.14,
+    210000000000.0,
+    0.35,
+    -100
+  ],
+  "duplicate_tolerance": 1e-10,
+  "max_deflection_ratio": 0.02,
+  "mesh_divisor": 3,
+  "geometric_order": "quadratic",
+  "search_budget_seconds_per_family": 5400,
+  "total_budget_seconds": null,
+  "execution_environment": "cpu",
+  "selection_metric": "mean_weighted_relative_field_error",
+  "tie_break": [
+    "p95",
+    "configuration_id"
+  ],
+  "seed_tuning": 42,
+  "max_epochs": 200,
+  "mini_batch_size": 32,
+  "prediction_repetitions": 30,
+  "reference_floor": 0,
+  "extrapolation_fraction": [
+    0.05,
+    0.1
+  ],
+  "id_start": 830001,
+  "methods": [
+    "mlp",
+    "rbf",
+    "pod_mlp",
+    "pod_gpr"
+  ],
+  "controlled_ranks": [
+    2,
+    10,
+    15
+  ],
+  "tuning_size": 384,
+  "distribution_size": 192,
+  "gpr_timing_repetitions": 3,
+  "seed_evaluation": 20261115,
+  "prediction_batch_size": 128,
+  "benchmark_indices": [
+    1,
+    24,
+    47,
+    70,
+    93,
+    116,
+    139,
+    162,
+    185,
+    208,
+    231,
+    254
+  ],
+  "benchmark_fem_repetitions": 2,
+  "benchmark_surrogate_repetitions": 30,
+  "reference_mode": "reuse",
+  "known_reference_repeat": true,
+  "search": {
+    "mlp": [
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 3,
+        "learningRate": 0.0005,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "learningRate": 0.0005,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "learningRate": 0.001,
+        "lossMode": "standardized_output_mse"
+      },
+      {
+        "hiddenWidth": 128,
+        "hiddenLayers": 2,
+        "learningRate": 0.001,
+        "lossMode": "weighted_field_mse"
+      }
+    ],
+    "rbf": [
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 2,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 32,
+        "rbfWidth": 2,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 2,
+        "centerCount": 64,
+        "rbfWidth": 1,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 32,
+        "rbfWidth": 1,
+        "lossMode": "standardized_output_mse",
+        "hiddenWidth": 64
+      },
+      {
+        "hiddenLayers": 3,
+        "centerCount": 64,
+        "rbfWidth": 0.5,
+        "lossMode": "weighted_field_mse",
+        "hiddenWidth": 64
+      }
+    ],
+    "pod_mlp": [
+      {
+        "rank": 2,
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 80,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 2,
+        "hiddenWidth": 80,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 2,
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 80,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 80,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 64,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 15,
+        "hiddenWidth": 64,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 2,
+        "hiddenWidth": 80,
+        "hiddenLayers": 2,
+        "lossMode": "weighted_field_mse"
+      },
+      {
+        "rank": 10,
+        "hiddenWidth": 80,
+        "hiddenLayers": 3,
+        "lossMode": "weighted_field_mse"
+      }
+    ],
+    "pod_gpr": [
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      },
+      {
+        "rank": 2,
+        "kernel": "ardmatern52",
+        "basisFunction": "constant",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "constant",
+        "sigma": 0.001
+      },
+      {
+        "rank": 10,
+        "kernel": "ardmatern52",
+        "basisFunction": "linear",
+        "sigma": 0.0001
+      },
+      {
+        "rank": 15,
+        "kernel": "ardsquaredexponential",
+        "basisFunction": "linear",
+        "sigma": 0.001
+      }
+    ]
+  },
+  "training_optimizer": "adam",
+  "learning_rate": 0.001
+}

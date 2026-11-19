@@ -1,0 +1,30 @@
+{
+  "interpolation": {
+    "absolute": true,
+    "referenceNorm": true,
+    "relative": true,
+    "tipError": true,
+    "maxMagnitudeError": true,
+    "femTip": true,
+    "eulerBernoulliTip": true,
+    "timoshenkoTip": true,
+    "projectionSquared": true,
+    "regressionSquared": true,
+    "reconstructionSquared": true,
+    "decompositionResidual": true
+  },
+  "extrapolation": {
+    "absolute": true,
+    "referenceNorm": true,
+    "relative": true,
+    "tipError": true,
+    "maxMagnitudeError": true,
+    "femTip": true,
+    "eulerBernoulliTip": true,
+    "timoshenkoTip": true,
+    "projectionSquared": true,
+    "regressionSquared": true,
+    "reconstructionSquared": true,
+    "decompositionResidual": true
+  }
+}

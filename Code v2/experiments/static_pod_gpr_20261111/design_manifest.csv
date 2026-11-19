@@ -1,0 +1,9 @@
+file,rows,split_counts,sha256
+data_generation\data\static\backup_384\design.csv,460,"{""test"": 64, ""train"": 384, ""val"": 12}",c63fd10fa4f5d3588ccc0544cf48a988413d364031e62f9676e607f5f96037e5
+data_generation\data\static\design.csv,844,"{""test"": 64, ""train"": 768, ""val"": 12}",24371d322dd5d0ea449a04192dc0b8848044aa475f02b3f2a3f351160ef202cc
+data_generation\data\static\design_768.csv,844,"{""test"": 64, ""train"": 768, ""val"": 12}",24371d322dd5d0ea449a04192dc0b8848044aa475f02b3f2a3f351160ef202cc
+data_generation\smoke\static\design.csv,4,"{""test"": 1, ""train"": 2, ""val"": 1}",db69df9e2b4560e468f526fc6bead60219385411cee3d7b3712c6dcf13a22737
+experiments\pod_mlp_fresh_validation_128_20261108\reference_data\static\design.csv,128,"{""val"": 128}",6988caf950e770f017ca21b2c55d2fd84e3f1c93b9a74d858b5340c80d836ede
+experiments\pod_mlp_fresh_validation_20261108\reference_data\static\design.csv,12,"{""val"": 12}",2fcb0be9166c4c3298de44e946daf9b5ff7a71edecae49d8f3d43ccf980e64b5
+experiments\pod_mlp_independent_test_20261106\reference_data\static\design.csv,64,"{""test"": 64}",17a1f8a360e579224e7d31879b8f8ccc821d28384006b3c8b2d82db0efcd8d78
+experiments\pod_mlp_weighted_independent_test_20261109\reference_data\static\design.csv,128,"{""test"": 128}",2cce2abe8ec4ce44eacd724a354be54fd20c9d817ceaf8835809eb747c949bd2

@@ -1,0 +1,1 @@
+Extended from pod_mlp_width_study_20261109_with100; all 21 existing models and errors reused unchanged. Added width 128 with seeds 42/43/44 on 2026-11-09.

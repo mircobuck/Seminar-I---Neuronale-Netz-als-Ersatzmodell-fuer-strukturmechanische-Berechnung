@@ -1,0 +1,23 @@
+{
+  "schema": "fem-reference-validation-v1",
+  "studyId": "fem_reference_validation_v1",
+  "protocolVersion": "1.0",
+  "dataRoot": "../../data_generation/data",
+  "split": "train",
+  "staticCaseCount": 384,
+  "modalCaseCount": 384,
+  "staticRepresentativeCaseIds": [810360, 810164, 810447],
+  "modalRepresentativeCaseIds": [910349, 910037, 910159],
+  "representativeQuantiles": [0.1, 0.5, 0.9],
+  "representativeSelectionRule": "Sort training cases by L_m/h_m; choose zero-based round(q*(n-1)) for q in [0.1,0.5,0.9].",
+  "meshDivisors": [3, 4, 6],
+  "static": {
+    "shearCorrectionFactor": 0.8333333333333333,
+    "relativeNormFloor": 1e-12
+  },
+  "modal": {
+    "betaRoots": [1.875104068711961, 4.694091132974175, 7.854757438237612],
+    "macAcceptanceThreshold": 0.7,
+    "frequencyComparisonCount": 6
+  }
+}

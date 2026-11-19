@@ -1,0 +1,5 @@
+referenceRole,solverSeconds,activeWallSeconds,failedCases
+historical_training_pool,1632.9175524,NaN,NaN
+val,454.747329,566.1100838,0
+interpolation,690.5414088,861.804165,0
+extrapolation,434.5730276,533.0821934,0

@@ -1,0 +1,39 @@
+{
+  "createdUtc": "2026-11-11T18:16:46.548846+00:00",
+  "freezeSha256": "a7dddb5fa4bb36d5984b0e23367d6f464e34c1a9836d8e3d959076973310342c",
+  "purpose": "post-freeze technical repair; frozen selection, models, references and metrics unchanged",
+  "files": [
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2\\evaluation_repair_v1\\studyEvaluationRepaired.m",
+      "sha256": "88cbf0621b94e7c4e6a24dff0a1cfad1aa6c392adfa806f80b6384ab25f868de"
+    },
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2\\evaluation_repair_v1\\studyReportRepaired.m",
+      "sha256": "145bedf969ee75e380ccdedda706f459dabd9c6aec6770225aefff61444a8d02"
+    },
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2\\evaluation_repair_v1\\studyVerifyRepair.m",
+      "sha256": "dfea4df9f13cc9e9be2e5d86802582ad3c2fdb75844200d4200e19a807de909f"
+    },
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2\\evaluation_repair_v1\\runRepairedEvaluation.m",
+      "sha256": "6818f821567084f35bb60c71486dda746832909ea033cb1e92dfb564aee59c43"
+    },
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2\\evaluation_repair_v1\\evaluation_changes.diff",
+      "sha256": "2d68d7d73b4121106b9eef8b0e9b0600344d7c9decb24d936fb82d96f306bf7c"
+    },
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2\\evaluation_repair_v1\\report_changes.diff",
+      "sha256": "11175011b492e2695ff8c3f2f24d35157127ad7fe4cf83608c9c5f44c1cc598d"
+    },
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\static_gpr_main_v1_20261111_run2\\evaluation_repair_v1\\PROTOKOLL_NACHTRAG.md",
+      "sha256": "c4d11232ecc34f239696d772bf0ee6cbfb043076a086317f5c30e3b0105a81b1"
+    },
+    {
+      "path": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\tests\\evaluationRepairTest.m",
+      "sha256": "9e4e068cb563b53f00374b3be3e1e30d728a2288d34c68103e034b6d31915e45"
+    }
+  ]
+}

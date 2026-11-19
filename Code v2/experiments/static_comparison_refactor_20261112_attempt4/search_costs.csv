@@ -1,0 +1,6 @@
+Method,Attempted,Candidates,SearchSeconds,Winner
+mlp,20,16,469.3793064,4
+rbf,28,24,579.5949098,20
+pod_mlp,16,12,259.581878,4
+pod_gpr,24,24,1017.8298261,20
+all,88,76,2326.9299241,NaN

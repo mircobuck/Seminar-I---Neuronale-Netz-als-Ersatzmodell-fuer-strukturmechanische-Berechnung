@@ -1,0 +1,2 @@
+RunId,Method,Role,Status,CaseId,Relative,Absolute,ReferenceNorm,TipError,MaxMagnitudeError,FemTip,EulerBernoulliTip,TimoshenkoTip,ProjectionSquared,RegressionSquared,ReconstructionSquared,DecompositionResidual,DecompositionValid,AbsoluteTipError,AbsoluteMaxMagnitudeError
+controlled\n768_rep1_rank2_pod_mlp,pod_mlp,interpolation,ok,,,,2,,,,,,0.04,0.09,0.13,,1,,

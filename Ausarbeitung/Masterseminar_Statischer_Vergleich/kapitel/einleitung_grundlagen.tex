@@ -1,0 +1,34 @@
+\chapter{Einleitung und Zielsetzung}
+\section{Motivation und Fragestellung}
+Die Finite-Elemente-Methode (FEM) ermöglicht die numerische Untersuchung strukturmechanischer Probleme, verursacht aber bei wiederholter Lösung unterschiedlicher Parameterkombinationen wiederkehrende Rechenkosten. Ein aus bereits berechneten Beispielen angepasstes Ersatzmodell kann die Parameter-Lösungs-Abbildung approximieren. Dem schnellen Online-Aufruf stehen die Kosten für Referenzdaten und Modellanpassung gegenüber. Die Aufgabenbeschreibung des Masterseminars schlägt dafür zunächst einen einseitig eingespannten Biegebalken und die statische Auslenkung als Ausgangspunkt vor\cite{aufgabe}.
+
+Die Leitfrage dieser Arbeit lautet: Wie unterscheiden sich die untersuchten Ersatzmodelle hinsichtlich Genauigkeit vollständiger Verschiebungsfelder, Datenbedarf, Trainingsaufwand und Vorhersagezeit? Verglichen werden ein direktes MLP, die vorhandene RBF-Variante, POD--MLP und POD--GPR. Die Studie untersucht ausschließlich statische Verschiebungen; Eigenfrequenzen werden nicht ausgewertet. Die Bewertung erfolgt auf separaten Interpolations- und Extrapolationsfällen. Ein kleiner nachträglicher Benchmark ergänzt die ursprünglichen Messungen um einen begrenzten FEM-Vergleich.
+
+\chapter{Grundlagen}
+\section{Direktes Netz und radiale Basisfunktionen}
+Ein mehrschichtiges Perzeptron bildet einen Eingabevektor durch aufeinanderfolgende affine Transformationen und nichtlineare Aktivierungen auf eine Ausgabe ab. Im direkten Ansatz besteht die Ausgabe aus allen 1575 Feldkomponenten. Die Netzbreite und -tiefe bestimmen die Architektur; Adam ist dagegen ein Optimierungsverfahren zur iterativen Anpassung der Gewichte\cite{kingma2015}. Eine gewichtete Feld-MSE misst im Training die Abweichung über das Feld, während die alternative Standardisierung einzelne Ausgabespalten skaliert.
+
+Radiale Basisfunktionen ordnen Eingaben anhand ihrer Distanz zu Zentren Merkmale zu\cite{broomhead1988}. Die hier verwendete Implementierung berechnet zunächst Gaußmerkmale für feste Zentren und führt sie anschließend durch trainierbare Tanh-Schichten. Sie ist weder mit einem beliebigen RBF-Verfahren noch mit einer Optimierung der Zentren gleichzusetzen.
+
+\section{Gewichtete Proper Orthogonal Decomposition}
+Die Proper Orthogonal Decomposition (POD) bestimmt aus Beispielschnappschüssen einen niedrigdimensionalen linearen Raum\cite{sirovich1987}. Für einen zentrierten Feldvektor $u-\bar u$ und eine im Projekt verwendete positive Gewichtsmatrix $W$ gelten für die behaltenen Basisvektoren $\Phi_r$ die gewichtete Orthonormalität $\Phi_r^{\mathsf T}W\Phi_r=I$ und die Projektion
+\begin{equation}
+ a=\Phi_r^{\mathsf T}W(u-\bar u),\qquad
+ \widehat u=\bar u+\Phi_r\widehat a.
+ \label{eq:pod}
+\end{equation}
+Der Rang $r$ legt die Zahl der Koeffizienten fest. POD ist eine Dimensionsreduktion und kein neuronales Netz. Im POD--MLP lernt das Netz die Abbildung der Parameter auf $a$. Verwandte Forschungsarbeiten kombinieren reduzierte Lösungsräume und neuronale Modelle auch für parametrisierte partielle Differentialgleichungen; deren nichtlineare beziehungsweise zeitabhängige Aufgaben sind nicht identisch mit dem vorliegenden statischen Balken\cite{salvador2021,fresca2021}.
+
+\section{Gaußprozessregression}
+Ein Gaußprozess beschreibt eine Verteilung über Funktionen, deren endliche Auswertungen gemeinsam normalverteilt sind. Mittelwert- und Kovarianzfunktion bestimmen diese Verteilung\cite{rasmussen2006}. Beim POD--GPR wird für jeden nicht konstanten POD-Koeffizienten ein separates GPR-Modell trainiert. Die konkrete Implementierung verwendet exakte Anpassung mit \texttt{fitrgp}\cite{mathworks2025}. Die Eingaben und Koeffizienten werden anhand der Trainingsdaten standardisiert. Konstante Eingabespalten werden aus dem Prädiktor entfernt; konstante Ziele werden direkt rekonstruiert. Das feste numerische Sigma stabilisiert das Modell und wird hier nicht als Messrauschen interpretiert. Eine Kalibrierung der GPR-Unsicherheit ist nicht Gegenstand der Untersuchung.
+
+\section{Fehlergrößen und POD-Zerlegung}
+Für ein Referenzfeld $u$ und eine Vorhersage $\widehat u$ ist der gewichtete relative Feldfehler definiert als
+\begin{equation}
+ e_{\mathrm{rel}}=\frac{\lVert u-\widehat u\rVert_W}{\lVert u\rVert_W},
+ \qquad \lVert v\rVert_W=\sqrt{v^{\mathsf T}Wv}.
+ \label{eq:error}
+\end{equation}
+Die Größe ist ein Fehler des gesamten Feldes, keine punktweise Fehlerschranke. Bei kleiner Referenznorm kann sie trotz begrenzter absoluter Abweichung stark ansteigen. Ergänzend werden absolute Feldfehler sowie Fehler der Spitzenauslenkung und des maximalen Verschiebungsbetrags ausgewiesen.
+
+Die orthogonale Projektion erlaubt eine fallweise quadratische Zerlegung des Feldfehlers in Projektions- und Regressionsanteil. Die in den Ergebnissen berichteten Mittelwerte relativer Wurzeln sind im Allgemeinen nicht additiv. P95 bezeichnet das nach der Nearest-Rank-Regel ermittelte 95. Perzentil der Fallfehler. Es beschreibt die Verteilung der beobachteten Fälle, keine garantierte Fehlerschranke.

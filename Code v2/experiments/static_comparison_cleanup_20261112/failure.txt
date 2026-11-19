@@ -1,0 +1,9 @@
+Error using assert
+No candidate with all required confirmations for rbf within budget.
+
+Error in staticstudy/tuning (line 84)
+        assert(~isempty(valid),'study:ConfirmationIncomplete', ...
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in runStaticStudy (line 42)
+        staticstudy.tuning(root,out,cfg);
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

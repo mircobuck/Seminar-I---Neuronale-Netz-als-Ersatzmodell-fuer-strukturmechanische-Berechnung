@@ -1,0 +1,5 @@
+Verified: 24 distinct rank/seed pairs and 3072 finite validation-case rows.
+Verified: 128 cases per model, exact rank-10 metrics reproduced, control SHA256 hashes unchanged.
+Verified: POD projection error decreases with rank for every seed.
+Verified during evaluation: squared weighted field error decomposes into POD projection and coefficient prediction errors.
+MATLAB Code Analyzer: no issues. Both PNG plots visually inspected.
