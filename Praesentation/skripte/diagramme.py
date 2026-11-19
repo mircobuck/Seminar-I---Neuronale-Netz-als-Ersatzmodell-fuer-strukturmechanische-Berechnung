@@ -506,11 +506,27 @@ def statisch_ergebnisse():
     fig.tight_layout(); save("statisch_ergebnisse")
 
 
+def statisch_genauigkeit():
+    """Nur Interpolation/Extrapolation bei N = 768 (fuer die Kurzfassung)."""
+    S = read(STAT / "pipeline_summary_corrected.csv")
+    fig, ax = plt.subplots(figsize=(7.5, 5.5))
+    x = np.arange(2)
+    for j, (m, c, lab) in enumerate((("mlp", MLP, "MLP"), ("pod_mlp", POD, "POD-MLP"))):
+        v = [100 * float(next(r for r in S if r["role"] == role and r["method"] == m and r["n"] == "768")["meanError"])
+             for role in ("interpolation", "extrapolation")]
+        ax.bar(x + (j - 0.5) * 0.36, v, 0.33, color=c, label=lab)
+        for xi, vi in zip(x + (j - 0.5) * 0.36, v):
+            ax.text(xi, vi + 0.3, de(vi, ".1f") + " %", ha="center", fontsize=13, color=INK)
+    ax.set_xticks(x, ["Interpolation\n(im Trainingsbereich)", "Extrapolation\n(außerhalb)"])
+    ax.set_ylabel("Mittlerer Feldfehler [%]"); ax.legend(loc="upper left")
+    fig.tight_layout(); save("statisch_genauigkeit")
+
+
 def main():
     formeln(); skizze(); mlp_bild(); podmlp_bild()
     labels = eigenformen(); print("Eigenformen:", labels)
     analytik(); pod_spektrum(); paritaet(); fehler_pro_mode(); lernkurve_modal(); rangstudie(); loss()
-    statisch_beispiel(); statisch_podmoden(); statisch_ergebnisse()
+    statisch_beispiel(); statisch_podmoden(); statisch_ergebnisse(); statisch_genauigkeit()
     print("Abbildungen in", OUT)
 
 

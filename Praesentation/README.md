@@ -1,6 +1,9 @@
 # Vortrag: MLP und POD-MLP gegen FEM und Analytik
 
-`Vortrag_MLP_POD-MLP.pptx`: 18 Folien, Schwerpunkt Modalanalyse, Sprechernotizen in jeder Folie.
+- `Vortrag_MLP_POD-MLP.pptx`: Kurzfassung für ~10 min, 8 Folien (`skripte/baue_praesentation.py`)
+- `Vortrag_MLP_POD-MLP_lang.pptx`: ausführliche Fassung, 18 Folien (`skripte/baue_praesentation_lang.py`)
+
+Beide mit Schwerpunkt Modalanalyse und Sprechernotizen auf jeder Folie. Die gemeinsamen Bausteine stehen in `skripte/folien_helfer.py`.
 
 ## Neu erzeugen
 
