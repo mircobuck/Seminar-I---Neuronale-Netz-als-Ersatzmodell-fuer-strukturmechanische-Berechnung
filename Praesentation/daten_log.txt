@@ -1,0 +1,43 @@
+Modal: 384 Training, 64 Test
+    rank    singularValue    cumEnergy    testProjectionError
+    ____    _____________    _________    ___________________
+
+     1          13988         0.97234           0.075945     
+     2         1554.6         0.98435           0.066715     
+     3         1323.4         0.99305           0.048423     
+     4         1146.3         0.99958           0.016499     
+     5         290.51               1         0.00027742     
+     6         9.6581               1         4.3179e-16     
+
+N=24 rep=1  MLP 11.990 %  POD-MLP 15.942 %
+N=24 rep=2  MLP 11.051 %  POD-MLP 12.284 %
+N=24 rep=3  MLP 9.123 %  POD-MLP 13.173 %
+N=48 rep=1  MLP 11.565 %  POD-MLP 9.817 %
+N=48 rep=2  MLP 7.813 %  POD-MLP 9.179 %
+N=48 rep=3  MLP 6.803 %  POD-MLP 7.907 %
+N=96 rep=1  MLP 3.356 %  POD-MLP 4.595 %
+N=96 rep=2  MLP 3.458 %  POD-MLP 4.812 %
+N=96 rep=3  MLP 3.667 %  POD-MLP 5.130 %
+N=192 rep=1  MLP 1.694 %  POD-MLP 2.519 %
+N=192 rep=2  MLP 1.612 %  POD-MLP 2.376 %
+N=192 rep=3  MLP 1.710 %  POD-MLP 2.339 %
+N=384 rep=1  MLP 1.565 %  POD-MLP 1.703 %
+N=384 rep=2  MLP 1.296 %  POD-MLP 1.663 %
+N=384 rep=3  MLP 1.799 %  POD-MLP 2.002 %
+{This feature is attempting to execute Java code, but no runtime environment for Java applications has been found. Explore your options at
+<a href="https://www.mathworks.com/matlab-openjdk">MATLAB Support for OpenJDK.</a>
+
+Error in surrogate.models.shared.podFingerprint
+
+Error in surrogate.models.shared.fitPod (line 6)
+fingerprint=surrogate.models.shared.podFingerprint(data);
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in surrogate.models.pod_mlp.fit (line 58)
+pod=surrogate.models.shared.fitPod(data,config.rank,"pod_mlp",prepared);
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in surrogate.fitModel (line 13)
+[state,report]=feval(char(fn),trainingData,config);
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error in erzeuge_praesentationsdaten (line 136)
+} 
+ERROR: MATLAB error Exit Status: 0x00000001
