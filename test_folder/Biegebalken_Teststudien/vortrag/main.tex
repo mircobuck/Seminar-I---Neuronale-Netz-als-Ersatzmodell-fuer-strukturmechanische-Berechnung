@@ -1,0 +1,103 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{metropolis}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\IfFileExists{results_path.tex}{\input{results_path.tex}}{\newcommand{\ResultsPath}{../results}}
+\title{Neuronale Ersatzmodelle für Biegelinien}
+\subtitle{Einfluss von Netzarchitektur, Datenmenge und Querschnittssprung}
+\author{<Name>}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{frame}{Fragestellung}
+\begin{itemize}
+  \item Wie genau approximieren Tanh-Netze analytische Biegelinien?
+  \item Welchen Einfluss haben 80 und 160 Trainingsfälle?
+  \item Wie verändern zwei versteckte Schichten und ein Querschnittssprung die Ergebnisse?
+  \item Wie unterscheiden sich Interpolation und Extrapolation?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Physikalische Referenz}
+Für den Kragarm mit Endkraft gilt bei konstantem Querschnitt
+\[
+w(x)=\frac{F x^2(3L-x)}{6EI}.
+\]
+Beim Querschnittssprung integriert die Studie die Krümmung abschnittsweise. Durchbiegung und Neigung bleiben an der Sprungstelle stetig.
+\end{frame}
+
+\begin{frame}{Studiendesign}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Geometrie & Netz & Trainingsfälle\\
+\midrule
+Konstant & 1 Layer, 1--15 Neuronen & 80, 160\\
+Konstant & 2 Layer, 56 Kombinationen & 80, 160\\
+Sprung & 1 Layer, 1--15 Neuronen & 80, 160\\
+Sprung & 2 Layer, 56 Kombinationen & 80, 160\\
+\bottomrule
+\end{tabular}
+\end{center}
+Fünf Seeds je Architektur. Training, Validierung, Interpolation und Extrapolation verwenden getrennte Balkenfälle.
+\end{frame}
+
+\begin{frame}{Netz und Fehlermaß}
+Das Netz approximiert die kraftnormierte Durchbiegung. Die Vorhersage lautet
+\[
+\widehat w = F\,w_N\,f_\theta(\text{Position, Geometrie}).
+\]
+Die Auswertung normiert den maximalen Fehler eines Falls mit der analytischen Enddurchbiegung $w(L)$.
+\end{frame}
+
+\begin{frame}{Konstanter Querschnitt: ein Layer, 80 Fälle}
+\includegraphics[width=\linewidth,height=.76\textheight,keepaspectratio]{\ResultsPath/constant_1layer_80cases/main_plot.pdf}
+\end{frame}
+
+\begin{frame}{Konstanter Querschnitt: zwei Layer, 160 Fälle}
+\includegraphics[width=\linewidth,height=.76\textheight,keepaspectratio]{\ResultsPath/constant_2layer_160cases/architecture_heatmaps.pdf}
+\end{frame}
+
+\begin{frame}{Querschnittssprung: ein Layer, 80 Fälle}
+\includegraphics[width=\linewidth,height=.76\textheight,keepaspectratio]{\ResultsPath/step_1layer_80cases/main_plot.pdf}
+\end{frame}
+
+\begin{frame}{Querschnittssprung: zwei Layer, 160 Fälle}
+\includegraphics[width=\linewidth,height=.76\textheight,keepaspectratio]{\ResultsPath/step_2layer_160cases/architecture_heatmaps.pdf}
+\end{frame}
+
+\begin{frame}{Vergleich der ausgewählten Modelle}
+\includegraphics[width=\linewidth,height=.76\textheight,keepaspectratio]{\ResultsPath/overall_comparison.pdf}
+\end{frame}
+
+\begin{frame}{Ergebnisübersicht}
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Geometrie & Layer & Fälle & Interpolation & Extrapolation\\
+\midrule
+\IfFileExists{study_summary.tex}{\input{study_summary.tex}}{Die Vollstudie erzeugt diese Tabelle.}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Einordnung}
+\begin{itemize}
+  \item Die Ergebnisse gelten für die gewählten Parameterbereiche und Trainingsbedingungen.
+  \item Die Referenzdaten stammen aus analytischen Euler-Bernoulli-Lösungen.
+  \item Die Kraftextrapolation folgt aus der eingebauten linearen Skalierung.
+  \item Die Geometrieextrapolation prüft die Generalisierung des Netzes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fazit}
+Die Auswertung beantwortet die Frage nach einer geeigneten Architektur anhand von Validierungs-, Interpolations- und Extrapolationsfehlern. Die kleinste ausreichende Architektur wird über die Validierungsdaten ausgewählt.
+\end{frame}
+\end{document}
