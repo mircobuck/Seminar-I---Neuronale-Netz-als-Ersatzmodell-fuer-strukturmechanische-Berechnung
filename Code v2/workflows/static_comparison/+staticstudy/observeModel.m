@@ -1,35 +1,48 @@
+% model = trained model, data = reference FEM data, observed = struct for eval, method (mlp, pod_mlp etc), cfg = study coonfig
 function [observed,request] = observeModel(model,data,observed,method,cfg)
     %observeModel Compute physical case errors and POD diagnostics without checkpoint I/O.
     n=numel(data.caseIds);
+    % struct request wit parameter, units etc.
     request=struct('inputParameters',data.inputParameters,'parameterNames',data.parameterNames, ...
         'parameterUnits',  data.parameterUnits,  'caseIds',  data.caseIds);
+    % calculate prediction 
     prediction=surrogate.predictModel(model,request);
+    % compare pred wit fem
     metric=surrogate.evaluatePrediction(prediction,data,  struct('staticReferenceFloor',cfg.reference_floor));
+    % store metrics in observed struct
     observed.absolute=metric.absoluteWeightedFieldError;
     observed.referenceNorm=metric.referenceWeightedFieldNorm;
     observed.relative=metric.relativeWeightedFieldError;
+    % get grid
     grid=data.normalizedGridCoordinates;
+    % find canitlvere tip
     tip=find(all(abs(grid-[1;.5;.5])<1e-12,1));
     assert(isscalar(tip),'study:Tip','Tip grid location is not unique.');
+    % pred and FEM in variables saved
     predicted=prediction.displacementFields;
     reference=data.displacementFields;
     observed.tipError=(predicted(1050+tip,:)-reference(1050+tip,:))';
     observed.femTip=reference(1050+tip,:)';
     X=data.inputParameters;
+    % varibles for input paramters
     L=X(:,1);
     b=X(:,2);
     h=X(:,3);
     E=X(:,4);
     nu=X(:,5);
     forceZ=X(:,6);
+    % analytic
     I=b.*h.^3/12;
     G=E./(2*(1+nu));
     observed.eulerBernoulliTip=forceZ.*L.^3./(3*E.*I);
     observed.timoshenkoTip=observed.eulerBernoulliTip+forceZ.*L./((5/6)*G.*b.*h);
+    % reshape pred and ref
     P=reshape(predicted,525,3,n);
     R=reshape(reference,525,3,n);
+
     observed.maxMagnitudeError=squeeze(max(sqrt(sum(P.^2,2)),[],1)-max(sqrt(sum(R.^2,2)),[],1));
     observed.maxMagnitudeError=observed.maxMagnitudeError(:);
+    % pod diagnostic
     if startsWith(method,"pod_")
         diagnostic=surrogate.models.shared.podDiagnostics(model.state,reference,predicted);
         observed.projectionSquared=diagnostic.projectionSquared;
