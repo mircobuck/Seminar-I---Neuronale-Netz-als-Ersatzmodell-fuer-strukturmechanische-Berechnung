@@ -6,8 +6,8 @@ if state.method=="rbf"
     X=surrogate.models.shared.rbfFeatures(X,state.centers,state.settings.rbfWidth);
 end
 % some checks for the static trainnet workflow
-assert(state.task=="static" && state.backend=="trainnet", ...
-    'surrogate:neural:Backend','This static workflow requires a trainnet model.');
+assert(any(state.task==["static","modal"]) && state.backend=="trainnet", ...
+    'surrogate:neural:Backend','This workflow requires a trainnet model.');
 % netwrok pred    
 Y=double(minibatchpredict(state.network,X,ExecutionEnvironment="cpu"));
 % Constant targets (including clamped displacement DOFs) stay exact.

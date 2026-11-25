@@ -1,0 +1,5 @@
+Checkpoint,Method,Status,FitSeconds,Message
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\comparison_dual_20261124\modal_smoke\run\tuning\mlp\candidate_001_seed42,mlp,ok,16.1006337,
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\comparison_dual_20261124\modal_smoke\run\tuning\pod_gpr\candidate_001_seed42,pod_gpr,ok,2.441202,
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\comparison_dual_20261124\modal_smoke\run\tuning\pod_mlp\candidate_001_seed42,pod_mlp,ok,1.4565099,
+C:\Users\dietz\Downloads\MATLAB_FEM_Start\github_dd_branch\Code v2\experiments\comparison_dual_20261124\modal_smoke\run\tuning\rbf\candidate_001_seed42,rbf,ok,1.7565229,

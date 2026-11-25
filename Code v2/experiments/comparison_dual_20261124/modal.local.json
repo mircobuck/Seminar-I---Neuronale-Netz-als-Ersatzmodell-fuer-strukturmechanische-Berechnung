@@ -1,0 +1,8 @@
+{
+  "training_file": "data_generation/data/modal/train.mat",
+  "validation_file": "data_generation/data/modal/val.mat",
+  "test_file": "data_generation/data/modal/test.mat",
+  "design_file": "data_generation/data/modal/design.csv",
+  "presentation_file": "../Praesentation/daten/modal_test_vorhersagen.csv",
+  "output_dir": "experiments/comparison_dual_20261124/modal"
+}

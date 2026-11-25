@@ -93,7 +93,7 @@ classdef surrogateContractTest < matlab.unittest.TestCase
             t.verifyError(@()surrogate.fitModel("missing",data,struct('seed',1)),'surrogate:fit:Method');
         end
         function unsupportedTaskRejected(t)
-            t.verifyError(@()surrogate.contract("modal"),'surrogate:contract:Task');
+            t.verifyError(@()surrogate.contract("unknown"),'surrogate:contract:Task');
         end
         function reorderedCaseIdsRejected(t)
             data=makeContractData("val");

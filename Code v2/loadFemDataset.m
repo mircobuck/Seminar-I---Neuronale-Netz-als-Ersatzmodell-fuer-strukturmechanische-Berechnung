@@ -1,6 +1,6 @@
 function [dataset, design] = loadFemDataset(filePath)
 %loadFemDataset - Load a FEM split with descriptive field names
-%   DATASET = loadFemDataset(FILEPATH) loads a static displacement split
+%   DATASET = loadFemDataset(FILEPATH) loads a static displacement or modal frequency split
 %   without changing the MAT-file or the original data values.
 %   [DATASET, DESIGN] also returns the associated design table.
 
@@ -22,6 +22,14 @@ assert(numel(parameterNames) == size(source.X,2), ...
     'femdata:load:ParameterCount', 'Design and dataset dimensions differ.');
 dataset.parameterNames = parameterNames;
 dataset.computationTimeSeconds = source.seconds;
+
+if string(source.schema)=="modal-natural-frequencies-v1"
+    assert(string(source.modality)=="modal" && string(source.frequencyUnit)=="Hz", ...
+        'femdata:load:Modal','Expected modal frequencies in Hz.');
+    dataset.frequencyHz=source.frequencyHz;
+    dataset.modeIndices=source.modeIndices;
+    return
+end
 
 assert(string(source.schema)=="static-displacement-fields-v1", ...
     'femdata:load:UnknownSchema','Unsupported static dataset schema: %s.',string(source.schema));

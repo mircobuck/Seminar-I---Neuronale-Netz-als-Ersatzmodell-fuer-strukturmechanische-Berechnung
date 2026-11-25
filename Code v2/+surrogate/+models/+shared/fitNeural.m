@@ -13,18 +13,25 @@ cfg=defaults(config);
 % which data is data. In our case: static
 task=string(data.modality);
 % check if static
-assert(task=="static",'surrogate:neural:Task', ...
-    'Only static displacement fields are supported.');
+assert(any(task==["static","modal"]),'surrogate:neural:Task', ...
+    'Only static fields or modal frequencies are supported.');
 % INput and transposed outputparamters for the neural network    
 X=double(data.inputParameters);
-Y=double(data.displacementFields');
+[targets,weights]=surrogate.models.shared.targets(data);
+Y=targets';
 % normalize such that the input and output parameters have zero mean and unit variance
 inputMean=mean(X,1); inputScale=std(X,0,1); inputScale(inputScale==0)=1;
 outputMean=mean(Y,1); outputScale=std(Y,0,1);
 constantOutputs=outputScale==0; outputScale(constantOutputs)=1;
+if task=="modal"
+    constantInputs=all(X==X(1,:),1);
+    inputMean(constantInputs)=X(1,constantInputs); inputScale(constantInputs)=1;
+    constantOutputs=all(Y==Y(1,:),1);
+    outputMean(constantOutputs)=Y(1,constantOutputs); outputScale(constantOutputs)=1;
+end
 % If loss function gets optimized with weighted mean squared error
 if cfg.lossMode=="weighted_field_mse"
-    weights=double(data.displacementComponentWeights(:))';
+    weights=weights';
     sharedScale=sqrt(mean((Y-outputMean).^2.*weights,'all'));
     assert(isfinite(sharedScale),'surrogate:neural:TargetScale','Weighted target scale must be finite.');
     if sharedScale==0, sharedScale=1; end
@@ -114,5 +121,5 @@ assert(isscalar(cfg.lossMode) && any(cfg.lossMode==["standardized_output_mse","w
     'surrogate:neural:Config','Unsupported loss mode.');
 cfg.optimizer=string(cfg.optimizer);
 assert(isscalar(cfg.optimizer) && cfg.optimizer=="adam", ...
-    'surrogate:neural:Config','The current static study supports Adam only.');
+    'surrogate:neural:Config','The current studies support Adam only.');
 end

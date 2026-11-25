@@ -1,0 +1,8 @@
+{
+  "training_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\train.mat",
+  "validation_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\val.mat",
+  "test_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\test.mat",
+  "design_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\design.csv",
+  "presentation_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\history.csv",
+  "output_dir": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\run"
+}

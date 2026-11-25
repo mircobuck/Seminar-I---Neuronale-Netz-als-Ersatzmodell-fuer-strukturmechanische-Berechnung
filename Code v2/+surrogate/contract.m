@@ -1,8 +1,14 @@
 function c = contract(task)
-%contract Return the static parameter, field and unit conventions.
+%contract Return task-specific parameter, output and unit conventions.
 task = string(task);
-assert(isscalar(task) && task=="static",'surrogate:contract:Task', ...
-    'Only static displacement fields are supported.');
+assert(isscalar(task) && any(task==["static","modal"]),'surrogate:contract:Task', ...
+    'Expected static displacement fields or modal frequencies.');
+if task=="modal"
+    c=struct('parameterNames',["L_m","b_m","h_m","E_Pa","nu","rho_kg_m3"], ...
+        'parameterUnits',["m","m","m","Pa","1","kg/m^3"], ...
+        'outputUnit',"Hz",'version',"surrogate-modal-v1",'task',task,'modeIndices',(1:6)');
+    return
+end
 c.parameterNames = ["L_m","b_m","h_m","E_Pa","nu","Fz_N"];
 c.parameterUnits = ["m","m","m","Pa","1","N"];
 c.outputUnit = "m";

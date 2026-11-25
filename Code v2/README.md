@@ -1,10 +1,10 @@
-# Statischer FEM-Surrogatvergleich
+# Statischer und modaler FEM-Surrogatvergleich
 
-Vier Methoden sagen aus sechs Balkenparametern das vollstaendige statische Verschiebungsfeld voraus: direktes MLP, vorhandenes RBF-Netz, POD-MLP und POD-GPR. Ausgabe: 1575 Verschiebungen in Metern auf 525 Punkten. Eigenfrequenzen gehoeren nicht zum aktiven Ablauf.
+Vier Methoden sagen aus sechs Balkenparametern das vollstaendige statische Verschiebungsfeld voraus: direktes MLP, vorhandenes RBF-Netz, POD-MLP und POD-GPR. Ausgabe: 1575 Verschiebungen in Metern auf 525 Punkten. Der neue Einstieg `runModalStudy` verwendet dieselben vier Methoden fuer sechs Eigenfrequenzen in Hz. [Modalstudie: Aufbau, Start und Zeitbedarf](docs/MODALSTUDIE.md). Die neue Modalstudie wurde noch nicht gestartet.
 
 ## Bereinigter aktueller Bestand
 
-Aktiv bleiben nur der statische Vier-Methoden-Ablauf und seine Tests. Historische Programme, modale Berechnung, alte Optimierer und Quellkopien sind aus dem Arbeitsstand entfernt und im lokalen Git-Commit `4e83631` gesichert. Wissenschaftliche Daten und Ergebnisse bleiben unveraendert. [Bereinigungsnachweis](docs/STATISCHE_BEREINIGUNG.md), [Codeumfang](docs/CODEZAEHLUNG.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Die vollstaendige neue Hauptstudie ist abgeschlossen: 234 erfolgreiche Fits, 288 Auswertungen, 55.296 Fallzeilen und identische numerische Kennzahlen gegenueber der unmittelbar vorherigen Wiederholung. [Ergebnisse und neue Zeiten](experiments/static_comparison_cleanup_20261113_attempt2/WIEDERHOLUNG.md), [Laufbedingungen](experiments/static_comparison_cleanup_20261113_attempt2/LAUFBEDINGUNGEN.md).
+Die damalige Bereinigung beschraenkte den Ablauf auf Statik. Jetzt kommen ein eigener schlanker Modalablauf und Tests hinzu. Historische Programme, modale Berechnung, alte Optimierer und Quellkopien sind aus dem Arbeitsstand entfernt und im lokalen Git-Commit `4e83631` gesichert. Wissenschaftliche Daten und Ergebnisse bleiben unveraendert. [Bereinigungsnachweis](docs/STATISCHE_BEREINIGUNG.md), [Codeumfang](docs/CODEZAEHLUNG.md), [Arbeitsstand](docs/ARBEITSSTAND_20261112.md). Die vollstaendige neue Hauptstudie ist abgeschlossen: 234 erfolgreiche Fits, 288 Auswertungen, 55.296 Fallzeilen und identische numerische Kennzahlen gegenueber der unmittelbar vorherigen Wiederholung. [Ergebnisse und neue Zeiten](experiments/static_comparison_cleanup_20261113_attempt2/WIEDERHOLUNG.md), [Laufbedingungen](experiments/static_comparison_cleanup_20261113_attempt2/LAUFBEDINGUNGEN.md).
 
 ## Voraussetzungen und sicherer Start
 

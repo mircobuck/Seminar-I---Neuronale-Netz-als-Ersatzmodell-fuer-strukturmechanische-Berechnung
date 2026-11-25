@@ -1,6 +1,6 @@
 function [state,report] = fit(data,config)
 %fit Fit one exact Gaussian process per weighted POD coefficient.
-assert(string(data.modality)=="static",'surrogate:pod_gpr:Task','Static fields only.');
+assert(any(string(data.modality)==["static","modal"]),'surrogate:pod_gpr:Task','Static fields or modal frequencies only.');
 assert(isfield(config,'rank'),'surrogate:pod_gpr:Config','Missing rank.');
 if ~isfield(config,'kernel'), config.kernel="ardsquaredexponential"; end
 if ~isfield(config,'basisFunction'), config.basisFunction="constant"; end
@@ -16,8 +16,13 @@ if isfield(config,'preparedPod'), prepared=config.preparedPod; end
 pod=surrogate.models.shared.fitPod(data,config.rank,"pod_gpr",prepared); podSeconds=toc(t);
 t=tic; X=double(data.inputParameters); inputMean=mean(X,1); inputScale=std(X,0,1);
 activeInputs=inputScale>0; inputScale(~activeInputs)=1;
+if string(data.modality)=="modal"
+    activeInputs=~all(X==X(1,:),1);
+    inputMean(~activeInputs)=X(1,~activeInputs); inputScale(~activeInputs)=1;
+end
 X=(X(:,activeInputs)-inputMean(activeInputs))./inputScale(activeInputs);
-coeff=(pod.basis'*(pod.weights.*(double(data.displacementFields)-pod.fieldMean)))';
+targets=surrogate.models.shared.targets(data);
+coeff=(pod.basis'*(pod.weights.*(targets-pod.fieldMean)))';
 coefficientMean=mean(coeff,1); coefficientScale=std(coeff,0,1);
 constantCoefficients=coefficientScale==0; coefficientScale(constantCoefficients)=1;
 Z=(coeff-coefficientMean)./coefficientScale; preprocessSeconds=toc(t);

@@ -1,0 +1,5 @@
+Method,Attempted,Candidates,Seconds,Winner
+mlp,12,8,201.9425779,8
+rbf,16,12,217.6590898,12
+pod_mlp,20,16,325.8523777,12
+pod_gpr,32,32,628.3681425,30

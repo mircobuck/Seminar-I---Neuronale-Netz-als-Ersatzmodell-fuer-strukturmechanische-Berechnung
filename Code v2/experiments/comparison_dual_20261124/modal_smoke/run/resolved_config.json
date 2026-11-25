@@ -1,0 +1,73 @@
+{
+  "study_version": "modal-smoke-v1",
+  "methods": [
+    "mlp",
+    "rbf",
+    "pod_mlp",
+    "pod_gpr"
+  ],
+  "reference_mode": "generate",
+  "known_reference_repeat": true,
+  "counts": {
+    "train": 16,
+    "val": 4,
+    "test": 4
+  },
+  "training_sizes": [
+    8,
+    16
+  ],
+  "tuning_size": 16,
+  "seeds_selection": 2.0261112E+7,
+  "seeds_network": 42,
+  "seed_tuning": 42,
+  "controlled_ranks": 2,
+  "gpr_timing_repetitions": 1,
+  "training_optimizer": "adam",
+  "max_epochs": 2,
+  "mini_batch_size": 8,
+  "learning_rate": 0.001,
+  "search_budget_seconds_per_family": 5400,
+  "mesh_divisor": 3,
+  "geometric_order": "quadratic",
+  "benchmark_indices": 1,
+  "benchmark_fem_repetitions": 1,
+  "benchmark_surrogate_repetitions": 2,
+  "search": {
+    "mlp": {
+      "hiddenWidth": 4,
+      "hiddenLayers": 2,
+      "learningRate": 0.0005,
+      "lossMode": "standardized_output_mse"
+    },
+    "rbf": {
+      "centerCount": 32,
+      "rbfWidth": 0.5,
+      "hiddenLayers": 1,
+      "hiddenWidth": 4,
+      "lossMode": "standardized_output_mse"
+    },
+    "pod_mlp": {
+      "rank": 2,
+      "hiddenWidth": 4,
+      "hiddenLayers": 2,
+      "lossMode": "shared_output_mse"
+    },
+    "pod_gpr": {
+      "rank": 2,
+      "kernel": "ardsquaredexponential",
+      "basisFunction": "constant",
+      "sigma": 0.0001
+    }
+  },
+  "paths": {
+    "training_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\train.mat",
+    "validation_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\val.mat",
+    "test_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\test.mat",
+    "design_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\design.csv",
+    "presentation_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\history.csv",
+    "output_dir": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\run"
+  },
+  "config_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\workflows\\modal_comparison\\configs\\smoke.json",
+  "local_file": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\smoke.local.json"
+}

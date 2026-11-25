@@ -1,6 +1,6 @@
 # Aktueller statischer Schnittstellenvertrag
 
-`surrogate-v1` bleibt das Speicherformat fuer statische Daten und Modelle. Der aktive Umfang ist auf `static` und die Methoden `mlp`, `rbf`, `pod_mlp`, `pod_gpr` begrenzt. Historische modale Modelle erfordern ihre Quellen aus Git-Commit `4e83631`.
+`surrogate-v1` bleibt das Speicherformat fuer statische Daten und Modelle. Die Methoden `mlp`, `rbf`, `pod_mlp`, `pod_gpr` unterstuetzen ausserdem den neuen Modalvertrag `surrogate-modal-v1`; dessen N-x-6-Frequenzausgabe und Einheiten sind in [MODALSTUDIE.md](MODALSTUDIE.md) beschrieben. Historische modale Modelle erfordern ihre Quellen aus Git-Commit `4e83631`.
 
 ## Daten
 

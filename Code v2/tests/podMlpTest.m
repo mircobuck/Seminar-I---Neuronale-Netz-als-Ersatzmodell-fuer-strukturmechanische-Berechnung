@@ -85,9 +85,9 @@ classdef podMlpTest < matlab.unittest.TestCase
             cfg=rmfield(podMlpTest.config(),{'hiddenWidth','hiddenLayers'});
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,cfg),'surrogate:pod_mlp:Config');
         end
-        function modalTaskRejected(testCase)
+        function unknownTaskRejected(testCase)
             data=makeContractData("train");
-            data.modality="modal";
+            data.modality="unknown";
             testCase.verifyError(@()surrogate.fitModel("pod_mlp",data,podMlpTest.config()), ...
                 'surrogate:pod_mlp:Task');
         end

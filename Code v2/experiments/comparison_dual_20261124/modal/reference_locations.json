@@ -1,0 +1,5 @@
+{
+  "train": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\data_generation\\data\\modal\\train.mat",
+  "val": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\data_generation\\data\\modal\\val.mat",
+  "test": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\data_generation\\data\\modal\\test.mat"
+}

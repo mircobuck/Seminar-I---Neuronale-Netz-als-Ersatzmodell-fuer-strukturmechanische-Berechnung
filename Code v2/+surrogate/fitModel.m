@@ -25,5 +25,9 @@ model=struct('contractVersion',c.version,'methodId',methodId,'task',c.task, ...
     'parameterNames',c.parameterNames,'parameterUnits',c.parameterUnits, ...
     'outputUnit',c.outputUnit,'config',config,'trainingCaseIds',trainingData.caseIds, ...
     'matlabVersion',string(version),'state',state);
-model.normalizedGridCoordinates=c.grid;
+if c.task=="static"
+    model.normalizedGridCoordinates=c.grid;
+else
+    model.modeIndices=c.modeIndices;
+end
 end

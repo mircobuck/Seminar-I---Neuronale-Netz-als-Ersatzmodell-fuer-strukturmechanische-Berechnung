@@ -1,0 +1,5 @@
+{
+  "train": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\run\\references\\train\\train.mat",
+  "val": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\run\\references\\val\\val.mat",
+  "test": "C:\\Users\\dietz\\Downloads\\MATLAB_FEM_Start\\github_dd_branch\\Code v2\\experiments\\comparison_dual_20261124\\modal_smoke\\run\\references\\test\\test.mat"
+}

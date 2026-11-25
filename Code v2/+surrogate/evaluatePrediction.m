@@ -1,6 +1,10 @@
 function result = evaluatePrediction(prediction,reference,metricConfig)
 %evaluatePrediction Evaluate aligned predictions with explicit zero thresholds.
 %   Expects contract data from surrogate.loadDataset or validateDataset.
+if string(reference.modality)=="modal"
+    result=surrogate.study.evaluateFrequencies(prediction,reference);
+    return
+end
 assert(isnumeric(metricConfig.staticReferenceFloor) && isscalar(metricConfig.staticReferenceFloor) && ...
     isfinite(metricConfig.staticReferenceFloor) && metricConfig.staticReferenceFloor>=0, ...
     'surrogate:evaluate:Config','A finite nonnegative static reference floor is required.');

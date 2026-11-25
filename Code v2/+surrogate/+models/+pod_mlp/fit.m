@@ -14,8 +14,8 @@ function [state,report] = fit(data,config)
 %   surrogate:pod_mlp:Rank.
 
 % Validierung: Nur statische Daten und gueltige Netzparameter trainieren.
-assert(string(data.modality)=="static",'surrogate:pod_mlp:Task', ...
-    'POD-MLP supports static displacement fields only.');
+assert(any(string(data.modality)==["static","modal"]),'surrogate:pod_mlp:Task', ...
+    'POD-MLP supports static fields and modal frequencies.');
 required={'rank','hiddenWidth','maxEpochs','miniBatchSize', ...
     'learningRate','hiddenLayers'};
 assert(isstruct(config) && isscalar(config), ...
@@ -43,7 +43,7 @@ lossMode="per_coefficient_mse";
 if isfield(config,'lossMode')
     lossMode=string(config.lossMode);
 end
-assert(isscalar(lossMode) && any(lossMode==["per_coefficient_mse","weighted_field_mse"]), ...
+assert(isscalar(lossMode) && any(lossMode==["per_coefficient_mse","weighted_field_mse","shared_output_mse"]), ...
     'surrogate:pod_mlp:Config','Unsupported lossMode: %s.',lossMode);
 optimizer="adam";
 if isfield(config,'optimizer')
@@ -57,10 +57,10 @@ podTimer=tic; prepared=[];
 if isfield(config,'preparedPod'), prepared=config.preparedPod; end
 pod=surrogate.models.shared.fitPod(data,config.rank,"pod_mlp",prepared);
 podSeconds=toc(podTimer);
-displacementFields=double(data.displacementFields);
+targetValues=surrogate.models.shared.targets(data);
 componentWeights=pod.weights; fieldMean=pod.fieldMean; podBasis=pod.basis;
 numericalRank=pod.numericalRank;
-centeredFields=displacementFields-fieldMean;
+centeredFields=targetValues-fieldMean;
 targetCoefficients=(podBasis'*(componentWeights.*centeredFields))';
 preprocessTimer=tic;
 
@@ -72,11 +72,15 @@ inputMean=mean(inputParameters,1);
 inputScale=std(inputParameters,0,1);
 % Konstante Groessen bleiben nach Zentrierung null; Skala 1 verhindert 0/0.
 inputScale(inputScale==0)=1;
+if string(data.modality)=="modal"
+    constantInputs=all(inputParameters==inputParameters(1,:),1);
+    inputMean(constantInputs)=inputParameters(1,constantInputs); inputScale(constantInputs)=1;
+end
 coefficientMean=mean(targetCoefficients,1);
 coefficientScale=std(targetCoefficients,0,1);
 constantCoefficients=coefficientScale==0;
 coefficientScale(constantCoefficients)=1;
-if lossMode=="weighted_field_mse"
+if any(lossMode==["weighted_field_mse","shared_output_mse"])
     % A weighted-orthonormal POD basis preserves the weighted field norm:
     % ||u_hat-u||_W^2 = sum_j (c_hat_j-c_j)^2.
     % A single RMS scale therefore changes the MSE only by one common

@@ -57,7 +57,7 @@ runStaticWorkflowSmoke("workflows/static_comparison/configs/smoke.json",smokeLoc
 loaded=string(inmem('-completenames'));
 loaded=loaded(startsWith(loaded,string(root)));
 allowed=string(fullfile(root,{'+surrogate','fem_core','workflows','tests','examples'}));
-allowedRoots=string(fullfile(root,{'runStaticStudy.m','setupProject.m','loadFemDataset.m'}));
+allowedRoots=string(fullfile(root,{'runStaticStudy.m','runModalStudy.m','setupProject.m','loadFemDataset.m'}));
 for file=loaded(:)'
     assert(any(startsWith(file,allowed)) || any(file==allowedRoots), ...
         'study:HistoricalDependency','Unexpected project code loaded: %s',file);

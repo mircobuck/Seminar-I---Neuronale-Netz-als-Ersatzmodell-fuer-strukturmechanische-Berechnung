@@ -15,3 +15,11 @@ Code v2/experiments/static_comparison_*/case_results.csv
 Code v2/experiments/refactor_validation_*/*.mat
 
 Code v2/experiments/static_cleanup_validation_*/*.mat
+
+# Modal runs are local artifacts; configurations and documentation are versioned.
+Code v2/experiments/modal_*/
+
+# Dual-study rerun: retain large model/checkpoint artifacts locally.
+Code v2/experiments/comparison_dual_20261124/**/*.mat
+Code v2/experiments/comparison_dual_20261124/**/case_results.csv
+Code v2/experiments/comparison_dual_20261124/*.pid
