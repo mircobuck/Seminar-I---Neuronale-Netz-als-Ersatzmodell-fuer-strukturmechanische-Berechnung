@@ -3,16 +3,15 @@
 Aufruf:  python aktualisiere_praesentation.py EINGABE.pptx AUSGABE.pptx
 Vorher: fem_nachrechnung.py, vortragsbilder_v2.py
 """
-import copy
 import sys
 
 from pptx.oxml.ns import qn
 
-from folien_helfer import (DATA, IMG, MUTED, Image, Inches, Presentation, RGBColor, T_NN, de, np, read, text)
+from folien_helfer import (DATA, IMG, MUTED, Image, Inches, Presentation, T_NN, de, np, read, text)
 from vortragsbilder_v2 import daten, fehler
 
 R = daten()
-E = {k: fehler(R, k) for k in ("eb", "ti", "mlp", "pod")}
+E = {k: fehler(R, k) for k in ("eb", "mlp", "pod")}
 EB12 = fehler(R, "eb", (1, 2))
 T = np.median([float(z["gesamt_s"]) for z in read(DATA / "fem_nachrechnung_zeiten.csv")])
 X = f"{round(T / T_NN, -1):.0f}"
@@ -102,41 +101,30 @@ notiz(s, "Was ist Euler-Bernoulli? Die klassische analytische Biegetheorie: Quer
       "Fehlerangaben ist die FEM. " + s.notes_slide.notes_text_frame.text)
 
 # 5 (ausgeblendet): nur Notiz richtigstellen
-notiz(F[4], "Die sechs ersten Eigenformen aus der FEM für einen Beispielbalken. Biegemoden: Euler-Bernoulli oder "
-      "Timoshenko. Die Torsionsmode wird getrennt mit der Saint-Venant-Theorie berechnet. Deshalb müssen die Moden vor "
+notiz(F[4], "Die sechs ersten Eigenformen aus der FEM für einen Beispielbalken. Biegemoden: Euler-Bernoulli. "
+      "Die Torsionsmode wird getrennt mit der Saint-Venant-Theorie berechnet. Deshalb müssen die Moden vor "
       "dem Vergleich nach Typ zugeordnet werden.")
 
 # 6 Kernergebnis
 s = F[5]
 weg(s, 5, 8, 14)
-setze(s, 3, "Netze schlagen Euler-Bernoulli, nicht Timoshenko")
+setze(s, 3, "Ab Mode 3 sind die Netze genauer als Euler-Bernoulli")
 bild(s, 4, "modal_fehler_pro_mode_v2", (0.5, 1.65, 8.8, 4.6))
 setze(s, 6, f"{de(E['mlp'])} %")
 setze(s, 9, f"{de(E['pod'])} %")
 setze(s, 12, f"{de(E['eb'])} %")
 setze(s, 13, "Euler-Bernoulli, alle 6 Moden")
-for i, j in ((12, 40), (13, 41)):
-    e = copy.deepcopy(sh(s, i)._element)
-    c = e.find(".//" + qn("p:cNvPr"))
-    c.set("id", str(j))
-    for x in list(c):
-        c.remove(x)
-    s.shapes._spTree.append(e)
-setze(s, 40, f"{de(E['ti'])} %")
-setze(s, 41, "Timoshenko, alle 6 Moden")
-sh(s, 40).text_frame.paragraphs[0].runs[0].font.color.rgb = RGBColor(0x1B, 0xAF, 0x7A)
-for k, (a, b) in enumerate(((6, 7), (9, 10), (12, 13), (40, 41))):
-    lage(s, a, y=1.7 + 1.18 * k, w=3.0)
-    lage(s, b, y=2.42 + 1.18 * k, w=3.0)
+for i in (6, 7, 9, 10, 12, 13):
+    lage(s, i, w=3.0)
 text(s, 0.6, 6.5, 12.1, 0.5, "Mittel über 64 unterschiedliche Biegebalken (Testfälle), Moden nach Schwingungstyp "
-     "zugeordnet. Torsion und Längsschwingung in beiden Theorien klassisch berechnet. Netze: gemittelte Vorhersage aus "
+     "zugeordnet. Torsion und Längsschwingung mit klassischer Stabtheorie. Netze: gemittelte Vorhersage aus "
      "3 Trainings.", size=12, color=MUTED, name="Hinweis")
 notiz(s, "Mittlerer relativer Fehler zur FEM über 64 verschiedene Testbalken. Die Moden sind nach Typ zugeordnet "
       "(Biegung y/z, Torsion, Längs); dazu wurde jeder Balken mit einer zweiten FEM nachgerechnet. Euler-Bernoulli: "
       f"{de(EB12, 2)} % bei Mode 1–2, {de(E['eb'])} % über alle sechs. Grund: Die Balken sind gedrungen (L/h von gut 4 "
       "bis 15). Bei höheren Moden zählen Schub und Rotationsträgheit, und genau das vernachlässigt Euler-Bernoulli. "
-      f"Timoshenko berücksichtigt beides und liegt bei {de(E['ti'])} %. Die Netze liegen mit {de(E['mlp'])} bzw. "
-      f"{de(E['pod'])} % dazwischen. Ein einzelnes Netz statt des Mittels aus dreien: etwa 1,5 bzw. 1,8 %.")
+      f"Die Netze liegen über alle Moden bei {de(E['mlp'])} bzw. {de(E['pod'])} %. Bei Mode 1 und 2 ist Euler-Bernoulli "
+      "genauer als die Netze, ab Mode 3 sind es die Netze. Ein einzelnes Netz statt des Mittels aus dreien: etwa 1,5 bzw. 1,8 %.")
 
 # 7 Ein grosses Diagramm
 s = F[6]
@@ -152,9 +140,9 @@ notiz(s, "Jeder Punkt ist einer der 64 Testbalken, x-Achse FEM, y-Achse Vorhersa
 s = F[7]
 setze(s, 5, f"MLP und POD-MLP sagen alle sechs Eigenfrequenzen mit {de(E['mlp'])} bis {de(E['pod'])} % Fehler voraus, "
       f"rund {X}× schneller als die FEM.")
-setze(s, 7, "Analytik: auf die Theorie kommt es an")
+setze(s, 7, "Analytik stark bei den Grundmoden")
 setze(s, 8, f"Euler-Bernoulli: {de(EB12)} % bei Mode 1–2, {de(E['eb'])} % über alle 6 Moden. "
-      f"Timoshenko (mit Schub): {de(E['ti'])} %.")
+      "Ab Mode 3 sind die Netze genauer.")
 
 prs.save(sys.argv[2])
 print("gespeichert", sys.argv[2], E, "EB12", EB12, "T", T, "x", X)

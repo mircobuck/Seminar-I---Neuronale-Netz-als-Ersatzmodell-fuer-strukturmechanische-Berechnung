@@ -8,7 +8,6 @@ from matplotlib.patches import Polygon, Rectangle
 
 from diagramme import ANA, DATA, FEM, INK, MLP, MUTED, POD, col, de, log_ticks, read, save
 
-TIM = "#1baf7a"
 ROT = "#d03b3b"
 
 
@@ -19,7 +18,7 @@ def daten():
     for r in read(DATA / "modal_moden_identifiziert.csv"):
         v = V[(r["id"], r["mode"])]
         out.append(dict(mode=int(r["mode"]), typ=r["typ"], fem=float(v["fem"]), eb=float(r["eulerBernoulli"]),
-                        ti=float(r["timoshenko"]), mlp=float(v["mlpMean"]), pod=float(v["podMlpMean"])))
+                        mlp=float(v["mlpMean"]), pod=float(v["podMlpMean"])))
     return out
 
 
@@ -66,16 +65,16 @@ def biegebalken():
 
 def fehler_pro_mode(R):
     fig, ax = plt.subplots(figsize=(8.7, 4.5))
-    S = (("eb", ANA, "Euler-Bernoulli"), ("ti", TIM, "Timoshenko"), ("mlp", MLP, "MLP"), ("pod", POD, "POD-MLP"))
-    w = 0.205
+    S = (("eb", ANA, "Euler-Bernoulli"), ("mlp", MLP, "MLP"), ("pod", POD, "POD-MLP"))
+    w = 0.27
     for j, (k, c, lab) in enumerate(S):
-        v = [fehler(R, k, (m,)) for m in range(1, 7)]; x = np.arange(1, 7) + (j - 1.5) * w
+        v = [fehler(R, k, (m,)) for m in range(1, 7)]; x = np.arange(1, 7) + (j - 1) * w
         ax.bar(x, v, w * .9, color=c, label=lab, zorder=3)
         for a, b in zip(x, v):
             ax.text(a, b + .07, de(b, ".1f"), ha="center", fontsize=10, color=INK)
     ax.set_xticks(range(1, 7), [f"Mode {m}" for m in range(1, 7)]); ax.grid(axis="x", visible=False)
     ax.set_ylabel("Mittlerer rel. Fehler zur FEM [%]"); ax.set_ylim(0, 6.6)
-    ax.legend(loc="upper left", ncol=4, fontsize=12, columnspacing=1.2, handlelength=1.3)
+    ax.legend(loc="upper left", ncol=3, fontsize=12, columnspacing=1.2, handlelength=1.3)
     fig.tight_layout(); save("modal_fehler_pro_mode_v2")
 
 
@@ -98,5 +97,5 @@ def paritaet(R, m):
 if __name__ == "__main__":
     R = daten(); biegebalken(); fehler_pro_mode(R)
     for m in (4, 5, 6): paritaet(R, m)
-    for k in ("eb", "ti", "mlp", "pod"):
+    for k in ("eb", "mlp", "pod"):
         print(k, "alle %.2f | 1-2 %.2f | 3-6 %.2f" % (fehler(R, k), fehler(R, k, (1, 2)), fehler(R, k, (3, 4, 5, 6))))
